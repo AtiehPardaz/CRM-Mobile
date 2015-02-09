@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-
+				
 				if(et_user.getText().toString().matches("") && et_pass.getText().toString().matches(""))
 					Toast.makeText(MainActivity.this, "نام کاربری و رمز عبور را وارد نمایید", Toast.LENGTH_LONG).show();
 				else if(et_user.getText().toString().matches(""))
@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
 		case 400:
 			message = "خطا در برقرای ارتباط. لطفا مجددا تلاش نمایید";
 			break;
-
+	
 		case 404:
 			message = "وب سایت پذیرنده در دسترس نمی باشد. لطفا در زمانی دیگر تلاش نمایید.";
 			break;
@@ -92,12 +92,12 @@ public class MainActivity extends Activity {
 		default:
 			message="خطای شماره :" + Integer.toString(responseCode);
 		}
-
+		
 		return message;
 	}
-
+	
 	public int netStatus(String url) {
-
+		
 		HttpGet httpRequest = null;
 		try {
 			httpRequest = new HttpGet(new URI(url));
@@ -116,23 +116,21 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		int resCode = response.getStatusLine().getStatusCode();
-
+		
 
 		return resCode;
 	}
 
-
+	
 	public class asyncTask extends AsyncTask<String, String, String> {
 
 		@Override
 		protected String doInBackground(String... arg0) {	
-
-			if (httpRequestMessage(netStatus("http://google.com")) == "") {
-				return httpRequestMessage(netStatus("http://atiehpardaz.com"));
-			}
-			else return "اتصال به اینترنت برقرار نیست. لطفا پس از بررسی مجددتا تلاش نمایید.";
+			
+				return Integer.toString(netStatus("http://atiehpardaz.com"));
+					
 		}
 
 		@Override

@@ -52,7 +52,9 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-
+				
+				if (hasActiveInternetConnection(MainActivity.this))
+				{
 				if(et_user.getText().toString().matches("") && et_pass.getText().toString().matches(""))
 					Toast.makeText(MainActivity.this, "نام کاربری و رمز عبور را وارد نمایید", Toast.LENGTH_LONG).show();
 				else if(et_user.getText().toString().matches(""))
@@ -63,7 +65,10 @@ public class MainActivity extends Activity {
 					asyncTask as = new asyncTask();
 					as.execute("P");
 				}
-
+				}
+				else {
+					Toast.makeText(MainActivity.this, "تصال به اینترنت برقرار نیست", Toast.LENGTH_LONG).show();
+				}
 
 				//				Intent login=new Intent();
 				//				login.setClass(getApplicationContext(), HomeActivity.class);
@@ -72,72 +77,56 @@ public class MainActivity extends Activity {
 		});
 	}
 
-	public String httpRequestMessage(int responseCode) {
-		String message = "";
-		switch (responseCode) {
-		case 200:
-			message = "";
-			break;
-		case 401:
-			message = "عدم دسترسی لازم جهت اتصال به سرور";
-			break;
-		case 400:
-			message = "خطا در برقرای ارتباط. لطفا مجددا تلاش نمایید";
-			break;
-
-		case 404:
-			message = "وب سایت پذیرنده در دسترس نمی باشد. لطفا در زمانی دیگر تلاش نمایید.";
-			break;
-
-		default:
-			message="خطای شماره :" + Integer.toString(responseCode);
-		}
-
-		return message;
+	public static boolean hasActiveInternetConnection(Context context) {
+	    
+	        try {
+	            HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
+	            urlc.setRequestProperty("User-Agent", "Test");
+	            urlc.setRequestProperty("Connection", "close");
+	            urlc.setConnectTimeout(1500); 
+	            urlc.connect();
+	            return (urlc.getResponseCode() == 200);
+	        } catch (IOException e) {
+	        	return false;
+	        }
 	}
 
-	public int netStatus(String url) {
-
-		HttpGet httpRequest = null;
-		try {
-			httpRequest = new HttpGet(new URI(url));
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		HttpClient httpclient = new DefaultHttpClient();
-		HttpResponse response = null;
-		try {
-			response = httpclient.execute(httpRequest);
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		int resCode = response.getStatusLine().getStatusCode();
-
-
-		return resCode;
-	}
 
 
 	public class asyncTask extends AsyncTask<String, String, String> {
 
 		@Override
-		protected String doInBackground(String... arg0) {	
+		protected String doInBackground(String... arg0) {
 
-			if (httpRequestMessage(netStatus("http://google.com")) == "") {
-				return httpRequestMessage(netStatus("http://atiehpardaz.com"));
+
+			HttpGet httpRequest = null;
+			try {
+				httpRequest = new HttpGet(new URI("http://atiehpardaz.com"));
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			else return "اتصال به اینترنت برقرار نیست. لطفا پس از بررسی مجددتا تلاش نمایید.";
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpResponse response = null;
+			try {
+				response = httpclient.execute(httpRequest);
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			int resCode = response.getStatusLine().getStatusCode();
+
+
+			return Integer.toString(resCode);
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
 			Toast.makeText(MainActivity.this,result, Toast.LENGTH_LONG).show();
+
 
 		}
 	}
