@@ -1,0 +1,30 @@
+package com.Atieh.crm_mobile_webService;
+
+
+public class authenticationJSONClass {
+
+	private String Salt;
+	private com.Atieh.crm_mobile_webService.Status Status;
+	private String Token;
+	
+	
+	public String getSalt() {
+		return Salt;
+	}
+	public void setSalt(String salt) {
+		Salt = salt;
+	}
+	public com.Atieh.crm_mobile_webService.Status getStatus() {
+		return Status;
+	}
+	public void setStatus(com.Atieh.crm_mobile_webService.Status status) {
+		Status = status;
+	}
+	public String getToken() {
+		return Token;
+	}
+	public void setToken(String token) {
+		Token = token;
+	}
+
+}

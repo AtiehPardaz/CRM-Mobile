@@ -1,0 +1,66 @@
+package com.Atieh.crm_mobile_webService;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Status {
+
+	private int Code;
+	private String Message;
+	private String MessageDetails;
+
+	/**
+	 * 
+	 * @return
+	 * The Code
+	 */
+	public int getCode() {
+		return Code;
+	}
+
+	/**
+	 * 
+	 * @param Code
+	 * The Code
+	 */
+	public void setCode(int Code) {
+		this.Code = Code;
+	}
+
+	/**
+	 * 
+	 * @return
+	 * The Message
+	 */
+	public String getMessage() {
+		return Message;
+	}
+
+	/**
+	 * 
+	 * @param Message
+	 * The Message
+	 */
+	public void setMessage(String Message) {
+		this.Message = Message;
+	}
+
+	/**
+	 * 
+	 * @return
+	 * The MessageDetails
+	 */
+	public String getMessageDetails() {
+		return MessageDetails;
+	}
+
+	/**
+	 * 
+	 * @param MessageDetails
+	 * The MessageDetails
+	 */
+	public void setMessageDetails(String MessageDetails) {
+		this.MessageDetails = MessageDetails;
+	}
+
+}

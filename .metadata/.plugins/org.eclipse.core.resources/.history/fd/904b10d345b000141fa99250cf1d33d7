@@ -1,0 +1,133 @@
+package com.Atieh.crm_mobile;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.Atieh.crm_mobile_webService.ServiceGenerator;
+import com.Atieh.crm_mobile_webService.authServiceInterface;
+import com.Atieh.crm_mobile_webService.authenticationJSONClass;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
+
+
+public class MainActivity extends Activity {
+
+	EditText et_user;
+	EditText et_pass;
+	Button btn_login;
+	CheckBox chk_remember;
+	
+	public void initview(){
+		et_user=(EditText) findViewById(R.id.et_username);
+		et_pass=(EditText) findViewById(R.id.et_password);
+		btn_login=(Button) findViewById(R.id.btn_login);
+		chk_remember=(CheckBox) findViewById(R.id.chk_remember);
+	}
+	
+    @Override
+    protected void onCreate( Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initview();
+        
+        btn_login.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+
+				isConnected();
+				
+//				Intent login=new Intent();
+//				login.setClass(getApplicationContext(), HomeActivity.class);
+//				startActivity(login);
+			}
+		});
+    }
+
+    public void  isConnected()
+    {
+        try{
+            ConnectivityManager cm = (ConnectivityManager) getSystemService
+                                                        (Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+
+            if (netInfo != null && netInfo.isConnected())
+            {
+                //Network is available but check if we can get access from the network.
+                URL url = new URL("http://webservice.atiehpardaz.com/CrmService/CrmService.svc/AuthenticateUser");
+                HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
+                urlc.setRequestProperty("Connection", "close");
+                urlc.setConnectTimeout(4000); // Timeout 2 seconds.
+                urlc.connect();
+
+                if (urlc.getResponseCode() == 200)  
+                {
+                	Toast.makeText(this, "تصال به سرور بدون مشکل", Toast.LENGTH_LONG);
+                } 
+                else if (urlc.getResponseCode() == 404) 
+                {
+                	Toast.makeText(this, "آدرس یافت نشد و یا موقتا در دسترس نیست", Toast.LENGTH_LONG);
+                } 
+                else if (urlc.getResponseCode() == 503)  
+                {
+                	Toast.makeText(this, "سرور موقتا در دسترس نمیباشد", Toast.LENGTH_LONG);
+                } 
+                else if (urlc.getResponseCode() == 403) 
+                {
+                	Toast.makeText(this, "اتصال به سرور برقرار است ولی سرور پاسخی نمیدهد.", Toast.LENGTH_LONG);
+                }  
+                else {
+                	Toast.makeText(this,Integer.toString(urlc.getResponseCode()) , Toast.LENGTH_LONG);					
+				}
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+//  public class asyncTask extends AsyncTask<String, String, String> {
+//
+//	@Override
+//	protected String doInBackground(String... arg0) {
+//		
+//		authServiceInterface authentication = ServiceGenerator.createService(authServiceInterface.class, "http://webservice.atiehpardaz.com/CrmService/CrmService.svc");
+//		Map<String, String> querymap = new HashMap<String, String>();
+//		querymap.put("userName", "admin");
+//		querymap.put("password", "admin");
+//		querymap.put("cultureId", "1056");
+//		querymap.put("deviceName", "Xperia");
+//		
+//		//authenticationJSONClass response =  authentication.authorize(querymap);
+//		
+//		return null;
+//	}
+//	  
+//	@Override
+//	protected void onPostExecute(String result) {
+//
+//		
+//	}
+//  }
+   
+}
