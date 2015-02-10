@@ -1,6 +1,4 @@
 package com.Atieh.crm_mobile_webService;
-
-
 public class authenticationJSONClass {
 
 	private String Salt;

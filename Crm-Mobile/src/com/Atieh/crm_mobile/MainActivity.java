@@ -3,12 +3,24 @@ package com.Atieh.crm_mobile;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+
+import com.Atieh.crm_mobile_webService.ServiceGenerator;
+import com.Atieh.crm_mobile_webService.authServiceInterface;
+import com.Atieh.crm_mobile_webService.authenticationJSONClass;
+import com.Atieh.crm_mobile_webService.getProduct;
+import com.Atieh.crm_mobile_webService.getProductInterface;
+import com.Atieh.crm_mobile_webService.getService;
+import com.Atieh.crm_mobile_webService.getServiceInterface;
 
 import android.app.Activity;
 import android.content.Context;
@@ -56,8 +68,10 @@ public class MainActivity extends Activity {
 				else if(et_pass.getText().toString().matches(""))
 					Toast.makeText(MainActivity.this, "رمز عبور را وارد نمایید", Toast.LENGTH_LONG).show();
 				else {
+					
 					asyncTask as = new asyncTask(); // checking network status
 					as.execute("P");
+			
 				}
 
 
@@ -159,9 +173,39 @@ public class MainActivity extends Activity {
 			if (result != "") {
 				Toast.makeText(MainActivity.this,result, Toast.LENGTH_LONG).show();
 			}
-			else
+			else{
 				Toast.makeText(MainActivity.this,"اتصال به سرور برقرار شد", Toast.LENGTH_LONG).show();
+				asyncAuthentication asyncauthentication = new asyncAuthentication();
+				asyncauthentication.execute("P");
+			}
 		}
 	}
 	
+	public class asyncAuthentication extends AsyncTask<String, String, String> {
+
+		@Override
+		protected String doInBackground(String... arg0) {
+			
+			authServiceInterface auth = ServiceGenerator.createService(authServiceInterface.class, "http://webservice.atiehpardaz.com/CrmService/CrmService.svc");
+			Map<String, String> querymap = new HashMap<>();
+			querymap.put("userName", "admin");
+			querymap.put("password", "admin");
+			querymap.put("cultureId", "1065");
+			querymap.put("deviceName", "Xperia X");
+			
+			authenticationJSONClass authe = new authenticationJSONClass();
+			
+			 authe  = auth.authorize(querymap);
+			
+//			getProductInterface product = ServiceGenerator.createService(getProductInterface.class, "http://webservice.atiehpardaz.com/CrmService/CrmService.svc");
+//			List<getProduct> products = new ArrayList<>();
+//			products = product.get("xxxx");
+			return authe.getSalt();
+		}
+		@Override
+		protected void onPostExecute(String result) {
+			Toast.makeText(MainActivity.this,result, Toast.LENGTH_LONG).show();
+
+		}
+	}
 }
