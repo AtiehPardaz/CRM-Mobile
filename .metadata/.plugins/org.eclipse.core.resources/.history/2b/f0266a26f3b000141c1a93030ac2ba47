@@ -1,19 +1,23 @@
 package com.Atieh.crm_mobile;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import com.Atieh.crm_mobile_webService.authServiceInterface;
+
+import android.R.integer;
 import android.app.Activity;
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -56,7 +60,7 @@ public class MainActivity extends Activity {
 				else if(et_pass.getText().toString().matches(""))
 					Toast.makeText(MainActivity.this, "رمز عبور را وارد نمایید", Toast.LENGTH_LONG).show();
 				else {
-					asyncTask as = new asyncTask(); // checking network status
+					asyncTask as = new asyncTask();
 					as.execute("P");
 				}
 
@@ -67,43 +71,6 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
-
-
-
-	public int netStatus(String url) {
-
-		int resCode;
-		if (isNetworkAvailable()) {
-
-			HttpGet httpRequest = null;
-			try {
-				httpRequest = new HttpGet(new URI(url));
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
-			}
-			
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpResponse response = null;
-			
-			try {
-				response = httpclient.execute(httpRequest);
-				
-			} catch (ClientProtocolException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			resCode = response.getStatusLine().getStatusCode();
-		}
-
-		else {
-			resCode = 1000; //our code for no network connected or connecting
-		}
-		
-		return resCode;
-	}
-	
 
 	public String httpRequestMessage(int responseCode) {
 		String message = "";
@@ -122,36 +89,47 @@ public class MainActivity extends Activity {
 			message = "وب سایت پذیرنده در دسترس نمی باشد. لطفا در زمانی دیگر تلاش نمایید.";
 			break;
 
-		case 1000: //our code for no network connected or connecting
-			message = "لطفا از روشن بودن دیتای موبایل و یا وایرلس خود و اتصال به اینترنت اطمینان حاصل نمایید.";
-			break;
-
 		default:
-			message="خطای ناشناخته شماره :" + Integer.toString(responseCode);
+			message="خطای شماره :" + Integer.toString(responseCode);
 		}
 
 		return message;
 	}
-	
-	
-	private boolean isNetworkAvailable() { 
-		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo netInfo = cm.getActiveNetworkInfo();
-		if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-			return true;
+
+	public int netStatus(String url) {
+
+		HttpGet httpRequest = null;
+		try {
+			httpRequest = new HttpGet(new URI(url));
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		else{
-			return false;
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpResponse response = null;
+		try {
+			response = httpclient.execute(httpRequest);
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
+		int resCode = response.getStatusLine().getStatusCode();
+
+
+		return resCode;
 	}
-	
+
+
 	public class asyncTask extends AsyncTask<String, String, String> {
 
 		@Override
 		protected String doInBackground(String... arg0) {	
 
-			return httpRequestMessage(netStatus("http://atiehpardaz.com"));
+				return httpRequestMessage(netStatus("http://atiehpardaz.com"));
 		}
 
 		@Override
@@ -160,8 +138,8 @@ public class MainActivity extends Activity {
 				Toast.makeText(MainActivity.this,result, Toast.LENGTH_LONG).show();
 			}
 			else
-				Toast.makeText(MainActivity.this,"اتصال به سرور برقرار شد", Toast.LENGTH_LONG).show();
+				Toast.makeText(MainActivity.this,"اتصال بدون مشکل", Toast.LENGTH_LONG).show();
 		}
 	}
-	
+
 }

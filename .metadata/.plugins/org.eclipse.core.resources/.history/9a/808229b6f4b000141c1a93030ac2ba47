@@ -79,18 +79,18 @@ public class MainActivity extends Activity {
 			try {
 				httpRequest = new HttpGet(new URI(url));
 			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpResponse response = null;
-			
 			try {
 				response = httpclient.execute(httpRequest);
-				
 			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -151,7 +151,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected String doInBackground(String... arg0) {	
 
-			return httpRequestMessage(netStatus("http://atiehpardaz.com"));
+			return httpRequestMessage(netStatus("http://atipardaz.mcom"));
 		}
 
 		@Override
@@ -163,5 +163,5 @@ public class MainActivity extends Activity {
 				Toast.makeText(MainActivity.this,"اتصال به سرور برقرار شد", Toast.LENGTH_LONG).show();
 		}
 	}
-	
+
 }
