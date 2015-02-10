@@ -197,11 +197,7 @@ public class MainActivity extends Activity {
 
 			authe = new authenticationJSONClass();
 
-			try {
-				authe  = auth.authorize(querymap);
-			} catch (Exception e) {
-				Toast.makeText(MainActivity.this, "اتصال به سروربرقرار نیست", Toast.LENGTH_SHORT).show();	
-			}
+			authe  = auth.authorize(querymap);
 
 			authInfo.getInstance().setSalt(authe.getSalt());
 			authInfo.getInstance().setToken(authe.getToken());
