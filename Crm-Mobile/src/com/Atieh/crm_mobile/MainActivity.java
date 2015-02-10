@@ -3,9 +3,7 @@ package com.Atieh.crm_mobile;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpResponse;
@@ -14,16 +12,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import com.Atieh.crm_mobile_webService.ServiceGenerator;
-import com.Atieh.crm_mobile_webService.authServiceInterface;
-import com.Atieh.crm_mobile_webService.authenticationJSONClass;
-import com.Atieh.crm_mobile_webService.getProduct;
-import com.Atieh.crm_mobile_webService.getProductInterface;
-import com.Atieh.crm_mobile_webService.getService;
-import com.Atieh.crm_mobile_webService.getServiceInterface;
-
+import singleTones.authInfo;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -33,7 +25,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.Atieh.crm_mobile_webService.ServiceGenerator;
+import com.Atieh.crm_mobile_webService.authServiceInterface;
+import com.Atieh.crm_mobile_webService.authenticationJSONClass;
 
 
 public class MainActivity extends Activity {
@@ -42,12 +39,15 @@ public class MainActivity extends Activity {
 	EditText et_pass;
 	Button btn_login;
 	CheckBox chk_remember;
+	//ProgressBar progbar_progress;
 
 	public void initview(){
 		et_user=(EditText) findViewById(R.id.et_username);
 		et_pass=(EditText) findViewById(R.id.et_password);
 		btn_login=(Button) findViewById(R.id.btn_login);
-		chk_remember=(CheckBox) findViewById(R.id.chk_remember);
+		//progbar_progress = (ProgressBar) findViewById(R.id.progressBar1);
+		//progbar_progress.setVisibility(View.INVISIBLE);
+
 	}
 
 	@Override
@@ -61,23 +61,15 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 
-				if(et_user.getText().toString().matches("") && et_pass.getText().toString().matches(""))
-					Toast.makeText(MainActivity.this, "نام کاربری و رمز عبور را وارد نمایید", Toast.LENGTH_LONG).show();
-				else if(et_user.getText().toString().matches(""))
-					Toast.makeText(MainActivity.this, "نام کاربری را وارد نمایید", Toast.LENGTH_LONG).show();
-				else if(et_pass.getText().toString().matches(""))
-					Toast.makeText(MainActivity.this, "رمز عبور را وارد نمایید", Toast.LENGTH_LONG).show();
+				if(et_user.getText().toString().matches("") || et_pass.getText().toString().matches(""))
+					Toast.makeText(MainActivity.this, "وجود کادر خالی غیر مجاز است", Toast.LENGTH_LONG).show();
+
 				else {
-					
+
 					asyncTask as = new asyncTask(); // checking network status
 					as.execute("P");
-			
+
 				}
-
-
-				//				Intent login=new Intent();
-				//				login.setClass(getApplicationContext(), HomeActivity.class);
-				//				startActivity(login);
 			}
 		});
 	}
@@ -95,13 +87,13 @@ public class MainActivity extends Activity {
 			} catch (URISyntaxException e) {
 				e.printStackTrace();
 			}
-			
+
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpResponse response = null;
-			
+
 			try {
 				response = httpclient.execute(httpRequest);
-				
+
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -114,10 +106,10 @@ public class MainActivity extends Activity {
 		else {
 			resCode = 1000; //our code for no network connected or connecting
 		}
-		
+
 		return resCode;
 	}
-	
+
 
 	public String httpRequestMessage(int responseCode) {
 		String message = "";
@@ -146,8 +138,8 @@ public class MainActivity extends Activity {
 
 		return message;
 	}
-	
-	
+
+
 	private boolean isNetworkAvailable() { 
 		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo netInfo = cm.getActiveNetworkInfo();
@@ -159,8 +151,14 @@ public class MainActivity extends Activity {
 		}
 
 	}
-	
+
 	public class asyncTask extends AsyncTask<String, String, String> {
+
+		@Override
+		protected void onPreExecute() {
+			//progbar_progress.setVisibility(View.VISIBLE);
+
+		}
 
 		@Override
 		protected String doInBackground(String... arg0) {	
@@ -170,42 +168,59 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
+
+			//progbar_progress.setVisibility(View.INVISIBLE);
+
 			if (result != "") {
-				Toast.makeText(MainActivity.this,result, Toast.LENGTH_LONG).show();
+				Toast.makeText(MainActivity.this,result, Toast.LENGTH_SHORT).show();
 			}
 			else{
-				Toast.makeText(MainActivity.this,"اتصال به سرور برقرار شد", Toast.LENGTH_LONG).show();
+				Toast.makeText(MainActivity.this," اتصال به سرور برقرار شد", Toast.LENGTH_SHORT).show();
 				asyncAuthentication asyncauthentication = new asyncAuthentication();
-				asyncauthentication.execute("P");
+				asyncauthentication.execute("P"); 
 			}
 		}
 	}
-	
-	public class asyncAuthentication extends AsyncTask<String, String, String> {
 
+
+	public class asyncAuthentication extends AsyncTask<String, String, Integer> {
+		authenticationJSONClass authe;
 		@Override
-		protected String doInBackground(String... arg0) {
-			
+		protected Integer doInBackground(String... arg0) {
+
 			authServiceInterface auth = ServiceGenerator.createService(authServiceInterface.class, "http://webservice.atiehpardaz.com/CrmService/CrmService.svc");
 			Map<String, String> querymap = new HashMap<>();
-			querymap.put("userName", "admin");
-			querymap.put("password", "admin");
+			querymap.put("userName", et_user.getText().toString());
+			querymap.put("password", et_pass.getText().toString());
 			querymap.put("cultureId", "1065");
-			querymap.put("deviceName", "Xperia X");
-			
-			authenticationJSONClass authe = new authenticationJSONClass();
-			
-			 authe  = auth.authorize(querymap);
-			
-//			getProductInterface product = ServiceGenerator.createService(getProductInterface.class, "http://webservice.atiehpardaz.com/CrmService/CrmService.svc");
-//			List<getProduct> products = new ArrayList<>();
-//			products = product.get("xxxx");
-			return authe.getSalt();
-		}
-		@Override
-		protected void onPostExecute(String result) {
-			Toast.makeText(MainActivity.this,result, Toast.LENGTH_LONG).show();
+			querymap.put("deviceName", android.os.Build.MODEL);
 
+			authe = new authenticationJSONClass();
+
+			authe  = auth.authorize(querymap);
+
+			authInfo.getInstance().setSalt(authe.getSalt());
+			authInfo.getInstance().setToken(authe.getToken());
+			
+			return authe.getStatus().getCode();
 		}
+
+		@Override
+		protected void onPostExecute(Integer result) {
+			if(result == 1){
+				Toast.makeText(MainActivity.this, " عملیات با موفقیت انجام شد", Toast.LENGTH_SHORT).show();	
+				Intent login=new Intent();
+				login.setClass(getApplicationContext(), HomeActivity.class);
+				startActivity(login);
+			}
+			
+			else {
+				Toast.makeText(MainActivity.this, authe.getStatus().getMessageDetails(), Toast.LENGTH_LONG).show();
+			}
+		}
+
 	}
+
 }
+
+
