@@ -107,26 +107,6 @@ public class database extends SQLiteOpenHelper {
 		return ID ;
 	}
 	
-	public long UpdateProduct (String productGUID ,String productName, int isDeleted){//address choose
-
-		String strFilter = "productGUID =" +"'"+ productGUID+"'";
-		ContentValues values = new ContentValues();
-		values.put("productGUID", productGUID);
-		values.put("productName", productName);
-		values.put("isDeleted", isDeleted);
-		long ID = mydb.update("products",values,strFilter,null);
-		return ID ;
-	}
-	
-	public long DeleteProduct (String productGUID){
-
-		String strFilter = "productGUID =" +"'"+ productGUID+"'";
-		ContentValues values = new ContentValues();
-		values.put("isDeleted", 1);
-		long ID = mydb.update("products",values,strFilter,null);
-		return ID ;
-	}
-	
 	public long InsertService (String ServiceGUID ,String ServiceName, int isDeleted){//address choose
 
 		ContentValues values = new ContentValues();
@@ -136,26 +116,4 @@ public class database extends SQLiteOpenHelper {
 		long ID = mydb.insert("services", null, values);
 		return ID ;
 	}
-	
-	public long UpdateService (String ServiceGUID ,String ServiceName, int isDeleted){//address choose
-
-		String strFilter = "serviceGUID =" +"'"+ ServiceGUID+"'";
-		ContentValues values = new ContentValues();
-		values.put("serviceGUID", ServiceGUID);
-		values.put("serviceName", ServiceName);
-		values.put("isDeleted", isDeleted);
-		long ID = mydb.update("services", values, strFilter,null);
-		return ID ;
-	}
-	
-	public long DeleteService (String ServiceGUID){
-
-		String strFilter = "serviceGUID =" +"'"+ ServiceGUID+"'";
-		ContentValues values = new ContentValues();
-	
-		values.put("isDeleted", 1);
-		long ID = mydb.update("services", values, strFilter,null);
-		return ID ;
-	}
-	
 }

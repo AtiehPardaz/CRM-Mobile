@@ -58,7 +58,6 @@ public class HomeActivity extends Activity{
 						PandSs.getServices().getInserted().get(i).getName(), 0);
 			}
 			
-			
 			//update products
 			for (int i = 0; i <PandSs.getProducts().getUpdated().size(); i++) {
 
@@ -66,27 +65,7 @@ public class HomeActivity extends Activity{
 						PandSs.getProducts().getUpdated().get(i).getName(), 0);
 			}
 
-			//update services
-			for (int i = 0; i <PandSs.getServices().getUpdated().size(); i++) {
 
-				db.UpdateService(PandSs.getServices().getUpdated().get(i).getId(),
-						PandSs.getServices().getUpdated().get(i).getName(), 0);
-			}
-
-			//delete products
-			for (int i = 0; i <PandSs.getProducts().getDeleted().size(); i++) {
-
-				db.DeleteProduct(PandSs.getProducts().getDeleted().get(i).getId());
-			}
-			
-			//delete services
-			for (int i = 0; i <PandSs.getServices().getDeleted().size(); i++) {
-
-				db.DeleteService(PandSs.getServices().getDeleted().get(i).getId());
-			}
-
-
-			
 			db.close();
 
 			return PandSs.getProducts().getDeleted().get(0).getId();

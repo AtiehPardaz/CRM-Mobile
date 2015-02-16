@@ -117,16 +117,6 @@ public class database extends SQLiteOpenHelper {
 		long ID = mydb.update("products",values,strFilter,null);
 		return ID ;
 	}
-	
-	public long DeleteProduct (String productGUID){
-
-		String strFilter = "productGUID =" +"'"+ productGUID+"'";
-		ContentValues values = new ContentValues();
-		values.put("isDeleted", 1);
-		long ID = mydb.update("products",values,strFilter,null);
-		return ID ;
-	}
-	
 	public long InsertService (String ServiceGUID ,String ServiceName, int isDeleted){//address choose
 
 		ContentValues values = new ContentValues();
@@ -147,15 +137,4 @@ public class database extends SQLiteOpenHelper {
 		long ID = mydb.update("services", values, strFilter,null);
 		return ID ;
 	}
-	
-	public long DeleteService (String ServiceGUID){
-
-		String strFilter = "serviceGUID =" +"'"+ ServiceGUID+"'";
-		ContentValues values = new ContentValues();
-	
-		values.put("isDeleted", 1);
-		long ID = mydb.update("services", values, strFilter,null);
-		return ID ;
-	}
-	
 }
