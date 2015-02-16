@@ -1,0 +1,77 @@
+package getProductAndServices;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Products {
+
+private List<getProductAndServices.Deleted> Deleted = new ArrayList<getProductAndServices.Deleted>();
+private List<getProductAndServices.Inserted> Inserted = new ArrayList<getProductAndServices.Inserted>();
+private List<getProductAndServices.Updated> Updated = new ArrayList<getProductAndServices.Updated>();
+private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+/**
+* 
+* @return
+* The Deleted
+*/
+public List<getProductAndServices.Deleted> getDeleted() {
+return Deleted;
+}
+
+/**
+* 
+* @param Deleted
+* The Deleted
+*/
+public void setDeleted(List<getProductAndServices.Deleted> Deleted) {
+this.Deleted = Deleted;
+}
+
+/**
+* 
+* @return
+* The Inserted
+*/
+public List<getProductAndServices.Inserted> getInserted() {
+return Inserted;
+}
+
+/**
+* 
+* @param Inserted
+* The Inserted
+*/
+public void setInserted(List<getProductAndServices.Inserted> Inserted) {
+this.Inserted = Inserted;
+}
+
+/**
+* 
+* @return
+* The Updated
+*/
+public List<getProductAndServices.Updated> getUpdated() {
+return Updated;
+}
+
+/**
+* 
+* @param Updated
+* The Updated
+*/
+public void setUpdated(List<getProductAndServices.Updated> Updated) {
+this.Updated = Updated;
+}
+
+public Map<String, Object> getAdditionalProperties() {
+return this.additionalProperties;
+}
+
+public void setAdditionalProperty(String name, Object value) {
+this.additionalProperties.put(name, value);
+}
+
+}

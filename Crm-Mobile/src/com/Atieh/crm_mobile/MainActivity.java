@@ -30,7 +30,7 @@ import android.widget.Toast;
 
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
 import com.Atieh.crm_mobile_webService.authServiceInterface;
-import com.Atieh.crm_mobile_webService.authenticationJSONClass;
+import com.Atieh.crm_mobile_webService.authJSONClass;
 
 
 public class MainActivity extends Activity {
@@ -72,8 +72,8 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+		
 	}
-
 
 
 	public int netStatus(String url) {
@@ -184,7 +184,7 @@ public class MainActivity extends Activity {
 
 
 	public class asyncAuthentication extends AsyncTask<String, String, Integer> {
-		authenticationJSONClass authe;
+		authJSONClass authe;
 		@Override
 		protected Integer doInBackground(String... arg0) {
 
@@ -192,10 +192,10 @@ public class MainActivity extends Activity {
 			Map<String, String> querymap = new HashMap<>();
 			querymap.put("userName", et_user.getText().toString());
 			querymap.put("password", et_pass.getText().toString());
-			querymap.put("cultureId", "1065");
+			querymap.put("cultureId", "1065"); // MUST BE CORRECT
 			querymap.put("deviceName", android.os.Build.MODEL);
 
-			authe = new authenticationJSONClass();
+			authe = new authJSONClass();
 
 			try {
 				authe  = auth.authorize(querymap);

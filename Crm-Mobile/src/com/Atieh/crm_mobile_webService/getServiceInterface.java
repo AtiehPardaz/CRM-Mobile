@@ -8,6 +8,6 @@ import retrofit.http.Query;
 
 public interface getServiceInterface {
 	@GET("/GetServices")
-	public List<getService> get(@Query("token") String token  );
+	public List<getServiceClass> get(@Query("token") String token  );
 
 }

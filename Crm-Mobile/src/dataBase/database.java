@@ -93,5 +93,7 @@ public class database extends SQLiteOpenHelper {
 		myOutput.flush();
 		myOutput.close();
 	}
+	
+	
 
 }

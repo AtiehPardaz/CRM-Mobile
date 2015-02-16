@@ -1,0 +1,15 @@
+package getProductAndServices;
+
+
+import retrofit.http.GET;
+import retrofit.http.Query;
+
+public interface GetProductAndServicesInterface {
+
+	public interface getProductInterface {
+		@GET("/GetProductsAndServices")
+		public GetProductsAndServices getps(@Query("token") String token);
+
+	}
+
+}
