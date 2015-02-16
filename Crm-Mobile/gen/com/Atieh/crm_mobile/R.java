@@ -24,16 +24,19 @@ public final class R {
     public static final class drawable {
         public static final int bghome=0x7f020000;
         public static final int bglogin=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int logo=0x7f020003;
+        public static final int blackt=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int logo=0x7f020004;
+        public static final int photo=0x7f020005;
     }
     public static final class id {
+        public static final int ImageView01=0x7f08001a;
         public static final int LinearLayout1=0x7f080012;
-        public static final int action_settings=0x7f080018;
+        public static final int action_settings=0x7f08001c;
         public static final int btn_customer=0x7f080007;
         public static final int btn_dayview=0x7f080002;
         public static final int btn_download=0x7f080003;
-        public static final int btn_login=0x7f080016;
+        public static final int btn_login=0x7f080017;
         public static final int btn_monthview=0x7f080001;
         public static final int btn_newactivity=0x7f080005;
         public static final int btn_newtask=0x7f080006;
@@ -49,10 +52,13 @@ public final class R {
         public static final int button7=0x7f08000d;
         public static final int button8=0x7f080010;
         public static final int button9=0x7f080011;
-        public static final int chk_remember=0x7f080017;
-        public static final int et_password=0x7f080015;
-        public static final int et_username=0x7f080014;
-        public static final int imgv=0x7f080013;
+        public static final int chk_remember=0x7f080018;
+        public static final int et_password=0x7f080016;
+        public static final int et_username=0x7f080015;
+        public static final int imgv=0x7f080014;
+        public static final int linear1=0x7f080013;
+        public static final int linearpb=0x7f080019;
+        public static final int progressBar1=0x7f08001b;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
