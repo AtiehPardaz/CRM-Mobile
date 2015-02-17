@@ -1,8 +1,11 @@
 package com.Atieh.crm_mobile;
 
-import getProductAndServicespack.GetProductAndServicesInterface;
-import getProductAndServicespack.GetProductsAndServices;
-import singleTones.authInfo;
+import GetCustomersPack.GetCustomers;
+import GetCustomersPack.GetCustomersInterface;
+import GetProductAndServicespack.GetProductAndServicesInterface;
+import GetProductAndServicespack.GetProductsAndServices;
+import GetRelationRolesPack.GetRelationRoles;
+import GetRelationRolesPack.GetRelationRolesInterface;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,6 +19,7 @@ import dataBase.database;
 public class HomeActivity extends Activity{
 
 	database db;
+	public static final String baseURL = "http://webservice.atiehpardaz.com/CrmService/CrmService.svc";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +43,16 @@ public class HomeActivity extends Activity{
 			db.database();
 			db.open();
 
-			GetProductAndServicesInterface PS = ServiceGenerator.createService(GetProductAndServicesInterface.class, "http://webservice.atiehpardaz.com/CrmService/CrmService.svc");		
+			GetProductAndServicesInterface PS = ServiceGenerator.createService(GetProductAndServicesInterface.class, baseURL);		
 			PandSs = new GetProductsAndServices();
-
-			PandSs = PS.getps(arg0[0]);
+			
+			try {
+				PandSs = PS.getps(arg0[0]);
+				
+			} catch (Exception e) {
+				Toast.makeText(HomeActivity.this, "ERROR ON WEBSERVICE", Toast.LENGTH_LONG).show();
+			}
+			
 
 			//insert products
 			for (int i = 0; i <PandSs.getProducts().getInserted().size(); i++) {
@@ -87,9 +97,28 @@ public class HomeActivity extends Activity{
 
 
 			
+			// GetCustomers	
+			GetCustomersInterface CustomersAdapter = ServiceGenerator.createService(GetCustomersInterface.class, baseURL);		
+			GetCustomers customers = new GetCustomers();
+			try {
+				customers = CustomersAdapter.getCustomers(arg0[0]);
+				
+			} catch (Exception e) {
+				Toast.makeText(HomeActivity.this, "ERROR ON WEBSERVICE", Toast.LENGTH_LONG).show();
+			}
+			
+			
+			
+			//GetRelations
+			GetRelationRolesInterface RelationsAdapter = ServiceGenerator.createService(GetRelationRolesInterface.class, baseURL);		
+			GetRelationRoles relations = RelationsAdapter.getRelationRoles("1");
+			
+			
 			db.close();
+			 
+			
 
-			return PandSs.getProducts().getDeleted().get(0).getId();
+			return Integer.toString(relations.getInserted().size());
 		}
 
 		@Override

@@ -1,4 +1,4 @@
-package getProductAndServicespack;
+package GetProductAndServicespack;
 
 
 import java.util.ArrayList;

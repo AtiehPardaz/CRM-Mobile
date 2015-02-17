@@ -1,4 +1,4 @@
-package getProductAndServicespack;
+package GetProductAndServicespack;
 
 
 import java.util.HashMap;
@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class GetProductsAndServices {
 
-	private getProductAndServicespack.Products Products;
-	private getProductAndServicespack.Services Services;
+	private GetProductAndServicespack.Products Products;
+	private GetProductAndServicespack.Services Services;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	/**
@@ -15,7 +15,7 @@ public class GetProductsAndServices {
 	 * @return
 	 * The Products
 	 */
-	public getProductAndServicespack.Products getProducts() {
+	public GetProductAndServicespack.Products getProducts() {
 		return Products;
 	}
 
@@ -24,7 +24,7 @@ public class GetProductsAndServices {
 	 * @param Products
 	 * The Products
 	 */
-	public void setProducts(getProductAndServicespack.Products Products) {
+	public void setProducts(GetProductAndServicespack.Products Products) {
 		this.Products = Products;
 	}
 
@@ -33,7 +33,7 @@ public class GetProductsAndServices {
 	 * @return
 	 * The Services
 	 */
-	public getProductAndServicespack.Services getServices() {
+	public GetProductAndServicespack.Services getServices() {
 		return Services;
 	}
 
@@ -42,7 +42,7 @@ public class GetProductsAndServices {
 	 * @param Services
 	 * The Services
 	 */
-	public void setServices(getProductAndServicespack.Services Services) {
+	public void setServices(GetProductAndServicespack.Services Services) {
 		this.Services = Services;
 	}
 

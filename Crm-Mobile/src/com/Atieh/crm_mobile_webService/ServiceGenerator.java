@@ -40,7 +40,11 @@ public class ServiceGenerator {
         }
 
         RestAdapter adapter = builder.build();
+        try {
+            return adapter.create(serviceClass);
 
-        return adapter.create(serviceClass);
+		} catch (Exception e) {
+			return null;
+		}
     }
 }

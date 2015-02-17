@@ -8,7 +8,6 @@ import java.io.OutputStream;
 import android.R.integer;
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -158,4 +157,24 @@ public class database extends SQLiteOpenHelper {
 		return ID ;
 	}
 	
+	public void InsertCustomer(String Id,String Title , String Description , int IsLegal,String Address,String Tel){
+		
+		ContentValues values = new ContentValues();
+		values.put("Id", Id);
+		values.put("Title",Title );
+		values.put("Description", Description);
+		values.put("IsLegal", IsLegal);
+		values.put("Address",Address );
+		values.put("Tel", Tel);
+		mydb.insert("custemers", null, values);
+	}
+	
+	public void InsertPersonRelations(String CustomerId,String Id,String RelationRoleId,String Title){
+		ContentValues values = new ContentValues();
+		values.put("CustomerId", CustomerId);
+		values.put("Id", Id);
+		values.put("RelationRoleId", RelationRoleId);
+		values.put("Title", Title);
+		mydb.insert("personRelations", null, values);
+	}
 }
