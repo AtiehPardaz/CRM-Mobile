@@ -7,6 +7,6 @@ import retrofit.http.Query;
 
 public interface getProductInterface {
 	@GET("/GetProducts")
-	public List<getProduct> get(@Query("token") String token);
+	public List<getProductClass> get(@Query("token") String token);
 
 }

@@ -10,7 +10,7 @@ import retrofit.http.QueryMap;
 public interface authServiceInterface {
 
 		@GET("/AuthenticateUser")
-		public authenticationJSONClass authorize(@QueryMap Map <String , String> querymap);		
+		public authJSONClass authorize(@QueryMap Map <String , String> querymap);		
 }
 
 
