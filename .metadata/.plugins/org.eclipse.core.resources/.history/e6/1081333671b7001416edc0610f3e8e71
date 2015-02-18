@@ -1,0 +1,10 @@
+package postMethods;
+
+import retrofit.http.GET;
+import retrofit.http.Query;
+
+public interface PostTempCustomer {
+
+	@GET("/SendTemporaryCustomer")
+	public void getRelationRoles(@Query("token") String token);
+}

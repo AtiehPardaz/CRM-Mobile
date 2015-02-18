@@ -4,5 +4,6 @@
     <string name="app_name">Crm-Mobile</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_custemer_send_test">CustemerSendTestActivity</string>
 
 </resources>
