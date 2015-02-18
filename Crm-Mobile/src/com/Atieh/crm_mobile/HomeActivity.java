@@ -1,5 +1,12 @@
 package com.Atieh.crm_mobile;
 
+import java.security.PublicKey;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import GetActivityStatusPack.GetActivityStatus;
+import GetActivityStatusPack.GetActivityStatusInterface;
 import GetCustomersPack.GetCustomers;
 import GetCustomersPack.GetCustomersInterface;
 import GetProductAndServicespack.GetProductAndServicesInterface;
@@ -7,8 +14,10 @@ import GetProductAndServicespack.GetProductsAndServices;
 import GetRelationRolesPack.GetRelationRoles;
 import GetRelationRolesPack.GetRelationRolesInterface;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.StaticLayout;
 import android.widget.Toast;
 
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
@@ -35,90 +44,11 @@ public class HomeActivity extends Activity{
 
 
 	public class asyncGetProductAndService extends AsyncTask<String, String, String> {
-		GetProductsAndServices PandSs = null;
 
 		@Override
 		protected String doInBackground(String... arg0) {
 
-			db.database();
-			db.open();
-
-			GetProductAndServicesInterface PS = ServiceGenerator.createService(GetProductAndServicesInterface.class, baseURL);		
-			PandSs = new GetProductsAndServices();
-			
-			try {
-				PandSs = PS.getps(arg0[0]);
-				
-			} catch (Exception e) {
-				Toast.makeText(HomeActivity.this, "ERROR ON WEBSERVICE", Toast.LENGTH_LONG).show();
-			}
-			
-
-			//insert products
-			for (int i = 0; i <PandSs.getProducts().getInserted().size(); i++) {
-
-				db.InsertProduct(PandSs.getProducts().getInserted().get(i).getId(),
-						PandSs.getProducts().getInserted().get(i).getName(), 0);
-			}
-			
-			//insert services
-			for (int i = 0; i <PandSs.getServices().getInserted().size(); i++) {
-
-				db.InsertService(PandSs.getServices().getInserted().get(i).getId(),
-						PandSs.getServices().getInserted().get(i).getName(), 0);
-			}
-			
-			
-			//update products
-			for (int i = 0; i <PandSs.getProducts().getUpdated().size(); i++) {
-
-				db.UpdateProduct(PandSs.getProducts().getUpdated().get(i).getId(),
-						PandSs.getProducts().getUpdated().get(i).getName(), 0);
-			}
-
-			//update services
-			for (int i = 0; i <PandSs.getServices().getUpdated().size(); i++) {
-
-				db.UpdateService(PandSs.getServices().getUpdated().get(i).getId(),
-						PandSs.getServices().getUpdated().get(i).getName(), 0);
-			}
-
-			//delete products
-			for (int i = 0; i <PandSs.getProducts().getDeleted().size(); i++) {
-
-				db.DeleteProduct(PandSs.getProducts().getDeleted().get(i).getId());
-			}
-			
-			//delete services
-			for (int i = 0; i <PandSs.getServices().getDeleted().size(); i++) {
-
-				db.DeleteService(PandSs.getServices().getDeleted().get(i).getId());
-			}
-
-
-			
-			// GetCustomers	
-			GetCustomersInterface CustomersAdapter = ServiceGenerator.createService(GetCustomersInterface.class, baseURL);		
-			GetCustomers customers = new GetCustomers();
-			try {
-				customers = CustomersAdapter.getCustomers(arg0[0]);
-				
-			} catch (Exception e) {
-				Toast.makeText(HomeActivity.this, "ERROR ON WEBSERVICE", Toast.LENGTH_LONG).show();
-			}
-			
-			
-			
-			//GetRelations
-			GetRelationRolesInterface RelationsAdapter = ServiceGenerator.createService(GetRelationRolesInterface.class, baseURL);		
-			GetRelationRoles relations = RelationsAdapter.getRelationRoles("1");
-			
-			
-			db.close();
-			 
-			
-
-			return Integer.toString(relations.getInserted().size());
+			return updateAll("4");
 		}
 
 		@Override
@@ -127,5 +57,230 @@ public class HomeActivity extends Activity{
 		}
 
 	}
+
+
+
+	public String updateAll(String token){
+
+		GetProductsAndServices PandSs = null;
+		db.database();
+		db.open();
+
+		//get products and swervices
+		GetProductAndServicesInterface PS = ServiceGenerator.createService(GetProductAndServicesInterface.class, baseURL);		
+		PandSs = new GetProductsAndServices();
+
+		try {
+			PandSs = PS.getps(token);
+
+		} catch (Exception e) {
+			Toast.makeText(HomeActivity.this, "ERROR ON WEBSERVICE", Toast.LENGTH_LONG).show();
+		}
+
+		// GetCustomers	
+		GetCustomersInterface CustomersAdapter = ServiceGenerator.createService(GetCustomersInterface.class, baseURL);		
+		GetCustomers customers = new GetCustomers();
+		try {
+			customers = CustomersAdapter.getCustomers(token);
+
+		} catch (Exception e) {
+			Toast.makeText(HomeActivity.this, "ERROR ON WEBSERVICE", Toast.LENGTH_LONG).show();
+		}
+
+
+		//GetRelationsRoles
+		GetRelationRolesInterface RelationsAdapter = ServiceGenerator.createService(GetRelationRolesInterface.class, baseURL);		
+		GetRelationRoles relations = RelationsAdapter.getRelationRoles(token);
+
+
+		//getActivityStatus 
+		GetActivityStatusInterface ActivityStatusAdapter = ServiceGenerator.createService(GetActivityStatusInterface.class, baseURL);
+		GetActivityStatus activitystatus = new GetActivityStatus();
+		activitystatus = ActivityStatusAdapter.getActivityStatus(token);
+
+
+		//insert products
+		if(PandSs.getProducts().getInserted() !=null){
+			for (int i = 0; i <PandSs.getProducts().getInserted().size(); i++) {
+
+				db.InsertProduct(PandSs.getProducts().getInserted().get(i).getId(),
+						PandSs.getProducts().getInserted().get(i).getName(), 0);
+			}
+		}
+
+		//insert services
+		if(PandSs.getServices().getInserted() != null){
+			for (int i = 0; i <PandSs.getServices().getInserted().size(); i++) {
+
+				db.InsertService(PandSs.getServices().getInserted().get(i).getId(),
+						PandSs.getServices().getInserted().get(i).getName(), 0);
+			}
+		}
+
+
+		//update products
+		if(PandSs.getProducts().getUpdated() != null){
+			for (int i = 0; i <PandSs.getProducts().getUpdated().size(); i++) {
+
+				db.UpdateProduct(PandSs.getProducts().getUpdated().get(i).getId(),
+						PandSs.getProducts().getUpdated().get(i).getName(), 0);
+			}
+		}
+
+		//update services
+		if(PandSs.getServices().getUpdated()!=null){
+			for (int i = 0; i <PandSs.getServices().getUpdated().size(); i++) {
+
+				db.UpdateService(PandSs.getServices().getUpdated().get(i).getId(),
+						PandSs.getServices().getUpdated().get(i).getName(), 0);
+			}
+		}
+
+		//delete products
+		if(PandSs.getProducts().getDeleted() != null){
+			for (int i = 0; i <PandSs.getProducts().getDeleted().size(); i++) {
+
+				db.DeleteProduct(PandSs.getProducts().getDeleted().get(i).getId());
+			}
+		}
+
+		//delete services
+		if(PandSs.getServices().getDeleted() != null){
+			for (int i = 0; i <PandSs.getServices().getDeleted().size(); i++) {
+
+				db.DeleteService(PandSs.getServices().getDeleted().get(i).getId());
+			}
+		}
+
+
+		//insert customer
+		if(customers.getInserted() != null){
+
+			for (int i = 0; i <customers.getInserted().size(); i++) {
+
+				db.InsertCustomer(customers.getInserted().get(i).getId(),
+						customers.getInserted().get(i).getTitle(),
+						customers.getInserted().get(i).getDescription(),
+						customers.getInserted().get(i).isIsLegal() ? 1 : 0,
+								customers.getInserted().get(i).getAddress(),
+								customers.getInserted().get(i).getTel());
+				if(customers.getInserted().get(i).getPersonRelations() !=null)
+				{
+					for (int j = 0; j <customers.getInserted().get(i).getPersonRelations().size(); j++) {
+						db.InsertPersonRelations(
+								customers.getInserted().get(i).getPersonRelations().get(j).getCustomerId(), 
+								customers.getInserted().get(i).getPersonRelations().get(j).getId(), 
+								customers.getInserted().get(i).getPersonRelations().get(j).getRelationRoleId(), 
+								customers.getInserted().get(i).getPersonRelations().get(j).getTitle());
+					}
+
+				}
+			}
+
+		}
+
+		//update customers
+		if(customers.getUpdated() != null){
+
+			for (int i = 0; i <customers.getUpdated().size(); i++) {
+
+				db.UpdateCustomer(customers.getUpdated().get(i).getId(),
+						customers.getUpdated().get(i).getTitle(),
+						customers.getUpdated().get(i).getDescription(),
+						customers.getUpdated().get(i).isIsLegal() ? 1 : 0,
+								customers.getUpdated().get(i).getAddress(),
+								customers.getUpdated().get(i).getTel());
+
+				if(customers.getUpdated().get(i).getPersonRelations() !=null)
+				{
+					for (int j = 0; j <customers.getUpdated().get(i).getPersonRelations().size(); j++) {
+						db.UpdatePersonRelations(
+								customers.getUpdated().get(i).getPersonRelations().get(j).getCustomerId(), 
+								customers.getUpdated().get(i).getPersonRelations().get(j).getId(), 
+								customers.getUpdated().get(i).getPersonRelations().get(j).getRelationRoleId(), 
+								customers.getUpdated().get(i).getPersonRelations().get(j).getTitle());
+					}
+
+				}
+			}
+
+		}
+
+		//DeletedPersonRelation
+		if(customers.getDeletedPersonRelation() != null){
+			for (int i = 0; i <customers.getDeletedPersonRelation().size(); i++) {
+				db.DeletePersonRelations(
+						customers.getDeletedPersonRelation().get(i).getCustomerId(),
+						customers.getDeletedPersonRelation().get(i).getId());
+			}
+		}
+
+		//delete Customers
+		if (customers.getDeleted() != null) {
+			for (int i = 0; i <customers.getDeleted().size(); i++) {
+				db.DeleteCustomer(customers.getDeleted().get(i).getId());
+			}
+
+		}
+
+
+		//insert RelationRoles
+		if(relations.getInserted() !=null){
+			for (int i = 0; i < relations.getInserted().size(); i++) {
+				db.InsertRelationRoles(
+						relations.getInserted().get(i).getId(),
+						relations.getInserted().get(i).getTitle());
+			}
+		}
+
+		//update RelationRoles
+		if(relations.getUpdated() !=null){
+			for (int i = 0; i < relations.getUpdated().size(); i++) {
+				db.UpdateRelationRoles(
+						relations.getUpdated().get(i).getId(),
+						relations.getUpdated().get(i).getTitle());
+			}
+		}
+
+		//delete relationRoles
+		if(relations.getDeleted() !=null){
+			for (int i = 0; i < relations.getDeleted().size(); i++) {
+				db.DeleteRelationRoles(relations.getDeleted().get(i).getId());
+			}
+		}
+		
+		
+
+		//insert activitystatus
+		if(activitystatus.getInserted() !=null){
+			for (int i = 0; i < activitystatus.getInserted().size(); i++) {
+				db.InsertActivityStatus(
+						activitystatus.getInserted().get(i).getId(),
+						activitystatus.getInserted().get(i).getTitle());
+			}
+		}
+
+		//update activitystatus
+		if(activitystatus.getUpdated() !=null){
+			for (int i = 0; i < activitystatus.getUpdated().size(); i++) {
+				db.UpdateActivityStatus(
+						activitystatus.getUpdated().get(i).getId(),
+						activitystatus.getUpdated().get(i).getTitle());
+			}
+		}
+
+		//delete activitystatus
+		if(activitystatus.getDeleted() !=null){
+			for (int i = 0; i < activitystatus.getDeleted().size(); i++) {
+				db.DeleteActivityStatus(activitystatus.getDeleted().get(i).getId());
+			}
+		}
+
+		
+
+		db.close();
+		return "succeed";
+	}
+
 
 }

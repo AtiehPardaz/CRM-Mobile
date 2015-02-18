@@ -25,12 +25,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
-import com.Atieh.crm_mobile_webService.authServiceInterface;
 import com.Atieh.crm_mobile_webService.authJSONClass;
+import com.Atieh.crm_mobile_webService.authServiceInterface;
 
 
 public class MainActivity extends Activity {
