@@ -37,8 +37,13 @@ public class ClickDayListener implements View.OnClickListener,
 
 	@Override
 	public void onClick(View v) {
+		Toast.makeText(
+				v.getContext(),
+				persianDate.getDayOfMonth() + "/" + persianDate.getMonth()
+						+ "/" + persianDate.getYear(), 1).show();
 		Toast.makeText(v.getContext(),
 				"for click in a day use ClickDayListener>OnClick", 1).show();
+
 		if (holidayTitle != null) {
 
 			utils.quickToast(holidayTitle, v.getContext());
@@ -49,35 +54,35 @@ public class ClickDayListener implements View.OnClickListener,
 
 	@Override
 	public boolean onLongClick(View v) {
-		
-		
-//		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-//			try {
-//				addEventOnCalendar(utils.preferredDigits(v.getContext()),
-//						v.getContext());
-//			} catch (Exception e) {
-//				// Ignore it for now
-//				// I guess it will occur on CyanogenMod phones
-//				// where Google extra things is not installed
-//			}
-//		}
+
+		// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+		// {
+		// try {
+		// addEventOnCalendar(utils.preferredDigits(v.getContext()),
+		// v.getContext());
+		// } catch (Exception e) {
+		// // Ignore it for now
+		// // I guess it will occur on CyanogenMod phones
+		// // where Google extra things is not installed
+		// }
+		// }
 		return false;
 	}
 
-//	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-//	private void addEventOnCalendar(char[] digits, Context context) {
-//		Intent intent = new Intent(Intent.ACTION_INSERT);
-//		intent.setData(Events.CONTENT_URI);
-//		CivilDate civil = DateConverter.persianToCivil(persianDate);
-//		intent.putExtra(Events.DESCRIPTION,
-//				utils.dayTitleSummary(civil, digits));
-//		Calendar time = Calendar.getInstance();
-//		time.set(civil.getYear(), civil.getMonth() - 1, civil.getDayOfMonth());
-//		intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-//				time.getTimeInMillis());
-//		intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
-//				time.getTimeInMillis());
-//		intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
-//		context.startActivity(intent);
-//	}
+	// @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+	// private void addEventOnCalendar(char[] digits, Context context) {
+	// Intent intent = new Intent(Intent.ACTION_INSERT);
+	// intent.setData(Events.CONTENT_URI);
+	// CivilDate civil = DateConverter.persianToCivil(persianDate);
+	// intent.putExtra(Events.DESCRIPTION,
+	// utils.dayTitleSummary(civil, digits));
+	// Calendar time = Calendar.getInstance();
+	// time.set(civil.getYear(), civil.getMonth() - 1, civil.getDayOfMonth());
+	// intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+	// time.getTimeInMillis());
+	// intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+	// time.getTimeInMillis());
+	// intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+	// context.startActivity(intent);
+	// }
 }

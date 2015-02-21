@@ -27,9 +27,11 @@ import dataBase.database;
 public class HomeActivity extends Activity {
 
 	Button btnmounthview;
+	Button btnproductservises;
 
 	public void initview() {
 		btnmounthview = (Button) findViewById(R.id.btn_monthview);
+		btnproductservises = (Button) findViewById(R.id.btn_productservises);
 
 	}
 
@@ -52,6 +54,15 @@ public class HomeActivity extends Activity {
 				Intent intent = new Intent(HomeActivity.this,
 						com.Atieh.crm_mobile_calendar.MainActivity.class);
 				startActivity(intent);
+
+			}
+		});
+		btnproductservises.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+
+				startActivity(new Intent(HomeActivity.this,
+						ProductServisesActivity.class));
 
 			}
 		});
