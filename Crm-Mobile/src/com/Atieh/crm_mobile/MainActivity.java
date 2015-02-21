@@ -31,13 +31,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-<<<<<<< HEAD
 
 import android.widget.LinearLayout;
 
 import android.widget.ProgressBar;
-=======
->>>>>>> 30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
+
 import android.widget.Toast;
 
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
@@ -123,27 +121,29 @@ public class MainActivity extends Activity {
 				}
 
 			}
-<<<<<<< HEAD
-=======
+
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1,
+					int arg2, int arg3) {
+				// TODO Auto-generated method stub
+				
+			}
+
+
 		});
 		
 	}
->>>>>>> 30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
 
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-			}
+			
 
-<<<<<<< HEAD
-			@Override
-			public void afterTextChanged(Editable s) {
-			}
-		});
-	}// end onreate
 
-=======
->>>>>>> 30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
+
 	public int netStatus(String url) {
 
 		int resCode;
@@ -253,12 +253,8 @@ public class MainActivity extends Activity {
 	}
 
 	public class asyncAuthentication extends AsyncTask<String, String, Integer> {
-<<<<<<< HEAD
-		authenticationJSONClass authe;
 
-=======
 		authJSONClass authe;
->>>>>>> 30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
 		@Override
 		protected Integer doInBackground(String... arg0) {
 
