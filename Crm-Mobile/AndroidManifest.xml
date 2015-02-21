@@ -27,7 +27,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity" />
-<<<<<<< HEAD
 
         <service
             android:name=".ApplicationService"
@@ -61,12 +60,11 @@
                 android:name="description"
                 android:value="@string/app_name" />
         </service>
-=======
+
         <activity
             android:name=".CustemerSendTestActivity"
             android:label="@string/title_activity_custemer_send_test" >
         </activity>
->>>>>>> 30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
     </application>
 
 </manifest>

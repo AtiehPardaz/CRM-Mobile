@@ -4,7 +4,7 @@
     <string name="app_name">Crm-Mobile</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
+    
     <string name="widget_name">Persian Calendar</string>
     <string name="widget_mini_name">Persian Calendar (mini)</string>
     <string name="latitude">Latitude</string>
@@ -49,8 +49,5 @@
     <string name="qibla_compass">Compass/Qibla</string>
     <string name="compass_not_found">Compass sensor not found</string>
     
-=======
     <string name="title_activity_custemer_send_test">CustemerSendTestActivity</string>
->>>>>>> 30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
-
 </resources>

@@ -1,5 +1,6 @@
 package com.Atieh.crm_mobile;
 
+import singleTones.authInfo;
 import GetActivityStatusPack.GetActivityStatus;
 import GetActivityStatusPack.GetActivityStatusInterface;
 import GetCustomersPack.GetCustomers;
@@ -10,28 +11,13 @@ import GetRelationRolesPack.GetRelationRoles;
 import GetRelationRolesPack.GetRelationRolesInterface;
 import android.app.Activity;
 import android.content.Intent;
-<<<<<<< HEAD
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class HomeActivity extends Activity {
-
-	Button btnmounthview;
-
-	public void initview() {
-		btnmounthview = (Button) findViewById(R.id.btn_monthview);
-
-	}
-
-=======
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
 
@@ -41,15 +27,19 @@ import dataBase.database;
 public class HomeActivity extends Activity{
 
 	database db;
+	Button btnmounthview;
 	public static final String baseURL = "http://webservice.atiehpardaz.com/CrmService/CrmService.svc";
 
->>>>>>> 30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
+	public void initview() {
+		btnmounthview = (Button) findViewById(R.id.btn_monthview);
+
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-<<<<<<< HEAD
 		initview();
 		Toast.makeText(this, authInfo.getInstance().getSalt(),
 				Toast.LENGTH_LONG).show();
@@ -63,7 +53,6 @@ public class HomeActivity extends Activity{
 
 			}
 		});
-=======
 		
 		Button btn = (Button) findViewById(R.id.btn_customer);
 		btn.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +86,6 @@ public class HomeActivity extends Activity{
 		protected void onPostExecute(String result) {
 			Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
 		}
->>>>>>> 30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
 
 	}
 
