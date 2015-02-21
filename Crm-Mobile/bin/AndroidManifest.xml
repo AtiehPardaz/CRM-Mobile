@@ -19,6 +19,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
+             android:screenOrientation="portrait" 
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
-
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".ApplicationService"
@@ -37,7 +39,8 @@
         <activity
             android:name="com.Atieh.crm_mobile_calendar.MainActivity"
             android:exported="true"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -66,7 +69,6 @@
             android:name=".CustemerSendTestActivity"
             android:label="@string/title_activity_custemer_send_test" >
         </activity>
-
     </application>
 
 </manifest>

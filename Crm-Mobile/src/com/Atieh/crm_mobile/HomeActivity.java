@@ -25,6 +25,7 @@ import com.Atieh.crm_mobile_webService.ServiceGenerator;
 import dataBase.database;
 
 public class HomeActivity extends Activity {
+
 	Button btnmounthview;
 
 	public void initview() {
@@ -33,6 +34,7 @@ public class HomeActivity extends Activity {
 	}
 
 	database db;
+
 	public static final String baseURL = "http://webservice.atiehpardaz.com/CrmService/CrmService.svc";
 
 	@Override

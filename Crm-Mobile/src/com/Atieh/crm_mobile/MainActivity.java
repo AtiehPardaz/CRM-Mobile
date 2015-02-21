@@ -98,12 +98,9 @@ public class MainActivity extends Activity {
 							.show();
 				} else {
 
-//					asyncTask as = new asyncTask(); // checking network status
-//					as.execute("P");
-					 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-				        startActivity(intent);
-				       
-				        
+					asyncTask as = new asyncTask(); // checking network status
+					as.execute("P");
+
 				}
 			}
 		});
@@ -123,26 +120,20 @@ public class MainActivity extends Activity {
 			}
 
 			@Override
-			public void afterTextChanged(Editable arg0) {
+			public void afterTextChanged(Editable s) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1,
-					int arg2, int arg3) {
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
-
 		});
-		
 	}
-
-			
-
-
 
 	public int netStatus(String url) {
 
@@ -255,6 +246,7 @@ public class MainActivity extends Activity {
 	public class asyncAuthentication extends AsyncTask<String, String, Integer> {
 
 		authJSONClass authe;
+
 		@Override
 		protected Integer doInBackground(String... arg0) {
 
