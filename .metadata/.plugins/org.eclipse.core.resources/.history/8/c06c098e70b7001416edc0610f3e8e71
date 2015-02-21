@@ -1,0 +1,5 @@
+package postMethods;
+
+public interface PostTempCustomer {
+
+}

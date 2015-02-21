@@ -8,7 +8,25 @@
 package com.Atieh.crm_mobile;
 
 public final class R {
+    public static final class array {
+        public static final int locationKeys=0x7f060005;
+        public static final int locationNames=0x7f060004;
+        public static final int prayMethodsKeys=0x7f060003;
+        public static final int prayMethodsNames=0x7f060002;
+        public static final int themeKeys=0x7f060001;
+        public static final int themeNames=0x7f060000;
+    }
     public static final class attr {
+    }
+    public static final class color {
+        /**  solely used on QiblaCompassView 
+         */
+        public static final int background_color=0x7f070003;
+        public static final int first_row_background_color=0x7f070002;
+        public static final int first_row_text_color=0x7f070000;
+        public static final int holidays_text_color=0x7f070001;
+        public static final int marker_color=0x7f070004;
+        public static final int text_color=0x7f070005;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -18,53 +36,192 @@ public final class R {
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f080000;
+        public static final int activity_vertical_margin=0x7f080001;
     }
     public static final class drawable {
-        public static final int bghome=0x7f020000;
-        public static final int bglogin=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int logo=0x7f020003;
+        public static final int background_stripes=0x7f020000;
+        public static final int bghome=0x7f020001;
+        public static final int bglogin=0x7f020002;
+        public static final int blackt=0x7f020003;
+        public static final int calendar_firstrow=0x7f020004;
+        public static final int day1=0x7f020005;
+        public static final int day10=0x7f020006;
+        public static final int day11=0x7f020007;
+        public static final int day12=0x7f020008;
+        public static final int day13=0x7f020009;
+        public static final int day14=0x7f02000a;
+        public static final int day15=0x7f02000b;
+        public static final int day16=0x7f02000c;
+        public static final int day17=0x7f02000d;
+        public static final int day18=0x7f02000e;
+        public static final int day19=0x7f02000f;
+        public static final int day2=0x7f020010;
+        public static final int day20=0x7f020011;
+        public static final int day21=0x7f020012;
+        public static final int day22=0x7f020013;
+        public static final int day23=0x7f020014;
+        public static final int day24=0x7f020015;
+        public static final int day25=0x7f020016;
+        public static final int day26=0x7f020017;
+        public static final int day27=0x7f020018;
+        public static final int day28=0x7f020019;
+        public static final int day29=0x7f02001a;
+        public static final int day3=0x7f02001b;
+        public static final int day30=0x7f02001c;
+        public static final int day31=0x7f02001d;
+        public static final int day4=0x7f02001e;
+        public static final int day5=0x7f02001f;
+        public static final int day6=0x7f020020;
+        public static final int day7=0x7f020021;
+        public static final int day8=0x7f020022;
+        public static final int day9=0x7f020023;
+        public static final int days=0x7f020024;
+        public static final int holidays=0x7f020025;
+        public static final int ic_launcher=0x7f020026;
+        public static final int kabah=0x7f020027;
+        public static final int loadinglogo=0x7f020028;
+        public static final int logo=0x7f020029;
+        public static final int photo=0x7f02002a;
+        public static final int today_background=0x7f02002b;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080012;
-        public static final int action_settings=0x7f080018;
-        public static final int btn_customer=0x7f080007;
-        public static final int btn_dayview=0x7f080002;
-        public static final int btn_download=0x7f080003;
-        public static final int btn_login=0x7f080016;
-        public static final int btn_monthview=0x7f080001;
-        public static final int btn_newactivity=0x7f080005;
-        public static final int btn_newtask=0x7f080006;
-        public static final int btn_order=0x7f080008;
-        public static final int btn_upload=0x7f080004;
-        public static final int btn_yearview=0x7f080000;
-        public static final int button1=0x7f080009;
-        public static final int button2=0x7f08000a;
-        public static final int button3=0x7f08000b;
-        public static final int button4=0x7f08000e;
-        public static final int button5=0x7f08000f;
-        public static final int button6=0x7f08000c;
-        public static final int button7=0x7f08000d;
-        public static final int button8=0x7f080010;
-        public static final int button9=0x7f080011;
-        public static final int chk_remember=0x7f080017;
-        public static final int et_password=0x7f080015;
-        public static final int et_username=0x7f080014;
-        public static final int imgv=0x7f080013;
+<<<<<<< HEAD
+        public static final int ImageView01=0x7f0c001a;
+        public static final int LinearLayout1=0x7f0c0012;
+        public static final int action_settings=0x7f0c0020;
+        public static final int btn_customer=0x7f0c0007;
+        public static final int btn_dayview=0x7f0c0002;
+        public static final int btn_download=0x7f0c0003;
+        public static final int btn_login=0x7f0c0017;
+        public static final int btn_monthview=0x7f0c0001;
+        public static final int btn_newactivity=0x7f0c0005;
+        public static final int btn_newtask=0x7f0c0006;
+        public static final int btn_order=0x7f0c0008;
+        public static final int btn_upload=0x7f0c0004;
+        public static final int btn_yearview=0x7f0c0000;
+        public static final int button1=0x7f0c0009;
+        public static final int button2=0x7f0c000a;
+        public static final int button3=0x7f0c000b;
+        public static final int button4=0x7f0c000e;
+        public static final int button5=0x7f0c000f;
+        public static final int button6=0x7f0c000c;
+        public static final int button7=0x7f0c000d;
+        public static final int button8=0x7f0c0010;
+        public static final int button9=0x7f0c0011;
+        public static final int calendar_info=0x7f0c001e;
+        public static final int calendar_pager=0x7f0c001c;
+        public static final int chk_remember=0x7f0c0018;
+        public static final int et_password=0x7f0c0016;
+        public static final int et_username=0x7f0c0015;
+        public static final int imgv=0x7f0c0014;
+        public static final int linear1=0x7f0c0013;
+        public static final int linearpb=0x7f0c0019;
+        public static final int progressBar1=0x7f0c001b;
+        public static final int reset_button=0x7f0c001f;
+        public static final int today_praytimes=0x7f0c001d;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
         public static final int activity_main=0x7f030001;
+        public static final int calendar=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f0b0000;
+    }
+    public static final class raw {
+        public static final int holidays=0x7f050000;
+    }
+    public static final class string {
+        public static final int about=0x7f090010;
+        public static final int action_settings=0x7f090002;
+        public static final int altitude=0x7f090026;
+        public static final int altitude_praytime=0x7f090027;
+        public static final int app_name=0x7f090000;
+        public static final int clock=0x7f090015;
+        public static final int clock_in_24=0x7f09000f;
+        public static final int clock_on_widget=0x7f09000d;
+        public static final int compass_not_found=0x7f09002d;
+        public static final int dari_months=0x7f090019;
+        public static final int date=0x7f090016;
+        public static final int date_converter=0x7f090017;
+        public static final int day=0x7f090014;
+        public static final int enable_dari=0x7f09001a;
+        public static final int enable_notify=0x7f090021;
+        public static final int enable_persian_digits=0x7f09000a;
+        public static final int exit=0x7f090009;
+        public static final int general=0x7f09001c;
+        public static final int gpl_logo=0x7f090011;
+        public static final int hello_world=0x7f090001;
+        public static final int iran_time=0x7f09002b;
+        public static final int latitude=0x7f090005;
+        public static final int location=0x7f090028;
+        public static final int location_help=0x7f090029;
+        public static final int logo=0x7f090018;
+        public static final int longitude=0x7f090006;
+        public static final int month=0x7f090013;
+        public static final int notify_date=0x7f090020;
+        public static final int persian_digits=0x7f09000b;
+        public static final int pray_methods=0x7f090024;
+        public static final int pray_methods_calculation=0x7f090025;
+        public static final int pray_times_calculation_setting=0x7f09001f;
+        public static final int qibla_compass=0x7f09002c;
+        public static final int select_skin=0x7f090022;
+        public static final int select_widgets_text_color=0x7f09001e;
+        public static final int settings=0x7f090008;
+        public static final int showing_clock_in_24=0x7f09000e;
+        public static final int showing_clock_on_widget=0x7f09000c;
+        public static final int showing_iran_time=0x7f09002a;
+        public static final int skin=0x7f090023;
+        public static final int today=0x7f090007;
+        public static final int widget_mini_name=0x7f090004;
+        public static final int widget_name=0x7f090003;
+        public static final int widget_notification_dashclock=0x7f09001b;
+        public static final int widget_text_color=0x7f09001d;
+        public static final int year=0x7f090012;
+=======
+        public static final int LinearLayout1=0x7f080013;
+        public static final int action_settings=0x7f080019;
+        public static final int btn_customer=0x7f080009;
+        public static final int btn_dayview=0x7f080004;
+        public static final int btn_download=0x7f080005;
+        public static final int btn_login=0x7f080017;
+        public static final int btn_monthview=0x7f080003;
+        public static final int btn_newactivity=0x7f080007;
+        public static final int btn_newtask=0x7f080008;
+        public static final int btn_order=0x7f08000a;
+        public static final int btn_upload=0x7f080006;
+        public static final int btn_yearview=0x7f080002;
+        public static final int button1=0x7f080001;
+        public static final int button2=0x7f08000b;
+        public static final int button3=0x7f08000c;
+        public static final int button4=0x7f08000f;
+        public static final int button5=0x7f080010;
+        public static final int button6=0x7f08000d;
+        public static final int button7=0x7f08000e;
+        public static final int button8=0x7f080011;
+        public static final int button9=0x7f080012;
+        public static final int chk_remember=0x7f080018;
+        public static final int et_password=0x7f080016;
+        public static final int et_username=0x7f080015;
+        public static final int imgv=0x7f080014;
+        public static final int textView1=0x7f080000;
+    }
+    public static final class layout {
+        public static final int activity_custemer_send_test=0x7f030000;
+        public static final int activity_home=0x7f030001;
+        public static final int activity_main=0x7f030002;
+    }
+    public static final class menu {
+        public static final int custemer_send_test=0x7f070000;
+        public static final int main=0x7f070001;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050001;
+        public static final int title_activity_custemer_send_test=0x7f050003;
+>>>>>>> 30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
     }
     public static final class style {
         /** 
@@ -88,10 +245,16 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f0a0000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f0a0001;
+        public static final int DarkTheme=0x7f0a0003;
+        public static final int LightTheme=0x7f0a0002;
+        public static final int ShadowTextStyle=0x7f0a0004;
+    }
+    public static final class xml {
+        public static final int preferences=0x7f040000;
     }
 }

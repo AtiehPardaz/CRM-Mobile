@@ -22,6 +22,17 @@
 1423410207021	Rename field 'button8'
 1423410222518	Rename field 'button9'
 1423410229361	Copy file
+<<<<<<< HEAD
+=======
 1423470215241	Delete element
 1423471123620	Delete element
 1423471244312	Delete element
+1423553944003	Move compilation units
+1423556262773	Delete element
+1423557366191	Delete element
+1423557373792	Delete element
+1423557626835	Move compilation units
+1423570915331	Delete element
+1423570971044	Delete element
+1423574023670	Rename type 'databse'
+>>>>>>> 894aaf4c3e4938b07103a714686b713ec09975cf

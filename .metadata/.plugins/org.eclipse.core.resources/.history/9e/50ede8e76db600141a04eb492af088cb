@@ -1,0 +1,10 @@
+package GetCustomersPack;
+
+import retrofit.http.GET;
+import retrofit.http.Query;
+
+public interface GetCustomersInterface {
+	
+	@GET("/GetRelationRoles")
+	public GetCustomers getRelations(@Query("token") String token);
+}
