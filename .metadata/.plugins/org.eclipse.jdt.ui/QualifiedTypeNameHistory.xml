@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.Atieh.crm_mobile.authServiceInterface"/>
-<fullyQualifiedTypeName name="com.Atieh.crm_mobile.MainActivity.asyncAuthentication"/>
 <fullyQualifiedTypeName name="android.widget.ListPopupWindow"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile.authenticationJSONClass"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile.jjjjjjjjj"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="retrofit.Callback"/>
+<fullyQualifiedTypeName name="GetTasksPack.GetTasksInterface"/>
+<fullyQualifiedTypeName name="GetTasksPack.GetTasks"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="first_row_text_color">#FFFFFF</color>
+    <color name="holidays_text_color">#6E97B9</color>
+    <color name="first_row_background_color">#DDDDDD</color>
+
+    <!-- solely used on QiblaCompassView -->
+    <color name="background_color">#6E97B9</color>
+    <color name="marker_color">#FFFFFF</color>
+    <color name="text_color">#000000</color>
+    <color name="bg_action_green">#3BB18E</color>
+    <color name="bg_action_gray"> #dddddd</color>
+    <color name="white"> #ffffff</color>
+
+</resources>

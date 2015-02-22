@@ -15,7 +15,7 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btn_product_productservices"
             android:layout_width="80dp"
             android:layout_height="70dp"
             android:layout_margin="5dp"
@@ -24,7 +24,7 @@
             android:textColor="#08784F" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn_servisec_productservices"
             android:layout_width="80dp"
             android:layout_height="70dp"
             android:layout_margin="5dp"
