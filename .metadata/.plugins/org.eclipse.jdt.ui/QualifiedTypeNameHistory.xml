@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="retrofit.http.POST"/>
-<fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.getService"/>
-<fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.authServiceInterface"/>
-<fullyQualifiedTypeName name="retrofit.http.Query"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.getProductInterface"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.getProduct"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.authenticationJSONClass"/>
-<fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="singleTones.authInfo"/>
 <fullyQualifiedTypeName name="android.widget.ProgressBar"/>
 <fullyQualifiedTypeName name="android.view.View"/>
 <fullyQualifiedTypeName name="retrofit.ErrorHandler"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile.MainActivity.ToastMessageTask"/>
-<fullyQualifiedTypeName name="android.content.Context"/>
 <fullyQualifiedTypeName name="android.app.Application"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.ApplicationContext"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.Status"/>
@@ -41,14 +35,12 @@
 <fullyQualifiedTypeName name="java.util.UUID"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="android.widget.Button"/>
-<fullyQualifiedTypeName name="com.Atieh.crm_mobile.R.id"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile.CustemerSendTestActivity"/>
 <fullyQualifiedTypeName name="retrofit.http.GET"/>
 <fullyQualifiedTypeName name="retrofit.http.QueryMap"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.ServiceGenerator"/>
 <fullyQualifiedTypeName name="postMethods.PostTempCustomer"/>
-<fullyQualifiedTypeName name="com.Atieh.crm_mobile.HomeActivity"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
@@ -60,4 +52,12 @@
 <fullyQualifiedTypeName name="GetActivityStatusPack.GetActivityStatusInterface"/>
 <fullyQualifiedTypeName name="GetActivitiesPack.GetActivities"/>
 <fullyQualifiedTypeName name="GetActivitiesPack.GetActivitiesInterface"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="com.Atieh.crm_mobile.R.id"/>
+<fullyQualifiedTypeName name="com.Atieh.crm_mobile.HomeActivity"/>
+<fullyQualifiedTypeName name="com.Atieh.crm_mobile.TaskActionActivity"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="android.R.color"/>
+<fullyQualifiedTypeName name="com.Atieh.crm_mobile.R.color"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
 </qualifiedTypeNameHistroy>

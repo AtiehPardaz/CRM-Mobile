@@ -1,8 +1,10 @@
 package com.Atieh.crm_mobile_calendar;
 
+import android.R.color;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.p2p.WifiP2pManager.ChannelListener;
 import android.os.Build;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Events;
@@ -11,15 +13,13 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import com.Atieh.crm_mobile.HomeActivity;
+import com.Atieh.crm_mobile.ProductServisesActivity;
+import com.Atieh.crm_mobile.TaskActionActivity;
 import com.Atieh.crm_mobile_calendar.CivilDate;
 import com.Atieh.crm_mobile_calendar.DateConverter;
 import com.Atieh.crm_mobile_calendar.PersianDate;
 
-/**
- * Days events listener
- * 
- * @author ebraminio
- */
 public class ClickDayListener implements View.OnClickListener,
 		View.OnLongClickListener {
 	private final String holidayTitle;
@@ -33,6 +33,7 @@ public class ClickDayListener implements View.OnClickListener,
 		this.persianDate = persianDate;
 		this.calendarAcitivity = calendarAcitivity;
 		this.utils = calendarAcitivity.utils;
+
 	}
 
 	@Override
@@ -43,6 +44,11 @@ public class ClickDayListener implements View.OnClickListener,
 						+ "/" + persianDate.getYear(), 1).show();
 		Toast.makeText(v.getContext(),
 				"for click in a day use ClickDayListener>OnClick", 1).show();
+
+		Intent intent=new Intent();
+		intent.setClass(v.getContext(), TaskActionActivity.class);
+//		intent.putExtra("day", value);
+		v.getContext().startActivity(intent);
 
 		if (holidayTitle != null) {
 
@@ -69,20 +75,21 @@ public class ClickDayListener implements View.OnClickListener,
 		return false;
 	}
 
-	// @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-	// private void addEventOnCalendar(char[] digits, Context context) {
-	// Intent intent = new Intent(Intent.ACTION_INSERT);
-	// intent.setData(Events.CONTENT_URI);
-	// CivilDate civil = DateConverter.persianToCivil(persianDate);
-	// intent.putExtra(Events.DESCRIPTION,
-	// utils.dayTitleSummary(civil, digits));
-	// Calendar time = Calendar.getInstance();
-	// time.set(civil.getYear(), civil.getMonth() - 1, civil.getDayOfMonth());
-	// intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-	// time.getTimeInMillis());
-	// intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
-	// time.getTimeInMillis());
-	// intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
-	// context.startActivity(intent);
-	// }
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+	private void addEventOnCalendar(char[] digits, Context context) {
+		Intent intent = new Intent(Intent.ACTION_INSERT);
+		intent.setData(Events.CONTENT_URI);
+		CivilDate civil = DateConverter.persianToCivil(persianDate);
+		intent.putExtra(Events.DESCRIPTION,
+				utils.dayTitleSummary(civil, digits));
+		Calendar time = Calendar.getInstance();
+		time.set(civil.getYear(), civil.getMonth() - 1, civil.getDayOfMonth());
+		intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+				time.getTimeInMillis());
+		intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+				time.getTimeInMillis());
+		intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+		context.startActivity(intent);
+
+	}
 }
