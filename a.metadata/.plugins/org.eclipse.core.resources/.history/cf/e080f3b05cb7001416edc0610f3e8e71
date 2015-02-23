@@ -1,5 +1,0 @@
-package GetActivityStatusPack;
-
-public interface GetActivityStatusInterface {
-
-}

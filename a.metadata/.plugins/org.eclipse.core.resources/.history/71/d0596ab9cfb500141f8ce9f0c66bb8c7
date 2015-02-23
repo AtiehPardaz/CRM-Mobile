@@ -1,5 +1,0 @@
-package getProductAndServices;
-
-public interface GetProductAndServicesInterface {
-
-}
