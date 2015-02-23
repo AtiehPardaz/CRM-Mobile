@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.widget.ListPopupWindow"/>
-<fullyQualifiedTypeName name="com.Atieh.crm_mobile.authenticationJSONClass"/>
-<fullyQualifiedTypeName name="com.Atieh.crm_mobile.jjjjjjjjj"/>
-<fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.getServiceInterface"/>
 <fullyQualifiedTypeName name="retrofit.http.POST"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.getService"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile_webService.authServiceInterface"/>
@@ -38,7 +34,6 @@
 <fullyQualifiedTypeName name="GetRelationRolesPack.GetRelationRoles"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="android.R.integer"/>
-<fullyQualifiedTypeName name="GetActivityStatusPack.GetActivityStatusInterface"/>
 <fullyQualifiedTypeName name="com.Atieh.crm_mobile.MainActivity"/>
 <fullyQualifiedTypeName name="java.security.PublicKey"/>
 <fullyQualifiedTypeName name="android.text.StaticLayout"/>
@@ -60,4 +55,9 @@
 <fullyQualifiedTypeName name="retrofit.Callback"/>
 <fullyQualifiedTypeName name="GetTasksPack.GetTasksInterface"/>
 <fullyQualifiedTypeName name="GetTasksPack.GetTasks"/>
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="GetActivityStatusPack.GetActivityStatusInterface"/>
+<fullyQualifiedTypeName name="GetActivitiesPack.GetActivities"/>
+<fullyQualifiedTypeName name="GetActivitiesPack.GetActivitiesInterface"/>
 </qualifiedTypeNameHistroy>

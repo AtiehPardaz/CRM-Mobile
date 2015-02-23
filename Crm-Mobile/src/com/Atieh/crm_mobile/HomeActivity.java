@@ -13,16 +13,15 @@ import GetTasksPack.GetTasks;
 import GetTasksPack.GetTasksInterface;
 import android.app.Activity;
 import android.content.Intent;
-
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import android.os.AsyncTask;
-
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
+
 import dataBase.database;
 
 public class HomeActivity extends Activity {
@@ -152,7 +151,12 @@ public class HomeActivity extends Activity {
 		GetTasks gettask = new GetTasks();
 		gettask = TasksAdapter.gettasks(token);
 		
-		
+		//Get Activities
+//		GetActivitiesInterface ActivitiesAdapter = ServiceGenerator
+//				.createService(GetActivitiesInterface.class, baseURL);
+//		GetActivities getactivities = new GetActivities();
+//		getactivities = ActivitiesAdapter.getActivities(token);
+//		
 		
 
 		// insert products
