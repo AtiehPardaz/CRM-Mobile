@@ -9,6 +9,8 @@ import GetProductAndServicespack.GetProductAndServicesInterface;
 import GetProductAndServicespack.GetProductsAndServices;
 import GetRelationRolesPack.GetRelationRoles;
 import GetRelationRolesPack.GetRelationRolesInterface;
+import GetTasksPack.GetTasks;
+import GetTasksPack.GetTasksInterface;
 import android.app.Activity;
 import android.content.Intent;
 
@@ -21,7 +23,6 @@ import android.widget.Toast;
 import android.os.AsyncTask;
 
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
-
 import dataBase.database;
 
 public class HomeActivity extends Activity {
@@ -144,6 +145,15 @@ public class HomeActivity extends Activity {
 				.createService(GetActivityStatusInterface.class, baseURL);
 		GetActivityStatus activitystatus = new GetActivityStatus();
 		activitystatus = ActivityStatusAdapter.getActivityStatus(token);
+		
+		//GetTasks
+		GetTasksInterface TasksAdapter = ServiceGenerator
+				.createService(GetTasksInterface.class, baseURL);
+		GetTasks gettask = new GetTasks();
+		gettask = TasksAdapter.gettasks(token);
+		
+		
+		
 
 		// insert products
 		if (PandSs.getProducts().getInserted() != null) {
@@ -329,6 +339,54 @@ public class HomeActivity extends Activity {
 			}
 		}
 
+		
+		//insert Tasks
+		if (gettask.getInserted() != null) {
+			for (int i = 0; i < gettask.getInserted().size(); i++) {
+				db.InsertTasks(gettask.getInserted().get(i).getId(),
+						gettask.getInserted().get(i).getCustomerId(),
+						gettask.getInserted().get(i).getDescription(), 
+						gettask.getInserted().get(i).getFromDateTime(),
+						gettask.getInserted().get(i).isIsAm() ? 1 : 0,
+						gettask.getInserted().get(i).getParentActivityId() == null ? "": gettask.getInserted().get(i).getParentActivityId().toString(),
+						gettask.getInserted().get(i).getParentTaskId()== null ? "": gettask.getInserted().get(i).getParentTaskId().toString() , 
+						gettask.getInserted().get(i).getPersonRelationId()== null ? "": gettask.getInserted().get(i).getPersonRelationId().toString(),
+						gettask.getInserted().get(i).getTemporaryCustomerId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerId().toString(), 
+						gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId().toString(),
+						gettask.getInserted().get(i).getTitle(), 
+						gettask.getInserted().get(i).getToDateTime()== null ? "": gettask.getInserted().get(i).getToDateTime().toString() );
+			}
+		}
+
+		
+		
+		//update Tasks
+		if (gettask.getUpdated() != null) {
+			for (int i = 0; i < gettask.getUpdated().size(); i++) {
+				db.UpdateTasks(gettask.getUpdated().get(i).getId(),
+						gettask.getUpdated().get(i).getCustomerId(),
+						gettask.getUpdated().get(i).getDescription(), 
+						gettask.getUpdated().get(i).getFromDateTime(),
+						gettask.getUpdated().get(i).isIsAm() ? 1 : 0,
+						gettask.getUpdated().get(i).getParentActivityId() == null ? "": gettask.getUpdated().get(i).getParentActivityId().toString(),
+						gettask.getUpdated().get(i).getParentTaskId()== null ? "": gettask.getUpdated().get(i).getParentTaskId().toString() , 
+						gettask.getUpdated().get(i).getPersonRelationId()== null ? "": gettask.getUpdated().get(i).getPersonRelationId().toString(),
+						gettask.getUpdated().get(i).getTemporaryCustomerId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerId().toString(), 
+						gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId().toString(),
+						gettask.getUpdated().get(i).getTitle(), 
+						gettask.getUpdated().get(i).getToDateTime()== null ? "": gettask.getUpdated().get(i).getToDateTime().toString() );
+		
+			}
+		}
+		
+		
+		//delete Tasks
+		if (gettask.getDeleted() != null) {
+			for (int i = 0; i < gettask.getDeleted().size(); i++) {
+				db.DeleteTasks(gettask.getDeleted().get(i).getId());
+			}
+		}
+		
 		db.close();
 		return "succeed";
 	}
