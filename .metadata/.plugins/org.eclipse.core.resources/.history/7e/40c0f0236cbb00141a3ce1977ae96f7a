@@ -1,0 +1,28 @@
+package com.Atieh.crm_mobile;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import dataBase.database;
+
+import android.database.Cursor;
+
+public class tempGet {
+	
+//	database db;
+//	db = new database(this);
+//	db.database();
+//	db.open();
+//	Cursor products = db.GetPrudoctsNames();
+//	List<String> list1 = new ArrayList<String>();
+//	while (products.moveToNext()) {
+//		list.add(products.getString(0));
+//	}
+//	Cursor services = db.GetServicesNames();
+//	List<String> list2 = new ArrayList<String>();
+//	while (services.moveToNext()) {
+//		list.add(services.getString(0));
+//	}
+//db.close();
+	
+}

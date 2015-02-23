@@ -161,8 +161,8 @@ public class HomeActivity extends Activity {
 		//Get Activities
 		GetActivitiesInterface ActivitiesAdapter = ServiceGenerator
 				.createService(GetActivitiesInterface.class, baseURL);
-		GetActivities activities = new GetActivities();
-		activities = ActivitiesAdapter.getActivities(token);
+		GetActivities getactivities = new GetActivities();
+		getactivities = ActivitiesAdapter.getActivities(token);
 	
 
 		// insert products
@@ -397,11 +397,17 @@ public class HomeActivity extends Activity {
 			}
 		}
 		
-
+		Cursor products = db.GetPrudoctsNames();
+//		List<String> list = new ArrayList<String>();
+//		while (products.moveToNext()) {
+//			list.add(products.getString(0));
+//			
+//		}
 		
 		db.close();
 		
-		return "succeed";
+		
+		return products.getString(0);
 	}
 
 }

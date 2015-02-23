@@ -1,11 +1,6 @@
 package com.Atieh.crm_mobile;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import singleTones.authInfo;
-import GetActivitiesPack.GetActivities;
-import GetActivitiesPack.GetActivitiesInterface;
 import GetActivityStatusPack.GetActivityStatus;
 import GetActivityStatusPack.GetActivityStatusInterface;
 import GetCustomersPack.GetCustomers;
@@ -18,7 +13,6 @@ import GetTasksPack.GetTasks;
 import GetTasksPack.GetTasksInterface;
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -157,12 +151,11 @@ public class HomeActivity extends Activity {
 		GetTasks gettask = new GetTasks();
 		gettask = TasksAdapter.gettasks(token);
 		
-		
 		//Get Activities
-		GetActivitiesInterface ActivitiesAdapter = ServiceGenerator
-				.createService(GetActivitiesInterface.class, baseURL);
-		GetActivities activities = new GetActivities();
-		activities = ActivitiesAdapter.getActivities(token);
+//		GetActivitiesInterface ActivitiesAdapter = ServiceGenerator
+//				.createService(GetActivitiesInterface.class, baseURL);
+//		GetActivities getactivities = new GetActivities();
+//		getactivities = ActivitiesAdapter.getActivities(token);
 	
 
 		// insert products
@@ -397,10 +390,7 @@ public class HomeActivity extends Activity {
 			}
 		}
 		
-
-		
 		db.close();
-		
 		return "succeed";
 	}
 

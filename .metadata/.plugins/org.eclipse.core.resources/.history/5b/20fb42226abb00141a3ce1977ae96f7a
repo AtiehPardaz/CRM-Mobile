@@ -97,7 +97,6 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
-	
 	public long InsertProduct (String productGUID ,String productName, int isDeleted){//address choose
 
 		ContentValues values = new ContentValues();
@@ -134,12 +133,7 @@ public class database extends SQLiteOpenHelper {
 		return cu ;
 	}
 	
-	
-
-	
-	
-	
-	public Cursor GetServicesNames (){
+	public Cursor GetServicsNames (){
 		
 		Cursor cu= mydb.rawQuery("select s.serviceName from services s where s.[isDeleted] == 1", null); //temp == 1 in real must be  !=1
 		return cu ;
@@ -177,8 +171,6 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
-	
-	
 
 	public void InsertCustomer(String Id,String Title , String Description , int IsLegal,String Address,String Tel){
 
@@ -217,8 +209,6 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
-	
-	
 
 	public void InsertPersonRelations(String CustomerId,String Id,String RelationRoleId,String Title){
 		ContentValues values = new ContentValues();
@@ -251,8 +241,6 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
-	
-	
 
 	public void InsertRelationRoles(String Id,String Title){
 		ContentValues values = new ContentValues();
@@ -280,8 +268,6 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
-	
-	
 
 	public void InsertActivityStatus(String Id,String Title){
 		ContentValues values = new ContentValues();
@@ -308,8 +294,6 @@ public class database extends SQLiteOpenHelper {
 		long ID = mydb.update("activityStatus", values, strFilter,null);
 	}
 
-	
-	
 	
 	
 	public void InsertTasks(String Id,
@@ -384,13 +368,4 @@ public class database extends SQLiteOpenHelper {
 
 		long ID = mydb.update("tasks", values, strFilter,null);
 	}
-
-
-
-
-
-
-
-
-
 }
