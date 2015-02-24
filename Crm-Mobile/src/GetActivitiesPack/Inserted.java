@@ -15,7 +15,7 @@ public class Inserted {
 	private Object PersonRelationId;
 	private Object TaskId;
 	private Object TemporaryCustomerId;
-	private String ToDateTime;
+	private Object ToDateTime;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	
 	
@@ -79,10 +79,10 @@ public class Inserted {
 	public void setTemporaryCustomerId(Object temporaryCustomerId) {
 		TemporaryCustomerId = temporaryCustomerId;
 	}
-	public String getToDateTime() {
+	public Object getToDateTime() {
 		return ToDateTime;
 	}
-	public void setToDateTime(String toDateTime) {
+	public void setToDateTime(Object toDateTime) {
 		ToDateTime = toDateTime;
 	}
 	public Map<String, Object> getAdditionalProperties() {
