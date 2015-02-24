@@ -94,7 +94,7 @@ public class HomeActivity extends Activity {
 	}
 
 	public class asyncGetProductAndService extends
-			AsyncTask<String, String, String> {
+	AsyncTask<String, String, String> {
 
 		@Override
 		protected String doInBackground(String... arg0) {
@@ -150,20 +150,20 @@ public class HomeActivity extends Activity {
 				.createService(GetActivityStatusInterface.class, baseURL);
 		GetActivityStatus activitystatus = new GetActivityStatus();
 		activitystatus = ActivityStatusAdapter.getActivityStatus(token);
-		
+
 		//GetTasks
 		GetTasksInterface TasksAdapter = ServiceGenerator
 				.createService(GetTasksInterface.class, baseURL);
 		GetTasks gettask = new GetTasks();
 		gettask = TasksAdapter.gettasks(token);
-		
-		
+
+
 		//Get Activities
 		GetActivitiesInterface ActivitiesAdapter = ServiceGenerator
 				.createService(GetActivitiesInterface.class, baseURL);
 		GetActivities activities = new GetActivities();
 		activities = ActivitiesAdapter.getActivities(token);
-	
+
 
 		// insert products
 		if (PandSs.getProducts().getInserted() != null) {
@@ -230,9 +230,9 @@ public class HomeActivity extends Activity {
 
 				db.InsertCustomer(customers.getInserted().get(i).getId(),
 						customers.getInserted().get(i).getTitle(), customers
-								.getInserted().get(i).getDescription(),
+						.getInserted().get(i).getDescription(),
 						customers.getInserted().get(i).isIsLegal() ? 1 : 0,
-						customers.getInserted().get(i).getAddress(), customers
+								customers.getInserted().get(i).getAddress(), customers
 								.getInserted().get(i).getTel());
 				if (customers.getInserted().get(i).getPersonRelations() != null) {
 					for (int j = 0; j < customers.getInserted().get(i)
@@ -240,12 +240,12 @@ public class HomeActivity extends Activity {
 						db.InsertPersonRelations(customers.getInserted().get(i)
 								.getPersonRelations().get(j).getCustomerId(),
 								customers.getInserted().get(i)
-										.getPersonRelations().get(j).getId(),
+								.getPersonRelations().get(j).getId(),
 								customers.getInserted().get(i)
-										.getPersonRelations().get(j)
-										.getRelationRoleId(), customers
-										.getInserted().get(i)
-										.getPersonRelations().get(j).getTitle());
+								.getPersonRelations().get(j)
+								.getRelationRoleId(), customers
+								.getInserted().get(i)
+								.getPersonRelations().get(j).getTitle());
 					}
 
 				}
@@ -260,9 +260,9 @@ public class HomeActivity extends Activity {
 
 				db.UpdateCustomer(customers.getUpdated().get(i).getId(),
 						customers.getUpdated().get(i).getTitle(), customers
-								.getUpdated().get(i).getDescription(),
+						.getUpdated().get(i).getDescription(),
 						customers.getUpdated().get(i).isIsLegal() ? 1 : 0,
-						customers.getUpdated().get(i).getAddress(), customers
+								customers.getUpdated().get(i).getAddress(), customers
 								.getUpdated().get(i).getTel());
 
 				if (customers.getUpdated().get(i).getPersonRelations() != null) {
@@ -271,12 +271,12 @@ public class HomeActivity extends Activity {
 						db.UpdatePersonRelations(customers.getUpdated().get(i)
 								.getPersonRelations().get(j).getCustomerId(),
 								customers.getUpdated().get(i)
-										.getPersonRelations().get(j).getId(),
+								.getPersonRelations().get(j).getId(),
 								customers.getUpdated().get(i)
-										.getPersonRelations().get(j)
-										.getRelationRoleId(), customers
-										.getUpdated().get(i)
-										.getPersonRelations().get(j).getTitle());
+								.getPersonRelations().get(j)
+								.getRelationRoleId(), customers
+								.getUpdated().get(i)
+								.getPersonRelations().get(j).getTitle());
 					}
 
 				}
@@ -349,7 +349,7 @@ public class HomeActivity extends Activity {
 			}
 		}
 
-		
+
 		//insert Tasks
 		if (gettask.getInserted() != null) {
 			for (int i = 0; i < gettask.getInserted().size(); i++) {
@@ -358,18 +358,39 @@ public class HomeActivity extends Activity {
 						gettask.getInserted().get(i).getDescription(), 
 						gettask.getInserted().get(i).getFromDateTime(),
 						gettask.getInserted().get(i).isIsAm() ? 1 : 0,
-						gettask.getInserted().get(i).getParentActivityId() == null ? "": gettask.getInserted().get(i).getParentActivityId().toString(),
-						gettask.getInserted().get(i).getParentTaskId()== null ? "": gettask.getInserted().get(i).getParentTaskId().toString() , 
-						gettask.getInserted().get(i).getPersonRelationId()== null ? "": gettask.getInserted().get(i).getPersonRelationId().toString(),
-						gettask.getInserted().get(i).getTemporaryCustomerId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerId().toString(), 
-						gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId().toString(),
-						gettask.getInserted().get(i).getTitle(), 
-						gettask.getInserted().get(i).getToDateTime()== null ? "": gettask.getInserted().get(i).getToDateTime().toString() );
+								gettask.getInserted().get(i).getParentActivityId() == null ? "": gettask.getInserted().get(i).getParentActivityId().toString(),
+										gettask.getInserted().get(i).getParentTaskId()== null ? "": gettask.getInserted().get(i).getParentTaskId().toString() , 
+												gettask.getInserted().get(i).getPersonRelationId()== null ? "": gettask.getInserted().get(i).getPersonRelationId().toString(),
+														gettask.getInserted().get(i).getTemporaryCustomerId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerId().toString(), 
+																gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId().toString(),
+																		gettask.getInserted().get(i).getTitle(), 
+																		gettask.getInserted().get(i).getToDateTime()== null ? "": gettask.getInserted().get(i).getToDateTime().toString() );
+
+				if(gettask.getInserted().get(i).getProductsIds() != null){
+
+					for (int j = 0; j < gettask.getInserted().get(i).getProductsIds().size(); j++) {
+
+						db.InsertTasksProducts(gettask.getInserted().get(i).getId(),
+								gettask.getInserted().get(i).getProductsIds().get(j).getId());	
+					}
+				}
+
+				if(gettask.getInserted().get(i).getServicesIds() != null){
+
+					for (int j = 0; j < gettask.getInserted().get(i).getServicesIds().size(); j++) {
+
+						db.InsertTasksServices(gettask.getInserted().get(i).getId(),
+								gettask.getInserted().get(i).getServicesIds().get(j).getId());	
+					}
+				}
+
+
 			}
+
 		}
 
-		
-		
+
+
 		//update Tasks
 		if (gettask.getUpdated() != null) {
 			for (int i = 0; i < gettask.getUpdated().size(); i++) {
@@ -378,29 +399,93 @@ public class HomeActivity extends Activity {
 						gettask.getUpdated().get(i).getDescription(), 
 						gettask.getUpdated().get(i).getFromDateTime(),
 						gettask.getUpdated().get(i).isIsAm() ? 1 : 0,
-						gettask.getUpdated().get(i).getParentActivityId() == null ? "": gettask.getUpdated().get(i).getParentActivityId().toString(),
-						gettask.getUpdated().get(i).getParentTaskId()== null ? "": gettask.getUpdated().get(i).getParentTaskId().toString() , 
-						gettask.getUpdated().get(i).getPersonRelationId()== null ? "": gettask.getUpdated().get(i).getPersonRelationId().toString(),
-						gettask.getUpdated().get(i).getTemporaryCustomerId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerId().toString(), 
-						gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId().toString(),
-						gettask.getUpdated().get(i).getTitle(), 
-						gettask.getUpdated().get(i).getToDateTime()== null ? "": gettask.getUpdated().get(i).getToDateTime().toString() );
-		
+								gettask.getUpdated().get(i).getParentActivityId() == null ? "": gettask.getUpdated().get(i).getParentActivityId().toString(),
+										gettask.getUpdated().get(i).getParentTaskId()== null ? "": gettask.getUpdated().get(i).getParentTaskId().toString() , 
+												gettask.getUpdated().get(i).getPersonRelationId()== null ? "": gettask.getUpdated().get(i).getPersonRelationId().toString(),
+														gettask.getUpdated().get(i).getTemporaryCustomerId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerId().toString(), 
+																gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId().toString(),
+																		gettask.getUpdated().get(i).getTitle(), 
+																		gettask.getUpdated().get(i).getToDateTime()== null ? "": gettask.getUpdated().get(i).getToDateTime().toString() );
+
+				if(gettask.getUpdated().get(i).getProductsIds() != null){
+
+					for (int j = 0; j < gettask.getUpdated().get(i).getProductsIds().size(); j++) {
+
+						db.InsertTasksProducts(gettask.getUpdated().get(i).getId(),
+								gettask.getUpdated().get(i).getProductsIds().get(j).getId());	
+					}
+				}
+
+				if(gettask.getUpdated().get(i).getServicesIds() != null){
+
+					for (int j = 0; j < gettask.getUpdated().get(i).getServicesIds().size(); j++) {
+
+						db.InsertTasksServices(gettask.getUpdated().get(i).getId(),
+								gettask.getUpdated().get(i).getServicesIds().get(j).getId());	
+					}
+				}
+
 			}
 		}
-		
-		
+
+
 		//delete Tasks
 		if (gettask.getDeleted() != null) {
 			for (int i = 0; i < gettask.getDeleted().size(); i++) {
 				db.DeleteTasks(gettask.getDeleted().get(i).getId());
 			}
 		}
-		
 
+
+		//insert activities
+		if(activities.getInserted() != null){
+			for (int i = 0; i < activities.getInserted().size(); i++) {
+				db.InsertActivities(activities.getInserted().get(i).getId(),
+						activities.getInserted().get(i).getActivityStatusId(),
+						activities.getInserted().get(i).getCustomerId()== null ? "": activities.getInserted().get(i).getCustomerId().toString(),
+						activities.getInserted().get(i).getDescription(),
+						activities.getInserted().get(i).getFromDateTime(),
+						activities.getInserted().get(i).isHasNextTask() ? "1" : "0",
+						activities.getInserted().get(i).getParentActivityId()== null ? "": activities.getInserted().get(i).getParentActivityId().toString(), 
+						activities.getInserted().get(i).getPersonRelationId()== null ? "": activities.getInserted().get(i).getPersonRelationId().toString(), 
+						activities.getInserted().get(i).getTaskId()== null ? "": activities.getInserted().get(i).getTaskId().toString(),
+						activities.getInserted().get(i).getTemporaryCustomerId()== null ? "": activities.getInserted().get(i).getTemporaryCustomerId().toString(), 
+						activities.getInserted().get(i).getToDateTime()== null ? "": activities.getInserted().get(i).getToDateTime().toString()
+								);
+				
+			}
+		}
 		
+		//update activities
+		if(activities.getUpdated() != null){
+			for (int i = 0; i < activities.getUpdated().size(); i++) {
+				db.UpdateActivities(activities.getUpdated().get(i).getId(),
+						activities.getUpdated().get(i).getActivityStatusId(),
+						activities.getUpdated().get(i).getCustomerId()== null ? "": activities.getUpdated().get(i).getCustomerId().toString(),
+						activities.getUpdated().get(i).getDescription(),
+						activities.getUpdated().get(i).getFromDateTime(),
+						activities.getUpdated().get(i).isHasNextTask() ? "1" : "0",
+						activities.getUpdated().get(i).getParentActivityId()== null ? "": activities.getUpdated().get(i).getParentActivityId().toString(), 
+						activities.getUpdated().get(i).getPersonRelationId()== null ? "": activities.getUpdated().get(i).getPersonRelationId().toString(), 
+						activities.getUpdated().get(i).getTaskId()== null ? "": activities.getUpdated().get(i).getTaskId().toString(),
+						activities.getUpdated().get(i).getTemporaryCustomerId()== null ? "": activities.getUpdated().get(i).getTemporaryCustomerId().toString(), 
+						activities.getUpdated().get(i).getToDateTime()== null ? "": activities.getUpdated().get(i).getToDateTime().toString()
+								);
+				
+			}
+		}
+			
+		//delete activities
+		if(activities.getDeleted() != null){
+			for (int i = 0; i < activities.getUpdated().size(); i++) {
+				db.DeleteActivities(activities.getDeleted().get(i).getId());
+				
+			}
+		}
+
+
 		db.close();
-		
+
 		return "succeed";
 	}
 
