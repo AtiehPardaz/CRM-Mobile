@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.R.string;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -95,6 +97,7 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
+	
 	public long InsertProduct (String productGUID ,String productName, int isDeleted){//address choose
 
 		ContentValues values = new ContentValues();
@@ -125,7 +128,22 @@ public class database extends SQLiteOpenHelper {
 		return ID ;
 	}
 
+	public Cursor GetPrudoctsNames (){
+		
+		Cursor cu= mydb.rawQuery("select p.productname from products p where p.[isDeleted] == 1", null); //temp == 1 in real must be  !=1
+		return cu ;
+	}
+	
+	
 
+	
+	
+	
+	public Cursor GetServicesNames (){
+		
+		Cursor cu= mydb.rawQuery("select s.serviceName from services s where s.[isDeleted] == 1", null); //temp == 1 in real must be  !=1
+		return cu ;
+	}
 
 	public long InsertService (String ServiceGUID ,String ServiceName, int isDeleted){//address choose
 
@@ -159,6 +177,8 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
+	
+	
 
 	public void InsertCustomer(String Id,String Title , String Description , int IsLegal,String Address,String Tel){
 
@@ -197,6 +217,8 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
+	
+	
 
 	public void InsertPersonRelations(String CustomerId,String Id,String RelationRoleId,String Title){
 		ContentValues values = new ContentValues();
@@ -229,6 +251,8 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
+	
+	
 
 	public void InsertRelationRoles(String Id,String Title){
 		ContentValues values = new ContentValues();
@@ -256,6 +280,8 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
+	
+	
 
 	public void InsertActivityStatus(String Id,String Title){
 		ContentValues values = new ContentValues();
@@ -282,6 +308,8 @@ public class database extends SQLiteOpenHelper {
 		long ID = mydb.update("activityStatus", values, strFilter,null);
 	}
 
+	
+	
 	
 	
 	public void InsertTasks(String Id,
@@ -356,4 +384,13 @@ public class database extends SQLiteOpenHelper {
 
 		long ID = mydb.update("tasks", values, strFilter,null);
 	}
+
+
+
+
+
+
+
+
+
 }

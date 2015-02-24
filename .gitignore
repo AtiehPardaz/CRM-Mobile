@@ -9,8 +9,8 @@
 *.class
 
 # Generated files
-Crm-Mobile/bin/
-Crm-Mobile/gen/
+bin/
+gen/
 
 # Gradle files
 .gradle/
