@@ -110,14 +110,14 @@
             android:background="@drawable/ic_action_add_to_queue" />
 
         <ImageButton
-            android:id="@+id/btn_search_customelist"
+            android:id="@+id/btn_search_taskaction"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:background="@drawable/search" />
 
         <ImageButton
-            android:id="@+id/btn_home_customerlist"
+            android:id="@+id/btn_home_taskaction"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginRight="5dp"

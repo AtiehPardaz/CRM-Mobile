@@ -33,7 +33,7 @@ public class TaskActionActivity extends Activity {
 
 	public void initview() {
 		btnsearch = (ImageButton) findViewById(R.id.btn_search_customelist);
-		btnhome = (ImageButton) findViewById(R.id.btn_home_customerlist);
+		btnhome = (ImageButton) findViewById(R.id.btn_home_taskaction);
 		btnmonthview = (ImageButton) findViewById(R.id.btn_monthview_taskaction);
 		btnclearsearchtext = (ImageButton) findViewById(R.id.imgbtn_clearsearch_taskaction);
 		btnaction = (Button) findViewById(R.id.btn_action_taskaction);
