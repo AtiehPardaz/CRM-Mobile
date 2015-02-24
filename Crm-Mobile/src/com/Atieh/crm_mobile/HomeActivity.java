@@ -81,7 +81,7 @@ public class HomeActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent sendCustomer = new Intent();
 				sendCustomer.setClass(getApplicationContext(),
-						CustemerSendTestActivity.class);
+						CustomerListActivity.class);
 				startActivity(sendCustomer);
 			}
 		});

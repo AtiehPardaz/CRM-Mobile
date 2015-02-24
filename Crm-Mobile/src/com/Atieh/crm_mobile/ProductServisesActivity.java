@@ -1,15 +1,25 @@
 package com.Atieh.crm_mobile;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.Atieh.crm_mobile.MainActivity.asyncTask;
 import com.Atieh.crm_mobile.R.color;
 
+import dataBase.database;
+
+import android.R.bool;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.graphics.Color;
 import android.support.annotation.ColorRes;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -28,6 +38,11 @@ public class ProductServisesActivity extends Activity {
 	LinearLayout ll_hidesearch;
 	ListView lv_product;
 	EditText et_search;
+	ListView listservicesproduct;
+	int showproductorservicelist = 0; // 0 for product and 1 for services
+
+	List<String> productslist = new ArrayList<String>();
+	List<String> serviceslist = new ArrayList<String>();
 
 	public void initview() {
 		btnsearch = (ImageButton) findViewById(R.id.btn_search_productservices);
@@ -39,6 +54,8 @@ public class ProductServisesActivity extends Activity {
 		lv_product = (ListView) findViewById(R.id.lv_product_servisec);
 		et_search = (EditText) findViewById(R.id.et_search_productservices);
 		ll_hidesearch = (LinearLayout) findViewById(R.id.ll_search);
+		listservicesproduct = (ListView) findViewById(R.id.lv_product_servisec);
+		ll_loading=(LinearLayout) findViewById(R.id.ll_loading_productservices);
 	}
 
 	@Override
@@ -48,8 +65,26 @@ public class ProductServisesActivity extends Activity {
 		setContentView(R.layout.activity_product_services);
 
 		initview();
-		// ll_hidesearch.setVisibility(View.GONE);
+		ll_hidesearch.setVisibility(View.GONE);
+		database db;
+		db = new database(this);
+		db.database();
+		db.open();
 
+		Cursor products = db.GetPrudoctsNames();
+		Cursor services = db.GetServicesNames();
+
+		while (products.moveToNext()) {
+			productslist.add(products.getString(0));
+		}
+
+		while (services.moveToNext()) {
+			serviceslist.add(services.getString(0));
+		}
+
+		asyncTask as = new asyncTask(); 
+		as.execute();
+		
 		btnsearch.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -93,7 +128,11 @@ public class ProductServisesActivity extends Activity {
 
 				btnproduct.setBackgroundResource(color.bg_action_green);
 				btnservisec.setBackgroundResource(color.bg_action_gray);
-				Toast.makeText(getApplicationContext(), "„Õ’Ê·« ", 1).show();
+				
+				showproductorservicelist = 0;
+				asyncTask as = new asyncTask();
+				as.execute();
+
 			}
 		});
 		btnservisec.setOnClickListener(new OnClickListener() {
@@ -102,10 +141,55 @@ public class ProductServisesActivity extends Activity {
 			public void onClick(View arg0) {
 				btnproduct.setBackgroundResource(color.bg_action_gray);
 				btnservisec.setBackgroundResource(color.bg_action_green);
-//				btnservisec.setTextColor(color.first_row_background_color);
-				Toast.makeText(getApplicationContext(), "Œœ„« ", 1).show();
+				// btnservisec.setTextColor(color.first_row_background_color);
+				
+				showproductorservicelist = 1;
+
+				asyncTask as = new asyncTask();
+				as.execute();
+
 			}
 		});
+
+	}// end oncreate
+
+	public void productorservices() {
+		if (showproductorservicelist == 0) {
+			final ArrayAdapter<String> adapter = new ArrayAdapter(this,
+					android.R.layout.simple_list_item_1, productslist);
+			listservicesproduct.setAdapter(adapter);
+		} else if (showproductorservicelist == 1) {
+			final ArrayAdapter<String> adapter = new ArrayAdapter(this,
+					android.R.layout.simple_list_item_1, serviceslist);
+			listservicesproduct.setAdapter(adapter);
+		}
+	}
+
+	public class asyncTask extends AsyncTask<String, String, String> {
+
+		@Override
+		protected void onPreExecute() {
+			
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			ll_loading.setVisibility(View.VISIBLE);
+			listservicesproduct.setVisibility(View.GONE);
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			ll_loading.setVisibility(View.GONE);
+			listservicesproduct.setVisibility(View.VISIBLE);
+			productorservices();
+		}
 
 	}
 

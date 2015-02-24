@@ -6,13 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ListView;
 
 public class CustomerListActivity extends Activity {
 
-	Button add;
+	ImageButton add;
+	
 
 	public void initview() {
-		add = (Button) findViewById(R.id.btn_add_customerlist);
+		add =  (ImageButton) findViewById(R.id.btn_add_customerlist);
+		
 	}
 
 	@Override
@@ -20,7 +24,10 @@ public class CustomerListActivity extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_customer_list);
+		
 		initview();
+		
+		
 		add.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -31,7 +38,12 @@ public class CustomerListActivity extends Activity {
 
 			}
 		});
+		
+		
+		
+		
 
-	}
+	}//End Oncreate
+	
 
 }

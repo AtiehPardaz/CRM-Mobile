@@ -151,7 +151,7 @@ public final class R {
         public static final int imgv=0x7f0c0024;
         public static final int linear1=0x7f0c0023;
         public static final int linearpb=0x7f0c0029;
-        public static final int ll_loading_serviseandproduct=0x7f0c0032;
+        public static final int ll_loading_productservices=0x7f0c0032;
         public static final int ll_loading_taskaction=0x7f0c000e;
         public static final int ll_search=0x7f0c002f;
         public static final int ll_search_customerlist=0x7f0c000a;
