@@ -216,8 +216,11 @@ public class database extends SQLiteOpenHelper {
 
 	}
 
+	public Cursor GetCustomers (){
 
-
+		Cursor cu= mydb.rawQuery("	select * from custemers where IsDeleted != 1", null); 
+		return cu ;
+	}
 
 
 	public void InsertPersonRelations(String CustomerId,String Id,String RelationRoleId,String Title){
