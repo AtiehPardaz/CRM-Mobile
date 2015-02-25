@@ -1,8 +1,5 @@
 package com.Atieh.crm_mobile;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import singleTones.authInfo;
 import GetActivitiesPack.GetActivities;
 import GetActivitiesPack.GetActivitiesInterface;
@@ -18,13 +15,13 @@ import GetTasksPack.GetTasks;
 import GetTasksPack.GetTasksInterface;
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+import com.Atieh.crm_mobile.CustemerSendTestActivity;
 
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
 
@@ -81,7 +78,7 @@ public class HomeActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent sendCustomer = new Intent();
 				sendCustomer.setClass(getApplicationContext(),
-						CustomerListActivity.class);
+						CustemerSendTestActivity.class);
 				startActivity(sendCustomer);
 			}
 		});
@@ -357,7 +354,7 @@ public class HomeActivity extends Activity {
 						gettask.getInserted().get(i).getCustomerId(),
 						gettask.getInserted().get(i).getDescription(), 
 						gettask.getInserted().get(i).getFromDateTime(),
-						gettask.getInserted().get(i).isIsAm() ? 1 : 0,
+						gettask.getInserted().get(i).isIsAm() == null ? "null":gettask.getInserted().get(i).isIsAm().toString(),
 								gettask.getInserted().get(i).getParentActivityId() == null ? "": gettask.getInserted().get(i).getParentActivityId().toString(),
 										gettask.getInserted().get(i).getParentTaskId()== null ? "": gettask.getInserted().get(i).getParentTaskId().toString() , 
 												gettask.getInserted().get(i).getPersonRelationId()== null ? "": gettask.getInserted().get(i).getPersonRelationId().toString(),
@@ -398,7 +395,7 @@ public class HomeActivity extends Activity {
 						gettask.getUpdated().get(i).getCustomerId(),
 						gettask.getUpdated().get(i).getDescription(), 
 						gettask.getUpdated().get(i).getFromDateTime(),
-						gettask.getUpdated().get(i).isIsAm() ? 1 : 0,
+						gettask.getInserted().get(i).isIsAm() == null ? "null":gettask.getInserted().get(i).isIsAm().toString(),
 								gettask.getUpdated().get(i).getParentActivityId() == null ? "": gettask.getUpdated().get(i).getParentActivityId().toString(),
 										gettask.getUpdated().get(i).getParentTaskId()== null ? "": gettask.getUpdated().get(i).getParentTaskId().toString() , 
 												gettask.getUpdated().get(i).getPersonRelationId()== null ? "": gettask.getUpdated().get(i).getPersonRelationId().toString(),

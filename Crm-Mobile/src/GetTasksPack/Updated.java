@@ -12,7 +12,7 @@ public class Updated {
 	private String Description;
 	private String FromDateTime;
 	private String Id;
-	private boolean IsAm;
+	private Object IsAm;
 	private Object ParentActivityId;
 	private Object ParentTaskId;
 	private Object PersonRelationId;
@@ -101,7 +101,7 @@ public class Updated {
 	 * @return
 	 * The IsAm
 	 */
-	public boolean isIsAm() {
+	public Object isIsAm() {
 		return IsAm;
 	}
 
@@ -110,7 +110,7 @@ public class Updated {
 	 * @param IsAm
 	 * The IsAm
 	 */
-	public void setIsAm(boolean IsAm) {
+	public void setIsAm(Object IsAm) {
 		this.IsAm = IsAm;
 	}
 
