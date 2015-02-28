@@ -220,8 +220,12 @@ public class database extends SQLiteOpenHelper {
 
 		Cursor cu= mydb.rawQuery("	select * from custemers where IsDeleted != 1", null); 
 		return cu ;
+		// (Id Title Description IsLegal Address Tel IsDeleted)
 	}
 
+	
+	
+	
 
 	public void InsertPersonRelations(String CustomerId,String Id,String RelationRoleId,String Title){
 		ContentValues values = new ContentValues();
@@ -319,7 +323,7 @@ public class database extends SQLiteOpenHelper {
 			String CustomerId,
 			String Description,
 			String FromDateTime,
-			int IsAm,
+			String IsAm,
 			String ParentActivityId,
 			String ParentTaskId,
 			String PersonRelationId,
@@ -351,7 +355,7 @@ public class database extends SQLiteOpenHelper {
 			String CustomerId,
 			String Description,
 			String FromDateTime,
-			int IsAm,
+			String IsAm,
 			String ParentActivityId,
 			String ParentTaskId,
 			String PersonRelationId,
@@ -422,8 +426,19 @@ public class database extends SQLiteOpenHelper {
 
 	}
 
+	public Cursor GetTasks (String date){
 
+		Cursor cu= mydb.rawQuery("select * from tasks where IsDeleted != 0 and FromDateTime like '" + date +"%'", null); 
+		return cu ;
+		
+		// Id CustomerId Description FromDateTime IsAm ParentActivityId ParentTaskId PersonRelationId TemporaryCustomerId
+		// TemporaryCustomerPersonRelationsId Title ToDateTime IsDeleted
+	}
 
+	
+
+	
+	
 
 	public void InsertActivities(
 			String Id,

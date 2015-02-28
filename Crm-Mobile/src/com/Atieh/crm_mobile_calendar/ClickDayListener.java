@@ -38,16 +38,16 @@ public class ClickDayListener implements View.OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		Toast.makeText(
-				v.getContext(),
-				persianDate.getDayOfMonth() + "/" + persianDate.getMonth()
-						+ "/" + persianDate.getYear(), 1).show();
+//		Toast.makeText(
+//				v.getContext(),
+//				persianDate.getDayOfMonth() + "/" + persianDate.getMonth()
+//						+ "/" + persianDate.getYear(), 1).show();
 		Toast.makeText(v.getContext(),
 				"for click in a day use ClickDayListener>OnClick", 1).show();
 
 		Intent intent=new Intent();
 		intent.setClass(v.getContext(), TaskActionActivity.class);
-//		intent.putExtra("day", value);
+		intent.putExtra("date", persianDate.getYear()+":" + persianDate.getMonth()+ ":" + +persianDate.getDayOfMonth());
 		v.getContext().startActivity(intent);
 
 		if (holidayTitle != null) {

@@ -1,13 +1,8 @@
 package com.Atieh.crm_mobile;
 
-import com.Atieh.crm_mobile.R.color;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.graphics.Color;
-import android.support.annotation.ColorRes;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -17,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.Atieh.crm_mobile.R.color;
 
 public class TaskActionActivity extends Activity {
 	ImageButton btnsearch;
@@ -39,7 +36,7 @@ public class TaskActionActivity extends Activity {
 		btnaction = (Button) findViewById(R.id.btn_action_taskaction);
 		btntask = (Button) findViewById(R.id.btn_task_taskaction);
 		titlemonthTextView = (TextView) findViewById(R.id.tv_title_monthview_taskaction);
-		lv_taskaction = (ListView) findViewById(R.id.lv_task_action);
+		lv_taskaction = (ListView) findViewById(R.id.lv_customers);
 		et_search = (EditText) findViewById(R.id.et_search_taskaction);
 		ll_hidesearch = (LinearLayout) findViewById(R.id.ll_search_taskaction);
 	}
@@ -53,6 +50,11 @@ public class TaskActionActivity extends Activity {
 		initview();
 
 		// ll_hidesearch.setVisibility(View.GONE);
+		Intent intent = getIntent();
+		String date = intent.getStringExtra("date");
+		Toast.makeText(TaskActionActivity.this,date, 1).show();
+		
+		
 
 		btnsearch.setOnClickListener(new OnClickListener() {
 

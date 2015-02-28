@@ -1,108 +1,77 @@
 package com.Atieh.crm_mobile;
 
-import dataBase.database;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.storage.OnObbStateChangeListener;
-import android.support.v4.widget.CursorAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-import android.widget.TextView;
+import com.Atieh.crm_mobile.R;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class customlistAadapter extends ArrayAdapter<String> {
-	private final Context context;
-	private final String[] values;
-	Context b;
+public class customlistAadapter extends BaseAdapter {
 
-	public customlistAadapter(Context context, String[] values) {
-		super(context, R.layout.row, values);
-		this.context = context;
-		this.values = values;
-		b = (Context) context;
+	Context context;
+	private Activity activity;
+	private List<List<String>> data;
 
+	private static LayoutInflater inflater = null;
+	TextView title;
+
+	public customlistAadapter(Activity a, List<List<String>> ll) {
+		activity = a;
+		data = ll;
+		inflater = (LayoutInflater) activity
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	}
+
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View vi = convertView;
+		if (convertView == null)
+			vi = inflater.inflate(R.layout.row, null);
+
+		TextView id = (TextView) vi.findViewById(R.id.tv_id_customer); // id
+		title = (TextView) vi.findViewById(R.id.tv_customer); // title
+
+		// ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); //
+		// thumb image
+
+		Typeface face = Typeface.createFromAsset(this.activity
+				.getApplicationContext().getAssets(), "nazanin.ttf");
+		title.setTypeface(face);
+
+
+
+		id.setText(data.get(position).get(0));
+		title.setText(data.get(position).get(1));
+
+		return vi;
 	}
 
 	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View rowView = inflater.inflate(R.layout.row, parent, false);
-		database db;
-		db = new database(rowView.getContext());
-		db.database();
-		db.open();
-		//
-		// Cursor products = db.GetPrudoctsNames();
-		// Cursor services = db.GetServicesNames();
+	public int getCount() {
+		// TODO Auto-generated method stub
 
-		final ImageButton showditails_btn = (ImageButton) rowView
-				.findViewById(R.id.imgbtn_showdetails);
-		final ImageButton mark_btn = (ImageButton) rowView
-				.findViewById(R.id.imgbtn_tik);
+		return data.size();
+	}
 
-		TextView tv_customer = (TextView) rowView
-				.findViewById(R.id.tv_customer);
-		TextView tv_id = (TextView) rowView.findViewById(R.id.tv_id_customer);
+	@Override
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return data.get(position).get(2);
+	}
 
-		final Cursor cur = db.GetCustomers();
-		// if (cur != null)
-		// cur.moveToFirst();
-
-		tv_id.setText(String.valueOf(cur.getString(cur.getInt(0))));
-		tv_id.setVisibility(View.GONE);
-
-		// Toast.makeText(b,id.getText().toString(), 1).show();
-
-		// tv_customer.setText(cur.getString(cur.getColumnIndex("name")));
-
-		tv_customer.setText(cur.getString(cur.getInt(1)));
-
-		showditails_btn.setOnClickListener(new Button.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				// Intent sendsms = new Intent(Intent.ACTION_VIEW);
-				// sendsms.setData(Uri.parse("smsto:"));
-				// sendsms.setType("vnd.android-dir/mms-sms");
-				// sendsms.putExtra("address", new String("0123456789"));
-				// sendsms.putExtra("sms_body",
-				// cur.getString(cur.getColumnIndex("name")));
-				// b.startActivity(sendsms);
-			}
-		});
-
-		mark_btn.setOnClickListener(new Button.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				// b.startActivity(intent);
-
-			}
-		});
-
-		return rowView;
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
 	}
 }
