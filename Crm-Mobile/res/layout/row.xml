@@ -9,11 +9,12 @@
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="2dp" >
+        android:layout_marginTop="2dp" 
+          android:descendantFocusability="blocksDescendants">
 
         <ImageButton
             android:id="@+id/imgbtn_tik"
-            android:layout_width="48dp"
+            android:layout_width="40dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
             android:background="@drawable/ic_action_accept" />
@@ -21,8 +22,9 @@
         <ImageButton
             android:id="@+id/imgbtn_showdetails"
             android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center" />
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_action_eye" />
 
         <View
             android:id="@+id/view1"
@@ -42,8 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginRight="10dp"
             android:text="TextView"
-            android:textSize="25sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 

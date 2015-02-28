@@ -1,77 +1,56 @@
 package com.Atieh.crm_mobile;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import com.Atieh.crm_mobile.R;
-
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import dataBase.database;
 
-public class customlistAadapter extends BaseAdapter {
+public class customlistAadapter extends ArrayAdapter<String> {
+	private final Context context;
+	private final String[] values;
+	Context b;
+	Cursor curall;
 
-	Context context;
-	private Activity activity;
-	private List<List<String>> data;
+	// public MyAdapter(Context context, String[] values, Cursor curall) {
+	public customlistAadapter(Context context, String[] values) {
 
-	private static LayoutInflater inflater = null;
-	TextView title;
+		super(context, R.layout.row, values);
+		this.context = context;
+		this.values = values;
+		b = (Context) context;
+		this.curall = curall;
+	}
 
-	public customlistAadapter(Activity a, List<List<String>> ll) {
-		activity = a;
-		data = ll;
-		inflater = (LayoutInflater) activity
+	@Override
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	}
 
-	public View getView(int position, View convertView, ViewGroup parent) {
-		View vi = convertView;
-		if (convertView == null)
-			vi = inflater.inflate(R.layout.row, null);
+		View rowView = inflater.inflate(R.layout.row, parent, false);
 
-		TextView id = (TextView) vi.findViewById(R.id.tv_id_customer); // id
-		title = (TextView) vi.findViewById(R.id.tv_customer); // title
+		TextView id = (TextView) rowView.findViewById(R.id.tv_id_customer); // id
+		TextView title = (TextView) rowView.findViewById(R.id.tv_customer); // title
 
-		// ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); //
-		// thumb image
+		// final Cursor cur = curall;
+		final Cursor cur = database.mydb.rawQuery(
+				"select * from custemers WHERE id='" + values[position] + "'",
+				null);
 
-		Typeface face = Typeface.createFromAsset(this.activity
-				.getApplicationContext().getAssets(), "nazanin.ttf");
-		title.setTypeface(face);
+		if (cur != null)
+			cur.moveToFirst();
 
+		id.setVisibility(View.GONE);
 
+		id.setText(cur.getString(0));
 
-		id.setText(data.get(position).get(0));
-		title.setText(data.get(position).get(1));
+		title.setText(cur.getString(1));
 
-		return vi;
-	}
+		// Toast.makeText(b,id.getText().toString(), 1).show();
 
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-
-		return data.size();
-	}
-
-	@Override
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return data.get(position).get(2);
-	}
-
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
+		return rowView;
 	}
 }
