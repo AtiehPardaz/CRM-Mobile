@@ -428,7 +428,7 @@ public class database extends SQLiteOpenHelper {
 
 	public Cursor GetTasks (String date){
 
-		Cursor cu= mydb.rawQuery("select * from tasks where IsDeleted != 0 and FromDateTime like '" + date +"%'", null); 
+		Cursor cu= mydb.rawQuery("select * from tasks where IsDeleted = '0' and FromDateTime like '1393:11:01 %'", null); 
 		return cu ;
 		
 		// Id CustomerId Description FromDateTime IsAm ParentActivityId ParentTaskId PersonRelationId TemporaryCustomerId
