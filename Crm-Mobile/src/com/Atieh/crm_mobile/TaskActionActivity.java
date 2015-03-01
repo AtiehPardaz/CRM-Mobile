@@ -45,7 +45,7 @@ public class TaskActionActivity extends Activity {
 		btnaction = (Button) findViewById(R.id.btn_action_taskaction);
 		btntask = (Button) findViewById(R.id.btn_task_taskaction);
 		titlemonthTextView = (TextView) findViewById(R.id.tv_title_monthview_taskaction);
-		lv_taskaction = (ListView) findViewById(R.id.lv_task_action);
+		lv_taskaction = (ListView) findViewById(R.id.lv_customers);
 		et_search = (EditText) findViewById(R.id.et_search_taskaction);
 		ll_hidesearch = (LinearLayout) findViewById(R.id.ll_search_taskaction);
 	}

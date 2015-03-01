@@ -85,29 +85,31 @@ public final class R {
         public static final int days=0x7f020026;
         public static final int holidays=0x7f020027;
         public static final int home=0x7f020028;
-        public static final int ic_action_add_to_queue=0x7f020029;
-        public static final int ic_action_back_item=0x7f02002a;
-        public static final int ic_action_month=0x7f02002b;
-        public static final int ic_action_next_item=0x7f02002c;
-        public static final int ic_launcher=0x7f02002d;
-        public static final int kabah=0x7f02002e;
-        public static final int loadinglogo=0x7f02002f;
-        public static final int logo=0x7f020030;
-        public static final int photo=0x7f020031;
-        public static final int search=0x7f020032;
-        public static final int taghvim=0x7f020033;
-        public static final int today_background=0x7f020034;
+        public static final int ic_action_accept=0x7f020029;
+        public static final int ic_action_add_to_queue=0x7f02002a;
+        public static final int ic_action_back_item=0x7f02002b;
+        public static final int ic_action_eye=0x7f02002c;
+        public static final int ic_action_month=0x7f02002d;
+        public static final int ic_action_next_item=0x7f02002e;
+        public static final int ic_launcher=0x7f02002f;
+        public static final int kabah=0x7f020030;
+        public static final int loadinglogo=0x7f020031;
+        public static final int logo=0x7f020032;
+        public static final int photo=0x7f020033;
+        public static final int search=0x7f020034;
+        public static final int taghvim=0x7f020035;
+        public static final int today_background=0x7f020036;
     }
     public static final class id {
         public static final int ImageView01=0x7f0c002a;
         public static final int LinearLayout1=0x7f0c000d;
-        public static final int RelativeLayout1=0x7f0c0043;
+        public static final int RelativeLayout1=0x7f0c0044;
         public static final int View01=0x7f0c0009;
         public static final int View02=0x7f0c0003;
         public static final int View03=0x7f0c0037;
         public static final int View04=0x7f0c0036;
         public static final int View05=0x7f0c0005;
-        public static final int action_settings=0x7f0c0046;
+        public static final int action_settings=0x7f0c004c;
         public static final int btn_action_taskaction=0x7f0c0039;
         public static final int btn_add_customerlist=0x7f0c0004;
         public static final int btn_customer=0x7f0c0019;
@@ -137,8 +139,8 @@ public final class R {
         public static final int button7=0x7f0c001e;
         public static final int button8=0x7f0c0021;
         public static final int button9=0x7f0c0022;
-        public static final int calendar_info=0x7f0c0041;
-        public static final int calendar_pager=0x7f0c003f;
+        public static final int calendar_info=0x7f0c0042;
+        public static final int calendar_pager=0x7f0c0040;
         public static final int chk_remember=0x7f0c0028;
         public static final int et_password=0x7f0c0026;
         public static final int et_search_customerlist=0x7f0c000c;
@@ -150,26 +152,32 @@ public final class R {
         public static final int imgbtn_clearsearch_customerlist=0x7f0c000b;
         public static final int imgbtn_clearsearch_productservises=0x7f0c0030;
         public static final int imgbtn_clearsearch_taskaction=0x7f0c003d;
+        public static final int imgbtn_showdetails=0x7f0c0048;
+        public static final int imgbtn_tik=0x7f0c0047;
         public static final int imgv=0x7f0c0024;
         public static final int linear1=0x7f0c0023;
         public static final int linearpb=0x7f0c0029;
+        public static final int ll_loading_customerlist=0x7f0c000e;
         public static final int ll_loading_productservices=0x7f0c0032;
-        public static final int ll_loading_taskaction=0x7f0c000e;
+        public static final int ll_loading_taskaction=0x7f0c003f;
         public static final int ll_search=0x7f0c002f;
         public static final int ll_search_customerlist=0x7f0c000a;
         public static final int ll_search_taskaction=0x7f0c003c;
+        public static final int lv_customers=0x7f0c0011;
         public static final int lv_product_servisec=0x7f0c0034;
-        public static final int lv_task_action=0x7f0c0011;
         public static final int progressBar1=0x7f0c002b;
         public static final int progressBar1_taskaction=0x7f0c0010;
-        public static final int reset_button=0x7f0c0042;
-        public static final int today_praytimes=0x7f0c0040;
+        public static final int reset_button=0x7f0c0043;
+        public static final int today_praytimes=0x7f0c0041;
+        public static final int tv_customer=0x7f0c004b;
+        public static final int tv_id_customer=0x7f0c004a;
         public static final int tv_loadin=0x7f0c0033;
         public static final int tv_loadin_taskaction=0x7f0c000f;
         public static final int tv_title_monthview=0x7f0c0000;
         public static final int tv_title_monthview_taskaction=0x7f0c0002;
-        public static final int txtTaskHour=0x7f0c0044;
-        public static final int txtTaskTitle=0x7f0c0045;
+        public static final int txtTaskHour=0x7f0c0045;
+        public static final int txtTaskTitle=0x7f0c0046;
+        public static final int view1=0x7f0c0049;
     }
     public static final class layout {
         public static final int activity_custemer_send_test=0x7f030000;
@@ -180,6 +188,7 @@ public final class R {
         public static final int activity_task_action=0x7f030005;
         public static final int calendar=0x7f030006;
         public static final int list_row=0x7f030007;
+        public static final int row=0x7f030008;
     }
     public static final class menu {
         public static final int custemer_send_test=0x7f0b0000;

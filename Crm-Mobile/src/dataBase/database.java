@@ -18,7 +18,7 @@ public class database extends SQLiteOpenHelper {
 
 	public final String path="data/data/com.Atieh.crm_mobile/databases/";
 	public final String Name="db";
-	public SQLiteDatabase mydb;
+	public static SQLiteDatabase mydb;
 
 	private final Context mycontext;
 
