@@ -1,5 +1,6 @@
 package com.Atieh.crm_mobile_calendar;
 
+import android.R.color;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,11 +8,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.Atieh.crm_mobile.R;
 import com.Atieh.crm_mobile_calendar.Range;
@@ -31,7 +34,7 @@ import com.Atieh.crm_mobile_calendar.PersianDate;
  */
 public class MonthFragment extends Fragment {
 	private final Utils utils = Utils.getInstance();
-
+	public static TextView currentMonthTextView;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -42,11 +45,17 @@ public class MonthFragment extends Fragment {
 				LayoutParams.WRAP_CONTENT));
 		root.setOrientation(LinearLayout.VERTICAL);
 
+		// ImageButton imgnextmounth=new ImageButton(context);
+		// imgnextmounth.setLayoutParams(new LayoutParams(
+		// LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		// root.addView(imgnextmounth);
+		// imgnextmounth.setGravity(Gravity.CENTER);
 		// currentMonthTextView
-		TextView currentMonthTextView = new TextView(context);
+		  currentMonthTextView = new TextView(context);
+		
 		currentMonthTextView.setLayoutParams(new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		currentMonthTextView.setGravity(Gravity.RIGHT);
+		currentMonthTextView.setGravity(Gravity.CENTER);
 		currentMonthTextView.setPadding(0, 0, 10, 2);
 		currentMonthTextView.setTextSize(25);
 		utils.prepareTextView(currentMonthTextView);
@@ -116,6 +125,8 @@ public class MonthFragment extends Fragment {
 
 		currentMonthTextView.setText(utils.getMonthYearTitle(persianDate,
 				digits));
+//		Toast.makeText(getActivity(), currentMonthTextView.getText(), 1).show();
+		MainActivity.title_month.setText(currentMonthTextView.getText());
 
 		for (int i : new Range(0, 7)) {
 			TextView textView = daysTextViews[0][6 - i];

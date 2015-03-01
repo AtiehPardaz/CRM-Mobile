@@ -12,14 +12,15 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.Atieh.crm_mobile.R;
 import com.Atieh.crm_mobile_calendar.MonthFragment;
-
 
 public class MainActivity extends FragmentActivity {
 	// I know, it is ugly, but user will not notify this and this will not have
@@ -28,8 +29,12 @@ public class MainActivity extends FragmentActivity {
 	public Utils utils = Utils.getInstance();
 	private ViewPager viewPager;
 	private TextView calendarInfo;
+	ImageButton selectdate;
+	public static TextView title_month;
 	private Button resetButton;
 	private PrayTimeActivityHelper prayTimeActivityHelper;
+	ImageButton next;
+	ImageButton back;
 
 	// public static StringBuilder sb = new StringBuilder();
 
@@ -56,10 +61,11 @@ public class MainActivity extends FragmentActivity {
 		}
 		setContentView(R.layout.calendar);
 
-		
-		
 		calendarInfo = (TextView) findViewById(R.id.calendar_info);
-
+		title_month = (TextView) findViewById(R.id.tv_title_monthview);
+		next = (ImageButton) findViewById(R.id.imgbtn_next_month);
+		back = (ImageButton) findViewById(R.id.imgbtn_back_month);
+		selectdate = (ImageButton) findViewById(R.id.imgbtn_selectcal_calander);
 		// Pray Time
 		prayTimeActivityHelper = new PrayTimeActivityHelper(this);
 		prayTimeActivityHelper.fillPrayTime();
@@ -96,9 +102,38 @@ public class MainActivity extends FragmentActivity {
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
 			}
 		});
+		next.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				int i = viewPager.getCurrentItem();
+				i++;
+				viewPager.setCurrentItem(i);
+
+			}
+		});
+		back.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				int i = viewPager.getCurrentItem();
+				i--;
+				viewPager.setCurrentItem(i);
+
+			}
+		});
+		selectdate.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				startActivity(new Intent(MainActivity.this,
+						SelectdateActivity.class));
+			}
+		});
 
 		// Initializing the view
 		fillCalendarInfo(new CivilDate());
+
 	}
 
 	private void updateResetButtonState() {
@@ -113,6 +148,7 @@ public class MainActivity extends FragmentActivity {
 
 	private void clearInfo() {
 		calendarInfo.setText("");
+
 		prayTimeActivityHelper.clearInfo();
 	}
 

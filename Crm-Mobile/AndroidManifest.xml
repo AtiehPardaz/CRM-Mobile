@@ -40,6 +40,10 @@
             android:name=".ProductServisesActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.Atieh.crm_mobile_calendar.SelectdateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog" />
+        <activity
             android:name=".CustomerListActivity"
             android:screenOrientation="portrait" />
         <activity
