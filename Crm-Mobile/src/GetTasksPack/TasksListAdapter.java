@@ -21,12 +21,13 @@ public class TasksListAdapter extends BaseAdapter {
 
 	Context context;
     private Activity activity;
-    private ArrayList<ArrayList<String>> data;
+    private List<String[]> data;
     
-    ArrayList<ArrayList<String>> list1;
+    List<String[]> list1;
+    
     private static LayoutInflater inflater=null;
     TextView Hour;
-    public TasksListAdapter(Activity a, ArrayList<ArrayList<String>> d ) {
+    public TasksListAdapter(Activity a, List<String[]> d ) {
         activity = a;
         data = d;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -47,7 +48,7 @@ public class TasksListAdapter extends BaseAdapter {
 		Typeface face = Typeface.createFromAsset(this.activity.getApplicationContext().getAssets(),"nazanin.ttf");
 		title.setTypeface(face);
 		
-        list1 = new  ArrayList<ArrayList<String>>();
+        list1 = new ArrayList<>();
         list1 = data;
 
         
@@ -56,10 +57,10 @@ public class TasksListAdapter extends BaseAdapter {
         
         
         
-        Hour.setText(list1.get(position).get(0));
+        Hour.setText(list1.get(position)[0]);
         
-        if(list1.get(position).get(1)==null){
-        	title.setText(list1.get(position).get(1));
+        if(list1.get(position)[1]==null){
+        	title.setText(list1.get(position)[1]);
         }
         
         
@@ -79,7 +80,7 @@ public class TasksListAdapter extends BaseAdapter {
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return list1.get(position).get(2);
+		return list1.get(position)[2];
 	}
 
 

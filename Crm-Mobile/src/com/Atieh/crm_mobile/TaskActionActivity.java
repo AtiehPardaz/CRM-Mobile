@@ -1,7 +1,11 @@
 package com.Atieh.crm_mobile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +19,8 @@ import android.widget.Toast;
 
 import com.Atieh.crm_mobile.R.color;
 
+import dataBase.database;
+
 public class TaskActionActivity extends Activity {
 	ImageButton btnsearch;
 	ImageButton btnhome;
@@ -27,6 +33,9 @@ public class TaskActionActivity extends Activity {
 	LinearLayout ll_hidesearch;
 	ListView lv_taskaction;
 	EditText et_search;
+    ArrayList<ArrayList<String>> tasksList;
+	database db;
+
 
 	public void initview() {
 		btnsearch = (ImageButton) findViewById(R.id.btn_search_customelist);
@@ -48,14 +57,42 @@ public class TaskActionActivity extends Activity {
 		setContentView(R.layout.activity_task_action);
 
 		initview();
+		db = new database(this);
+		db.database();
 
 		// ll_hidesearch.setVisibility(View.GONE);
 		Intent intent = getIntent();
 		String date = intent.getStringExtra("date");
-		Toast.makeText(TaskActionActivity.this,date, 1).show();
+		
+		String[] seprated = date.split(":");
+		
+		if(seprated[1].length() == 1)
+			seprated[1] = "0"+seprated[1];
+		
+		if(seprated[2].length() == 1)
+			seprated[2] = "0"+seprated[2];
+		
+		date = seprated[0] +":"+ seprated[1] +":" + seprated[2];
+		
+		db.open();
 		
 		
+		Cursor tasksCursor = db.GetTasks(date);
+		
+		List<String> taskslist = new ArrayList<String>();
+		while (tasksCursor.moveToNext()) {
+		    taskslist.add(tasksCursor.getString(0));
+		}
+		
+		Toast.makeText(TaskActionActivity.this,
+				taskslist.get(0) == null ? "null":taskslist.get(0),
+				1).show();
 
+		db.close();
+
+		
+		
+		
 		btnsearch.setOnClickListener(new OnClickListener() {
 
 			@Override
