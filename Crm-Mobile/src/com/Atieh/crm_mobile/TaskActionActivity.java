@@ -3,6 +3,7 @@ package com.Atieh.crm_mobile;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.string;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -33,7 +34,7 @@ public class TaskActionActivity extends Activity {
 	LinearLayout ll_hidesearch;
 	ListView lv_taskaction;
 	EditText et_search;
-    ArrayList<ArrayList<String>> tasksList;
+    List<String[]> tasksList;
 	database db;
 
 
@@ -74,18 +75,27 @@ public class TaskActionActivity extends Activity {
 		
 		date = seprated[0] +":"+ seprated[1] +":" + seprated[2];
 		
+		
 		db.open();
 		
 		
 		Cursor tasksCursor = db.GetTasks(date);
 		
-		List<String> taskslist = new ArrayList<String>();
+		tasksList = new ArrayList<String[]>();
+		
 		while (tasksCursor.moveToNext()) {
-		    taskslist.add(tasksCursor.getString(0));
+			
+			String[] s = new String[3];
+			s[0] = tasksCursor.getString(0);
+			s[1] = tasksCursor.getString(1);
+			s[2] = tasksCursor.getString(2);
+		   
+		   tasksList.add(s);
+
 		}
 		
 		Toast.makeText(TaskActionActivity.this,
-				taskslist.get(0) == null ? "null":taskslist.get(0),
+				tasksList.get(0)[1] == null ? "null":tasksList.get(0)[1],
 				1).show();
 
 		db.close();
