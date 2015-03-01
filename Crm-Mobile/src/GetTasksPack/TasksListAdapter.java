@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.Atieh.crm_mobile.R;
 
+import android.R.transition;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -42,29 +43,30 @@ public class TasksListAdapter extends BaseAdapter {
         TextView title = (TextView)vi.findViewById(R.id.txtTaskTitle); // title
         Hour = (TextView)vi.findViewById(R.id.txtTaskHour); // hour
         
-       
-        //ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
-
 		Typeface face = Typeface.createFromAsset(this.activity.getApplicationContext().getAssets(),"nazanin.ttf");
 		title.setTypeface(face);
 		
-        list1 = new ArrayList<>();
+       
+		list1 = new ArrayList<>();
         list1 = data;
 
         
+        
+        
         // Setting all values in listview
-        String s = list1.get(position).toString();
+//        String s = list1.get(position).toString();
         
         
         
-        Hour.setText(list1.get(position)[0]);
+        Hour.setText(Integer.toString(position));
         
-        if(list1.get(position)[1]==null){
-        	title.setText(list1.get(position)[1]);
-        }
+       try {
+		title.setText(list1.get(position)[10]);
+       } catch (Exception e) {
+		title.setText("No Task");
+       }
         
-        
-        
+    
         return vi;
     }
 
