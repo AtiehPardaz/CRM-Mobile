@@ -35,9 +35,35 @@ public class TaskActionActivity extends Activity {
 	LinearLayout ll_hidesearch;
 	ListView lv_taskaction;
 	EditText et_search;
-	List<String[]> tasksList;
+	List<List<String[]>> tasksList;
 	database db;
 	ListView listView ;
+
+	List<String[]> l0 = new ArrayList<String[]>();
+	List<String[]> l1 = new ArrayList<String[]>();
+	List<String[]> l2 = new ArrayList<String[]>();
+	List<String[]> l3 = new ArrayList<String[]>();
+	List<String[]> l4 = new ArrayList<String[]>();
+	List<String[]> l5 = new ArrayList<String[]>();
+	List<String[]> l6 = new ArrayList<String[]>();
+	List<String[]> l7 = new ArrayList<String[]>();
+	List<String[]> l8 = new ArrayList<String[]>();
+	List<String[]> l9 = new ArrayList<String[]>();
+	List<String[]> l10 = new ArrayList<String[]>();
+	List<String[]> l11 = new ArrayList<String[]>();
+	List<String[]> l12 = new ArrayList<String[]>();
+	List<String[]> l13 = new ArrayList<String[]>();
+	List<String[]> l14 = new ArrayList<String[]>();
+	List<String[]> l15 = new ArrayList<String[]>();
+	List<String[]> l16 = new ArrayList<String[]>();
+	List<String[]> l17 = new ArrayList<String[]>();
+	List<String[]> l18 = new ArrayList<String[]>();
+	List<String[]> l19 = new ArrayList<String[]>();
+	List<String[]> l20 = new ArrayList<String[]>();
+	List<String[]> l21 = new ArrayList<String[]>();
+	List<String[]> l22 = new ArrayList<String[]>();
+	List<String[]> l23 = new ArrayList<String[]>();
+
 
 
 	public void initview() {
@@ -84,23 +110,24 @@ public class TaskActionActivity extends Activity {
 
 
 		Cursor tasksCursor = db.GetTasks(date);
+		tasksList = new ArrayList<List<String[]>>();
 
-		tasksList = new ArrayList<String[]>();
-
+		int size = tasksCursor.getCount();
+		//fillListEmpty(size);
+		
 		String[] ss = new String[14];
-		
+
 		for (int j = 0; j <14; j++) {
-				ss[j] = " ";
-			}
-		
-		for (int i = 0; i < 24; i++) {
-			tasksList.add(i,ss);	
+			ss[j] = "";
 		}
-		
-		
+
+
+		int position = 0;
 		while (tasksCursor.moveToNext()) {
 
 			String[] s = new String[14];
+			//List<String[]> temp = new ArrayList<String[]>();
+
 			s[0] = tasksCursor.getString(0);
 			s[1] = tasksCursor.getString(1);
 			s[2] = tasksCursor.getString(2);
@@ -114,40 +141,52 @@ public class TaskActionActivity extends Activity {
 			s[10] = tasksCursor.getString(10);
 			s[11] = tasksCursor.getString(11);
 
-			
-			//calculating times with tasks
+
+			//calculating fromdatetimes
 			String[] fromdateHour = s[3].split(" ");
 			String[] fromhours = fromdateHour[1].split(":");
 			int fromhour = Integer.parseInt(fromhours[0]);
-			s[12] = fromhours[0];
+			s[12] = "1"; // is the first in a culumn to write the title only one times
 
-			//calculating IsAm And To dateTime
-			if(!(s[11].equals(""))){
-				String[] todateHour = s[11].split(" ");
-				String[] tohours = todateHour[1].split(":");
-				int tohour = Integer.parseInt(tohours[0]);
-				s[13] = tohours[0];
-			}
+			//calculating TodateTime
+			String[] todateHour = s[11].split(" ");
+			String[] tohours = todateHour[1].split(":");
+			int tohour = Integer.parseInt(tohours[0]);
+			s[13] = tohours[0];
 
-			if(s[4] == "true"){
-				tasksList.set(6, s);
+			
+			for (int i = 0; i < 24; i++) {
+				if (i<fromhour || i> tohour) {
+					getList(i).add(ss);
+				}
+				
+				else {
+					
+					if(i == fromhour){
+						getList(i).add(s);
+						s[12] = "0";
+					}
+					else {
+						getList(i).add(s);
+					}
+				}
 			}
 			
-			else if(s[4] == "false"){
-				tasksList.set(14, s);
-			}
-			else {
-				tasksList.set(fromhour, s);
-			}
+//			for(int m = fromhour ; m <= tohour ; m ++ ){
+//				tasksList.get(m).set(position, s);
+//			}
+
+			position++;
 
 		}
 
-		listView.setAdapter(new TasksListAdapter(TaskActionActivity.this, tasksList));
+		for (int i = 0; i < 24; i++) {
+			tasksList.add(getList(i));
+		}
+		
 
 
-		Toast.makeText(TaskActionActivity.this,
-				tasksList.get(1)[2] == null ? "null":tasksList.get(0)[2],
-						1).show();
+		listView.setAdapter(new TasksListAdapter(TaskActionActivity.this, tasksList , position));
 
 		db.close();
 
@@ -162,6 +201,9 @@ public class TaskActionActivity extends Activity {
 
 			}
 		});
+
+
+
 
 		btnclearsearchtext.setOnClickListener(new OnClickListener() {
 
@@ -210,6 +252,60 @@ public class TaskActionActivity extends Activity {
 				Toast.makeText(getApplicationContext(), "فعالیت", 1).show();
 			}
 		});
+
+	}
+
+
+	
+	public List<String[]> getList(int i){
+		switch (i) {
+		case	0	  : return 	 l0	;
+		case	1	  : return 	 l1	;
+		case	2	  : return 	 l2	;
+		case	3	  : return 	 l3	;
+		case	4	  : return 	 l4	;
+		case	5	  : return 	 l5	;
+		case	6	  : return 	 l6	;
+		case	7	  : return 	 l7	;
+		case	8	  : return 	 l8	;
+		case	9	  : return 	 l9	;
+		case	10	  : return 	 l10	;
+		case	11	  : return 	 l11	;
+		case	12	  : return 	 l12	;
+		case	13	  : return 	 l13	;
+		case	14	  : return 	 l14	;
+		case	15	  : return 	 l15	;
+		case	16	  : return 	 l16	;
+		case	17	  : return 	 l17	;
+		case	18	  : return 	 l18	;
+		case	19	  : return 	 l19	;
+		case	20	  : return 	 l20	;
+		case	21	  : return 	 l21	;
+		case	22	  : return 	 l22	;
+		case	23	  : return 	 l23	;
+
+
+		default:
+			return null;
+		}
+
+	}
+
+	public void fillListEmpty(int size) {
+
+//		String[] ss = new String[14];
+//
+//		for (int j = 0; j <14; j++) {
+//			ss[j] = "";
+//		}
+//
+//		for(int i = 0 ; i<size ; i++){
+//			getList(i).add(ss) ;
+//		}
+//
+//		for (int i = 0; i <24; i++) {
+//			tasksList.add(l0);
+//		}
 
 	}
 

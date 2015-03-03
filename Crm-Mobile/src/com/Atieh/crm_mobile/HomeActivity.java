@@ -347,92 +347,92 @@ public class HomeActivity extends Activity {
 		}
 
 
-		//insert Tasks
-		if (gettask.getInserted() != null) {
-			for (int i = 0; i < gettask.getInserted().size(); i++) {
-				db.InsertTasks(gettask.getInserted().get(i).getId(),
-						gettask.getInserted().get(i).getCustomerId(),
-						gettask.getInserted().get(i).getDescription(), 
-						gettask.getInserted().get(i).getFromDateTime(),
-						gettask.getInserted().get(i).isIsAm() == null ? "null":gettask.getInserted().get(i).isIsAm().toString(),
-								gettask.getInserted().get(i).getParentActivityId() == null ? "": gettask.getInserted().get(i).getParentActivityId().toString(),
-										gettask.getInserted().get(i).getParentTaskId()== null ? "": gettask.getInserted().get(i).getParentTaskId().toString() , 
-												gettask.getInserted().get(i).getPersonRelationId()== null ? "": gettask.getInserted().get(i).getPersonRelationId().toString(),
-														gettask.getInserted().get(i).getTemporaryCustomerId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerId().toString(), 
-																gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId().toString(),
-																		gettask.getInserted().get(i).getTitle(), 
-																		gettask.getInserted().get(i).getToDateTime()== null ? "": gettask.getInserted().get(i).getToDateTime().toString() );
-
-				if(gettask.getInserted().get(i).getProductsIds() != null){
-
-					for (int j = 0; j < gettask.getInserted().get(i).getProductsIds().size(); j++) {
-
-						db.InsertTasksProducts(gettask.getInserted().get(i).getId(),
-								gettask.getInserted().get(i).getProductsIds().get(j).getId());	
-					}
-				}
-
-				if(gettask.getInserted().get(i).getServicesIds() != null){
-
-					for (int j = 0; j < gettask.getInserted().get(i).getServicesIds().size(); j++) {
-
-						db.InsertTasksServices(gettask.getInserted().get(i).getId(),
-								gettask.getInserted().get(i).getServicesIds().get(j).getId());	
-					}
-				}
-
-
-			}
-
-		}
-
-
-
-		//update Tasks
-		if (gettask.getUpdated() != null) {
-			for (int i = 0; i < gettask.getUpdated().size(); i++) {
-				db.UpdateTasks(gettask.getUpdated().get(i).getId(),
-						gettask.getUpdated().get(i).getCustomerId(),
-						gettask.getUpdated().get(i).getDescription(), 
-						gettask.getUpdated().get(i).getFromDateTime(),
-						gettask.getInserted().get(i).isIsAm() == null ? "null":gettask.getInserted().get(i).isIsAm().toString(),
-								gettask.getUpdated().get(i).getParentActivityId() == null ? "": gettask.getUpdated().get(i).getParentActivityId().toString(),
-										gettask.getUpdated().get(i).getParentTaskId()== null ? "": gettask.getUpdated().get(i).getParentTaskId().toString() , 
-												gettask.getUpdated().get(i).getPersonRelationId()== null ? "": gettask.getUpdated().get(i).getPersonRelationId().toString(),
-														gettask.getUpdated().get(i).getTemporaryCustomerId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerId().toString(), 
-																gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId().toString(),
-																		gettask.getUpdated().get(i).getTitle(), 
-																		gettask.getUpdated().get(i).getToDateTime()== null ? "": gettask.getUpdated().get(i).getToDateTime().toString() );
-
-				if(gettask.getUpdated().get(i).getProductsIds() != null){
-
-					for (int j = 0; j < gettask.getUpdated().get(i).getProductsIds().size(); j++) {
-
-						db.InsertTasksProducts(gettask.getUpdated().get(i).getId(),
-								gettask.getUpdated().get(i).getProductsIds().get(j).getId());	
-					}
-				}
-
-				if(gettask.getUpdated().get(i).getServicesIds() != null){
-
-					for (int j = 0; j < gettask.getUpdated().get(i).getServicesIds().size(); j++) {
-
-						db.InsertTasksServices(gettask.getUpdated().get(i).getId(),
-								gettask.getUpdated().get(i).getServicesIds().get(j).getId());	
-					}
-				}
-
-			}
-		}
-
-
-		//delete Tasks
-		if (gettask.getDeleted() != null) {
-			for (int i = 0; i < gettask.getDeleted().size(); i++) {
-				db.DeleteTasks(gettask.getDeleted().get(i).getId());
-			}
-		}
-
+//		//insert Tasks
+//		if (gettask.getInserted() != null) {
+//			for (int i = 0; i < gettask.getInserted().size(); i++) {
+//				db.InsertTasks(gettask.getInserted().get(i).getId(),
+//						gettask.getInserted().get(i).getCustomerId(),
+//						gettask.getInserted().get(i).getDescription(), 
+//						gettask.getInserted().get(i).getFromDateTime(),
+//						gettask.getInserted().get(i).isIsAm() == null ? "null":gettask.getInserted().get(i).isIsAm().toString(),
+//								gettask.getInserted().get(i).getParentActivityId() == null ? "": gettask.getInserted().get(i).getParentActivityId().toString(),
+//										gettask.getInserted().get(i).getParentTaskId()== null ? "": gettask.getInserted().get(i).getParentTaskId().toString() , 
+//												gettask.getInserted().get(i).getPersonRelationId()== null ? "": gettask.getInserted().get(i).getPersonRelationId().toString(),
+//														gettask.getInserted().get(i).getTemporaryCustomerId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerId().toString(), 
+//																gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getInserted().get(i).getTemporaryCustomerPersonRelationsId().toString(),
+//																		gettask.getInserted().get(i).getTitle(), 
+//																		gettask.getInserted().get(i).getToDateTime()== null ? "": gettask.getInserted().get(i).getToDateTime().toString() );
+//
+//				if(gettask.getInserted().get(i).getProductsIds() != null){
+//
+//					for (int j = 0; j < gettask.getInserted().get(i).getProductsIds().size(); j++) {
+//
+//						db.InsertTasksProducts(gettask.getInserted().get(i).getId(),
+//								gettask.getInserted().get(i).getProductsIds().get(j).getId());	
+//					}
+//				}
+//
+//				if(gettask.getInserted().get(i).getServicesIds() != null){
+//
+//					for (int j = 0; j < gettask.getInserted().get(i).getServicesIds().size(); j++) {
+//
+//						db.InsertTasksServices(gettask.getInserted().get(i).getId(),
+//								gettask.getInserted().get(i).getServicesIds().get(j).getId());	
+//					}
+//				}
+//
+//
+//			}
+//
+//		}
+//
+//
+//
+//		//update Tasks
+//		if (gettask.getUpdated() != null) {
+//			for (int i = 0; i < gettask.getUpdated().size(); i++) {
+//				db.UpdateTasks(gettask.getUpdated().get(i).getId(),
+//						gettask.getUpdated().get(i).getCustomerId(),
+//						gettask.getUpdated().get(i).getDescription(), 
+//						gettask.getUpdated().get(i).getFromDateTime(),
+//						gettask.getInserted().get(i).isIsAm() == null ? "null":gettask.getInserted().get(i).isIsAm().toString(),
+//								gettask.getUpdated().get(i).getParentActivityId() == null ? "": gettask.getUpdated().get(i).getParentActivityId().toString(),
+//										gettask.getUpdated().get(i).getParentTaskId()== null ? "": gettask.getUpdated().get(i).getParentTaskId().toString() , 
+//												gettask.getUpdated().get(i).getPersonRelationId()== null ? "": gettask.getUpdated().get(i).getPersonRelationId().toString(),
+//														gettask.getUpdated().get(i).getTemporaryCustomerId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerId().toString(), 
+//																gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId()== null ? "": gettask.getUpdated().get(i).getTemporaryCustomerPersonRelationsId().toString(),
+//																		gettask.getUpdated().get(i).getTitle(), 
+//																		gettask.getUpdated().get(i).getToDateTime()== null ? "": gettask.getUpdated().get(i).getToDateTime().toString() );
+//
+//				if(gettask.getUpdated().get(i).getProductsIds() != null){
+//
+//					for (int j = 0; j < gettask.getUpdated().get(i).getProductsIds().size(); j++) {
+//
+//						db.InsertTasksProducts(gettask.getUpdated().get(i).getId(),
+//								gettask.getUpdated().get(i).getProductsIds().get(j).getId());	
+//					}
+//				}
+//
+//				if(gettask.getUpdated().get(i).getServicesIds() != null){
+//
+//					for (int j = 0; j < gettask.getUpdated().get(i).getServicesIds().size(); j++) {
+//
+//						db.InsertTasksServices(gettask.getUpdated().get(i).getId(),
+//								gettask.getUpdated().get(i).getServicesIds().get(j).getId());	
+//					}
+//				}
+//
+//			}
+//		}
+//
+//
+//		//delete Tasks
+//		if (gettask.getDeleted() != null) {
+//			for (int i = 0; i < gettask.getDeleted().size(); i++) {
+//				db.DeleteTasks(gettask.getDeleted().get(i).getId());
+//			}
+//		}
+//
 
 		//insert activities
 		if(activities.getInserted() != null){
