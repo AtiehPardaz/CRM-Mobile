@@ -223,9 +223,17 @@ public class database extends SQLiteOpenHelper {
 		// (Id Title Description IsLegal Address Tel IsDeleted)
 	}
 
+	public Cursor GetCustomersByID (String id){
+
+		Cursor cu= mydb.rawQuery("select Title from custemers where Id = '"+id+"' limit 1", null); 
+		return cu ;
+		// (Id Title Description IsLegal Address Tel IsDeleted)
+	}
 	
 	
 	
+	
+
 
 	public void InsertPersonRelations(String CustomerId,String Id,String RelationRoleId,String Title){
 		ContentValues values = new ContentValues();
@@ -257,7 +265,12 @@ public class database extends SQLiteOpenHelper {
 
 	}
 
+	public Cursor GetPersonRelationsByCustomerIdAndID (String CustomerId , String Id){
 
+		Cursor cu= mydb.rawQuery("select Title from personRelations where CustomerId = '"+CustomerId+"' and Id = '"+Id+ "' limit 1", null); 
+		return cu ;
+		// (Id Title Description IsLegal Address Tel IsDeleted)
+	}
 
 
 
@@ -435,9 +448,15 @@ public class database extends SQLiteOpenHelper {
 		// TemporaryCustomerPersonRelationsId Title ToDateTime IsDeleted
 	}
 
-	
+	public Cursor GetTaskByID (String id){
 
-	
+		Cursor cu= mydb.rawQuery("select * from tasks where Id = '"+id+"'", null); 
+		return cu ;
+		
+		// Id CustomerId Description FromDateTime IsAm ParentActivityId ParentTaskId PersonRelationId TemporaryCustomerId
+		// TemporaryCustomerPersonRelationsId Title ToDateTime IsDeleted
+	}
+
 	
 
 	public void InsertActivities(

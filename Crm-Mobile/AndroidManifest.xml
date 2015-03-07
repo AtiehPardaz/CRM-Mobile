@@ -82,6 +82,10 @@
             android:name=".CustemerSendTestActivity"
             android:label="@string/title_activity_custemer_send_test" >
         </activity>
+        <activity
+            android:name=".TaskDetailsActivity"
+            android:label="@string/title_activity_task_details" >
+        </activity>
     </application>
 
 </manifest>

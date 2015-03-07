@@ -88,108 +88,8 @@ public class TaskActionActivity extends Activity {
 		listView = (ListView) findViewById(R.id.lv_tasks);
 
 		initview();
-		db = new database(this);
-		db.database();
-
-		// ll_hidesearch.setVisibility(View.GONE);
-		Intent intent = getIntent();
-		String date = intent.getStringExtra("date");
-
-		String[] seprated = date.split(":");
-
-		if(seprated[1].length() == 1)
-			seprated[1] = "0"+seprated[1];
-
-		if(seprated[2].length() == 1)
-			seprated[2] = "0"+seprated[2];
-
-		date = seprated[0] +":"+ seprated[1] +":" + seprated[2];
-
-
-		db.open();
-
-
-		Cursor tasksCursor = db.GetTasks(date);
-		tasksList = new ArrayList<List<String[]>>();
-
-		int size = tasksCursor.getCount();
-		//fillListEmpty(size);
 		
-		String[] ss = new String[14];
-
-		for (int j = 0; j <14; j++) {
-			ss[j] = "";
-		}
-
-
-		int position = 0;
-		while (tasksCursor.moveToNext()) {
-
-			String[] s = new String[14];
-			//List<String[]> temp = new ArrayList<String[]>();
-
-			s[0] = tasksCursor.getString(0);
-			s[1] = tasksCursor.getString(1);
-			s[2] = tasksCursor.getString(2);
-			s[3] = tasksCursor.getString(3);
-			s[4] = tasksCursor.getString(4);
-			s[5] = tasksCursor.getString(5);
-			s[6] = tasksCursor.getString(6);
-			s[7] = tasksCursor.getString(7);
-			s[8] = tasksCursor.getString(8);
-			s[9] = tasksCursor.getString(9);
-			s[10] = tasksCursor.getString(10);
-			s[11] = tasksCursor.getString(11);
-
-
-			//calculating fromdatetimes
-			String[] fromdateHour = s[3].split(" ");
-			String[] fromhours = fromdateHour[1].split(":");
-			int fromhour = Integer.parseInt(fromhours[0]);
-			s[12] = "1"; // is the first in a culumn to write the title only one times
-
-			//calculating TodateTime
-			String[] todateHour = s[11].split(" ");
-			String[] tohours = todateHour[1].split(":");
-			int tohour = Integer.parseInt(tohours[0]);
-			s[13] = tohours[0];
-
-			
-			for (int i = 0; i < 24; i++) {
-				if (i<fromhour || i> tohour) {
-					getList(i).add(ss);
-				}
-				
-				else {
-					
-					if(i == fromhour){
-						getList(i).add(s);
-						s[12] = "0";
-					}
-					else {
-						getList(i).add(s);
-					}
-				}
-			}
-			
-//			for(int m = fromhour ; m <= tohour ; m ++ ){
-//				tasksList.get(m).set(position, s);
-//			}
-
-			position++;
-
-		}
-
-		for (int i = 0; i < 24; i++) {
-			tasksList.add(getList(i));
-		}
-		
-
-
-		listView.setAdapter(new TasksListAdapter(TaskActionActivity.this, tasksList , position));
-
-		db.close();
-
+		updateTasksList();
 
 
 
@@ -239,7 +139,7 @@ public class TaskActionActivity extends Activity {
 
 				btntask.setBackgroundResource(color.bg_action_green);
 				btnaction.setBackgroundResource(color.bg_action_gray);
-				Toast.makeText(getApplicationContext(), "وظیفه", 1).show();
+				updateTasksList();
 			}
 		});
 		btnaction.setOnClickListener(new OnClickListener() {
@@ -255,6 +155,108 @@ public class TaskActionActivity extends Activity {
 
 	}
 
+	private void updateTasksList() {
+		
+		db = new database(this);
+		db.database();
+
+		// ll_hidesearch.setVisibility(View.GONE);
+		Intent intent = getIntent();
+		String date = intent.getStringExtra("date");
+
+		String[] seprated = date.split(":");
+
+		if(seprated[1].length() == 1)
+			seprated[1] = "0"+seprated[1];
+
+		if(seprated[2].length() == 1)
+			seprated[2] = "0"+seprated[2];
+
+		date = seprated[0] +":"+ seprated[1] +":" + seprated[2];
+
+
+		db.open();
+
+
+		Cursor tasksCursor = db.GetTasks(date);
+		tasksList = new ArrayList<List<String[]>>();
+		boolean[][] titleSet = new boolean[24][30];
+		String[][] TaskIDs = new String[24][30];
+		int size = tasksCursor.getCount();
+		//fillListEmpty(size);
+		
+		String[] ss = new String[14];
+
+		for (int j = 0; j <14; j++) {
+			ss[j] = "";
+		}
+
+
+		int position = 0;
+		while (tasksCursor.moveToNext()) {
+
+			String[] s = new String[14];
+
+			for (int i = 0; i < 12; i++) {
+				s[i] = tasksCursor.getString(i);
+			}
+		
+
+			//calculating fromdatetimes
+			String[] fromdateHour = s[3].split(" ");
+			s[3] = fromdateHour[0]; // task day
+			
+			String[] fromhours = fromdateHour[1].split(":");
+			int fromhour = Integer.parseInt(fromhours[0]);
+			s[12] = fromhours[0]; // is the first in a culumn to write the title only one times
+
+			//calculating TodateTime
+			String[] todateHour = s[11].split(" ");
+			String[] tohours = todateHour[1].split(":");
+			int tohour = Integer.parseInt(tohours[0]);
+			s[13] = tohours[0];
+
+			
+			for (int i = 0; i < 24; i++) {
+				if (i<fromhour || i> tohour) {
+					getList(i).add(ss);
+					titleSet[i][position]= false;
+					TaskIDs[i][position]= s[0];
+
+				}
+				
+				else {
+					
+					if(i == fromhour){
+						getList(i).add(s);
+						titleSet[i][position]= true;
+						TaskIDs[i][position]= s[0];
+
+					}
+					else {
+						getList(i).add(s);
+						titleSet[i][position]= false;
+						TaskIDs[i][position]= s[0];
+
+
+					}
+				}
+			}
+			
+			position++;
+
+		}
+
+		for (int i = 0; i < 24; i++) {
+			tasksList.add(getList(i));
+		}
+		
+
+
+		listView.setAdapter(new TasksListAdapter(TaskActionActivity.this, tasksList , position ,titleSet,TaskIDs));
+
+		db.close();
+	}
 
 	
 	public List<String[]> getList(int i){
@@ -283,29 +285,11 @@ public class TaskActionActivity extends Activity {
 		case	21	  : return 	 l21	;
 		case	22	  : return 	 l22	;
 		case	23	  : return 	 l23	;
-
+		
 
 		default:
 			return null;
 		}
-
-	}
-
-	public void fillListEmpty(int size) {
-
-//		String[] ss = new String[14];
-//
-//		for (int j = 0; j <14; j++) {
-//			ss[j] = "";
-//		}
-//
-//		for(int i = 0 ; i<size ; i++){
-//			getList(i).add(ss) ;
-//		}
-//
-//		for (int i = 0; i <24; i++) {
-//			tasksList.add(l0);
-//		}
 
 	}
 

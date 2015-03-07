@@ -13,7 +13,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="no" />
+        android:text="no"
+        android:textSize="8sp" />
 
     <LinearLayout
         android:id="@+id/layoutTaskHour"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="45dp"
         android:gravity="right"
         android:orientation="horizontal"
         android:paddingRight="15dp" >

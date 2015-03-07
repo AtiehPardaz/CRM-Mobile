@@ -48,5 +48,6 @@
     <string name="qibla_compass">Compass/Qibla</string>
     <string name="compass_not_found">Compass sensor not found</string>
     <string name="title_activity_custemer_send_test">CustemerSendTestActivity</string>
+    <string name="title_activity_task_details">TaskDetailsActivity</string>
 
 </resources>
