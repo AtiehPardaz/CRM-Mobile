@@ -163,188 +163,188 @@ public class HomeActivity extends Activity {
 
 
 		// insert products
-		if (PandSs.getProducts().getInserted() != null) {
-			for (int i = 0; i < PandSs.getProducts().getInserted().size(); i++) {
-
-				db.InsertProduct(PandSs.getProducts().getInserted().get(i)
-						.getId(), PandSs.getProducts().getInserted().get(i)
-						.getName(), 0);
-			}
-		}
-
-		// insert services
-		if (PandSs.getServices().getInserted() != null) {
-			for (int i = 0; i < PandSs.getServices().getInserted().size(); i++) {
-
-				db.InsertService(PandSs.getServices().getInserted().get(i)
-						.getId(), PandSs.getServices().getInserted().get(i)
-						.getName(), 0);
-			}
-		}
-
-		// update products
-		if (PandSs.getProducts().getUpdated() != null) {
-			for (int i = 0; i < PandSs.getProducts().getUpdated().size(); i++) {
-
-				db.UpdateProduct(PandSs.getProducts().getUpdated().get(i)
-						.getId(), PandSs.getProducts().getUpdated().get(i)
-						.getName(), 0);
-			}
-		}
-
-		// update services
-		if (PandSs.getServices().getUpdated() != null) {
-			for (int i = 0; i < PandSs.getServices().getUpdated().size(); i++) {
-
-				db.UpdateService(PandSs.getServices().getUpdated().get(i)
-						.getId(), PandSs.getServices().getUpdated().get(i)
-						.getName(), 0);
-			}
-		}
-
-		// delete products
-		if (PandSs.getProducts().getDeleted() != null) {
-			for (int i = 0; i < PandSs.getProducts().getDeleted().size(); i++) {
-
-				db.DeleteProduct(PandSs.getProducts().getDeleted().get(i)
-						.getId());
-			}
-		}
-
-		// delete services
-		if (PandSs.getServices().getDeleted() != null) {
-			for (int i = 0; i < PandSs.getServices().getDeleted().size(); i++) {
-
-				db.DeleteService(PandSs.getServices().getDeleted().get(i)
-						.getId());
-			}
-		}
-
-		// insert customer
-		if (customers.getInserted() != null) {
-
-			for (int i = 0; i < customers.getInserted().size(); i++) {
-
-				db.InsertCustomer(customers.getInserted().get(i).getId(),
-						customers.getInserted().get(i).getTitle(), customers
-						.getInserted().get(i).getDescription(),
-						customers.getInserted().get(i).isIsLegal() ? 1 : 0,
-								customers.getInserted().get(i).getAddress(), customers
-								.getInserted().get(i).getTel());
-				if (customers.getInserted().get(i).getPersonRelations() != null) {
-					for (int j = 0; j < customers.getInserted().get(i)
-							.getPersonRelations().size(); j++) {
-						db.InsertPersonRelations(customers.getInserted().get(i)
-								.getPersonRelations().get(j).getCustomerId(),
-								customers.getInserted().get(i)
-								.getPersonRelations().get(j).getId(),
-								customers.getInserted().get(i)
-								.getPersonRelations().get(j)
-								.getRelationRoleId(), customers
-								.getInserted().get(i)
-								.getPersonRelations().get(j).getTitle());
-					}
-
-				}
-			}
-
-		}
-
-		// update customers
-		if (customers.getUpdated() != null) {
-
-			for (int i = 0; i < customers.getUpdated().size(); i++) {
-
-				db.UpdateCustomer(customers.getUpdated().get(i).getId(),
-						customers.getUpdated().get(i).getTitle(), customers
-						.getUpdated().get(i).getDescription(),
-						customers.getUpdated().get(i).isIsLegal() ? 1 : 0,
-								customers.getUpdated().get(i).getAddress(), customers
-								.getUpdated().get(i).getTel());
-
-				if (customers.getUpdated().get(i).getPersonRelations() != null) {
-					for (int j = 0; j < customers.getUpdated().get(i)
-							.getPersonRelations().size(); j++) {
-						db.UpdatePersonRelations(customers.getUpdated().get(i)
-								.getPersonRelations().get(j).getCustomerId(),
-								customers.getUpdated().get(i)
-								.getPersonRelations().get(j).getId(),
-								customers.getUpdated().get(i)
-								.getPersonRelations().get(j)
-								.getRelationRoleId(), customers
-								.getUpdated().get(i)
-								.getPersonRelations().get(j).getTitle());
-					}
-
-				}
-			}
-
-		}
-
-		// DeletedPersonRelation
-		if (customers.getDeletedPersonRelation() != null) {
-			for (int i = 0; i < customers.getDeletedPersonRelation().size(); i++) {
-				db.DeletePersonRelations(customers.getDeletedPersonRelation()
-						.get(i).getCustomerId(), customers
-						.getDeletedPersonRelation().get(i).getId());
-			}
-		}
-
-		// delete Customers
-		if (customers.getDeleted() != null) {
-			for (int i = 0; i < customers.getDeleted().size(); i++) {
-				db.DeleteCustomer(customers.getDeleted().get(i).getId());
-			}
-
-		}
-
-		// insert RelationRoles
-		if (relations.getInserted() != null) {
-			for (int i = 0; i < relations.getInserted().size(); i++) {
-				db.InsertRelationRoles(relations.getInserted().get(i).getId(),
-						relations.getInserted().get(i).getTitle());
-			}
-		}
-
-		// update RelationRoles
-		if (relations.getUpdated() != null) {
-			for (int i = 0; i < relations.getUpdated().size(); i++) {
-				db.UpdateRelationRoles(relations.getUpdated().get(i).getId(),
-						relations.getUpdated().get(i).getTitle());
-			}
-		}
-
-		// delete relationRoles
-		if (relations.getDeleted() != null) {
-			for (int i = 0; i < relations.getDeleted().size(); i++) {
-				db.DeleteRelationRoles(relations.getDeleted().get(i).getId());
-			}
-		}
-
-		// insert activitystatus
-		if (activitystatus.getInserted() != null) {
-			for (int i = 0; i < activitystatus.getInserted().size(); i++) {
-				db.InsertActivityStatus(activitystatus.getInserted().get(i)
-						.getId(), activitystatus.getInserted().get(i)
-						.getTitle());
-			}
-		}
-
-		// update activitystatus
-		if (activitystatus.getUpdated() != null) {
-			for (int i = 0; i < activitystatus.getUpdated().size(); i++) {
-				db.UpdateActivityStatus(activitystatus.getUpdated().get(i)
-						.getId(), activitystatus.getUpdated().get(i).getTitle());
-			}
-		}
-
-		// delete activitystatus
-		if (activitystatus.getDeleted() != null) {
-			for (int i = 0; i < activitystatus.getDeleted().size(); i++) {
-				db.DeleteActivityStatus(activitystatus.getDeleted().get(i)
-						.getId());
-			}
-		}
+//		if (PandSs.getProducts().getInserted() != null) {
+//			for (int i = 0; i < PandSs.getProducts().getInserted().size(); i++) {
+//
+//				db.InsertProduct(PandSs.getProducts().getInserted().get(i)
+//						.getId(), PandSs.getProducts().getInserted().get(i)
+//						.getName(), 0);
+//			}
+//		}
+//
+//		// insert services
+//		if (PandSs.getServices().getInserted() != null) {
+//			for (int i = 0; i < PandSs.getServices().getInserted().size(); i++) {
+//
+//				db.InsertService(PandSs.getServices().getInserted().get(i)
+//						.getId(), PandSs.getServices().getInserted().get(i)
+//						.getName(), 0);
+//			}
+//		}
+//
+//		// update products
+//		if (PandSs.getProducts().getUpdated() != null) {
+//			for (int i = 0; i < PandSs.getProducts().getUpdated().size(); i++) {
+//
+//				db.UpdateProduct(PandSs.getProducts().getUpdated().get(i)
+//						.getId(), PandSs.getProducts().getUpdated().get(i)
+//						.getName(), 0);
+//			}
+//		}
+//
+//		// update services
+//		if (PandSs.getServices().getUpdated() != null) {
+//			for (int i = 0; i < PandSs.getServices().getUpdated().size(); i++) {
+//
+//				db.UpdateService(PandSs.getServices().getUpdated().get(i)
+//						.getId(), PandSs.getServices().getUpdated().get(i)
+//						.getName(), 0);
+//			}
+//		}
+//
+//		// delete products
+//		if (PandSs.getProducts().getDeleted() != null) {
+//			for (int i = 0; i < PandSs.getProducts().getDeleted().size(); i++) {
+//
+//				db.DeleteProduct(PandSs.getProducts().getDeleted().get(i)
+//						.getId());
+//			}
+//		}
+//
+//		// delete services
+//		if (PandSs.getServices().getDeleted() != null) {
+//			for (int i = 0; i < PandSs.getServices().getDeleted().size(); i++) {
+//
+//				db.DeleteService(PandSs.getServices().getDeleted().get(i)
+//						.getId());
+//			}
+//		}
+//
+//		// insert customer
+//		if (customers.getInserted() != null) {
+//
+//			for (int i = 0; i < customers.getInserted().size(); i++) {
+//
+//				db.InsertCustomer(customers.getInserted().get(i).getId(),
+//						customers.getInserted().get(i).getTitle(), customers
+//						.getInserted().get(i).getDescription(),
+//						customers.getInserted().get(i).isIsLegal() ? 1 : 0,
+//								customers.getInserted().get(i).getAddress(), customers
+//								.getInserted().get(i).getTel());
+//				if (customers.getInserted().get(i).getPersonRelations() != null) {
+//					for (int j = 0; j < customers.getInserted().get(i)
+//							.getPersonRelations().size(); j++) {
+//						db.InsertPersonRelations(customers.getInserted().get(i)
+//								.getPersonRelations().get(j).getCustomerId(),
+//								customers.getInserted().get(i)
+//								.getPersonRelations().get(j).getId(),
+//								customers.getInserted().get(i)
+//								.getPersonRelations().get(j)
+//								.getRelationRoleId(), customers
+//								.getInserted().get(i)
+//								.getPersonRelations().get(j).getTitle());
+//					}
+//
+//				}
+//			}
+//
+//		}
+//
+//		// update customers
+//		if (customers.getUpdated() != null) {
+//
+//			for (int i = 0; i < customers.getUpdated().size(); i++) {
+//
+//				db.UpdateCustomer(customers.getUpdated().get(i).getId(),
+//						customers.getUpdated().get(i).getTitle(), customers
+//						.getUpdated().get(i).getDescription(),
+//						customers.getUpdated().get(i).isIsLegal() ? 1 : 0,
+//								customers.getUpdated().get(i).getAddress(), customers
+//								.getUpdated().get(i).getTel());
+//
+//				if (customers.getUpdated().get(i).getPersonRelations() != null) {
+//					for (int j = 0; j < customers.getUpdated().get(i)
+//							.getPersonRelations().size(); j++) {
+//						db.UpdatePersonRelations(customers.getUpdated().get(i)
+//								.getPersonRelations().get(j).getCustomerId(),
+//								customers.getUpdated().get(i)
+//								.getPersonRelations().get(j).getId(),
+//								customers.getUpdated().get(i)
+//								.getPersonRelations().get(j)
+//								.getRelationRoleId(), customers
+//								.getUpdated().get(i)
+//								.getPersonRelations().get(j).getTitle());
+//					}
+//
+//				}
+//			}
+//
+//		}
+//
+//		// DeletedPersonRelation
+//		if (customers.getDeletedPersonRelation() != null) {
+//			for (int i = 0; i < customers.getDeletedPersonRelation().size(); i++) {
+//				db.DeletePersonRelations(customers.getDeletedPersonRelation()
+//						.get(i).getCustomerId(), customers
+//						.getDeletedPersonRelation().get(i).getId());
+//			}
+//		}
+//
+//		// delete Customers
+//		if (customers.getDeleted() != null) {
+//			for (int i = 0; i < customers.getDeleted().size(); i++) {
+//				db.DeleteCustomer(customers.getDeleted().get(i).getId());
+//			}
+//
+//		}
+//
+//		// insert RelationRoles
+//		if (relations.getInserted() != null) {
+//			for (int i = 0; i < relations.getInserted().size(); i++) {
+//				db.InsertRelationRoles(relations.getInserted().get(i).getId(),
+//						relations.getInserted().get(i).getTitle());
+//			}
+//		}
+//
+//		// update RelationRoles
+//		if (relations.getUpdated() != null) {
+//			for (int i = 0; i < relations.getUpdated().size(); i++) {
+//				db.UpdateRelationRoles(relations.getUpdated().get(i).getId(),
+//						relations.getUpdated().get(i).getTitle());
+//			}
+//		}
+//
+//		// delete relationRoles
+//		if (relations.getDeleted() != null) {
+//			for (int i = 0; i < relations.getDeleted().size(); i++) {
+//				db.DeleteRelationRoles(relations.getDeleted().get(i).getId());
+//			}
+//		}
+//
+//		// insert activitystatus
+//		if (activitystatus.getInserted() != null) {
+//			for (int i = 0; i < activitystatus.getInserted().size(); i++) {
+//				db.InsertActivityStatus(activitystatus.getInserted().get(i)
+//						.getId(), activitystatus.getInserted().get(i)
+//						.getTitle());
+//			}
+//		}
+//
+//		// update activitystatus
+//		if (activitystatus.getUpdated() != null) {
+//			for (int i = 0; i < activitystatus.getUpdated().size(); i++) {
+//				db.UpdateActivityStatus(activitystatus.getUpdated().get(i)
+//						.getId(), activitystatus.getUpdated().get(i).getTitle());
+//			}
+//		}
+//
+//		// delete activitystatus
+//		if (activitystatus.getDeleted() != null) {
+//			for (int i = 0; i < activitystatus.getDeleted().size(); i++) {
+//				db.DeleteActivityStatus(activitystatus.getDeleted().get(i)
+//						.getId());
+//			}
+//		}
 
 
 //		//insert Tasks
@@ -435,50 +435,50 @@ public class HomeActivity extends Activity {
 //
 
 		//insert activities
-		if(activities.getInserted() != null){
-			for (int i = 0; i < activities.getInserted().size(); i++) {
-				db.InsertActivities(activities.getInserted().get(i).getId(),
-						activities.getInserted().get(i).getActivityStatusId(),
-						activities.getInserted().get(i).getCustomerId()== null ? "": activities.getInserted().get(i).getCustomerId().toString(),
-						activities.getInserted().get(i).getDescription(),
-						activities.getInserted().get(i).getFromDateTime(),
-						activities.getInserted().get(i).isHasNextTask() ? "1" : "0",
-						activities.getInserted().get(i).getParentActivityId()== null ? "": activities.getInserted().get(i).getParentActivityId().toString(), 
-						activities.getInserted().get(i).getPersonRelationId()== null ? "": activities.getInserted().get(i).getPersonRelationId().toString(), 
-						activities.getInserted().get(i).getTaskId()== null ? "": activities.getInserted().get(i).getTaskId().toString(),
-						activities.getInserted().get(i).getTemporaryCustomerId()== null ? "": activities.getInserted().get(i).getTemporaryCustomerId().toString(), 
-						activities.getInserted().get(i).getToDateTime()== null ? "": activities.getInserted().get(i).getToDateTime().toString()
-								);
-				
-			}
-		}
-		
-		//update activities
-		if(activities.getUpdated() != null){
-			for (int i = 0; i < activities.getUpdated().size(); i++) {
-				db.UpdateActivities(activities.getUpdated().get(i).getId(),
-						activities.getUpdated().get(i).getActivityStatusId(),
-						activities.getUpdated().get(i).getCustomerId()== null ? "": activities.getUpdated().get(i).getCustomerId().toString(),
-						activities.getUpdated().get(i).getDescription(),
-						activities.getUpdated().get(i).getFromDateTime(),
-						activities.getUpdated().get(i).isHasNextTask() ? "1" : "0",
-						activities.getUpdated().get(i).getParentActivityId()== null ? "": activities.getUpdated().get(i).getParentActivityId().toString(), 
-						activities.getUpdated().get(i).getPersonRelationId()== null ? "": activities.getUpdated().get(i).getPersonRelationId().toString(), 
-						activities.getUpdated().get(i).getTaskId()== null ? "": activities.getUpdated().get(i).getTaskId().toString(),
-						activities.getUpdated().get(i).getTemporaryCustomerId()== null ? "": activities.getUpdated().get(i).getTemporaryCustomerId().toString(), 
-						activities.getUpdated().get(i).getToDateTime()== null ? "": activities.getUpdated().get(i).getToDateTime().toString()
-								);
-				
-			}
-		}
-			
-		//delete activities
-		if(activities.getDeleted() != null){
-			for (int i = 0; i < activities.getUpdated().size(); i++) {
-				db.DeleteActivities(activities.getDeleted().get(i).getId());
-				
-			}
-		}
+//		if(activities.getInserted() != null){
+//			for (int i = 0; i < activities.getInserted().size(); i++) {
+//				db.InsertActivities(activities.getInserted().get(i).getId(),
+//						activities.getInserted().get(i).getActivityStatusId(),
+//						activities.getInserted().get(i).getCustomerId()== null ? "": activities.getInserted().get(i).getCustomerId().toString(),
+//						activities.getInserted().get(i).getDescription(),
+//						activities.getInserted().get(i).getFromDateTime(),
+//						activities.getInserted().get(i).isHasNextTask() ? "1" : "0",
+//						activities.getInserted().get(i).getParentActivityId()== null ? "": activities.getInserted().get(i).getParentActivityId().toString(), 
+//						activities.getInserted().get(i).getPersonRelationId()== null ? "": activities.getInserted().get(i).getPersonRelationId().toString(), 
+//						activities.getInserted().get(i).getTaskId()== null ? "": activities.getInserted().get(i).getTaskId().toString(),
+//						activities.getInserted().get(i).getTemporaryCustomerId()== null ? "": activities.getInserted().get(i).getTemporaryCustomerId().toString(), 
+//						activities.getInserted().get(i).getToDateTime()== null ? "": activities.getInserted().get(i).getToDateTime().toString()
+//								);
+//				
+//			}
+//		}
+//		
+//		//update activities
+//		if(activities.getUpdated() != null){
+//			for (int i = 0; i < activities.getUpdated().size(); i++) {
+//				db.UpdateActivities(activities.getUpdated().get(i).getId(),
+//						activities.getUpdated().get(i).getActivityStatusId(),
+//						activities.getUpdated().get(i).getCustomerId()== null ? "": activities.getUpdated().get(i).getCustomerId().toString(),
+//						activities.getUpdated().get(i).getDescription(),
+//						activities.getUpdated().get(i).getFromDateTime(),
+//						activities.getUpdated().get(i).isHasNextTask() ? "1" : "0",
+//						activities.getUpdated().get(i).getParentActivityId()== null ? "": activities.getUpdated().get(i).getParentActivityId().toString(), 
+//						activities.getUpdated().get(i).getPersonRelationId()== null ? "": activities.getUpdated().get(i).getPersonRelationId().toString(), 
+//						activities.getUpdated().get(i).getTaskId()== null ? "": activities.getUpdated().get(i).getTaskId().toString(),
+//						activities.getUpdated().get(i).getTemporaryCustomerId()== null ? "": activities.getUpdated().get(i).getTemporaryCustomerId().toString(), 
+//						activities.getUpdated().get(i).getToDateTime()== null ? "": activities.getUpdated().get(i).getToDateTime().toString()
+//								);
+//				
+//			}
+//		}
+//			
+//		//delete activities
+//		if(activities.getDeleted() != null){
+//			for (int i = 0; i < activities.getUpdated().size(); i++) {
+//				db.DeleteActivities(activities.getDeleted().get(i).getId());
+//				
+//			}
+//		}
 
 
 		db.close();

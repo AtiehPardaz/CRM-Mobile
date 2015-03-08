@@ -68,6 +68,19 @@ public class TaskDetailsActivity extends Activity {
 		String[] todateHour = TaskDetail[11].split(" ");
 		txt_taskTohour.setText(todateHour[1]);
 		
+		
+		String taskProductsString = "";
+		Cursor taskProducts = db.GetTaskProductsByID(ID);
+		while (taskProducts.moveToNext()) {
+			taskProductsString = taskProductsString + " - " + taskProducts.getString(0) ;
+		}
+		txt_taskProductTitle.setText(taskProductsString);
+		
+		Cursor taskDetails = db.GetTaskDetailsByID(ID);
+		while (taskDetails.moveToNext()) {
+			txt_taskDetail.setText(taskDetails.getString(0));
+		}
+		
 		db.close();
 
 	}

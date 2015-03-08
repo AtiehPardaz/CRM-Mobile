@@ -457,8 +457,20 @@ public class database extends SQLiteOpenHelper {
 		// TemporaryCustomerPersonRelationsId Title ToDateTime IsDeleted
 	}
 
-	
+	public Cursor GetTaskProductsByID (String id){
+		Cursor cu= mydb.
+				rawQuery("select productname from tasksproducts t inner join products p on t.[ProductGUID] = p.[productGUID] where t.[TaskGUID] = '"+id+"'", null); 
+		return cu ;
+		
+	}
 
+	public Cursor GetTaskDetailsByID (String id){
+		Cursor cu= mydb.
+				rawQuery("select Description from tasks where id = '"+id+"'", null); 
+		return cu ;
+		
+	}
+	
 	public void InsertActivities(
 			String Id,
 			String ActivityStatusId,
