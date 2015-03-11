@@ -112,9 +112,9 @@ public class CustomerListActivity extends Activity {
 				TextView tv = (TextView) v.findViewById(R.id.tv_id_customer);
 				String text = tv.getText().toString();
 
-				Toast.makeText(getApplicationContext(),
-						"selected Item id is === " + text, Toast.LENGTH_LONG)
-						.show();
+				//Toast.makeText(getApplicationContext(),
+					//	"selected Item id is === " + text, Toast.LENGTH_LONG)
+						//.show();
 
 			}
 		});

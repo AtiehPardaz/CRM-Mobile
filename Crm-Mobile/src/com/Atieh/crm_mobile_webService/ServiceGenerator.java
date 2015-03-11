@@ -20,9 +20,17 @@ public class ServiceGenerator {
 
     public static <S> S createService(Class<S> serviceClass, String baseUrl, String username, String password) {
                     // set endpoint url and use OkHTTP as HTTP client 
-        RestAdapter.Builder builder = new RestAdapter.Builder()
-                .setEndpoint(baseUrl)
-                .setClient(new OkClient(new OkHttpClient()));
+    	RestAdapter.Builder builder = null;
+    	
+    	try {
+    		builder = new RestAdapter.Builder()
+            .setEndpoint(baseUrl)
+            .setClient(new OkClient(new OkHttpClient()))
+            ;
+			
+		} catch (Exception e) {
+			return null;
+		}
 
         if (username != null && password != null) {
             // concatenate username and password with colon for authentication

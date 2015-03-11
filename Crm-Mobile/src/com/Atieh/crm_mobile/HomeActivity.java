@@ -48,8 +48,8 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		initview();
-		Toast.makeText(this, authInfo.getInstance().getSalt(),
-				Toast.LENGTH_LONG).show();
+		//Toast.makeText(this, authInfo.getInstance().getSalt(),
+				//Toast.LENGTH_LONG).show();
 
 		btnmounthview.setOnClickListener(new OnClickListener() {
 			@Override
@@ -78,7 +78,7 @@ public class HomeActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent sendCustomer = new Intent();
 				sendCustomer.setClass(getApplicationContext(),
-						CustomerListActivity.class);
+						CustemerSendTestActivity.class);
 				startActivity(sendCustomer);
 			}
 		});
@@ -101,7 +101,7 @@ public class HomeActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
+			//Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
 		}
 
 	}
@@ -434,10 +434,11 @@ public class HomeActivity extends Activity {
 //		}
 //
 
-		//insert activities
+//		//insert activities
 //		if(activities.getInserted() != null){
 //			for (int i = 0; i < activities.getInserted().size(); i++) {
 //				db.InsertActivities(activities.getInserted().get(i).getId(),
+//						activities.getInserted().get(i).getTitle()== null ? "": activities.getInserted().get(i).getTitle().toString(),
 //						activities.getInserted().get(i).getActivityStatusId(),
 //						activities.getInserted().get(i).getCustomerId()== null ? "": activities.getInserted().get(i).getCustomerId().toString(),
 //						activities.getInserted().get(i).getDescription(),
@@ -457,6 +458,7 @@ public class HomeActivity extends Activity {
 //		if(activities.getUpdated() != null){
 //			for (int i = 0; i < activities.getUpdated().size(); i++) {
 //				db.UpdateActivities(activities.getUpdated().get(i).getId(),
+//						activities.getInserted().get(i).getTitle()== null ? "": activities.getInserted().get(i).getTitle().toString(),
 //						activities.getUpdated().get(i).getActivityStatusId(),
 //						activities.getUpdated().get(i).getCustomerId()== null ? "": activities.getUpdated().get(i).getCustomerId().toString(),
 //						activities.getUpdated().get(i).getDescription(),

@@ -98,11 +98,11 @@ public class MainActivity extends Activity {
 							.show();
 				} else {
 
-					 asyncTask as = new asyncTask(); // checking network
-//					 status
-					 as.execute("P");
-//					startActivity(new Intent(MainActivity.this,
-//							ProductServisesActivity.class));
+					asyncTask as = new asyncTask(); // checking network
+					// status
+					as.execute("P");
+					// startActivity(new Intent(MainActivity.this,
+					// ProductServisesActivity.class));
 
 				}
 			}
@@ -253,29 +253,43 @@ public class MainActivity extends Activity {
 		@Override
 		protected Integer doInBackground(String... arg0) {
 
-			authServiceInterface auth = ServiceGenerator
+			authServiceInterface auth = null;
+
+			auth = ServiceGenerator
 					.createService(authServiceInterface.class,
 							"http://webservice.atiehpardaz.com/CrmService/CrmService.svc");
 
-			Map<String, String> querymap = new HashMap<>();
-			querymap.put("userName", et_user.getText().toString());
-			querymap.put("password", et_pass.getText().toString());
-			querymap.put("cultureId", "1065"); // MUST BE CORRECT
-			querymap.put("deviceName", android.os.Build.MODEL);
-
-			authe = new authJSONClass();
-
-			try {
-
-				authe = auth.authorize(querymap);
-			} catch (Exception e) {
-				Toast.makeText(MainActivity.this, "اتصال به سروربرقرار نیست",
-						Toast.LENGTH_SHORT).show();
-
+			if (auth == null) {
+				
+				Toast.makeText(MainActivity.this,
+						"در حال حاضر سرور پاسخگو نمی باشد.", Toast.LENGTH_SHORT)
+						.show();
 			}
 
-			authInfo.getInstance().setSalt(authe.getSalt());
-			authInfo.getInstance().setToken(authe.getToken());
+			else {
+				Map<String, String> querymap = new HashMap<>();
+
+				querymap.put("userName", et_user.getText().toString());
+				querymap.put("password", et_pass.getText().toString());
+				querymap.put("cultureId", "1065"); // MUST BE CORRECT
+				querymap.put("deviceName", android.os.Build.MODEL);
+
+				authe = new authJSONClass();
+
+				try {
+
+					authe = auth.authorize(querymap);
+				} catch (Exception e) {
+					Toast.makeText(MainActivity.this,
+							"اتصال به سروربرقرار نیست", Toast.LENGTH_SHORT)
+							.show();
+
+				}
+
+				authInfo.getInstance().setSalt(authe.getSalt());
+				authInfo.getInstance().setToken(authe.getToken());
+
+			}
 
 			return authe.getStatus().getCode();
 		}
@@ -284,8 +298,9 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(Integer result) {
 
 			if (result == 1) {
-				Toast.makeText(MainActivity.this, " عملیات با موفقیت انجام شد",
-						Toast.LENGTH_SHORT).show();
+				// Toast.makeText(MainActivity.this,
+				// " عملیات با موفقیت انجام شد",
+				// Toast.LENGTH_SHORT).show();
 				Intent login = new Intent();
 				login.setClass(getApplicationContext(), HomeActivity.class);
 				startActivity(login);

@@ -14,7 +14,6 @@ public class Inserted {
 	private List<PersonRelation> PersonRelations = new ArrayList<PersonRelation>();
 	private String Tel;
 	private String Title;
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	/**
 	 * 
@@ -142,12 +141,5 @@ public class Inserted {
 		this.Title = Title;
 	}
 
-	public Map<String, Object> getAdditionalProperties() {
-		return this.additionalProperties;
-	}
-
-	public void setAdditionalProperty(String name, Object value) {
-		this.additionalProperties.put(name, value);
-	}
 
 }

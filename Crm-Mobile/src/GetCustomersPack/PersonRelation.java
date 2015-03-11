@@ -11,7 +11,6 @@ public class PersonRelation {
 	private String Id;
 	private String RelationRoleId;
 	private String Title;
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	/**
 	 * 
@@ -85,12 +84,5 @@ public class PersonRelation {
 		this.Title = Title;
 	}
 
-	public Map<String, Object> getAdditionalProperties() {
-		return this.additionalProperties;
-	}
-
-	public void setAdditionalProperty(String name, Object value) {
-		this.additionalProperties.put(name, value);
-	}
 
 }

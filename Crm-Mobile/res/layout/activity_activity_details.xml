@@ -1,0 +1,321 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_action_green"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_title_ActivityDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="جزئیات فعالیت"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/seprator"
+                android:gravity="right"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txt_ActivityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text=""
+                    android:textColor="#8b8b8b" />
+
+                <TextView
+                    android:id="@+id/lbl_ActivityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="عنوان فعالیت :" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/seprator"
+                android:gravity="right"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txt_ActivityCustomer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text=""
+                    android:textColor="#8b8b8b" />
+
+                <TextView
+                    android:id="@+id/lbl_ActivityCustomer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="مشتری :" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/seprator"
+                android:gravity="right"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txt_AtcivityRelationPerson"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text=""
+                    android:textColor="#8b8b8b" />
+
+                <TextView
+                    android:id="@+id/lbl_relationPerson"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="شخص رابط :" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/seprator"
+                android:gravity="right"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txt_ActivityDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text=""
+                    android:textColor="#8b8b8b" />
+
+                <TextView
+                    android:id="@+id/lbl_ActivityDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تاریخ :" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/seprator"
+                android:padding="10dp" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:gravity="right" >
+
+                    <TextView
+                        android:id="@+id/txt_ActivityTohour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="5dp"
+                        android:text=""
+                        android:textColor="#8b8b8b" />
+
+                    <TextView
+                        android:id="@+id/lbl_ActivityTohour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="تا ساعت :" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right" >
+
+                    <TextView
+                        android:id="@+id/txt_ActivityFromhour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:text=""
+                        android:textColor="#8b8b8b" />
+
+                    <TextView
+                        android:id="@+id/lbl_ActivityFromhour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="از ساعت :" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/seprator"
+                android:gravity="right"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txt_ActivityTaskTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text=""
+                    android:textColor="#8b8b8b" />
+
+                <TextView
+                    android:id="@+id/lbl_ActivityTaskTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="وظیفه :" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/seprator"
+                android:gravity="right"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txt_ActivityProductTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text=""
+                    android:textColor="#8b8b8b" />
+
+                <TextView
+                    android:id="@+id/lbl_ActivityProductTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="عنوان محصول یا خدمات :" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/seprator"
+                android:gravity="right"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txt_ActivityDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text=""
+                    android:textColor="#8b8b8b" />
+            </LinearLayout>
+            
+              <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/seprator"
+        android:gravity="right"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/txt_ActivityStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text=""
+            android:textColor="#8b8b8b" />
+
+        <TextView
+            android:id="@+id/lbl_ActivityStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="وضعیت :" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/seprator"
+        android:gravity="right"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/txt_ActivityNextAppointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text=""
+            android:textColor="#8b8b8b" />
+
+        <TextView
+            android:id="@+id/lbl_ActivityNextAppointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="قرار بعدی :" />
+    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+  
+
+    <LinearLayout
+        android:id="@+id/ActivityFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/close" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/delete" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/edit" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/add_activity" />
+    </LinearLayout>
+
+</RelativeLayout>

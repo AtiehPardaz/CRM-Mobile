@@ -15,7 +15,7 @@ import java.util.Calendar;
 
 import com.Atieh.crm_mobile.HomeActivity;
 import com.Atieh.crm_mobile.ProductServisesActivity;
-import com.Atieh.crm_mobile.TaskActionActivity;
+import com.Atieh.crm_mobile.TaskAndActivityActionActivity;
 import com.Atieh.crm_mobile_calendar.CivilDate;
 import com.Atieh.crm_mobile_calendar.DateConverter;
 import com.Atieh.crm_mobile_calendar.PersianDate;
@@ -42,12 +42,16 @@ public class ClickDayListener implements View.OnClickListener,
 //				v.getContext(),
 //				persianDate.getDayOfMonth() + "/" + persianDate.getMonth()
 //						+ "/" + persianDate.getYear(), 1).show();
-		Toast.makeText(v.getContext(),
-				"for click in a day use ClickDayListener>OnClick", 1).show();
+		//Toast.makeText(v.getContext(),
+				//"for click in a day use ClickDayListener>OnClick", 1).show();
 
 		Intent intent=new Intent();
-		intent.setClass(v.getContext(), TaskActionActivity.class);
+		intent.setClass(v.getContext(), TaskAndActivityActionActivity.class);
 		intent.putExtra("date", persianDate.getYear()+":" + persianDate.getMonth()+ ":" + +persianDate.getDayOfMonth());
+		//intent.putExtra("day", persianDate.getYear()+" " + persianDate.getMonthName() + persianDate.getDayOfMonth() + " " + persianDate.getDayOfWeek());
+
+	
+		
 		v.getContext().startActivity(intent);
 
 		if (holidayTitle != null) {

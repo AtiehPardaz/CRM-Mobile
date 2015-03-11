@@ -33,6 +33,7 @@ public class TaskDetailsActivity extends Activity {
 		initview();
 		db = new database(this);
 		db.database();
+		
 		String ID = getIntent().getStringExtra("id");
 		db.open();
 
@@ -81,6 +82,9 @@ public class TaskDetailsActivity extends Activity {
 			txt_taskDetail.setText(taskDetails.getString(0));
 		}
 		
+		
+		
+		
 		db.close();
 
 	}
@@ -107,9 +111,9 @@ public class TaskDetailsActivity extends Activity {
 	
 	public void initview() {
 		
-		txt_taskTitle1 = (TextView) findViewById(R.id.txt_TaskTitle);
+		txt_taskTitle1 = (TextView) findViewById(R.id.txt_ActivityTitle);
 		txt_taskCustomer = (TextView) findViewById(R.id.txt_taskCustomer);
-		txt_relationPerson = (TextView) findViewById(R.id.txt_relationPerson);
+		txt_relationPerson = (TextView) findViewById(R.id.txt_AtcivityRelationPerson);
 		txt_taskDate = (TextView) findViewById(R.id.txt_taskDate);
 		txt_taskFromhour = (TextView) findViewById(R.id.txt_taskFromhour);
 		txt_taskTohour = (TextView) findViewById(R.id.txt_taskTohour);
