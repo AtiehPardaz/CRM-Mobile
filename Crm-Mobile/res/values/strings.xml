@@ -50,5 +50,6 @@
     <string name="title_activity_custemer_send_test">CustemerSendTestActivity</string>
     <string name="title_activity_task_details">TaskDetailsActivity</string>
     <string name="title_activity_activity_details">ActivityDetailsActivity</string>
+    <string name="title_activity_send_task">SendTaskActivity</string>
 
 </resources>

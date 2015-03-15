@@ -21,7 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-import com.Atieh.crm_mobile.CustemerSendTestActivity;
+import com.Atieh.crm_mobile.CustemerSendActivity;
 
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
 
@@ -31,11 +31,12 @@ public class HomeActivity extends Activity {
 
 	Button btnmounthview;
 	Button btnproductservises;
+	Button btnNewTask;
 
 	public void initview() {
 		btnmounthview = (Button) findViewById(R.id.btn_monthview);
 		btnproductservises = (Button) findViewById(R.id.btn_productservises);
-
+		btnNewTask = (Button) findViewById(R.id.btn_newtask);
 	}
 
 	database db;
@@ -78,8 +79,20 @@ public class HomeActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent sendCustomer = new Intent();
 				sendCustomer.setClass(getApplicationContext(),
-						CustemerSendTestActivity.class);
+						CustemerSendActivity.class);
 				startActivity(sendCustomer);
+			}
+		});
+		
+		btnNewTask.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				
+				Intent sendTask = new Intent();
+				sendTask.setClass(getApplicationContext(),
+						SendTaskActivity.class);
+				startActivity(sendTask);				
 			}
 		});
 

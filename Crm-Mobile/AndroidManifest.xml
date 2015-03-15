@@ -79,7 +79,7 @@
         </service>
 
         <activity
-            android:name=".CustemerSendTestActivity"
+            android:name=".CustemerSendActivity"
             android:label="@string/title_activity_custemer_send_test" >
         </activity>
         <activity
@@ -89,6 +89,10 @@
         <activity
             android:name=".ActivityDetailsActivity"
             android:label="@string/title_activity_activity_details" >
+        </activity>
+        <activity
+            android:name=".SendTaskActivity"
+            android:label="@string/title_activity_send_task" >
         </activity>
     </application>
 

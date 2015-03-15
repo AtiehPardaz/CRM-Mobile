@@ -117,7 +117,7 @@ public final class R {
         public static final int View03=0x7f0c005a;
         public static final int View04=0x7f0c0059;
         public static final int View05=0x7f0c0022;
-        public static final int action_settings=0x7f0c007d;
+        public static final int action_settings=0x7f0c007c;
         public static final int btn_action_taskaction=0x7f0c005c;
         public static final int btn_add_customerlist=0x7f0c0021;
         public static final int btn_customer=0x7f0c0036;
@@ -168,10 +168,10 @@ public final class R {
         public static final int imgbtn_clearsearch_productservises=0x7f0c004d;
         public static final int imgbtn_next_month=0x7f0c0058;
         public static final int imgbtn_selectcal_calander=0x7f0c0070;
-        public static final int imgbtn_showdetails=0x7f0c007a;
-        public static final int imgbtn_tik=0x7f0c0079;
+        public static final int imgbtn_showdetails=0x7f0c0079;
+        public static final int imgbtn_tik=0x7f0c0078;
         public static final int imgv=0x7f0c0041;
-        public static final int layoutTaskHour=0x7f0c0078;
+        public static final int layoutTaskHour=0x7f0c0077;
         public static final int lbl_ActivityCustomer=0x7f0c0006;
         public static final int lbl_ActivityDate=0x7f0c000a;
         public static final int lbl_ActivityFromhour=0x7f0c000e;
@@ -203,18 +203,17 @@ public final class R {
         public static final int reset_button=0x7f0c0075;
         public static final int scrollView1=0x7f0c0002;
         public static final int taskFooter=0x7f0c006f;
-        public static final int textView1=0x7f0c0054;
         public static final int textView2=0x7f0c0055;
         public static final int today_praytimes=0x7f0c0073;
-        public static final int tv_customer=0x7f0c007c;
-        public static final int tv_id_customer=0x7f0c007b;
+        public static final int tv_customer=0x7f0c007b;
+        public static final int tv_id_customer=0x7f0c007a;
         public static final int tv_loadin=0x7f0c0050;
         public static final int tv_loadin_taskaction=0x7f0c002c;
         public static final int tv_title_ActivityDetails=0x7f0c0001;
         public static final int tv_title_monthview=0x7f0c001d;
         public static final int tv_title_monthview_taskaction=0x7f0c001f;
         public static final int tv_title_taskDetails=0x7f0c0060;
-        public static final int txtTaskHour=0x7f0c0077;
+        public static final int txtTaskHour=0x7f0c0054;
         public static final int txt_ActivityCustomer=0x7f0c0005;
         public static final int txt_ActivityDate=0x7f0c0009;
         public static final int txt_ActivityDetail=0x7f0c0013;
@@ -243,17 +242,19 @@ public final class R {
         public static final int activity_main=0x7f030004;
         public static final int activity_product_services=0x7f030005;
         public static final int activity_selectdate=0x7f030006;
-        public static final int activity_task_action=0x7f030007;
-        public static final int activity_task_details=0x7f030008;
-        public static final int calendar=0x7f030009;
-        public static final int list_row=0x7f03000a;
-        public static final int row=0x7f03000b;
+        public static final int activity_send_task=0x7f030007;
+        public static final int activity_task_action=0x7f030008;
+        public static final int activity_task_details=0x7f030009;
+        public static final int calendar=0x7f03000a;
+        public static final int list_row=0x7f03000b;
+        public static final int row=0x7f03000c;
     }
     public static final class menu {
         public static final int activity_details=0x7f0b0000;
         public static final int custemer_send_test=0x7f0b0001;
         public static final int main=0x7f0b0002;
-        public static final int task_details=0x7f0b0003;
+        public static final int send_task=0x7f0b0003;
+        public static final int task_details=0x7f0b0004;
     }
     public static final class raw {
         public static final int holidays=0x7f050000;
@@ -301,6 +302,7 @@ public final class R {
         public static final int skin=0x7f0a0023;
         public static final int title_activity_activity_details=0x7f0a0030;
         public static final int title_activity_custemer_send_test=0x7f0a002e;
+        public static final int title_activity_send_task=0x7f0a0031;
         public static final int title_activity_task_details=0x7f0a002f;
         public static final int today=0x7f0a0007;
         public static final int widget_mini_name=0x7f0a0004;

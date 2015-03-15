@@ -1,33 +1,24 @@
 package adapters;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import com.Atieh.crm_mobile.R;
-import com.Atieh.crm_mobile.TaskDetailsActivity;
-import com.Atieh.crm_mobile_calendar.Utils;
-
-import android.R.transition;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.Toast;
-import singleTones.TasksIDsInList;
+import android.widget.TextView;
+
+import com.Atieh.crm_mobile.R;
+import com.Atieh.crm_mobile.TaskDetailsActivity;
+import com.Atieh.crm_mobile_calendar.Utils;
 
 public class TaskListAdapter extends BaseAdapter {
 
@@ -73,14 +64,15 @@ public class TaskListAdapter extends BaseAdapter {
 		//title.setTypeface(face);
 
 		LinearLayout root = (LinearLayout) vi.findViewById(R.id.layoutTaskHour);
-
+		TextView txt = (TextView) vi.findViewById(R.id.txtTaskHour);
+		
 		for (int i = tasksnumber-1 ; i >= 0; i--) {
 			LinearLayout child = new LinearLayout(vi.getContext());
 			LayoutParams params = new LayoutParams(
-					(int) (dpWidth - 70)/(tasksnumber-1),
+					(int) ((outMetrics.widthPixels - 120 )/tasksnumber),
 					60
 			);
-			params.setMargins(3, 0, 3, 0);
+			params.setMargins(2, 0, 2, 0);
 			child.setLayoutParams(params);
 			child.setOrientation(LinearLayout.VERTICAL);
 			child.setPadding(3, 3, 3, 3);

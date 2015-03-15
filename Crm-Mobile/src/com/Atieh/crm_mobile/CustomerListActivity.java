@@ -125,7 +125,7 @@ public class CustomerListActivity extends Activity {
 			public void onClick(View arg0) {
 
 				startActivity(new Intent(CustomerListActivity.this,
-						CustemerSendTestActivity.class));
+						CustemerSendActivity.class));
 				Toast.makeText(
 						getApplicationContext(),
 						"صفحۀایجادمشتری جدید موجود نیست \n" + "درحال آماده شدن",

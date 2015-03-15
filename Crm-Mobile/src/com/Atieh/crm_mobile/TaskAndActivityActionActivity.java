@@ -271,6 +271,7 @@ public class TaskAndActivityActionActivity extends Activity {
 			listView.setAdapter(new TaskListAdapter(
 					TaskAndActivityActionActivity.this, tasksList, position,
 					titleSet));
+			listView.setSelection(6);
 
 			db.close();
 		}
@@ -279,6 +280,8 @@ public class TaskAndActivityActionActivity extends Activity {
 			listView.setAdapter(new TaskListAdapter(
 					TaskAndActivityActionActivity.this, tasksList, position,
 					titleSet));
+			listView.setSelection(6);
+
 
 		}
 	}
@@ -358,6 +361,7 @@ public class TaskAndActivityActionActivity extends Activity {
 			listView.setAdapter(new ActivityListAdapter(
 					TaskAndActivityActionActivity.this, activitiesList,
 					position, titleSet));
+			listView.setSelection(6);
 
 			db.close();
 		}
@@ -367,6 +371,7 @@ public class TaskAndActivityActionActivity extends Activity {
 			listView.setAdapter(new ActivityListAdapter(
 					TaskAndActivityActionActivity.this, activitiesList,
 					position, titleSet));
+			listView.setSelection(6);
 
 		}
 	}

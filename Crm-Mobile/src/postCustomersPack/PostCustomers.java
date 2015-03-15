@@ -7,44 +7,50 @@ import java.util.Map;
 
 public class PostCustomers {
 
-private String token;
-private List<LocalActivity> localActivities = new ArrayList<LocalActivity>();
+	private List<TemporaryCustomer> temporaryCustomers = new ArrayList<TemporaryCustomer>();
+	private String token;
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-/**
-* 
-* @return
-* The token
-*/
-public String getToken() {
-return token;
-}
+	/**
+	 * 
+	 * @return The temporaryCustomers
+	 */
+	public List<TemporaryCustomer> getTemporaryCustomers() {
+		return temporaryCustomers;
+	}
 
-/**
-* 
-* @param token
-* The token
-*/
-public void setToken(String token) {
-this.token = token;
-}
+	/**
+	 * 
+	 * @param temporaryCustomers
+	 *            The temporaryCustomers
+	 */
+	public void setTemporaryCustomers(List<TemporaryCustomer> temporaryCustomers) {
+		this.temporaryCustomers = temporaryCustomers;
+	}
 
-/**
-* 
-* @return
-* The localActivities
-*/
-public List<LocalActivity> getLocalActivities() {
-return localActivities;
-}
+	/**
+	 * 
+	 * @return The token
+	 */
+	public String getToken() {
+		return token;
+	}
 
-/**
-* 
-* @param localActivities
-* The localActivities
-*/
-public void setLocalActivities(List<LocalActivity> localActivities) {
-this.localActivities = localActivities;
-}
+	/**
+	 * 
+	 * @param token
+	 *            The token
+	 */
+	public void setToken(String token) {
+		this.token = token;
+	}
 
+	public Map<String, Object> getAdditionalProperties() {
+		return this.additionalProperties;
+	}
+
+	public void setAdditionalProperty(String name, Object value) {
+		this.additionalProperties.put(name, value);
+	}
 
 }

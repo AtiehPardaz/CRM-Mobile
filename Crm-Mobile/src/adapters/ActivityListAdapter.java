@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.Atieh.crm_mobile.ActivityDetailsActivity;
 import com.Atieh.crm_mobile.R;
-import com.Atieh.crm_mobile.TaskDetailsActivity;
 import com.Atieh.crm_mobile_calendar.Utils;
 
 public class ActivityListAdapter extends BaseAdapter {
@@ -65,12 +64,11 @@ public class ActivityListAdapter extends BaseAdapter {
 		// title.setTypeface(face);
 
 		LinearLayout root = (LinearLayout) vi.findViewById(R.id.layoutTaskHour);
-
+		
 		for (int i = activitiesnumber - 1; i >= 0; i--) {
 			LinearLayout child = new LinearLayout(vi.getContext());
-			LayoutParams params = new LayoutParams((int) (dpWidth - 60)
-					/( activitiesnumber-1), 60);
-			params.setMargins(3, 0, 3, 0);
+			LayoutParams params = new LayoutParams((int) ((outMetrics.widthPixels - 120 )/activitiesnumber), 60);
+			params.setMargins(2, 0, 2, 0);
 			child.setLayoutParams(params);
 			child.setOrientation(LinearLayout.VERTICAL);
 			child.setPadding(3, 3, 3, 3);
