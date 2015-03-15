@@ -32,11 +32,13 @@ public class HomeActivity extends Activity {
 	Button btnmounthview;
 	Button btnproductservises;
 	Button btnNewTask;
+	Button btnNewActivity;
 
 	public void initview() {
 		btnmounthview = (Button) findViewById(R.id.btn_monthview);
 		btnproductservises = (Button) findViewById(R.id.btn_productservises);
 		btnNewTask = (Button) findViewById(R.id.btn_newtask);
+		btnNewActivity = (Button) findViewById(R.id.btn_newactivity);
 	}
 
 	database db;
@@ -93,6 +95,18 @@ public class HomeActivity extends Activity {
 				sendTask.setClass(getApplicationContext(),
 						SendTaskActivity.class);
 				startActivity(sendTask);				
+			}
+		});
+		
+		btnNewActivity.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				
+				Intent sendActivity = new Intent();
+				sendActivity.setClass(getApplicationContext(),
+						SendActivityActivity.class);
+				startActivity(sendActivity);				
 			}
 		});
 

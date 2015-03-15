@@ -94,6 +94,10 @@
             android:name=".SendTaskActivity"
             android:label="@string/title_activity_send_task" >
         </activity>
+        <activity
+            android:name=".SendActivityActivity"
+            android:label="@string/title_activity_send_activity" >
+        </activity>
     </application>
 
 </manifest>

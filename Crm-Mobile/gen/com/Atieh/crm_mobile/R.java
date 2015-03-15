@@ -242,19 +242,21 @@ public final class R {
         public static final int activity_main=0x7f030004;
         public static final int activity_product_services=0x7f030005;
         public static final int activity_selectdate=0x7f030006;
-        public static final int activity_send_task=0x7f030007;
-        public static final int activity_task_action=0x7f030008;
-        public static final int activity_task_details=0x7f030009;
-        public static final int calendar=0x7f03000a;
-        public static final int list_row=0x7f03000b;
-        public static final int row=0x7f03000c;
+        public static final int activity_send_activity=0x7f030007;
+        public static final int activity_send_task=0x7f030008;
+        public static final int activity_task_action=0x7f030009;
+        public static final int activity_task_details=0x7f03000a;
+        public static final int calendar=0x7f03000b;
+        public static final int list_row=0x7f03000c;
+        public static final int row=0x7f03000d;
     }
     public static final class menu {
         public static final int activity_details=0x7f0b0000;
         public static final int custemer_send_test=0x7f0b0001;
         public static final int main=0x7f0b0002;
-        public static final int send_task=0x7f0b0003;
-        public static final int task_details=0x7f0b0004;
+        public static final int send_activity=0x7f0b0003;
+        public static final int send_task=0x7f0b0004;
+        public static final int task_details=0x7f0b0005;
     }
     public static final class raw {
         public static final int holidays=0x7f050000;
@@ -302,6 +304,7 @@ public final class R {
         public static final int skin=0x7f0a0023;
         public static final int title_activity_activity_details=0x7f0a0030;
         public static final int title_activity_custemer_send_test=0x7f0a002e;
+        public static final int title_activity_send_activity=0x7f0a0032;
         public static final int title_activity_send_task=0x7f0a0031;
         public static final int title_activity_task_details=0x7f0a002f;
         public static final int today=0x7f0a0007;
