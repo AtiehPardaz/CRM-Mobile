@@ -2,63 +2,112 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <View
+        android:id="@+id/View01"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center" >
-
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/btn_star" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/background_stripes" />
-
-    </LinearLayout>
+        android:layout_weight="1" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center" >
+        android:id="@+id/LinearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="256dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bactagh"
+        android:gravity="center"
+        android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/textView1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+            <ImageButton
+                android:id="@+id/imgbtn_nextyear_picker"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_action_top_item" />
+
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="93"
+                android:textColor="@color/white_color"
+                android:textSize="25sp" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_backyear_picker"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_action_buttom_item" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical" >
 
+            <ImageButton
+                android:id="@+id/imgbtn_backmonth_picker"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_action_top_item" />
+
+            <TextView
+                android:id="@+id/tv_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="اردبیهشت"
+                android:textColor="@color/white_color"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tv_numberofmonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_nextmonth_picker"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_action_buttom_item" />
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_gotodate"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@color/blue_titlecolor"
+        android:text="تنظیم"
+        android:textColor="@color/white_color"
+        android:textSize="24sp" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center" >
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/background_stripes" />
-
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/background_stripes" />
-
-    </LinearLayout>
+        android:layout_weight="1" />
 
 </LinearLayout>

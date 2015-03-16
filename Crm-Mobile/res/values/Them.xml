@@ -2,7 +2,8 @@
 <resources>
 
     <style name="dialog" parent="@android:style/Theme.Dialog">
-        <item name="android:windowBackground">@drawable/loadinglogo</item>
+        <item name="android:windowBackground">@drawable/backgroundtrasparent</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
 </resources>

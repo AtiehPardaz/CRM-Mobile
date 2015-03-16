@@ -18,7 +18,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.Atieh.crm_mobile.HomeActivity;
 import com.Atieh.crm_mobile.R;
 import com.Atieh.crm_mobile_calendar.MonthFragment;
 
@@ -35,6 +37,10 @@ public class MainActivity extends FragmentActivity {
 	private PrayTimeActivityHelper prayTimeActivityHelper;
 	ImageButton next;
 	ImageButton back;
+	String year;
+	String month;
+	int j = 1;
+	int monthnum = 1;
 
 	// public static StringBuilder sb = new StringBuilder();
 
@@ -83,6 +89,8 @@ public class MainActivity extends FragmentActivity {
 				setFocusedDay(DateConverter.civilToPersian(new CivilDate()));
 			}
 		});
+
+		// get intent from select date activiy
 
 		// Initializing the viewPager
 		viewPager = (ViewPager) findViewById(R.id.calendar_pager);
@@ -133,6 +141,34 @@ public class MainActivity extends FragmentActivity {
 
 		// Initializing the view
 		fillCalendarInfo(new CivilDate());
+
+	}// end onCreate
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		startActivity(new Intent(MainActivity.this, HomeActivity.class));
+	}
+
+	@Override
+	protected void onResume() {
+
+		super.onResume();
+
+		Intent intent = getIntent();
+		year = intent.getStringExtra("year");
+		month = intent.getStringExtra("month");
+		if (month != null) {
+			Toast.makeText(getApplicationContext(), year + " " + month, 1)
+					.show();
+			j = viewPager.getCurrentItem();
+			Toast.makeText(getApplicationContext(), j + " " + month, 1).show();
+			monthnum = j +Integer.parseInt(month);
+
+			// if(month!=null){
+			viewPager.setCurrentItem(monthnum);
+		}
 
 	}
 
