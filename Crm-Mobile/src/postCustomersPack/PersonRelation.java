@@ -1,9 +1,7 @@
-package GetCustomersPack;
+package postCustomersPack;
 
 import java.util.HashMap;
 import java.util.Map;
-
-
 
 public class PersonRelation {
 
@@ -11,11 +9,11 @@ public class PersonRelation {
 	private String Id;
 	private String RelationRoleId;
 	private String Title;
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	/**
 	 * 
-	 * @return
-	 * The CustomerId
+	 * @return The CustomerId
 	 */
 	public String getCustomerId() {
 		return CustomerId;
@@ -24,7 +22,7 @@ public class PersonRelation {
 	/**
 	 * 
 	 * @param CustomerId
-	 * The CustomerId
+	 *            The CustomerId
 	 */
 	public void setCustomerId(String CustomerId) {
 		this.CustomerId = CustomerId;
@@ -32,8 +30,7 @@ public class PersonRelation {
 
 	/**
 	 * 
-	 * @return
-	 * The Id
+	 * @return The Id
 	 */
 	public String getId() {
 		return Id;
@@ -42,7 +39,7 @@ public class PersonRelation {
 	/**
 	 * 
 	 * @param Id
-	 * The Id
+	 *            The Id
 	 */
 	public void setId(String Id) {
 		this.Id = Id;
@@ -50,8 +47,7 @@ public class PersonRelation {
 
 	/**
 	 * 
-	 * @return
-	 * The RelationRoleId
+	 * @return The RelationRoleId
 	 */
 	public String getRelationRoleId() {
 		return RelationRoleId;
@@ -60,7 +56,7 @@ public class PersonRelation {
 	/**
 	 * 
 	 * @param RelationRoleId
-	 * The RelationRoleId
+	 *            The RelationRoleId
 	 */
 	public void setRelationRoleId(String RelationRoleId) {
 		this.RelationRoleId = RelationRoleId;
@@ -68,8 +64,7 @@ public class PersonRelation {
 
 	/**
 	 * 
-	 * @return
-	 * The Title
+	 * @return The Title
 	 */
 	public String getTitle() {
 		return Title;
@@ -78,11 +73,18 @@ public class PersonRelation {
 	/**
 	 * 
 	 * @param Title
-	 * The Title
+	 *            The Title
 	 */
 	public void setTitle(String Title) {
 		this.Title = Title;
 	}
 
+	public Map<String, Object> getAdditionalProperties() {
+		return this.additionalProperties;
+	}
+
+	public void setAdditionalProperty(String name, Object value) {
+		this.additionalProperties.put(name, value);
+	}
 
 }

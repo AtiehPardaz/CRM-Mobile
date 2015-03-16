@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import android.R.string;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -19,8 +18,8 @@ public class database extends SQLiteOpenHelper {
 	public final String path="data/data/com.Atieh.crm_mobile/databases/";
 	public final String Name="db";
 	public static SQLiteDatabase mydb;
-
 	private final Context mycontext;
+	
 
 	public database(Context context) {
 		super(context, "db", null, 1);
@@ -223,9 +222,17 @@ public class database extends SQLiteOpenHelper {
 		// (Id Title Description IsLegal Address Tel IsDeleted)
 	}
 
-	
-	
-	
+	public Cursor GetCustomersByID (String id){
+
+		Cursor cu= mydb.rawQuery("select Title from custemers where Id = '"+id+"' limit 1", null); 
+		return cu ;
+		// (Id Title Description IsLegal Address Tel IsDeleted)
+	}
+
+
+
+
+
 
 	public void InsertPersonRelations(String CustomerId,String Id,String RelationRoleId,String Title){
 		ContentValues values = new ContentValues();
@@ -257,9 +264,15 @@ public class database extends SQLiteOpenHelper {
 
 	}
 
+	public Cursor GetPersonRelationsByCustomerIdAndID (String CustomerId , String Id){
+
+		Cursor cu= mydb.rawQuery("select Title from personRelations where CustomerId = '"+CustomerId+"' and Id = '"+Id+ "' limit 1", null); 
+		return cu ;
+		// (Id Title Description IsLegal Address Tel IsDeleted)
+	}
 
 
-
+	
 
 	public void InsertRelationRoles(String Id,String Title){
 		ContentValues values = new ContentValues();
@@ -315,8 +328,14 @@ public class database extends SQLiteOpenHelper {
 		long ID = mydb.update("activityStatus", values, strFilter,null);
 	}
 
+	public Cursor GetActivityStatusByID (String id){
+		Cursor cu= mydb.
+				rawQuery("select Title from activityStatus  where Id = '"+id+"'", null); 
+		return cu ;
 
+	}
 
+	
 
 
 	public void InsertTasks(String Id,
@@ -428,20 +447,43 @@ public class database extends SQLiteOpenHelper {
 
 	public Cursor GetTasks (String date){
 
-		Cursor cu= mydb.rawQuery("select * from tasks where IsDeleted = '0' and FromDateTime like '1393:11:01 %'", null); 
+		Cursor cu= mydb.rawQuery("select * from tasks where IsDeleted = '0' and FromDateTime like '"+date+" %'", null); 
 		return cu ;
-		
+
 		// Id CustomerId Description FromDateTime IsAm ParentActivityId ParentTaskId PersonRelationId TemporaryCustomerId
 		// TemporaryCustomerPersonRelationsId Title ToDateTime IsDeleted
 	}
 
-	
+	public Cursor GetTaskByID (String id){
 
-	
-	
+		Cursor cu= mydb.rawQuery("select * from tasks where Id = '"+id+"'", null); 
+		return cu ;
+
+		// Id CustomerId Description FromDateTime IsAm ParentActivityId ParentTaskId PersonRelationId TemporaryCustomerId
+		// TemporaryCustomerPersonRelationsId Title ToDateTime IsDeleted
+	}
+
+	public Cursor GetTaskProductsByID (String id){
+		Cursor cu= mydb.
+				rawQuery("select productname from tasksproducts t inner join products p on t.[ProductGUID] = p.[productGUID] where t.[TaskGUID] = '"+id+"'", null); 
+		return cu ;
+
+	}
+
+	public Cursor GetTaskDetailsByID (String id){
+		Cursor cu= mydb.
+				rawQuery("select Description from tasks where id = '"+id+"'", null); 
+		return cu ;
+
+	}
+
+
+
 
 	public void InsertActivities(
 			String Id,
+			String Title,
+
 			String ActivityStatusId,
 			String CustomerId,
 			String Description,
@@ -455,8 +497,10 @@ public class database extends SQLiteOpenHelper {
 			) {
 
 		ContentValues values = new ContentValues();
-		
+
 		values.put("Id",Id);
+		values.put("Title",Title);
+
 		values.put("ActivityStatusId",ActivityStatusId);
 		values.put("CustomerId",CustomerId);
 		values.put("Description",Description);
@@ -468,14 +512,15 @@ public class database extends SQLiteOpenHelper {
 		values.put("TemporaryCustomerId",TemporaryCustomerId);
 		values.put("ToDateTime",ToDateTime);
 		values.put("IsDeleted",0);
-		
+
 
 		mydb.insert("activities", null, values);
 
 	}
-	
+
 	public void UpdateActivities(
 			String Id,
+			String Title,
 			String ActivityStatusId,
 			String CustomerId,
 			String Description,
@@ -491,6 +536,7 @@ public class database extends SQLiteOpenHelper {
 		String strFilter = "Id = '"+Id+"'";		
 		ContentValues values = new ContentValues();
 		
+		values.put("Title",Title);
 		values.put("ActivityStatusId",ActivityStatusId);
 		values.put("CustomerId",CustomerId);
 		values.put("Description",Description);
@@ -502,7 +548,7 @@ public class database extends SQLiteOpenHelper {
 		values.put("TemporaryCustomerId",TemporaryCustomerId);
 		values.put("ToDateTime",ToDateTime);
 		values.put("IsDeleted",0);
-		
+
 
 		long ID = mydb.update("activities", values, strFilter,null);
 
@@ -512,12 +558,27 @@ public class database extends SQLiteOpenHelper {
 
 		String strFilter = "Id = '"+Id+"'";		
 		ContentValues values = new ContentValues();
-		
+
 		values.put("IsDeleted",1);
-		
+
 		long ID = mydb.update("activities", values, strFilter,null);
 
 	}
+
+	public Cursor getActivity (String date){
+
+		Cursor cu= mydb.rawQuery("select a.[Id]  , a.[Title] ,a.[FromDateTime],a.[ToDateTime] from activities a where IsDeleted = '0' and FromDateTime like '"+date+" %'", null); 
+		return cu ;
+	}
+
+	public Cursor GetActivityByID (String id){
+
+		Cursor cu= mydb.rawQuery("select * from activities where Id = '"+id+"'", null); 
+		return cu ;
+
+	}
+	
+
 
 
 }

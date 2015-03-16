@@ -3,6 +3,8 @@ package GetActivitiesPack;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.security.auth.PrivateCredentialPermission;
+
 public class Inserted {
 
 	private String ActivityStatusId;
@@ -16,6 +18,7 @@ public class Inserted {
 	private Object TaskId;
 	private Object TemporaryCustomerId;
 	private Object ToDateTime;
+	private Object Title;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	
 	
@@ -87,6 +90,12 @@ public class Inserted {
 	}
 	public Map<String, Object> getAdditionalProperties() {
 		return additionalProperties;
+	}
+	public Object getTitle() {
+		return Title;
+	}
+	public void setTitle(Object title) {
+		Title = title;
 	}
 	public void setAdditionalProperties(Map<String, Object> additionalProperties) {
 		this.additionalProperties = additionalProperties;

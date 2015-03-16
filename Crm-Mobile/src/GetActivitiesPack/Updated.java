@@ -16,6 +16,7 @@ public class Updated {
 	private Object TaskId;
 	private Object TemporaryCustomerId;
 	private Object ToDateTime;
+	private Object Title;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	
 	
@@ -87,6 +88,12 @@ public class Updated {
 	}
 	public Map<String, Object> getAdditionalProperties() {
 		return additionalProperties;
+	}
+	public Object getTitle() {
+		return Title;
+	}
+	public void setTitle(Object title) {
+		Title = title;
 	}
 	public void setAdditionalProperties(Map<String, Object> additionalProperties) {
 		this.additionalProperties = additionalProperties;

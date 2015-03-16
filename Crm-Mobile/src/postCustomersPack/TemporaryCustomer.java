@@ -1,11 +1,11 @@
-package GetCustomersPack;
+package postCustomersPack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Inserted {
+public class TemporaryCustomer {
 
 	private String Address;
 	private String Description;
@@ -14,11 +14,11 @@ public class Inserted {
 	private List<PersonRelation> PersonRelations = new ArrayList<PersonRelation>();
 	private String Tel;
 	private String Title;
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	/**
 	 * 
-	 * @return
-	 * The Address
+	 * @return The Address
 	 */
 	public String getAddress() {
 		return Address;
@@ -27,7 +27,7 @@ public class Inserted {
 	/**
 	 * 
 	 * @param Address
-	 * The Address
+	 *            The Address
 	 */
 	public void setAddress(String Address) {
 		this.Address = Address;
@@ -35,8 +35,7 @@ public class Inserted {
 
 	/**
 	 * 
-	 * @return
-	 * The Description
+	 * @return The Description
 	 */
 	public String getDescription() {
 		return Description;
@@ -45,7 +44,7 @@ public class Inserted {
 	/**
 	 * 
 	 * @param Description
-	 * The Description
+	 *            The Description
 	 */
 	public void setDescription(String Description) {
 		this.Description = Description;
@@ -53,8 +52,7 @@ public class Inserted {
 
 	/**
 	 * 
-	 * @return
-	 * The Id
+	 * @return The Id
 	 */
 	public String getId() {
 		return Id;
@@ -63,7 +61,7 @@ public class Inserted {
 	/**
 	 * 
 	 * @param Id
-	 * The Id
+	 *            The Id
 	 */
 	public void setId(String Id) {
 		this.Id = Id;
@@ -71,8 +69,7 @@ public class Inserted {
 
 	/**
 	 * 
-	 * @return
-	 * The IsLegal
+	 * @return The IsLegal
 	 */
 	public boolean isIsLegal() {
 		return IsLegal;
@@ -81,7 +78,7 @@ public class Inserted {
 	/**
 	 * 
 	 * @param IsLegal
-	 * The IsLegal
+	 *            The IsLegal
 	 */
 	public void setIsLegal(boolean IsLegal) {
 		this.IsLegal = IsLegal;
@@ -89,8 +86,7 @@ public class Inserted {
 
 	/**
 	 * 
-	 * @return
-	 * The PersonRelations
+	 * @return The PersonRelations
 	 */
 	public List<PersonRelation> getPersonRelations() {
 		return PersonRelations;
@@ -99,7 +95,7 @@ public class Inserted {
 	/**
 	 * 
 	 * @param PersonRelations
-	 * The PersonRelations
+	 *            The PersonRelations
 	 */
 	public void setPersonRelations(List<PersonRelation> PersonRelations) {
 		this.PersonRelations = PersonRelations;
@@ -107,8 +103,7 @@ public class Inserted {
 
 	/**
 	 * 
-	 * @return
-	 * The Tel
+	 * @return The Tel
 	 */
 	public String getTel() {
 		return Tel;
@@ -117,7 +112,7 @@ public class Inserted {
 	/**
 	 * 
 	 * @param Tel
-	 * The Tel
+	 *            The Tel
 	 */
 	public void setTel(String Tel) {
 		this.Tel = Tel;
@@ -125,8 +120,7 @@ public class Inserted {
 
 	/**
 	 * 
-	 * @return
-	 * The Title
+	 * @return The Title
 	 */
 	public String getTitle() {
 		return Title;
@@ -135,11 +129,18 @@ public class Inserted {
 	/**
 	 * 
 	 * @param Title
-	 * The Title
+	 *            The Title
 	 */
 	public void setTitle(String Title) {
 		this.Title = Title;
 	}
 
+	public Map<String, Object> getAdditionalProperties() {
+		return this.additionalProperties;
+	}
+
+	public void setAdditionalProperty(String name, Object value) {
+		this.additionalProperties.put(name, value);
+	}
 
 }

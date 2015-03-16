@@ -2,11 +2,13 @@
 <<<<<<<=HEAD
 >>>>>>>=30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
 eclipse.preferences.version=1
-encoding//src/GetTasksPack/TasksListAdapter.java=UTF-8
-encoding//src/com/Atieh/crm_mobile/CustemerSendTestActivity.java=UTF-8
+encoding//src/adapters/ActivityListAdapter.java=UTF-8
+encoding//src/adapters/TaskListAdapter.java=UTF-8
+encoding//src/com/Atieh/crm_mobile/ActivityDetailsActivity.java=UTF-8
+encoding//src/com/Atieh/crm_mobile/CustemerSendActivity.java=UTF-8
 encoding//src/com/Atieh/crm_mobile/CustomerListActivity.java=UTF-8
 encoding//src/com/Atieh/crm_mobile/MainActivity.java=UTF-8
-encoding//src/com/Atieh/crm_mobile/TaskActionActivity.java=UTF-8
+encoding//src/com/Atieh/crm_mobile/TaskAndActivityActionActivity.java=UTF-8
 encoding//src/com/Atieh/crm_mobile_calendar/CivilDate.java=UTF-8
 encoding//src/com/Atieh/crm_mobile_calendar/PersianDate.java=UTF-8
 encoding//src/com/Atieh/crm_mobile_calendar/SelectdateActivity.java=UTF-8

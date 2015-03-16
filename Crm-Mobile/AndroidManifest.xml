@@ -47,7 +47,7 @@
             android:name=".CustomerListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TaskActionActivity"
+            android:name=".TaskAndActivityActionActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.Atieh.crm_mobile_calendar.MainActivity"
@@ -79,8 +79,24 @@
         </service>
 
         <activity
-            android:name=".CustemerSendTestActivity"
+            android:name=".CustemerSendActivity"
             android:label="@string/title_activity_custemer_send_test" >
+        </activity>
+        <activity
+            android:name=".TaskDetailsActivity"
+            android:label="@string/title_activity_task_details" >
+        </activity>
+        <activity
+            android:name=".ActivityDetailsActivity"
+            android:label="@string/title_activity_activity_details" >
+        </activity>
+        <activity
+            android:name=".SendTaskActivity"
+            android:label="@string/title_activity_send_task" >
+        </activity>
+        <activity
+            android:name=".SendActivityActivity"
+            android:label="@string/title_activity_send_activity" >
         </activity>
     </application>
 
