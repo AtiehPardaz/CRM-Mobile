@@ -98,6 +98,10 @@
             android:name=".SendActivityActivity"
             android:label="@string/title_activity_send_activity" >
         </activity>
+        <activity
+            android:name=".NewCustomerActivity"
+            android:label="@string/title_activity_new_customer" >
+        </activity>
     </application>
 
 </manifest>

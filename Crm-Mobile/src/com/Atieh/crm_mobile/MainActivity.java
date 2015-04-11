@@ -225,7 +225,7 @@ public class MainActivity extends Activity {
 		protected String doInBackground(String... arg0) {
 
 			// progbar_progress.setVisibility(View.VISIBLE);
-			return httpRequestMessage(netStatus("http://atiehpardaz.com"));
+			return httpRequestMessage(netStatus("http://atiehpardaz.com/default.aspx?lng=fa"));
 		}
 
 		@Override

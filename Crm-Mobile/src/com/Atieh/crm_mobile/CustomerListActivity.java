@@ -41,7 +41,7 @@ public class CustomerListActivity extends Activity {
 		btnhome = (ImageButton) findViewById(R.id.btn_home_customerlist);
 		btnmonthview = (ImageButton) findViewById(R.id.btn_monthviewlist_customerlist);
 		add = (ImageButton) findViewById(R.id.btn_add_customerlist);
-		list_costomer = (ListView) findViewById(R.id.lv_tasks);
+		list_costomer = (ListView) findViewById(R.id.lv_customers);
 		ll_loading = (LinearLayout) findViewById(R.id.ll_loading_customerlist);
 	}
 
@@ -125,11 +125,8 @@ public class CustomerListActivity extends Activity {
 			public void onClick(View arg0) {
 
 				startActivity(new Intent(CustomerListActivity.this,
-						CustemerSendActivity.class));
-				Toast.makeText(
-						getApplicationContext(),
-						"صفحۀایجادمشتری جدید موجود نیست \n" + "درحال آماده شدن",
-						Toast.LENGTH_LONG).show();
+						NewCustomerActivity.class));
+		
 
 			}
 		});

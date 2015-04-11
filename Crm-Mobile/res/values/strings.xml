@@ -52,5 +52,6 @@
     <string name="title_activity_activity_details">ActivityDetailsActivity</string>
     <string name="title_activity_send_task">SendTaskActivity</string>
     <string name="title_activity_send_activity">SendActivityActivity</string>
+    <string name="title_activity_new_customer">NewCustomerActivity</string>
 
 </resources>
