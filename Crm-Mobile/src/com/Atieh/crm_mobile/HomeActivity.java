@@ -105,7 +105,7 @@ public class HomeActivity extends Activity {
 				
 				Intent sendActivity = new Intent();
 				sendActivity.setClass(getApplicationContext(),
-						SendActivityActivity.class);
+						NewActivitiesActivity.class);
 				startActivity(sendActivity);				
 			}
 		});

@@ -52,7 +52,9 @@
         <activity
             android:name=".NewTaskActivity"
             android:screenOrientation="portrait" />
-        
+        <activity
+            android:name=".NewActivitiesActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.Atieh.crm_mobile_calendar.MainActivity"
             android:exported="true"

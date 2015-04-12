@@ -20,7 +20,6 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffffff"
             android:textSize="25sp" />
-
     </LinearLayout>
 
     <ScrollView
@@ -43,11 +42,11 @@
                 android:padding="10dp" >
 
                 <EditText
-                    android:id="@+id/et_newtasktitle"
+                    android:id="@+id/et_newactivitytitle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:hint="عنوان" />
+                    android:hint="عنوان فعالیت" />
             </LinearLayout>
 
             <LinearLayout
@@ -59,7 +58,7 @@
                 android:padding="10dp" >
 
                 <Spinner
-                    android:id="@+id/spnr_newtask_customer"
+                    android:id="@+id/spnr_newactivity_customer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
@@ -73,7 +72,7 @@
                 android:padding="10dp" >
 
                 <Spinner
-                    android:id="@+id/spnr_newtask_shakhsrabet"
+                    android:id="@+id/spnr_newactivity_shakhsrabet"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
@@ -86,7 +85,7 @@
                 android:padding="10dp" >
 
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/btn__newactivity_seldate"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
@@ -99,7 +98,7 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/txt_taskDate"
+                    android:id="@+id/txt_newactivity_Date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
@@ -114,7 +113,7 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/lbl_taskDate_newtask"
+                    android:id="@+id/lbl_newactivity_Date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="right"
@@ -142,7 +141,7 @@
                         android:background="@drawable/clock" />
 
                     <TextView
-                        android:id="@+id/txt_taskTohour_newtask"
+                        android:id="@+id/txt_taskTohour_newactivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|center"
@@ -152,7 +151,7 @@
                         android:textColor="#8b8b8b" />
 
                     <TextView
-                        android:id="@+id/lbl_taskTohour"
+                        android:id="@+id/lbl_taskTohour__newactivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="تا ساعت :" />
@@ -165,14 +164,14 @@
                     android:gravity="center" >
 
                     <Button
-                        android:id="@+id/button2"
+                        android:id="@+id/btn_seltime__newactivity"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/clock" />
 
                     <TextView
-                        android:id="@+id/txt_taskFromhour_newtask"
+                        android:id="@+id/txt_taskFromhour__newactivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -181,11 +180,26 @@
                         android:textColor="#8b8b8b" />
 
                     <TextView
-                        android:id="@+id/lbl_taskFromhour"
+                        android:id="@+id/lbl_taskFromhour_newactivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="از ساعت :" />
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:background="@color/first_row_background_color"
+                android:gravity="right"
+                android:padding="10dp" >
+
+                <Spinner
+                    android:id="@+id/spnr_newactivity_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -196,7 +210,7 @@
                 android:padding="10dp" >
 
                 <Spinner
-                    android:id="@+id/spnr_newtask_mahsolkhadamat"
+                    android:id="@+id/spnr_newactivity_mahsolkhadamat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
@@ -210,7 +224,7 @@
                 android:padding="10dp" >
 
                 <EditText
-                    android:id="@+id/et_sharh_newtask"
+                    android:id="@+id/et_sharh_newactivity"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
@@ -220,35 +234,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
+                android:layout_marginBottom="2dp"
+                android:background="@color/first_row_background_color"
                 android:gravity="right"
                 android:padding="10dp" >
 
-                <TextView
-                    android:id="@+id/txt_daghighefgabl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="دقیقه قبل" />
+                <Spinner
+                    android:id="@+id/spnr_newactivity_vaziat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
-                <EditText
-                    android:id="@+id/et_daghigheghabl_newtask"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:ems="10" >
-                </EditText>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/first_row_background_color"
+                android:gravity="right"
+                android:padding="10dp" >
 
-                <RadioButton
-                    android:id="@+id/rdbtn_hamanhalze_newtask"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="همان لحظه" />
-
-                <RadioButton
-                    android:id="@+id/rdbtn_remember_newtask"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="یادآوری شود" />
+                <Spinner
+                    android:id="@+id/spnr_newactivity_ghararbadi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
