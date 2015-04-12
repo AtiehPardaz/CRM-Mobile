@@ -53,5 +53,12 @@
     <string name="title_activity_send_task">SendTaskActivity</string>
     <string name="title_activity_send_activity">SendActivityActivity</string>
     <string name="title_activity_new_customer">NewCustomerActivity</string>
+    <string name="customer_type_prompt">نوع :</string>
+    <string-array name="customer_type_arrays">
+        <item>حقیقی</item>
+        <item>حقوقی</item>
+    </string-array>
+        <string name="customer_role_prompt">سمت :</string>
+    
 
 </resources>
