@@ -79,10 +79,10 @@ public class HomeActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent sendCustomer = new Intent();
-				sendCustomer.setClass(getApplicationContext(),
-						CustemerSendActivity.class);
-				startActivity(sendCustomer);
+				Intent CustomersList = new Intent();
+				CustomersList.setClass(getApplicationContext(),
+						CustomerListActivity.class);
+				startActivity(CustomersList);
 			}
 		});
 		
@@ -93,7 +93,7 @@ public class HomeActivity extends Activity {
 				
 				Intent sendTask = new Intent();
 				sendTask.setClass(getApplicationContext(),
-						SendTaskActivity.class);
+						NewTaskActivity.class);
 				startActivity(sendTask);				
 			}
 		});

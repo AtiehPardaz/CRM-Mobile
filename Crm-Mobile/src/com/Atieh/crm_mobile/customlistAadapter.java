@@ -22,7 +22,7 @@ public class customlistAadapter extends ArrayAdapter<String> {
 		this.context = context;
 		this.values = values;
 		b = (Context) context;
-		this.curall = curall;
+		// this.curall = curall;
 	}
 
 	@Override
@@ -42,10 +42,8 @@ public class customlistAadapter extends ArrayAdapter<String> {
 
 		if (cur != null)
 			cur.moveToFirst();
-
-		id.setVisibility(View.GONE);
-
 		id.setText(cur.getString(0));
+		id.setVisibility(View.GONE);
 
 		title.setText(cur.getString(1));
 

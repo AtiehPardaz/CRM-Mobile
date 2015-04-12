@@ -11,12 +11,12 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/tv_title_ActivityDetails"
+            android:id="@+id/tv_title_tasknew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:text="جزئیات فعالیت"
+            android:text="ایجاد وظیفه جدید"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffffff"
             android:textSize="25sp" />
@@ -39,87 +39,85 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/seprator"
-                android:gravity="right"
+                android:gravity="right|center"
                 android:padding="10dp" >
 
-                <TextView
-                    android:id="@+id/txt_ActivityTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text=""
-                    android:textColor="#8b8b8b" />
-
-                <TextView
-                    android:id="@+id/lbl_ActivityTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="عنوان فعالیت :" />
+                <EditText
+                    android:id="@+id/et_newtasktitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:hint="عنوان" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
+                android:layout_marginBottom="2dp"
+                android:background="@color/first_row_background_color"
                 android:gravity="right"
                 android:padding="10dp" >
 
-                <TextView
-                    android:id="@+id/txt_ActivityCustomer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text=""
-                    android:textColor="#8b8b8b" />
-
-                <TextView
-                    android:id="@+id/lbl_ActivityCustomer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="مشتری :" />
+                <Spinner
+                    android:id="@+id/spnr_newtask_customer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
+                android:layout_marginBottom="2dp"
+                android:background="@color/first_row_background_color"
                 android:gravity="right"
                 android:padding="10dp" >
 
-                <TextView
-                    android:id="@+id/txt_AtcivityRelationPerson"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text=""
-                    android:textColor="#8b8b8b" />
-
-                <TextView
-                    android:id="@+id/lbl_relationPerson"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="شخص رابط :" />
+                <Spinner
+                    android:id="@+id/spnr_newtask_shakhsrabet"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
-                android:gravity="right"
+                android:background="@color/first_row_background_color"
+                android:gravity="center"
                 android:padding="10dp" >
 
+                <Button
+                    android:id="@+id/button1"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/ic_action_month" />
+
+                <View
+                    android:id="@+id/View05"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
                 <TextView
-                    android:id="@+id/txt_ActivityDate"
+                    android:id="@+id/txt_taskDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
+                    android:hint="12 دی چهارشنبه"
                     android:text=""
                     android:textColor="#8b8b8b" />
 
+                <View
+                    android:id="@+id/View01"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
                 <TextView
-                    android:id="@+id/lbl_ActivityDate"
+                    android:id="@+id/lbl_taskDate_newtask"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="right"
                     android:text="تاریخ :" />
             </LinearLayout>
 
@@ -134,19 +132,27 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
                     android:layout_weight="1"
-                    android:gravity="right" >
+                    android:gravity="center" >
+
+                    <Button
+                        android:id="@+id/button3"
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/clock" />
 
                     <TextView
-                        android:id="@+id/txt_ActivityTohour"
+                        android:id="@+id/txt_taskTohour_newtask"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
+                        android:layout_gravity="right|center"
                         android:layout_marginRight="5dp"
+                        android:hint="18:00"
                         android:text=""
                         android:textColor="#8b8b8b" />
 
                     <TextView
-                        android:id="@+id/lbl_ActivityTohour"
+                        android:id="@+id/lbl_taskTohour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="تا ساعت :" />
@@ -156,18 +162,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="right" >
+                    android:gravity="center" >
+
+                    <Button
+                        android:id="@+id/button2"
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/clock" />
 
                     <TextView
-                        android:id="@+id/txt_ActivityFromhour"
+                        android:id="@+id/txt_taskFromhour_newtask"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
+                        android:hint="16:00"
                         android:text=""
                         android:textColor="#8b8b8b" />
 
                     <TextView
-                        android:id="@+id/lbl_ActivityFromhour"
+                        android:id="@+id/lbl_taskFromhour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="از ساعت :" />
@@ -177,23 +191,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/first_row_background_color"
+                android:gravity="right"
+                android:padding="10dp" >
+
+                <Spinner
+                    android:id="@+id/spnr_newtask_mahsolkhadamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/seprator"
                 android:gravity="right"
                 android:padding="10dp" >
 
-                <TextView
-                    android:id="@+id/txt_ActivityTaskTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text=""
-                    android:textColor="#8b8b8b" />
-
-                <TextView
-                    android:id="@+id/lbl_ActivityTaskTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="وظیفه :" />
+                <EditText
+                    android:id="@+id/et_sharh_newtask"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:hint="شرح" />
             </LinearLayout>
 
             <LinearLayout
@@ -204,92 +225,50 @@
                 android:padding="10dp" >
 
                 <TextView
-                    android:id="@+id/txt_ActivityProductTitle"
+                    android:id="@+id/txt_daghighefgabl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:text=""
-                    android:textColor="#8b8b8b" />
+                    android:text="دقیقه قبل" />
 
-                <TextView
-                    android:id="@+id/lbl_ActivityProductTitle"
+                <EditText
+                    android:id="@+id/et_daghigheghabl_newtask"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10" >
+                </EditText>
+
+                <RadioButton
+                    android:id="@+id/rdbtn_hamanhalze_newtask"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="عنوان محصول یا خدمات :" />
-            </LinearLayout>
+                    android:text="همان لحظه" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
-                android:gravity="right"
-                android:padding="10dp" >
-
-                <TextView
-                    android:id="@+id/txt_ActivityDetail"
+                <RadioButton
+                    android:id="@+id/rdbtn_remember_newtask"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text=""
-                    android:textColor="#8b8b8b" />
+                    android:text="یادآوری شود" />
             </LinearLayout>
-            
-              <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/seprator"
-        android:gravity="right"
-        android:padding="10dp" >
-
-        <TextView
-            android:id="@+id/txt_ActivityStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text=""
-            android:textColor="#8b8b8b" />
-
-        <TextView
-            android:id="@+id/lbl_ActivityStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="وضعیت :" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/seprator"
-        android:gravity="right"
-        android:padding="10dp" >
-
-        <TextView
-            android:id="@+id/txt_ActivityNextAppointment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text=""
-            android:textColor="#8b8b8b" />
-
-        <TextView
-            android:id="@+id/lbl_ActivityNextAppointment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="قرار بعدی :" />
-    </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-  
-
     <LinearLayout
-        android:id="@+id/ActivityFooter"
+        android:id="@+id/taskFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="5dp"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        android:background="@drawable/seprator" >
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/savenew" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -299,25 +278,11 @@
             android:src="@drawable/close" />
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/delete" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/edit" />
-
-        <ImageView
             android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/add_activity" />
+            android:src="@drawable/save" />
     </LinearLayout>
 
 </RelativeLayout>

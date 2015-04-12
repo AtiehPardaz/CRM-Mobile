@@ -299,6 +299,11 @@ public class database extends SQLiteOpenHelper {
 		long ID = mydb.update("RelationRoles", values, strFilter,null);
 	}
 
+	public Cursor getRelationRoles(){
+
+		Cursor cu= mydb.rawQuery("select * from RelationRoles where IsDeleted = '0'", null); 
+		return cu ;
+	}
 
 
 
