@@ -25,3 +25,4 @@ proguard/
 # Log Files
 *.log
 .metadata/
+Crm-Mobile/libs/gson-2.2.2.jar
