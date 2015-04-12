@@ -45,7 +45,7 @@
                 android:textColor="@color/white_color"
                 android:textSize="25sp" />
 
-<<<<<<< HEAD
+
             <ImageButton
                 android:id="@+id/imgbtn_backyear_picker"
                 android:layout_width="72dp"
@@ -53,13 +53,7 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/ic_action_buttom_item" />
         </LinearLayout>
-=======
-        <TextView
-            android:id="@+id/txtTaskHour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
->>>>>>> fcfe36309bc3ae98f315137a54ff6c558fb92f7a
+
 
         <LinearLayout
             android:layout_width="120dp"
