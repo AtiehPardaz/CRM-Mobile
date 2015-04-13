@@ -105,20 +105,24 @@ public class NewCustomerActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				String customerID = java.util.UUID.randomUUID().toString();
-				db.InsertCustomer(customerID, name.getText().toString(), 
-						"",
-						(int)typeSpinner.getSelectedItemId(),
-						address.getText().toString(),
-						tell.getText().toString(),
-						0);
 				
-				db.InsertPersonRelations(customerID,
-						java.util.UUID.randomUUID().toString(),
-						RelationRoleId,
-						Title,
-						IsUplodedToServer
-						)
+//				String customerID = java.util.UUID.randomUUID().toString();
+//				db.InsertCustomer(
+//						customerID, 
+//						name.getText().toString(), 
+//						"",
+//						(int)typeSpinner.getSelectedItemId(),
+//						address.getText().toString(),
+//						tell.getText().toString(),
+//						0);
+				
+//				db.InsertPersonRelations(customerID,
+//						java.util.UUID.randomUUID().toString(),
+//						RelationRoleId,
+//						Title,
+//						IsUplodedToServer
+//						)
+				
 			}
 		});
 		

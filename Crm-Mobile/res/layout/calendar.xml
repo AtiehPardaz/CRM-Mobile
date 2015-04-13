@@ -34,7 +34,7 @@
                 android:id="@+id/imgbtn_selectcal_calander"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/taghvim" />
+                android:background="@drawable/taghvimsefid" />
 
             <TextView
                 android:id="@+id/tv_title_monthview"

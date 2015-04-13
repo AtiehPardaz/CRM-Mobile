@@ -93,7 +93,7 @@ public class HomeActivity extends Activity {
 				
 				Intent sendTask = new Intent();
 				sendTask.setClass(getApplicationContext(),
-						SendTaskActivity.class);
+						NewTaskActivity.class);
 				startActivity(sendTask);				
 			}
 		});
@@ -105,7 +105,7 @@ public class HomeActivity extends Activity {
 				
 				Intent sendActivity = new Intent();
 				sendActivity.setClass(getApplicationContext(),
-						SendActivityActivity.class);
+						NewActivitiesActivity.class);
 				startActivity(sendActivity);				
 			}
 		});
