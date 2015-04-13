@@ -52,6 +52,9 @@
         <activity
             android:name=".NewTaskActivity"
             android:screenOrientation="portrait" />
+         <activity
+            android:name=".activity_customer_details"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NewActivitiesActivity"
             android:screenOrientation="portrait" />

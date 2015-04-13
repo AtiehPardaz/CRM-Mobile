@@ -46,7 +46,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:background="@drawable/edittext_back"
                     android:hint="عنوان فعالیت" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -146,6 +148,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|center"
                         android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_back"
                         android:hint="18:00"
                         android:text=""
                         android:textColor="#8b8b8b" />
@@ -175,6 +178,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_back"
                         android:hint="16:00"
                         android:text=""
                         android:textColor="#8b8b8b" />
@@ -228,7 +232,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
+                    android:background="@drawable/edittext_back"
                     android:hint="شرح" />
+
             </LinearLayout>
 
             <LinearLayout

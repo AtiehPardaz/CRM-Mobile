@@ -27,11 +27,6 @@ import com.Atieh.crm_mobile_calendar.DateConverter;
 import com.Atieh.crm_mobile_calendar.DayOutOfRangeException;
 import com.Atieh.crm_mobile_calendar.PersianDate;
 
-/**
- * Calendar month view fragment
- * 
- * @author ebraminio
- */
 public class MonthFragment extends Fragment {
 	private final Utils utils = Utils.getInstance();
 	public static TextView currentMonthTextView;

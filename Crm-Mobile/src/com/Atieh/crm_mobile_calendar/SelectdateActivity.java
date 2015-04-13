@@ -30,10 +30,10 @@ public class SelectdateActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_selectdate);
 
-		final String[] MonthName = {  " ", "بهمن", "دی", "آذر",
-				"آبان", "مهر", "شهریور", "مرداد","تیر" , "خرداد","اردیبهشت", "فروردین","اسفند" };
-//		final String[] MonthName = { "", "فروردین", "اردیبهشت", "خرداد", "تیر",
-//				"مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند" };
+//		final String[] MonthName = {  " ", "بهمن", "دی", "آذر",
+//				"آبان", "مهر", "شهریور", "مرداد","تیر" , "خرداد","اردیبهشت", "فروردین","اسفند" };
+		final String[] MonthName = { "", "فروردین", "اردیبهشت", "خرداد", "تیر",
+				"مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند" };
 		
 		gotodate = (Button) findViewById(R.id.btn_gotodate);
 		year = (TextView) findViewById(R.id.tv_year);
