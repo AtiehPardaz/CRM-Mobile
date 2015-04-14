@@ -27,7 +27,9 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1" >
+        android:layout_above="@+id/taskFooter"
+        android:layout_below="@+id/linearLayout1"
+        android:padding="5dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,7 +50,8 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_back"
-                    android:hint="عنوان" />
+                    android:hint="عنوان"
+                    android:padding="10dp" />
 
             </LinearLayout>
 
@@ -197,15 +200,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="5dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newtask_mahsolkhadamat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/spinner_back" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -213,20 +218,23 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/seprator"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <EditText
                     android:id="@+id/et_sharh_newtask"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
-                    android:hint="شرح" />
+                    android:background="@drawable/edittext_back"
+                    android:hint="شرح"
+                    android:padding="10dp" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
                 android:gravity="right"
                 android:padding="10dp" >
 
@@ -271,22 +279,22 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/savenew" />
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/close" />
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/save" />
     </LinearLayout>

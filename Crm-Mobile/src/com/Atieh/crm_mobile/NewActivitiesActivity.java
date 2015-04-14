@@ -10,6 +10,8 @@ public class NewActivitiesActivity extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activities_new);
+		
+		
 	}
 
 }
