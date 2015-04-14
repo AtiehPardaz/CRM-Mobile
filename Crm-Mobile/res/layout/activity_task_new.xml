@@ -27,7 +27,10 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1" >
+        android:layout_above="@+id/taskFooter"
+        android:layout_below="@+id/linearLayout1"
+        android:background="@drawable/seprator"
+        android:padding="5dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,9 +41,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
                 android:gravity="right|center"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="5dp" >
 
                 <EditText
                     android:id="@+id/et_newtasktitle"
@@ -48,7 +51,8 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_back"
-                    android:hint="عنوان" />
+                    android:hint="عنوان"
+                    android:padding="10dp" />
 
             </LinearLayout>
 
@@ -56,28 +60,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newtask_customer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/spinner_back" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newtask_shakhsrabet"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/spinner_back" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -88,7 +96,7 @@
                 android:padding="10dp" >
 
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/btn_relative_person"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
@@ -149,7 +157,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|center"
                         android:layout_marginRight="5dp"
-                        android:background="@drawable/edittext_back"
                         android:hint="18:00"
                         android:text=""
                         android:textColor="#8b8b8b" />
@@ -179,7 +186,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
-                        android:background="@drawable/edittext_back"
                         android:hint="16:00"
                         android:text=""
                         android:textColor="#8b8b8b" />
@@ -195,15 +201,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="5dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newtask_mahsolkhadamat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/spinner_back" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -211,7 +219,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/seprator"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <EditText
                     android:id="@+id/et_sharh_newtask"
@@ -219,14 +228,14 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
                     android:background="@drawable/edittext_back"
-                    android:hint="شرح" />
+                    android:hint="شرح"
+                    android:padding="10dp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
                 android:gravity="right"
                 android:padding="10dp" >
 
@@ -241,9 +250,7 @@
                     android:id="@+id/et_daghigheghabl_newtask"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_back"
                     android:ems="10" >
-
                 </EditText>
 
                 <RadioButton
@@ -269,26 +276,27 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
-        android:background="@drawable/seprator" >
+        android:background="@drawable/seprator"
+        android:paddingTop="2dp" >
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/savenew" />
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/close" />
 
         <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/img_save_newtask"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/save" />
     </LinearLayout>

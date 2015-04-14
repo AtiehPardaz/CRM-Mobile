@@ -179,7 +179,7 @@ public class database extends SQLiteOpenHelper {
 
 
 
-	public void InsertCustomer(String Id,String Title , String Description , int IsLegal,String Address,String Tel){
+	public void InsertCustomer(String Id,String Title , String Description , int IsLegal,String Address,String Tel,int IsUplodedToServer){
 
 		ContentValues values = new ContentValues();
 		values.put("Id", Id);
@@ -189,6 +189,8 @@ public class database extends SQLiteOpenHelper {
 		values.put("Address",Address );
 		values.put("Tel", Tel);
 		values.put("IsDeleted", 0);
+		values.put("IsUplodedToServer", IsUplodedToServer);
+
 		mydb.insert("custemers", null, values);
 	}
 
@@ -234,13 +236,15 @@ public class database extends SQLiteOpenHelper {
 
 
 
-	public void InsertPersonRelations(String CustomerId,String Id,String RelationRoleId,String Title){
+	public void InsertPersonRelations(String CustomerId,String Id,String RelationRoleId,String Title,int IsUplodedToServer){
 		ContentValues values = new ContentValues();
 		values.put("CustomerId", CustomerId);
 		values.put("Id", Id);
 		values.put("RelationRoleId", RelationRoleId);
 		values.put("Title", Title);
 		values.put("IsDeleted", 0);
+		values.put("IsUplodedToServer", IsUplodedToServer);
+		
 		mydb.insert("personRelations", null, values);
 	}
 

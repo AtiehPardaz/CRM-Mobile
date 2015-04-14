@@ -26,7 +26,9 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1" >
+        android:layout_below="@+id/linearLayout1"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,9 +39,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
                 android:gravity="right|center"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="5dp" >
 
                 <EditText
                     android:id="@+id/et_newactivitytitle"
@@ -47,44 +49,49 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_back"
-                    android:hint="عنوان فعالیت" />
-
+                    android:hint="عنوان فعالیت"
+                    android:padding="10dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newactivity_customer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/spinner_back" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newactivity_shakhsrabet"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/spinner_back" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/first_row_background_color"
+                android:background="@drawable/spinner_back"
                 android:gravity="center"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="3dp" >
 
                 <Button
                     android:id="@+id/btn__newactivity_seldate"
@@ -125,22 +132,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
-                android:padding="10dp" >
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp" >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
                     android:layout_weight="1"
-                    android:gravity="center" >
+                    android:gravity="right|center" >
 
                     <Button
                         android:id="@+id/button3"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/clock" />
+                        android:background="@drawable/clock"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/txt_taskTohour_newactivity"
@@ -151,7 +161,15 @@
                         android:background="@drawable/edittext_back"
                         android:hint="18:00"
                         android:text=""
-                        android:textColor="#8b8b8b" />
+                        android:textColor="#8b8b8b"
+                        android:visibility="gone" />
+
+                    <Spinner
+                        android:id="@+id/spnr_newtask_tasaat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_back" />
 
                     <TextView
                         android:id="@+id/lbl_taskTohour__newactivity"
@@ -164,24 +182,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center" >
+                    android:gravity="right|center" >
 
                     <Button
                         android:id="@+id/btn_seltime__newactivity"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/clock" />
+                        android:background="@drawable/clock"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/txt_taskFromhour__newactivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginRight="5dp"
                         android:background="@drawable/edittext_back"
                         android:hint="16:00"
                         android:text=""
-                        android:textColor="#8b8b8b" />
+                        android:textAlignment="center"
+                        android:textColor="#8b8b8b"
+                        android:visibility="gone" />
+
+                    <Spinner
+                        android:id="@+id/spnr_newtask_azsaat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_back" />
 
                     <TextView
                         android:id="@+id/lbl_taskFromhour_newactivity"
@@ -195,75 +224,82 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newactivity_task"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/spinner_back" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newactivity_mahsolkhadamat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/spinner_back" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <EditText
                     android:id="@+id/et_sharh_newactivity"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
-                    android:background="@drawable/edittext_back"
-                    android:hint="شرح" />
+                    android:background="@drawable/edittext_back" >
 
+                    android:hint="شرح"
+                    android:padding="10dp" />
+ 
+                </EditText>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newactivity_vaziat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/spinner_back" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/first_row_background_color"
                 android:gravity="right"
-                android:padding="10dp" >
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
 
                 <Spinner
                     android:id="@+id/spnr_newactivity_ghararbadi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/spinner_back" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -279,23 +315,24 @@
         android:background="@drawable/seprator" >
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/img_savenew_newtask"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/savenew" />
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/img_close_newtask"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/close" />
 
         <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/img_save_newtask"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right"
             android:layout_weight="1"
             android:src="@drawable/save" />
     </LinearLayout>

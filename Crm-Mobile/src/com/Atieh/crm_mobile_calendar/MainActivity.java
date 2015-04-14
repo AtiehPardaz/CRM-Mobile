@@ -34,6 +34,7 @@ public class MainActivity extends FragmentActivity {
 	private TextView calendarInfo;
 	ImageButton selectdate;
 	public static TextView title_month;
+	
 	private Button resetButton;
 	private PrayTimeActivityHelper prayTimeActivityHelper;
 	ImageButton next;
@@ -71,7 +72,7 @@ public class MainActivity extends FragmentActivity {
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
 		}
 		setContentView(R.layout.calendar);
-
+		
 		calendarInfo = (TextView) findViewById(R.id.calendar_info);
 		title_month = (TextView) findViewById(R.id.tv_title_monthview);
 		next = (ImageButton) findViewById(R.id.imgbtn_next_month);
