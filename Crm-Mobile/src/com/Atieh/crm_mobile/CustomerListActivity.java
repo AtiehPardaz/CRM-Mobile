@@ -89,7 +89,7 @@ public class CustomerListActivity extends Activity {
 					.show();
 		}
 
-		// db.close();
+		 db.close();
 		// custom list
 
 		// ==========liste sade

@@ -52,9 +52,10 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		// for notification
 		// startService(new Intent(this, ApplicationService.class));
-//		persiandatee=new PersianDate();
-		Toast.makeText(getApplicationContext(), persiandatee.getMonth()+"", 1)
-				.show();
+		// persiandatee=new PersianDate();
+		// Toast.makeText(getApplicationContext(), persiandatee.getMonth()+"",
+		// 1)
+		// .show();
 		boolean removeTitle = true;
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 			if (!hasPermanentMenuKey()) {
@@ -159,14 +160,15 @@ public class MainActivity extends FragmentActivity {
 	protected void onResume() {
 
 		super.onResume();
-
-		int oldyear = 94;
-		int oldmonth = 1;
 		Intent intent = getIntent();
-		newyear = intent.getStringExtra("year");
 		newmonth = intent.getStringExtra("month");
 
 		if (newmonth != null) {
+			int oldyear = MonthFragment.yearjari-1300;
+			int oldmonth = MonthFragment.monthjari;
+
+			newyear = intent.getStringExtra("year");
+
 			Toast.makeText(getApplicationContext(), newyear + " " + newmonth, 1)
 					.show();
 			int hal = (oldyear - Integer.parseInt(newyear)) * 12

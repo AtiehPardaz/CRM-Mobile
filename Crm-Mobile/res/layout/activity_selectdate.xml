@@ -41,7 +41,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="93"
+                android:text="94"
+                android:textColor="@color/white_color"
+                android:textSize="22sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_yeartitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="سال"
                 android:textColor="@color/white_color"
                 android:textSize="22sp" />
 
@@ -76,7 +86,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:text="اردبیهشت"
+                android:text="ماه"
                 android:textColor="@color/white_color"
                 android:textSize="22sp" />
 

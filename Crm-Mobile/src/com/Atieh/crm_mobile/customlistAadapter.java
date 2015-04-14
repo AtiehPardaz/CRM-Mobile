@@ -14,6 +14,7 @@ public class customlistAadapter extends ArrayAdapter<String> {
 	private final String[] values;
 	Context b;
 	Cursor curall;
+	database db;
 
 	// public MyAdapter(Context context, String[] values, Cursor curall) {
 	public customlistAadapter(Context context, String[] values) {
@@ -21,7 +22,9 @@ public class customlistAadapter extends ArrayAdapter<String> {
 		super(context, R.layout.row, values);
 		this.context = context;
 		this.values = values;
+
 		b = (Context) context;
+
 		// this.curall = curall;
 	}
 
@@ -35,6 +38,9 @@ public class customlistAadapter extends ArrayAdapter<String> {
 		TextView id = (TextView) rowView.findViewById(R.id.tv_id_customer); // id
 		TextView title = (TextView) rowView.findViewById(R.id.tv_customer); // title
 
+		database db = new database(b);
+		db.database();
+		db.open();
 		// final Cursor cur = curall;
 		final Cursor cur = database.mydb.rawQuery(
 				"select * from custemers WHERE id='" + values[position] + "'",
@@ -48,7 +54,7 @@ public class customlistAadapter extends ArrayAdapter<String> {
 		title.setText(cur.getString(1));
 
 		// Toast.makeText(b,id.getText().toString(), 1).show();
-
+		db.close();
 		return rowView;
 	}
 }
