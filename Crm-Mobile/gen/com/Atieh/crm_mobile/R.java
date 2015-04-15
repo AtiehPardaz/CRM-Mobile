@@ -114,9 +114,10 @@ public final class R {
         public static final int savenew=0x7f020042;
         public static final int search=0x7f020043;
         public static final int seprator=0x7f020044;
-        public static final int taghvim=0x7f020045;
-        public static final int taghvimsefid=0x7f020046;
-        public static final int today_background=0x7f020047;
+        public static final int spinner_back=0x7f020045;
+        public static final int taghvim=0x7f020046;
+        public static final int taghvimsefid=0x7f020047;
+        public static final int today_background=0x7f020048;
     }
     public static final class id {
         public static final int ActivityFooter=0x7f0c0030;

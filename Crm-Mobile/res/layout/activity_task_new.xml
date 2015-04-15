@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/taskFooter"
         android:layout_below="@+id/linearLayout1"
+        android:background="@drawable/seprator"
         android:padding="5dp" >
 
         <LinearLayout
@@ -275,7 +276,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
-        android:background="@drawable/seprator" >
+        android:background="@drawable/seprator"
+        android:paddingTop="2dp" >
 
         <ImageView
             android:id="@+id/imageView2"
