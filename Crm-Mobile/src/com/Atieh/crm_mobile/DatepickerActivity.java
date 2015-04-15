@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.Atieh.crm_mobile_calendar.Utils;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DatepickerActivity extends Activity {
 	int i;
@@ -19,6 +21,7 @@ public class DatepickerActivity extends Activity {
 	List<String> weekDayNames = new ArrayList<String>();
 	List<String> monthNames = new ArrayList<String>();
 	Utilities util;
+	Utils ut;
 	ImageButton sabt;
 	ImageView top_image_year, down_image_year, top_image_month,
 			down_image_month, top_image_day, down_image_day;
@@ -47,6 +50,7 @@ public class DatepickerActivity extends Activity {
 
 		util = new Utilities();
 		date2 = new Date();
+		ut = new Utils();
 		txt_name_year.setText(Integer.toString(util.getYear(date2)));
 		txt_name_month.setText(util.getMonthStr(date2));
 
@@ -132,11 +136,13 @@ public class DatepickerActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-
+				int myday2 = 1;
 				myDay = txt_name_day.getText().toString();
 				myMonth = txt_name_month.getText().toString();
 				myYear = txt_name_year.getText().toString();
-
+//				myday2=Integer.parseInt(myDay);
+//				Toast.makeText(getApplicationContext(),ut.getDayOfWeekName(2)
+//						, 1).show();
 				finish();
 			}
 		});
@@ -176,41 +182,41 @@ public class DatepickerActivity extends Activity {
 		weekDayNames.add("30");
 		weekDayNames.add("31");
 
-//		// array for Month
-//		monthNames.add("01");
-//		monthNames.add("02");
-//		monthNames.add("03");
-//		monthNames.add("04");
-//		monthNames.add("05¯");
-//		monthNames.add("06");
-//		monthNames.add("07");
-//		monthNames.add("08");
-//		monthNames.add("09");
-//		monthNames.add("10");
-//		monthNames.add("11");
-//		monthNames.add("12");
+		// // array for Month
+		// monthNames.add("01");
+		// monthNames.add("02");
+		// monthNames.add("03");
+		// monthNames.add("04");
+		// monthNames.add("05¯");
+		// monthNames.add("06");
+		// monthNames.add("07");
+		// monthNames.add("08");
+		// monthNames.add("09");
+		// monthNames.add("10");
+		// monthNames.add("11");
+		// monthNames.add("12");
 		// array for Month
-				monthNames.add("فروردین");
-				monthNames.add("اردیبهشت");
-				monthNames.add("خرداد");
-				monthNames.add("تیر");
-				monthNames.add("مرداد");
-				monthNames.add("شهریور");
-				monthNames.add("مهر");
-				monthNames.add("آبان");
-				monthNames.add("آذر");
-				monthNames.add("دی");
-				monthNames.add("بهمن");
-				monthNames.add("اسفند");
+		monthNames.add("فروردین");
+		monthNames.add("اردیبهشت");
+		monthNames.add("خرداد");
+		monthNames.add("تیر");
+		monthNames.add("مرداد");
+		monthNames.add("شهریور");
+		monthNames.add("مهر");
+		monthNames.add("آبان");
+		monthNames.add("آذر");
+		monthNames.add("دی");
+		monthNames.add("بهمن");
+		monthNames.add("اسفند");
 	}
 
 	public String getNext_Month(String uid) {
 		int idx = monthNames.indexOf(uid);
 		if (idx >= 11) {
-			idx = 1;
+			idx = 0;
 			return monthNames.get(idx);
 		} else if (idx < 0 || idx + 1 == monthNames.size())
-			return "";
+			return monthNames.get(idx + 1);
 		return monthNames.get(idx + 1);
 	}
 
