@@ -48,6 +48,52 @@
             android:text="TextView"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/tv_customeradress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/tv_customerhaghighi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/tv_customertel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/tv_customersemat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/tv_customermortabet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
     </LinearLayout>
 
 </LinearLayout>

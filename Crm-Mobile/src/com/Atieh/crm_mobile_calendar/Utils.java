@@ -91,7 +91,7 @@ public class Utils {
             R.drawable.day31};
     private List<Holiday> holidays;
 
-    private Utils() {
+    public Utils() {
     }
 
     public static Utils getInstance() {

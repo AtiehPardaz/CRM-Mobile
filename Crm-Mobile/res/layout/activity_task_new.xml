@@ -20,7 +20,6 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffffff"
             android:textSize="25sp" />
-
     </LinearLayout>
 
     <ScrollView
@@ -53,7 +52,6 @@
                     android:background="@drawable/edittext_back"
                     android:hint="عنوان"
                     android:padding="10dp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -69,7 +67,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/spinner_back" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -85,7 +82,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/spinner_back" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -95,9 +91,8 @@
                 android:gravity="center"
                 android:padding="10dp" >
 
-                <Button
-                    android:id="@+id/btn_relative_person"
-                    style="?android:attr/buttonStyleSmall"
+                <ImageButton
+                    android:id="@+id/img_datenewtask"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:background="@drawable/ic_action_month" />
@@ -134,32 +129,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/seprator"
-                android:padding="10dp" >
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp" >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
                     android:layout_weight="1"
-                    android:gravity="center" >
+                    android:gravity="right|center" >
 
-                    <Button
-                        android:id="@+id/button3"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/clock" />
-
-                    <TextView
-                        android:id="@+id/txt_taskTohour_newtask"
+                    <Spinner
+                        android:id="@+id/spnr_newtask_tasaat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center"
-                        android:layout_marginRight="5dp"
-                        android:hint="18:00"
-                        android:text=""
-                        android:textColor="#8b8b8b" />
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_back" />
 
                     <TextView
                         android:id="@+id/lbl_taskTohour"
@@ -172,26 +159,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center" >
+                    android:gravity="right|center" >
 
-                    <Button
-                        android:id="@+id/button2"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/clock" />
-
-                    <TextView
-                        android:id="@+id/txt_taskFromhour_newtask"
+                    <Spinner
+                        android:id="@+id/spnr_newtask_azsaat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:hint="16:00"
-                        android:text=""
-                        android:textColor="#8b8b8b" />
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_back" />
 
                     <TextView
-                        android:id="@+id/lbl_taskFromhour"
+                        android:id="@+id/lbl_taskFromhour_newactivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="از ساعت :" />
@@ -211,7 +189,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/spinner_back" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -230,7 +207,6 @@
                     android:background="@drawable/edittext_back"
                     android:hint="شرح"
                     android:padding="10dp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -239,31 +215,34 @@
                 android:gravity="right"
                 android:padding="10dp" >
 
-                <TextView
-                    android:id="@+id/txt_daghighefgabl"
+                <RadioButton
+                    android:id="@+id/rdbtn_newtask_ghabl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
                     android:text="دقیقه قبل" />
 
                 <EditText
                     android:id="@+id/et_daghigheghabl_newtask"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:ems="10" >
                 </EditText>
-
-                <RadioButton
-                    android:id="@+id/rdbtn_hamanhalze_newtask"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="همان لحظه" />
 
                 <RadioButton
                     android:id="@+id/rdbtn_remember_newtask"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:text="یادآوری شود" />
+
+                <TextView
+                    android:id="@+id/txt_daghighefgabl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="یاد آوری شود: "
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

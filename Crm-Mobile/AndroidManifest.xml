@@ -56,7 +56,7 @@
             android:name=".NewTaskActivity"
             android:screenOrientation="portrait" />
          <activity
-            android:name=".activity_customer_details"
+            android:name=".CustomerDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".NewActivitiesActivity"

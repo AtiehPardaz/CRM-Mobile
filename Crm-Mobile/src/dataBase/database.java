@@ -73,6 +73,7 @@ public class database extends SQLiteOpenHelper {
 		try{	
 			db=SQLiteDatabase.openDatabase(path+Name, null, SQLiteDatabase.OPEN_READONLY);
 		}
+		
 		catch(SQLException e)
 		{
 

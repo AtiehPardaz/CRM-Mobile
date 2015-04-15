@@ -32,7 +32,11 @@ public class CustomerListActivity extends Activity {
 	private database db;
 	public ListView list_costomer;
 	String[] array;
-
+	public static String text;
+	public static String adress;
+	public static String haghighi;
+	public static String tel;
+	public static String title;
 	// List<String> testlist = new ArrayList<String>(); //for listsade active it
 
 	List<String> customerlist = new ArrayList<String>();
@@ -110,11 +114,26 @@ public class CustomerListActivity extends Activity {
 					int position, long id) {
 
 				TextView tv = (TextView) v.findViewById(R.id.tv_id_customer);
-				String text = tv.getText().toString();
+				  text = tv.getText().toString();
+				
+				  TextView tvtitle = (TextView) v.findViewById(R.id.tv_customer);
+				  title = tvtitle.getText().toString();
 
-				Toast.makeText(getApplicationContext(),
-						"selected Item id is === " + text, Toast.LENGTH_LONG)
-						.show();
+				TextView tvadress = (TextView) v.findViewById(R.id.tv_customeradress);
+				  adress = tvadress.getText().toString();
+
+				TextView tvhaghighi = (TextView) v.findViewById(R.id.tv_customerhaghighi);
+				  haghighi = tvhaghighi.getText().toString();
+
+				TextView tvtel = (TextView) v.findViewById(R.id.tv_customertel);
+				  tel = tvtel.getText().toString();
+
+				
+//				Toast.makeText(getApplicationContext(),
+//						"selected Item id is === " + text+" "+adress+haghighi+tel, Toast.LENGTH_LONG)
+//						.show();
+				startActivity(new Intent(CustomerListActivity.this,
+						CustomerDetailsActivity.class));
 
 			}
 		});

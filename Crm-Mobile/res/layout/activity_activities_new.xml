@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:text="ایجاد وظیفه جدید"
+            android:text="ایجاد فعالیت جدید"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffffff"
             android:textSize="25sp" />
@@ -144,28 +144,10 @@
                     android:layout_weight="1"
                     android:gravity="right|center" >
 
-                    <Button
-                        android:id="@+id/button3"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/clock"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@+id/txt_taskTohour_newactivity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|center"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/edittext_back"
-                        android:hint="18:00"
-                        android:text=""
-                        android:textColor="#8b8b8b"
-                        android:visibility="gone" />
+                   
 
                     <Spinner
-                        android:id="@+id/spnr_newtask_tasaat"
+                        android:id="@+id/spnr_newactivity_tasaat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -184,29 +166,10 @@
                     android:layout_weight="1"
                     android:gravity="right|center" >
 
-                    <Button
-                        android:id="@+id/btn_seltime__newactivity"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/clock"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@+id/txt_taskFromhour__newactivity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/edittext_back"
-                        android:hint="16:00"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="#8b8b8b"
-                        android:visibility="gone" />
+                   
 
                     <Spinner
-                        android:id="@+id/spnr_newtask_azsaat"
+                        android:id="@+id/spnr_newactivity_azsaat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

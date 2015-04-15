@@ -47,6 +47,7 @@ public class NewActivitiesActivity extends Activity {
 		savenew = (ImageView) findViewById(R.id.img_savenew_newtask);
 		close = (ImageView) findViewById(R.id.img_close_newtask);
 		seldate = (Button) findViewById(R.id.btn__newactivity_seldate);
+		
 
 	}
 
