@@ -51,7 +51,6 @@
                     android:background="@drawable/edittext_back"
                     android:hint="عنوان فعالیت"
                     android:padding="10dp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -67,7 +66,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/spinner_back" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -83,7 +81,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/spinner_back" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -145,14 +142,15 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
                     android:layout_weight="1"
-                    android:gravity="right" >
+                    android:gravity="right|center" >
 
                     <Button
                         android:id="@+id/button3"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/clock" />
+                        android:background="@drawable/clock"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/txt_taskTohour_newactivity"
@@ -160,9 +158,18 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|center"
                         android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_back"
                         android:hint="18:00"
                         android:text=""
-                        android:textColor="#8b8b8b" />
+                        android:textColor="#8b8b8b"
+                        android:visibility="gone" />
+
+                    <Spinner
+                        android:id="@+id/spnr_newtask_tasaat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_back" />
 
                     <TextView
                         android:id="@+id/lbl_taskTohour__newactivity"
@@ -175,14 +182,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="right" >
+                    android:gravity="right|center" >
 
                     <Button
                         android:id="@+id/btn_seltime__newactivity"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/clock" />
+                        android:background="@drawable/clock"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/txt_taskFromhour__newactivity"
@@ -190,10 +198,19 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginRight="5dp"
+                        android:background="@drawable/edittext_back"
                         android:hint="16:00"
                         android:text=""
                         android:textAlignment="center"
-                        android:textColor="#8b8b8b" />
+                        android:textColor="#8b8b8b"
+                        android:visibility="gone" />
+
+                    <Spinner
+                        android:id="@+id/spnr_newtask_azsaat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_back" />
 
                     <TextView
                         android:id="@+id/lbl_taskFromhour_newactivity"
@@ -217,7 +234,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/spinner_back" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -233,7 +249,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/spinner_back" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -248,10 +263,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
-                    android:background="@drawable/edittext_back"
+                    android:background="@drawable/edittext_back" >
+
                     android:hint="شرح"
                     android:padding="10dp" />
-
+ 
+                </EditText>
             </LinearLayout>
 
             <LinearLayout
@@ -268,7 +285,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/spinner_back" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -284,7 +300,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/spinner_back" />
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -300,27 +315,26 @@
         android:background="@drawable/seprator" >
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/img_savenew_newtask"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/savenew" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/img_close_newtask"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/close" />
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/img_save_newtask"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="right"
             android:layout_weight="1"
             android:src="@drawable/save" />
-
     </LinearLayout>
 
 </RelativeLayout>

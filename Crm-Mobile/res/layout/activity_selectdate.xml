@@ -31,8 +31,8 @@
 
             <ImageButton
                 android:id="@+id/imgbtn_nextyear_picker"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/ic_action_top_item" />
 
@@ -41,17 +41,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="93"
+                android:text="94"
                 android:textColor="@color/white_color"
-                android:textSize="25sp" />
+                android:textSize="22sp"
+                android:visibility="gone" />
 
+            <TextView
+                android:id="@+id/tv_yeartitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="سال"
+                android:textColor="@color/white_color"
+                android:textSize="22sp" />
 
             <ImageButton
                 android:id="@+id/imgbtn_backyear_picker"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/ic_action_buttom_item" />
+
         </LinearLayout>
 
 
@@ -63,9 +73,9 @@
             android:orientation="vertical" >
 
             <ImageButton
-                android:id="@+id/imgbtn_backmonth_picker"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:id="@+id/imgbtn_nextmonth_picker"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/ic_action_top_item" />
 
@@ -76,9 +86,9 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:text="اردبیهشت"
+                android:text="ماه"
                 android:textColor="@color/white_color"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/tv_numberofmonth"
@@ -88,9 +98,9 @@
                 android:visibility="gone" />
 
             <ImageButton
-                android:id="@+id/imgbtn_nextmonth_picker"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:id="@+id/imgbtn_backmonth_picker"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/ic_action_buttom_item" />
 

@@ -294,7 +294,7 @@
             android:src="@drawable/close" />
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/img_save_newtask"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_weight="1"

@@ -27,14 +27,13 @@ import com.Atieh.crm_mobile_calendar.DateConverter;
 import com.Atieh.crm_mobile_calendar.DayOutOfRangeException;
 import com.Atieh.crm_mobile_calendar.PersianDate;
 
-/**
- * Calendar month view fragment
- * 
- * @author ebraminio
- */
 public class MonthFragment extends Fragment {
+
+	public static int monthjari;
+	public static int yearjari;
 	private final Utils utils = Utils.getInstance();
 	public static TextView currentMonthTextView;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -51,8 +50,8 @@ public class MonthFragment extends Fragment {
 		// root.addView(imgnextmounth);
 		// imgnextmounth.setGravity(Gravity.CENTER);
 		// currentMonthTextView
-		  currentMonthTextView = new TextView(context);
-		
+		currentMonthTextView = new TextView(context);
+
 		currentMonthTextView.setLayoutParams(new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		currentMonthTextView.setGravity(Gravity.CENTER);
@@ -101,6 +100,8 @@ public class MonthFragment extends Fragment {
 		// Calendar Logic
 		int offset = getArguments().getInt("offset");
 		PersianDate persianDate = DateConverter.civilToPersian(new CivilDate());
+		monthjari=persianDate.getMonth();
+		yearjari= persianDate.getYear();
 		int month = persianDate.getMonth() - offset;
 		month -= 1;
 		int year = persianDate.getYear();
@@ -125,7 +126,8 @@ public class MonthFragment extends Fragment {
 
 		currentMonthTextView.setText(utils.getMonthYearTitle(persianDate,
 				digits));
-//		Toast.makeText(getActivity(), currentMonthTextView.getText(), 1).show();
+		// Toast.makeText(getActivity(), currentMonthTextView.getText(),
+		// 1).show();
 		MainActivity.title_month.setText(currentMonthTextView.getText());
 
 		for (int i : new Range(0, 7)) {

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.Atieh.crm_mobile.HomeActivity;
 import com.Atieh.crm_mobile.R;
 import com.Atieh.crm_mobile_calendar.MonthFragment;
+import com.squareup.okhttp.internal.Util;
 
 public class MainActivity extends FragmentActivity {
 	// I know, it is ugly, but user will not notify this and this will not have
@@ -33,13 +34,15 @@ public class MainActivity extends FragmentActivity {
 	private TextView calendarInfo;
 	ImageButton selectdate;
 	public static TextView title_month;
+	
 	private Button resetButton;
 	private PrayTimeActivityHelper prayTimeActivityHelper;
 	ImageButton next;
 	ImageButton back;
-	String year;
-	String month;
-	int j = 1;
+	String newyear;
+	String newmonth;
+	public PersianDate persiandatee;
+	int jari = 1;
 	int monthnum = 1;
 
 	// public static StringBuilder sb = new StringBuilder();
@@ -50,7 +53,10 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		// for notification
 		// startService(new Intent(this, ApplicationService.class));
-
+		// persiandatee=new PersianDate();
+		// Toast.makeText(getApplicationContext(), persiandatee.getMonth()+"",
+		// 1)
+		// .show();
 		boolean removeTitle = true;
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 			if (!hasPermanentMenuKey()) {
@@ -66,7 +72,7 @@ public class MainActivity extends FragmentActivity {
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
 		}
 		setContentView(R.layout.calendar);
-
+		
 		calendarInfo = (TextView) findViewById(R.id.calendar_info);
 		title_month = (TextView) findViewById(R.id.tv_title_monthview);
 		next = (ImageButton) findViewById(R.id.imgbtn_next_month);
@@ -155,19 +161,27 @@ public class MainActivity extends FragmentActivity {
 	protected void onResume() {
 
 		super.onResume();
-
 		Intent intent = getIntent();
-		year = intent.getStringExtra("year");
-		month = intent.getStringExtra("month");
-		if (month != null) {
-			Toast.makeText(getApplicationContext(), year + " " + month, 1)
+		newmonth = intent.getStringExtra("month");
+
+		if (newmonth != null) {
+			int oldyear = MonthFragment.yearjari-1300;
+			int oldmonth = MonthFragment.monthjari;
+
+			newyear = intent.getStringExtra("year");
+
+			Toast.makeText(getApplicationContext(), newyear + " " + newmonth, 1)
 					.show();
-			j = viewPager.getCurrentItem();
-			Toast.makeText(getApplicationContext(), j + " " + month, 1).show();
-			monthnum = j +Integer.parseInt(month);
+			int hal = (oldyear - Integer.parseInt(newyear)) * 12
+					+ (oldmonth - Integer.parseInt(newmonth));
+			jari = viewPager.getCurrentItem();
+			// Toast.makeText(getApplicationContext(),
+			// PersianDate.get" va jari "+jari, 1).show();
+
+			int newdate = jari + hal;
 
 			// if(month!=null){
-			viewPager.setCurrentItem(monthnum);
+			viewPager.setCurrentItem(newdate);
 		}
 
 	}

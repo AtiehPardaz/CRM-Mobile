@@ -47,10 +47,16 @@
             android:name=".CustomerListActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".DatepickerActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".TaskAndActivityActionActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".NewTaskActivity"
+            android:screenOrientation="portrait" />
+         <activity
+            android:name=".activity_customer_details"
             android:screenOrientation="portrait" />
         <activity
             android:name=".NewActivitiesActivity"

@@ -23,17 +23,17 @@ public class SelectdateActivity extends Activity {
 	Button gotodate;
 	public static int gotomonth;
 	public static int gotoyear;
-
+	TextView title_yearhide;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_selectdate);
 
-		final String[] MonthName = {  " ", "بهمن", "دی", "آذر",
-				"آبان", "مهر", "شهریور", "مرداد","تیر" , "خرداد","اردیبهشت", "فروردین","اسفند" };
-//		final String[] MonthName = { "", "فروردین", "اردیبهشت", "خرداد", "تیر",
-//				"مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند" };
+//		final String[] MonthName = {  " ", "بهمن", "دی", "آذر",
+//				"آبان", "مهر", "شهریور", "مرداد","تیر" , "خرداد","اردیبهشت", "فروردین","اسفند" };
+		final String[] MonthName = { "", "فروردین", "اردیبهشت", "خرداد", "تیر",
+				"مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند" };
 		
 		gotodate = (Button) findViewById(R.id.btn_gotodate);
 		year = (TextView) findViewById(R.id.tv_year);
@@ -43,8 +43,14 @@ public class SelectdateActivity extends Activity {
 		nextmonth = (ImageButton) findViewById(R.id.imgbtn_nextmonth_picker);
 		backyear = (ImageButton) findViewById(R.id.imgbtn_backyear_picker);
 		backmonth = (ImageButton) findViewById(R.id.imgbtn_backmonth_picker);
-
+		title_yearhide=(TextView) findViewById(R.id.tv_yeartitle);
+		
+		
+		title_yearhide.setVisibility(View.GONE);
+		year.setVisibility(View.VISIBLE);
 		nextyear.setOnClickListener(new OnClickListener() {
+
+			
 
 			@Override
 			public void onClick(View arg0) {
@@ -111,7 +117,7 @@ public class SelectdateActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				int i = Integer.parseInt(monthnum.getText().toString());
-
+				
 				Intent yearmonth = new Intent();
 				yearmonth.setClass(SelectdateActivity.this, MainActivity.class);
 				yearmonth.putExtra("year", year.getText());
