@@ -48,7 +48,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".DatepickerActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" 
+            android:theme="@style/dialog" />
         <activity
             android:name=".TaskAndActivityActionActivity"
             android:screenOrientation="portrait" />
