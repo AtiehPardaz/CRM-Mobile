@@ -3,71 +3,51 @@ package com.Atieh.crm_mobile;
 import java.util.ArrayList;
 import java.util.List;
 
-import dataBase.database;
-
 import adapters.NothingSelectedSpinnerAdapter;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.Toast;
+import dataBase.database;
+import android.app.Dialog;
+import android.widget.TextView;
+import android.widget.Button;
+
+
 
 public class NewCustomerActivity extends Activity {
 
 	Spinner typeSpinner;
 	Spinner roleSpinner;
-	Spinner relationRoleTypeSpinner;
 	EditText relationPersonName, name, address, tell;
-	Button btnRelativePerson;
-	LinearLayout layout;
 	ImageView save;
 	ImageView discared;
+	List<String> roleIDs;
+	database db;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_customer);
 
+		
 		initview();
-		relationRoleTypeSpinner.setVisibility(View.GONE);
-		relationPersonName.setVisibility(View.GONE);
-		btnRelativePerson.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				if (relationRoleTypeSpinner.getVisibility() == View.GONE) {
-					relationRoleTypeSpinner.setVisibility(View.VISIBLE);
-					relationPersonName.setVisibility(View.VISIBLE);
-					layout.setBackgroundColor(Color.parseColor("#DFDFDF"));
-
-				} else {
-					relationRoleTypeSpinner.setVisibility(View.GONE);
-					relationPersonName.setVisibility(View.GONE);
-					layout.setBackgroundColor(Color.parseColor("#FFFFFF"));
-
-				}
-			}
-		});
-
+	
 		List<String> roleTypes = new ArrayList<String>();
-		List<String> roleIDs = new ArrayList<String>();
+		roleIDs = new ArrayList<String>();
 		List<String> customerTypes = new ArrayList<String>();
 
 		customerTypes.add("حقیقی");
 		customerTypes.add("حقوقی");
 
-		final database db;
 		db = new database(this);
 		db.database();
 		db.open();
@@ -92,42 +72,102 @@ public class NewCustomerActivity extends Activity {
 		customerTypesdataAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-		typeSpinner.setAdapter(new NothingSelectedSpinnerAdapter(dataAdapter,
+		typeSpinner.setAdapter(new NothingSelectedSpinnerAdapter(customerTypesdataAdapter,
 				R.layout.customer_type__nothing_selected, this));
 
 		roleSpinner.setAdapter(new NothingSelectedSpinnerAdapter(dataAdapter,
 				R.layout.relation_roles_nothing_selected, this));
 
-		relationRoleTypeSpinner.setAdapter(new NothingSelectedSpinnerAdapter(
-				dataAdapter, R.layout.relation_roles_nothing_selected, this));
+		db.close();
 
+		
 		save.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 				
-//				String customerID = java.util.UUID.randomUUID().toString();
-//				db.InsertCustomer(
-//						customerID, 
-//						name.getText().toString(), 
-//						"",
-//						(int)typeSpinner.getSelectedItemId(),
-//						address.getText().toString(),
-//						tell.getText().toString(),
-//						0);
 				
-//				db.InsertPersonRelations(customerID,
-//						java.util.UUID.randomUUID().toString(),
-//						RelationRoleId,
-//						Title,
-//						IsUplodedToServer
-//						)
+				
+				
+				String customerID = java.util.UUID.randomUUID().toString();
+				String addressString = address.getText().toString();
+				Integer typeInt = (int)typeSpinner.getSelectedItemId();
+				String tellString = tell.getText().toString();
+				String nameString = name.getText().toString();
+				String relationPersonname = relationPersonName.getText().toString();
+
+				
+				if(addressString == "" || typeInt == -1 || tellString == "" || nameString == "" || roleSpinner.getSelectedItemId() == -1 || relationPersonname == ""){
+					Toast.makeText(NewCustomerActivity.this, "هیچ کدام از فیلد ها نباید خالی باشد .", Toast.LENGTH_SHORT).show();
+				}
+
+				else {
+					db = new database(NewCustomerActivity.this);
+					db.database();
+					db.open();
+
+					
+					db.InsertCustomer(
+							customerID, 
+							nameString,
+							"m",
+							typeInt,
+							addressString,
+							tellString,
+							0);
+					
+					db.InsertPersonRelations(customerID,
+							customerID,
+							roleIDs.get((int) roleSpinner.getSelectedItemId()),
+							relationPersonname,
+							0
+							);	
+					
+					db.close();
+					
+					save.setOnClickListener(null);
+					
+					
+					final Dialog dialog = new Dialog(arg0.getContext());
+					dialog.setContentView(R.layout.custom_dialog);
+					dialog.setTitle("ذخیره مشتری");
+		 
+					// set the custom dialog components - text, image and button
+					TextView text = (TextView) dialog.findViewById(R.id.text);
+					text.setText("مشتری ذخیره گردید.");
+					ImageView image = (ImageView) dialog.findViewById(R.id.image);
+					image.setImageResource(R.drawable.ic_launcher);
+		 
+					Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+					// if button is clicked, close the custom dialog
+					dialogButton.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+							
+							Intent intent = new Intent();
+							intent.setClass(NewCustomerActivity.this, CustomerListActivity.class);
+							intent.putExtra("onResume", true);
+							startActivity(intent);
+							
+						}
+					});
+		 
+					dialog.show();
+				}
 				
 			}
 		});
 		
-		db.close();
+		discared.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
 
+				finish();
+			}
+		});
+		
 	}
 
 	@Override
@@ -152,10 +192,7 @@ public class NewCustomerActivity extends Activity {
 	public void initview() {
 		typeSpinner = (Spinner) findViewById(R.id.sp_customer_type);
 		roleSpinner = (Spinner) findViewById(R.id.sp_customer_role);
-		relationRoleTypeSpinner = (Spinner) findViewById(R.id.sp_relation_role_type);
 		relationPersonName = (EditText) findViewById(R.id.et_relation_person_name);
-		btnRelativePerson = (Button) findViewById(R.id.btn_relative_person);
-		layout = (LinearLayout) findViewById(R.id.layout_relative_person);
 		save = (ImageView) findViewById(R.id.img_save_new_customer);
 		discared = (ImageView) findViewById(R.id.img_discared_new_customer);
 		name = (EditText) findViewById(R.id.et_name_new_customer);

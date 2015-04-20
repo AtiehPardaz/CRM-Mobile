@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -32,12 +33,13 @@ public class CustomerListActivity extends Activity {
 	private database db;
 	public ListView list_costomer;
 	String[] array;
+	ArrayAdapter<String> dataAdapter;
+
 	public static String text;
 	public static String adress;
 	public static String haghighi;
 	public static String tel;
 	public static String title;
-	// List<String> testlist = new ArrayList<String>(); //for listsade active it
 
 	List<String> customerlist = new ArrayList<String>();
 
@@ -93,7 +95,7 @@ public class CustomerListActivity extends Activity {
 					.show();
 		}
 
-		 db.close();
+		db.close();
 		// custom list
 
 		// ==========liste sade
@@ -145,7 +147,6 @@ public class CustomerListActivity extends Activity {
 
 				startActivity(new Intent(CustomerListActivity.this,
 						NewCustomerActivity.class));
-		
 
 			}
 		});
@@ -193,11 +194,15 @@ public class CustomerListActivity extends Activity {
 			super.onPostExecute(result);
 			ll_loading.setVisibility(View.GONE);
 			list_costomer.setVisibility(View.VISIBLE);
-			list_costomer.setAdapter(new customlistAadapter(
-					CustomerListActivity.this, array));
+
+			dataAdapter = new customlistAadapter(
+					CustomerListActivity.this, array);
+
+			list_costomer.setAdapter(dataAdapter);
 
 		}
 
 	}
+
 
 }

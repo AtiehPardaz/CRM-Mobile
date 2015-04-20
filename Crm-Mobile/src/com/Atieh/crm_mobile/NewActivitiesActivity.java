@@ -19,6 +19,7 @@ public class NewActivitiesActivity extends Activity {
 
 	TextView date;
 	Button seldate;
+	Button selprodecservices;
 	ImageView save;
 	ImageView savenew;
 	ImageView close;
@@ -47,7 +48,7 @@ public class NewActivitiesActivity extends Activity {
 		savenew = (ImageView) findViewById(R.id.img_savenew_newtask);
 		close = (ImageView) findViewById(R.id.img_close_newtask);
 		seldate = (Button) findViewById(R.id.btn__newactivity_seldate);
-		
+		selprodecservices = (Button) findViewById(R.id.btn_newactivity_mahsolvakhadamat);
 
 	}
 
@@ -64,6 +65,15 @@ public class NewActivitiesActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				finish();
+
+			}
+		});
+		selprodecservices.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				startActivity(new Intent(NewActivitiesActivity.this,
+						SelectProducteServicesActivity.class));
 
 			}
 		});

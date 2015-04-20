@@ -101,8 +101,8 @@ public class MainActivity extends Activity {
 					asyncTask as = new asyncTask(); // checking network
 					// status
 					as.execute("P");
-					// startActivity(new Intent(MainActivity.this,
-					// ProductServisesActivity.class));
+//					 startActivity(new Intent(MainActivity.this,
+//					 ProductServisesActivity.class));
 
 				}
 			}
