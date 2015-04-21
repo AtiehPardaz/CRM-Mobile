@@ -1,4 +1,8 @@
-package com.Atieh.crm_mobile;
+package adapters;
+
+import com.Atieh.crm_mobile.R;
+import com.Atieh.crm_mobile.R.id;
+import com.Atieh.crm_mobile.R.layout;
 
 import android.content.Context;
 import android.database.Cursor;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import adapters.NothingSelectedSpinnerAdapter;
+import singleTones.TempActivityID;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -160,6 +161,9 @@ public class NewActivitiesActivity extends Activity {
 		});
 
 		
+		String activityID = java.util.UUID.randomUUID().toString();
+
+		TempActivityID.getInstance().setTempActivityID(activityID);
 
 		close.setOnClickListener(new OnClickListener() {
 

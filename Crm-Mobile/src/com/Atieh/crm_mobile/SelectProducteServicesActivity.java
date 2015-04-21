@@ -3,11 +3,14 @@ package com.Atieh.crm_mobile;
 import java.util.ArrayList;
 import java.util.List;
 
+import singleTones.TempActivityID;
+
 import com.Atieh.crm_mobile.ProductServisesActivity.asyncTask;
 import com.Atieh.crm_mobile_calendar.ArabicShaping;
 
 import dataBase.database;
 
+import adapters.CmListSelProduct;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -34,7 +37,7 @@ public class SelectProducteServicesActivity extends Activity {
 	String[] arrayid;
 	String[] arraytitle;
 	// ArrayAdapter<String> dataAdapter;
-	CmListSelProducteServices as;
+	CmListSelProduct as;
 	public static String ids;
 	public static String title;
 
@@ -59,7 +62,11 @@ public class SelectProducteServicesActivity extends Activity {
 		db = new database(this);
 		db.database();
 		db.open();
-
+		
+		
+		
+		Toast.makeText(SelectProducteServicesActivity.this,TempActivityID.getInstance().getTempActivityID(),1).show();
+		
 		final Cursor c = db.GetPrudocts();
 
 		// custom list
@@ -157,8 +164,8 @@ public class SelectProducteServicesActivity extends Activity {
 
 			// dataAdapter = new CmListSelProducteServices(
 			// SelectProducteServicesActivity.this, arrayid,arraytitle);
-			as = new CmListSelProducteServices(
-					SelectProducteServicesActivity.this, arrayid, arraytitle);
+			as = new CmListSelProduct(
+					SelectProducteServicesActivity.this, arrayid, arraytitle,getApplicationContext());
 			list_producte.setAdapter(as);
 
 		}
