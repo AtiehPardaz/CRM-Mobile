@@ -31,10 +31,11 @@ public class MainActivity extends FragmentActivity {
 	private static final int MONTHS_LIMIT = 1200;
 	public Utils utils = Utils.getInstance();
 	private ViewPager viewPager;
+	TextView title;
 	private TextView calendarInfo;
 	ImageButton selectdate;
 	public static TextView title_month;
-	
+
 	private Button resetButton;
 	private PrayTimeActivityHelper prayTimeActivityHelper;
 	ImageButton next;
@@ -72,7 +73,7 @@ public class MainActivity extends FragmentActivity {
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
 		}
 		setContentView(R.layout.calendar);
-		
+		// title=(TextView) findViewById(R.id.tv_title_monthview);
 		calendarInfo = (TextView) findViewById(R.id.calendar_info);
 		title_month = (TextView) findViewById(R.id.tv_title_monthview);
 		next = (ImageButton) findViewById(R.id.imgbtn_next_month);
@@ -106,14 +107,19 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onPageSelected(int arg0) {
 				updateResetButtonState();
+				
+//				Toast.makeText(getApplicationContext(), MonthFragment.currentMonthTextView
+//						.getText(), 1).show();
 			}
 
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
+				;
 			}
 
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				
 			}
 		});
 		next.setOnClickListener(new OnClickListener() {
@@ -123,6 +129,7 @@ public class MainActivity extends FragmentActivity {
 				int i = viewPager.getCurrentItem();
 				i++;
 				viewPager.setCurrentItem(i);
+				
 
 			}
 		});
@@ -165,7 +172,7 @@ public class MainActivity extends FragmentActivity {
 		newmonth = intent.getStringExtra("month");
 
 		if (newmonth != null) {
-			int oldyear = MonthFragment.yearjari-1300;
+			int oldyear = MonthFragment.yearjari - 1300;
 			int oldmonth = MonthFragment.monthjari;
 
 			newyear = intent.getStringExtra("year");

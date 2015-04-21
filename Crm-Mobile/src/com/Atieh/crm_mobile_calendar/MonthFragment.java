@@ -56,7 +56,7 @@ public class MonthFragment extends Fragment {
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		currentMonthTextView.setGravity(Gravity.CENTER);
 		currentMonthTextView.setPadding(0, 0, 10, 2);
-		currentMonthTextView.setTextSize(25);
+		currentMonthTextView.setTextSize(22);
 		utils.prepareTextView(currentMonthTextView);
 
 		root.addView(currentMonthTextView);
@@ -72,23 +72,29 @@ public class MonthFragment extends Fragment {
 		for (int i : new Range(0, 7)) {
 			TableRow row = new TableRow(context);
 			row.setGravity(Gravity.CENTER_HORIZONTAL);
+			
 			if (i == 0) {
 				row.setBackgroundResource(R.drawable.calendar_firstrow);
-				row.setPadding(0, 0, 0, 10);
+				row.setPadding(0, 0, 0, 5);//  satr aval
 			}
 			for (int j : new Range(0, 7)) {
 				TextView tv = new TextView(context);
+				tv.setPadding(0, 10, 0, 10);
 				utils.prepareTextView(tv);
 				tv.setGravity(Gravity.CENTER);
-				tv.setTextSize(20);
+			
+				tv.setTextSize(22);
 				if (i == 0) {
 					tv.setBackgroundResource(R.color.first_row_background_color);
 					tv.setTextColor(getResources().getColor(
 							R.color.first_row_text_color));
+					tv.setTextSize(16);
+					
 				}
 				daysTextViews[i][j] = tv;
 				row.addView(tv);
 			}
+			
 			table.addView(row);
 		}
 
@@ -128,7 +134,7 @@ public class MonthFragment extends Fragment {
 				digits));
 		// Toast.makeText(getActivity(), currentMonthTextView.getText(),
 		// 1).show();
-		MainActivity.title_month.setText(currentMonthTextView.getText());
+//		MainActivity.title_month.setText(currentMonthTextView.getText());
 
 		for (int i : new Range(0, 7)) {
 			TextView textView = daysTextViews[0][6 - i];

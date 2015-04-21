@@ -134,6 +134,11 @@ public class database extends SQLiteOpenHelper {
 		return cu ;
 	}
 
+	public Cursor GetPrudocts  (){
+
+		Cursor cu= mydb.rawQuery("select * from products p where p.[isDeleted] == 1", null); //temp == 1 in real must be  !=1
+		return cu ;
+	}
 
 
 

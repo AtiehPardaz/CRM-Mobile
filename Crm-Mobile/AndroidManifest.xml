@@ -48,7 +48,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".DatepickerActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" 
+            android:theme="@style/dialog" />
         <activity
             android:name=".TaskAndActivityActionActivity"
             android:screenOrientation="portrait" />
@@ -60,6 +61,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".NewActivitiesActivity"
+            android:screenOrientation="portrait" />
+                <activity
+            android:name=".SelectProducteServicesActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.Atieh.crm_mobile_calendar.MainActivity"

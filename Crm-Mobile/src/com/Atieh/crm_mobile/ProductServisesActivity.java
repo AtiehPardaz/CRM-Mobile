@@ -93,7 +93,7 @@ public class ProductServisesActivity extends Activity {
 
 			}
 		});
-
+ 
 		btnclearsearchtext.setOnClickListener(new OnClickListener() {
 
 			@Override

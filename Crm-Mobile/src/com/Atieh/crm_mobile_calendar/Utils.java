@@ -67,14 +67,14 @@ public class Utils {
     public final String midnight = textShaper("نیمه وقت شرعی");
     public final char[] arabicIndicDigits = {'٠', '١', '٢', '٣', '٤', '٥',
             '٦', '٧', '٨', '٩'};
-    public final String[] firstCharOfDaysOfWeekName = {"شنبه", "یک شنبه", "دو شنبه", "سه  شنبه",
-            "چهار شنبه", "پنج شنبه", "جمعه"};
+    public final String[] firstCharOfDaysOfWeekName = {" شنبه ", "یکشنبه", "دوشنبه", "سه شنبه",
+            "چهارشنبه", "پنجشنبه", " جمعه "};
     private final char[] arabicDigits = {'0', '1', '2', '3', '4', '5', '6',
             '7', '8', '9'};
     private final char[] persianDigits = {'۰', '۱', '۲', '۳', '۴', '۵', '۶',
             '۷', '۸', '۹'};
-    private final String[] dayOfWeekName = {"", "یک شنبه", "دو شنبه", "سه‌ شنبه",
-            "چهار شنبه", "پنج شنبه", "جمعه", "شنبه"};
+    private final String[] dayOfWeekName = {"", "یکشنبه", "دوشنبه", "سه‌ شنبه",
+            "چهارشنبه", "پنجشنبه", " جمعه ", " شنبه "};
     private Typeface typeface;
     private String AM_IN_PERSIAN = "ق.ظ";
     private String PM_IN_PERSIAN = "ب.ظ";
