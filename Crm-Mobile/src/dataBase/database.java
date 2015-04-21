@@ -220,7 +220,7 @@ public class database extends SQLiteOpenHelper {
 
 	public Cursor GetCustomers (){
 
-		Cursor cu= mydb.rawQuery("	select * from custemers where IsDeleted != 1", null); 
+		Cursor cu= mydb.rawQuery("select * from custemers where IsDeleted != 1", null); 
 		return cu ;
 		// (Id Title Description IsLegal Address Tel IsDeleted)
 	}
@@ -276,6 +276,12 @@ public class database extends SQLiteOpenHelper {
 		// (Id Title Description IsLegal Address Tel IsDeleted)
 	}
 
+	public Cursor GetPersonRelationsByCustomerId (String CustomerId){
+
+		Cursor cu= mydb.rawQuery("select * from personRelations where CustomerId = '"+CustomerId+"'", null); 
+		return cu ;
+		// (Id Title Description IsLegal Address Tel IsDeleted)
+	}
 
 	
 

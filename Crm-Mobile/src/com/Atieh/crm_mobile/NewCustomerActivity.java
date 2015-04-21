@@ -31,7 +31,7 @@ public class NewCustomerActivity extends Activity {
 	ImageView save;
 	ImageView discared;
 	List<String> roleIDs;
-	database db;
+	database dbase;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +48,11 @@ public class NewCustomerActivity extends Activity {
 		customerTypes.add("حقیقی");
 		customerTypes.add("حقوقی");
 
-		db = new database(this);
-		db.database();
-		db.open();
+		dbase = new database(this);
+		dbase.database();
+		dbase.open();
 
-		Cursor relationRoles = db.getRelationRoles();
+		Cursor relationRoles = dbase.getRelationRoles();
 
 		while (relationRoles.moveToNext()) {
 			roleTypes.add(relationRoles.getString(1));
@@ -78,7 +78,7 @@ public class NewCustomerActivity extends Activity {
 		roleSpinner.setAdapter(new NothingSelectedSpinnerAdapter(dataAdapter,
 				R.layout.relation_roles_nothing_selected, this));
 
-		db.close();
+		dbase.close();
 
 		
 		save.setOnClickListener(new View.OnClickListener() {
@@ -102,12 +102,12 @@ public class NewCustomerActivity extends Activity {
 				}
 
 				else {
-					db = new database(NewCustomerActivity.this);
-					db.database();
-					db.open();
+					dbase = new database(NewCustomerActivity.this);
+					dbase.database();
+					dbase.open();
 
 					
-					db.InsertCustomer(
+					dbase.InsertCustomer(
 							customerID, 
 							nameString,
 							"m",
@@ -116,14 +116,14 @@ public class NewCustomerActivity extends Activity {
 							tellString,
 							0);
 					
-					db.InsertPersonRelations(customerID,
+					dbase.InsertPersonRelations(customerID,
 							customerID,
 							roleIDs.get((int) roleSpinner.getSelectedItemId()),
 							relationPersonname,
 							0
 							);	
 					
-					db.close();
+					dbase.close();
 					
 					save.setOnClickListener(null);
 					

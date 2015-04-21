@@ -9,13 +9,13 @@ package com.Atieh.crm_mobile;
 
 public final class R {
     public static final class array {
-        public static final int customer_type_arrays=0x7f070006;
         public static final int locationKeys=0x7f070005;
         public static final int locationNames=0x7f070004;
         public static final int prayMethodsKeys=0x7f070003;
         public static final int prayMethodsNames=0x7f070002;
         public static final int themeKeys=0x7f070001;
         public static final int themeNames=0x7f070000;
+        public static final int times_arrays=0x7f070006;
     }
     public static final class attr {
     }
@@ -349,9 +349,11 @@ public final class R {
         public static final int calendar=0x7f030010;
         public static final int custom_dialog=0x7f030011;
         public static final int customer_type__nothing_selected=0x7f030012;
-        public static final int list_row=0x7f030013;
-        public static final int relation_roles_nothing_selected=0x7f030014;
-        public static final int row=0x7f030015;
+        public static final int customers_nothing_selected=0x7f030013;
+        public static final int list_row=0x7f030014;
+        public static final int relation_roles_nothing_selected=0x7f030015;
+        public static final int relative_customers_nothing_selected=0x7f030016;
+        public static final int row=0x7f030017;
     }
     public static final class menu {
         public static final int activity_details=0x7f0b0000;

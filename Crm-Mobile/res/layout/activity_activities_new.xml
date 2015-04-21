@@ -133,7 +133,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp" >
 
@@ -144,20 +143,22 @@
                     android:layout_weight="1"
                     android:gravity="right|center" >
 
-                   
-
                     <Spinner
                         android:id="@+id/spnr_newactivity_tasaat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner_back" />
+                        android:background="@drawable/spinner_back"
+                        android:entries="@array/times_arrays" />
 
                     <TextView
                         android:id="@+id/lbl_taskTohour__newactivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
                         android:text="تا ساعت :" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -166,14 +167,14 @@
                     android:layout_weight="1"
                     android:gravity="right|center" >
 
-                   
-
                     <Spinner
                         android:id="@+id/spnr_newactivity_azsaat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner_back" />
+                        android:background="@drawable/spinner_back"
+                        android:entries="@array/times_arrays" />
 
                     <TextView
                         android:id="@+id/lbl_taskFromhour_newactivity"
