@@ -141,6 +141,12 @@ public class database extends SQLiteOpenHelper {
 	}
 
 
+	
+	public Cursor GetServices  (){
+
+		Cursor cu= mydb.rawQuery("select * from services p where p.[isDeleted] == 1", null); //temp == 1 in real must be  !=1
+		return cu ;
+	}
 
 
 
