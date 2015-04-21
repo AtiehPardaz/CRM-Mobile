@@ -434,6 +434,25 @@ public class database extends SQLiteOpenHelper {
 		mydb.insert("TasksProducts", null, values);
 	}
 
+//	public void InsertActivitiesProducts(String ActivityGUID,String ProductGUID){
+//		ContentValues values = new ContentValues();
+//		values.put("TaskGUID", ActivityGUID);
+//		values.put("ProductGUID", ProductGUID);
+//		values.put("IsDeleted",0);
+//		mydb.insert("ActivitiesProducts", null, values);
+//	}
+//
+//	public void DeleteActivitiesProducts(String ActivityGUID,String ProductGUID){
+//		
+//		String strFilter = "ActivityGUID =" +"'"+ ActivityGUID+"' and ProductGUID ="+"'"+ ProductGUID+"'";
+//
+//		ContentValues values = new ContentValues();
+//		values.put("TaskGUID", ActivityGUID);
+//		values.put("ProductGUID", ProductGUID);
+//		values.put("IsDeleted",0);
+//		mydb.insert("ActivitiesProducts", null, values);
+//	}
+	
 	public void DeleteTasksProducts(String TaskGUID,String ProductGUID){
 
 		String strFilter = "TaskGUID =" +"'"+ TaskGUID+"' and ProductGUID ="+"'"+ ProductGUID+"'";

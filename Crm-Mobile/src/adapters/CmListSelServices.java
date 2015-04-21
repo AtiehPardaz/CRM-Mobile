@@ -1,6 +1,10 @@
-package com.Atieh.crm_mobile;
+package adapters;
 
 import java.util.List;
+
+import com.Atieh.crm_mobile.R;
+import com.Atieh.crm_mobile.R.id;
+import com.Atieh.crm_mobile.R.layout;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +17,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
-public class CmListSelProducteServices extends BaseAdapter {
+public class CmListSelServices extends BaseAdapter {
 	Context context;
 	private Activity activity;
 	String[] ids;
@@ -25,7 +29,7 @@ public class CmListSelProducteServices extends BaseAdapter {
 	private static LayoutInflater inflater = null;
 	TextView Hour;
 
-	public CmListSelProducteServices(Activity a, String[] arrayid,
+	public CmListSelServices(Activity a, String[] arrayid,
 			String[] arraytitle) {
 		activity = a;
 

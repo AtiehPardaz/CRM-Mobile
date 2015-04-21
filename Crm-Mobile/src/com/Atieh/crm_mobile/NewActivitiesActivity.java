@@ -1,5 +1,6 @@
 package com.Atieh.crm_mobile;
 
+import singleTones.TempActivityID;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,6 +60,9 @@ public class NewActivitiesActivity extends Activity {
 		setContentView(R.layout.activity_activities_new);
 
 		initview();
+		String activityID = java.util.UUID.randomUUID().toString();
+
+		TempActivityID.getInstance().setTempActivityID(activityID);
 
 		close.setOnClickListener(new OnClickListener() {
 
