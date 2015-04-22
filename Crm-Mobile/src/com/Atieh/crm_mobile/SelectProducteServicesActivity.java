@@ -11,8 +11,8 @@ import com.Atieh.crm_mobile_calendar.ArabicShaping;
 
 import dataBase.database;
 
-import adapters.CmListSelProduct;
-import adapters.CmListSelServices;
+import adapters.CmListFromAtcivityToProduct;
+import adapters.CmListFromAtcivityToServices;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -47,8 +47,8 @@ public class SelectProducteServicesActivity extends Activity {
 	String[] arrayid2;
 	String[] arraytitle2;
 	// ArrayAdapter<String> dataAdapter;
-	CmListSelProduct as;
-	CmListSelServices as2;
+	CmListFromAtcivityToProduct as;
+	CmListFromAtcivityToServices as2;
 	public static String ids;
 	public static String title;
 
@@ -239,11 +239,11 @@ public class SelectProducteServicesActivity extends Activity {
 
 			// dataAdapter = new CmListSelProducteServices(
 			// SelectProducteServicesActivity.this, arrayid,arraytitle);
-			as = new CmListSelProduct(SelectProducteServicesActivity.this,
+			as = new CmListFromAtcivityToProduct(SelectProducteServicesActivity.this,
 					arrayid, arraytitle, getApplicationContext());
 			list_producte.setAdapter(as);
 
-			as2 = new CmListSelServices(SelectProducteServicesActivity.this,
+			as2 = new CmListFromAtcivityToServices(SelectProducteServicesActivity.this,
 					arrayid2, arraytitle2, getApplicationContext());
 			list_services.setAdapter(as2);
 		}
