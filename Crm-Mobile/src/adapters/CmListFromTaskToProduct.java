@@ -24,7 +24,7 @@ import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
-public class CmListSelProduct extends BaseAdapter {
+public class CmListFromTaskToProduct extends BaseAdapter {
 	Context context;
 	private Activity activity;
 	String[] ids;
@@ -38,7 +38,7 @@ public class CmListSelProduct extends BaseAdapter {
 	private static LayoutInflater inflater = null;
 	TextView Hour;
 
-	public CmListSelProduct(Activity a, String[] arrayid, String[] arraytitle,
+	public CmListFromTaskToProduct(Activity a, String[] arrayid, String[] arraytitle,
 			Context c) {
 
 		activity = a;

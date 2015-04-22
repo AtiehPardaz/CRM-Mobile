@@ -160,7 +160,6 @@ public class NewActivitiesActivity extends Activity {
 			}
 		});
 
-		
 		String activityID = java.util.UUID.randomUUID().toString();
 
 		TempActivityID.getInstance().setTempActivityID(activityID);
@@ -203,9 +202,10 @@ public class NewActivitiesActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		if (DatepickerActivity.myDay != null) {
-		
-				date.setText(DatepickerActivity.myDay + "/" + DatepickerActivity.myMonth
-							+ "/" + DatepickerActivity.myYear);
+
+			date.setText(DatepickerActivity.myDay + "/"
+					+ DatepickerActivity.myMonth + "/"
+					+ DatepickerActivity.myYear);
 
 		}
 	}
