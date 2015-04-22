@@ -37,7 +37,7 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/btn_newactivity_mahsolvakhadamat"
+            android:id="@+id/btn_close_selmahsolvakhadamat"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

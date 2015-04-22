@@ -6,6 +6,7 @@ import java.util.List;
 import singleTones.TempActivityID;
 
 import com.Atieh.crm_mobile.ProductServisesActivity.asyncTask;
+import com.Atieh.crm_mobile.R.color;
 import com.Atieh.crm_mobile_calendar.ArabicShaping;
 
 import dataBase.database;
@@ -14,7 +15,9 @@ import adapters.CmListSelProduct;
 import adapters.CmListSelServices;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +40,7 @@ public class SelectProducteServicesActivity extends Activity {
 	public ListView list_producte;
 	public ListView list_services;
 	Button khadamat;
+	Button finish;;
 	Button mahsolat;
 	String[] arrayid;
 	String[] arraytitle;
@@ -57,6 +61,7 @@ public class SelectProducteServicesActivity extends Activity {
 		ll_loading = (LinearLayout) findViewById(R.id.ll_loading_sel_productservices);
 		khadamat = (Button) findViewById(R.id.btn_khadamat_sel_productservise);
 		mahsolat = (Button) findViewById(R.id.btn_mahsolat_sel_productservise);
+		finish = (Button) findViewById(R.id.btn_close_selmahsolvakhadamat);
 	}
 
 	@Override
@@ -124,7 +129,6 @@ public class SelectProducteServicesActivity extends Activity {
 			} while (c2.moveToNext());
 		}
 
-		// ========================================pr
 		try {
 			asyncTask as = new asyncTask();
 			as.execute();
@@ -133,31 +137,43 @@ public class SelectProducteServicesActivity extends Activity {
 			Toast.makeText(getApplicationContext(), "مجددا تلاش نمایید", 1)
 					.show();
 		}
-		
-		
+
 		khadamat.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-
+				mahsolat.setBackgroundResource(color.bg_action_gray);
+				khadamat.setBackgroundResource(color.bg_action_green);
 				list_producte.setVisibility(View.GONE);
 				list_services.setVisibility(View.VISIBLE);
+				mahsolat.setTextColor(Color.BLACK);
+				khadamat.setTextColor(Color.WHITE);
 			}
 		});
 
 		mahsolat.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-
+				mahsolat.setBackgroundResource(color.bg_action_green);
+				khadamat.setBackgroundResource(color.bg_action_gray);
 				list_services.setVisibility(View.GONE);
 				list_producte.setVisibility(View.VISIBLE);
 
-				
+				mahsolat.setTextColor(Color.WHITE);
+				khadamat.setTextColor(Color.BLACK);
+
 			}
 		});
 
-		// =====================end product
+		finish.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				finish();
+
+			}
+		});
 
 		db.close();
 		// custom list
