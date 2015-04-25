@@ -1,16 +1,24 @@
 package adapters;
 
+import com.Atieh.crm_mobile.HomeActivity;
 import com.Atieh.crm_mobile.R;
 import com.Atieh.crm_mobile.R.id;
 import com.Atieh.crm_mobile.R.layout;
+import com.Atieh.crm_mobile.SelPersonRelActivity;
+import com.Atieh.crm_mobile_calendar.MainActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Toast;
 import dataBase.database;
 
 public class customlistAadapter extends ArrayAdapter<String> {
@@ -19,14 +27,17 @@ public class customlistAadapter extends ArrayAdapter<String> {
 	Context b;
 	Cursor curall;
 	database db;
+	CheckBox chk;
+	String Enterstat;
 
 	// public MyAdapter(Context context, String[] values, Cursor curall) {
-	public customlistAadapter(Context context, String[] values) {
+	public customlistAadapter(Context context, String[] values,
+			String Enterstattt) {
 
 		super(context, R.layout.row, values);
 		this.context = context;
 		this.values = values;
-
+		this.Enterstat = Enterstattt;
 		b = (Context) context;
 
 		// this.curall = curall;
@@ -41,31 +52,64 @@ public class customlistAadapter extends ArrayAdapter<String> {
 
 		TextView id = (TextView) rowView.findViewById(R.id.tv_id_customer); // id
 		TextView title = (TextView) rowView.findViewById(R.id.tv_customer); // title
-		TextView adres = (TextView) rowView.findViewById(R.id.tv_customeradress); // title
-		TextView haghighi = (TextView) rowView.findViewById(R.id.tv_customerhaghighi); // title
+		TextView adres = (TextView) rowView
+				.findViewById(R.id.tv_customeradress); // title
+		TextView haghighi = (TextView) rowView
+				.findViewById(R.id.tv_customerhaghighi); // title
 		TextView tel = (TextView) rowView.findViewById(R.id.tv_customertel); // title
 		TextView semat = (TextView) rowView.findViewById(R.id.tv_customersemat); // title
-		TextView mortabet = (TextView) rowView.findViewById(R.id.tv_customermortabet); // title
+		TextView mortabet = (TextView) rowView
+				.findViewById(R.id.tv_customermortabet); // title
+		chk = (CheckBox) rowView.findViewById(R.id.chk_customer);
 
+		if (Enterstat == "mostaghim") {
+			chk.setVisibility(View.INVISIBLE);
+			
+
+		}
 		database db = new database(b);
 		db.database();
 		db.open();
+
 		// final Cursor cur = curall;
 		final Cursor cur = database.mydb.rawQuery(
-				"select * from custemers WHERE id='" + values[position] + "' and  IsDeleted != 1",
-				null);
+				"select * from custemers WHERE id='" + values[position]
+						+ "' and  IsDeleted != 1", null);
 
 		if (cur != null)
 			cur.moveToFirst();
+
+		chk.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+				if (arg1) {
+					//
+					Intent intent = new Intent();
+					intent.putExtra("customerIDsel", values[position]);
+					intent.putExtra("customername", cur.getString(1));
+					intent.putExtra(HomeActivity.EnterCustomersListStat, Enterstat);
+					intent.setClass(context, SelPersonRelActivity.class);
+					context.startActivity(intent);
+					// Toast.makeText(getContext(),
+					// values[position]+"   "+cur.getString(1) ,
+					// 1).show();
+
+				}
+
+			}
+
+		});
+
 		id.setText(cur.getString(0));
 		id.setVisibility(View.GONE);
-		//(Id Title Description IsLegal Address Tel IsDeleted)
+		// (Id Title Description IsLegal Address Tel IsDeleted)
 		title.setText(cur.getString(1));
 		haghighi.setText(cur.getString(3));
 		adres.setText(cur.getString(4));
 		tel.setText(cur.getString(5));
-//		semat.setText(cur.getString(1));
-//		mortabet.setText(cur.getString(1));
+		// semat.setText(cur.getString(1));
+		// mortabet.setText(cur.getString(1));
 
 		// Toast.makeText(b,id.getText().toString(), 1).show();
 		db.close();

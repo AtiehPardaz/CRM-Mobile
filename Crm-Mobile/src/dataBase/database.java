@@ -74,6 +74,7 @@ public class database extends SQLiteOpenHelper {
 			db=SQLiteDatabase.openDatabase(path+Name, null, SQLiteDatabase.OPEN_READONLY);
 		}
 		
+		
 		catch(SQLException e)
 		{
 
@@ -286,6 +287,7 @@ public class database extends SQLiteOpenHelper {
 		return cu ;
 		// (Id Title Description IsLegal Address Tel IsDeleted)
 	}
+	
 
 	public Cursor GetPersonRelationsByCustomerId (String CustomerId){
 

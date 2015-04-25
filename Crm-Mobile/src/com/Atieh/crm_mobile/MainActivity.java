@@ -102,7 +102,7 @@ public class MainActivity extends Activity {
 					// status
 					as.execute("P");
 //					 startActivity(new Intent(MainActivity.this,
-//					 ProductServisesActivity.class));
+//					 CustomerListActivity.class));
 
 				}
 			}

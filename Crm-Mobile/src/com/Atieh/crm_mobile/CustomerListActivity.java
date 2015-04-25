@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -35,12 +36,13 @@ public class CustomerListActivity extends Activity {
 	public ListView list_costomer;
 	String[] array;
 	ArrayAdapter<String> dataAdapter;
-
+	String Enterstat;
 	public static String text;
 	public static String adress;
 	public static String haghighi;
 	public static String tel;
 	public static String title;
+	CheckBox chk;
 
 	List<String> customerlist = new ArrayList<String>();
 
@@ -59,6 +61,14 @@ public class CustomerListActivity extends Activity {
 		setContentView(R.layout.activity_customer_list);
 
 		initview();
+
+//		Enterstat = getIntent().getExtras().getString(
+//				HomeActivity.EnterCustomersListStat);
+//		if (Enterstat != "mostaghim") {
+//			add.setVisibility(View.GONE);
+//			btnhome.setVisibility(View.GONE);
+//			btnmonthview.setVisibility(View.GONE);
+//		}
 
 		database db;
 		db = new database(this);
@@ -117,24 +127,26 @@ public class CustomerListActivity extends Activity {
 					int position, long id) {
 
 				TextView tv = (TextView) v.findViewById(R.id.tv_id_customer);
-				  text = tv.getText().toString();
-				
-				  TextView tvtitle = (TextView) v.findViewById(R.id.tv_customer);
-				  title = tvtitle.getText().toString();
+				text = tv.getText().toString();
+				tv.setVisibility(View.GONE);
+				TextView tvtitle = (TextView) v.findViewById(R.id.tv_customer);
+				title = tvtitle.getText().toString();
 
-				TextView tvadress = (TextView) v.findViewById(R.id.tv_customeradress);
-				  adress = tvadress.getText().toString();
+				TextView tvadress = (TextView) v
+						.findViewById(R.id.tv_customeradress);
+				adress = tvadress.getText().toString();
 
-				TextView tvhaghighi = (TextView) v.findViewById(R.id.tv_customerhaghighi);
-				  haghighi = tvhaghighi.getText().toString();
+				TextView tvhaghighi = (TextView) v
+						.findViewById(R.id.tv_customerhaghighi);
+				haghighi = tvhaghighi.getText().toString();
 
 				TextView tvtel = (TextView) v.findViewById(R.id.tv_customertel);
-				  tel = tvtel.getText().toString();
+				tel = tvtel.getText().toString();
 
-				
-//				Toast.makeText(getApplicationContext(),
-//						"selected Item id is === " + text+" "+adress+haghighi+tel, Toast.LENGTH_LONG)
-//						.show();
+				// Toast.makeText(getApplicationContext(),
+				// "selected Item id is === " + text+" "+adress+haghighi+tel,
+				// Toast.LENGTH_LONG)
+				// .show();
 				startActivity(new Intent(CustomerListActivity.this,
 						CustomerDetailsActivity.class));
 
@@ -196,14 +208,13 @@ public class CustomerListActivity extends Activity {
 			ll_loading.setVisibility(View.GONE);
 			list_costomer.setVisibility(View.VISIBLE);
 
-			dataAdapter = new customlistAadapter(
-					CustomerListActivity.this, array);
+			dataAdapter = new customlistAadapter(CustomerListActivity.this,
+					array, Enterstat);
 
 			list_costomer.setAdapter(dataAdapter);
 
 		}
 
 	}
-
 
 }
