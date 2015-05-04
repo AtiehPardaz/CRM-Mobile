@@ -62,11 +62,14 @@
                 android:paddingBottom="3dp"
                 android:paddingTop="3dp" >
 
-                <Spinner
-                    android:id="@+id/spnr_newtask_customer"
+                <TextView
+                    android:id="@+id/txt_newtask_customer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/spinner_back" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_back"
+                    android:hint="مشتری :"
+                    android:padding="10dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -77,11 +80,13 @@
                 android:paddingBottom="3dp"
                 android:paddingTop="3dp" >
 
-                <Spinner
-                    android:id="@+id/spnr_newtask_shakhsrabet"
+                <TextView
+                    android:id="@+id/txt__newtask_shakhsrabet"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/spinner_back" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_back"
+                    android:hint="شخص رابط :"
+                    android:padding="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -145,14 +150,18 @@
                         android:id="@+id/spnr_newtask_tasaat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner_back" />
+                        android:background="@drawable/spinner_back"
+                        android:entries="@array/times_arrays" />
 
                     <TextView
                         android:id="@+id/lbl_taskTohour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
                         android:text="تا ساعت :" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -165,8 +174,10 @@
                         android:id="@+id/spnr_newtask_azsaat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner_back" />
+                        android:background="@drawable/spinner_back"
+                        android:entries="@array/times_arrays" />
 
                     <TextView
                         android:id="@+id/lbl_taskFromhour_newactivity"
@@ -183,12 +194,14 @@
                 android:paddingBottom="3dp"
                 android:paddingTop="5dp" >
 
-                <Spinner
-                    android:id="@+id/spnr_newtask_mahsolkhadamat"
+                <TextView
+                    android:id="@+id/txtPSroductServises"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/spinner_back" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_back"
+                    android:hint="محصولات و خدمات:"
+                    android:padding="10dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -266,7 +279,7 @@
             android:src="@drawable/savenew" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/img_close_newtask2"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_weight="1"

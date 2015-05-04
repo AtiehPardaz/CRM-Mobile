@@ -2,29 +2,25 @@ package adapters;
 
 import java.util.List;
 
-import singleTones.TempActivityID;
-
-import com.Atieh.crm_mobile.R;
-import com.Atieh.crm_mobile.R.id;
-import com.Atieh.crm_mobile.R.layout;
-
-import dataBase.database;
-
+import singleTones.TempTaskID;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import com.Atieh.crm_mobile.R;
+
+import dataBase.database;
+
 public class CmListFromTaskToProduct extends BaseAdapter {
+
 	Context context;
 	private Activity activity;
 	String[] ids;
@@ -38,8 +34,8 @@ public class CmListFromTaskToProduct extends BaseAdapter {
 	private static LayoutInflater inflater = null;
 	TextView Hour;
 
-	public CmListFromTaskToProduct(Activity a, String[] arrayid, String[] arraytitle,
-			Context c) {
+	public CmListFromTaskToProduct(Activity a, String[] arrayid,
+			String[] arraytitle, Context c) {
 
 		activity = a;
 		context = c;
@@ -66,7 +62,7 @@ public class CmListFromTaskToProduct extends BaseAdapter {
 
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-				// TODO Auto-generated method stub
+
 				db = new database(context);
 				db.database();
 				db.open();
@@ -74,29 +70,19 @@ public class CmListFromTaskToProduct extends BaseAdapter {
 				if (arg1) {
 
 					ContentValues values = new ContentValues();
-					values.put("ActivityGUID", TempActivityID.getInstance()
-							.getTempActivityID());
+					values.put("TaskGUID", TempTaskID.getInstance()
+							.getTempTaskID());
 					values.put("ProductGUID", ids[position]);
 					values.put("IsDeleted", 0);
-					db.mydb.insert("ActivitiesProducts", null, values);
-
-					// db.mydb.rawQuery("INSERT INTO ActivitiesProducts VALUES ('"
-					// + TempActivityID.getInstance().getTempActivityID()
-					// + "','" + ids[position]+ "','0')", null);
-
-					// db.mydb.rawQuery("INSERT INTO ActivitiesProducts VALUES ('3','21','0')",
-					// null);
-
-					// Toast.makeText(activity,ids[position] , 1).show();
+					db.mydb.insert("TasksProducts", null, values);
 
 				} else {
 
-					String strFilter = "ActivityGUID =" + "'"
-							+ TempActivityID.getInstance().getTempActivityID()
+					String strFilter = "TaskGUID =" + "'"
+							+ TempTaskID.getInstance().getTempTaskID()
 							+ "' and ProductGUID =" + "'" + ids[position] + "'";
 
-					db.mydb.delete("ActivitiesProducts", strFilter, null);
-
+					db.mydb.delete("TasksProducts", strFilter, null);
 				}
 				db.close();
 			}

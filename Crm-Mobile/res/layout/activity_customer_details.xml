@@ -85,7 +85,7 @@
           android:text="حقیقی " />
 
       <TextView
-          android:id="@+id/TextView01"
+          android:id="@+id/txt_sel_customer"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginRight="5dp"

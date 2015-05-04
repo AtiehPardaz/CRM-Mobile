@@ -61,11 +61,13 @@
                 android:paddingBottom="3dp"
                 android:paddingTop="3dp" >
 
-                <Spinner
-                    android:id="@+id/spnr_newactivity_customer"
+                <TextView
+                    android:id="@+id/txt_sel_customer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/spinner_back" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_back"
+                    android:hint="مشتری :"
+                    android:padding="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -76,11 +78,13 @@
                 android:paddingBottom="3dp"
                 android:paddingTop="3dp" >
 
-                <Spinner
-                    android:id="@+id/spnr_newactivity_shakhsrabet"
+                <TextView
+                    android:id="@+id/txt_rel_customer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/spinner_back" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_back"
+                    android:hint="شخص رابط :"
+                    android:padding="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -197,28 +201,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/spinner_back" />
+                    android:background="@drawable/spinner_back"
+                    android:visibility="gone" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:orientation="vertical"
                 android:paddingBottom="3dp"
                 android:paddingTop="3dp" >
 
-                <Button
-                    android:id="@+id/btn_newactivity_mahsolvakhadamat"
-                    android:layout_width="88dp"
-                    android:layout_height="wrap_content"
-                    android:text="Button" />
-
-                <Spinner
-                    android:id="@+id/spnr_newactivity_mahsolkhadamat"
+                <TextView
+                    android:id="@+id/txt_product_services"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/spinner_back" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@drawable/edittext_back"
+                    android:hint=" محصولات و خدمات :"
+                    android:padding="10dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -233,7 +237,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
-                    android:background="@drawable/edittext_back" >
+                    android:background="@drawable/edittext_back"
+                    android:hint="شرح :" >
 
                     android:hint="شرح"
                     android:padding="10dp" />
@@ -269,7 +274,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/spinner_back" />
+                    android:background="@drawable/spinner_back"
+                    android:visibility="invisible" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

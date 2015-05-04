@@ -150,15 +150,15 @@ public class DatepickerActivity extends Activity {
 	}
 
 	private void init_Cal() {
-		weekDayNames.add("1");
-		weekDayNames.add("2");
-		weekDayNames.add("3");
-		weekDayNames.add("4");
-		weekDayNames.add("5");
-		weekDayNames.add("6");
-		weekDayNames.add("7");
-		weekDayNames.add("8");
-		weekDayNames.add("9");
+		weekDayNames.add("01");
+		weekDayNames.add("02");
+		weekDayNames.add("03");
+		weekDayNames.add("04");
+		weekDayNames.add("05");
+		weekDayNames.add("06");
+		weekDayNames.add("07");
+		weekDayNames.add("08");
+		weekDayNames.add("09");
 		weekDayNames.add("10");
 		weekDayNames.add("11");
 		weekDayNames.add("12");
@@ -183,31 +183,31 @@ public class DatepickerActivity extends Activity {
 		weekDayNames.add("31");
 
 		// // array for Month
-		// monthNames.add("01");
-		// monthNames.add("02");
-		// monthNames.add("03");
-		// monthNames.add("04");
-		// monthNames.add("05¯");
-		// monthNames.add("06");
-		// monthNames.add("07");
-		// monthNames.add("08");
-		// monthNames.add("09");
-		// monthNames.add("10");
-		// monthNames.add("11");
-		// monthNames.add("12");
+		 monthNames.add("01");
+		 monthNames.add("02");
+		 monthNames.add("03");
+		 monthNames.add("04");
+		 monthNames.add("05");
+		 monthNames.add("06");
+		 monthNames.add("07");
+		 monthNames.add("08");
+		 monthNames.add("09");
+		 monthNames.add("10");
+		 monthNames.add("11");
+		 monthNames.add("12");
 		// array for Month
-		monthNames.add("فروردین");
-		monthNames.add("اردیبهشت");
-		monthNames.add("خرداد");
-		monthNames.add("تیر");
-		monthNames.add("مرداد");
-		monthNames.add("شهریور");
-		monthNames.add("مهر");
-		monthNames.add("آبان");
-		monthNames.add("آذر");
-		monthNames.add("دی");
-		monthNames.add("بهمن");
-		monthNames.add("اسفند");
+//		monthNames.add("فروردین");
+//		monthNames.add("اردیبهشت");
+//		monthNames.add("خرداد");
+//		monthNames.add("تیر");
+//		monthNames.add("مرداد");
+//		monthNames.add("شهریور");
+//		monthNames.add("مهر");
+//		monthNames.add("آبان");
+//		monthNames.add("آذر");
+//		monthNames.add("دی");
+//		monthNames.add("بهمن");
+//		monthNames.add("اسفند");
 	}
 
 	public String getNext_Month(String uid) {

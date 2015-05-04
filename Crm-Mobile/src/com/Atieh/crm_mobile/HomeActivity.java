@@ -44,6 +44,7 @@ public class HomeActivity extends Activity {
 	database db;
 
 	public static final String baseURL = "http://webservice.atiehpardaz.com/CrmService/CrmService.svc";
+	public static final String EnterCustomersListStat = "EnterCustomersListStat";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,7 @@ public class HomeActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent CustomersList = new Intent();
+				CustomersList.putExtra(EnterCustomersListStat, "mostaghim");
 				CustomersList.setClass(getApplicationContext(),
 						CustomerListActivity.class);
 				startActivity(CustomersList);

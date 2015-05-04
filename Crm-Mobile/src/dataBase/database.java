@@ -74,6 +74,7 @@ public class database extends SQLiteOpenHelper {
 			db=SQLiteDatabase.openDatabase(path+Name, null, SQLiteDatabase.OPEN_READONLY);
 		}
 		
+		
 		catch(SQLException e)
 		{
 
@@ -286,6 +287,7 @@ public class database extends SQLiteOpenHelper {
 		return cu ;
 		// (Id Title Description IsLegal Address Tel IsDeleted)
 	}
+	
 
 	public Cursor GetPersonRelationsByCustomerId (String CustomerId){
 
@@ -623,6 +625,41 @@ public class database extends SQLiteOpenHelper {
 		return cu ;
 
 	}
+	
+	public Cursor GetActivityProduct(String ActivityGUID){
+		
+		Cursor cu= mydb.rawQuery("select p.productName from products p inner join ActivitiesProducts ap on p.[productGUID] = ap.[ProductGUID] where ap.[ActivityGUID] = '"+ActivityGUID+"'", null); 
+		return cu ;
+			
+	}
+	
+	public Cursor GetActivityService(String ActivityGUID){
+		
+		Cursor cu= mydb.rawQuery("select p.serviceName from services p inner join ActivitiesServices ap on p.[serviceGUID] = ap.[serviceGUID] where ap.[ActivityGUID] = '"+ActivityGUID+"'", null); 
+		return cu ;
+			
+	}	
+	
+	
+public Cursor GetTaskProduct(String TaskGUID){
+		
+		Cursor cu= mydb.rawQuery("select p.productName from products p inner join TasksProducts ap on p.[productGUID] = ap.[ProductGUID] where ap.[TaskGUID] = '"+TaskGUID+"'", null); 
+		return cu ;
+			
+	}
+	
+	public Cursor GetTaskService(String TaskGUID){
+		
+		Cursor cu= mydb.rawQuery("select p.serviceName from services p inner join TasksServices ap on p.[serviceGUID] = ap.[serviceGUID] where ap.[TaskGUID] = '"+TaskGUID+"'", null); 
+		return cu ;
+			
+	}	
+	
+	
+	
+	
+	
+	
 	
 
 

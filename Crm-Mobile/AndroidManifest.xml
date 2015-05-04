@@ -48,7 +48,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".DatepickerActivity"
-            android:screenOrientation="portrait" 
+            android:screenOrientation="portrait"
             android:theme="@style/dialog" />
         <activity
             android:name=".TaskAndActivityActionActivity"
@@ -56,13 +56,21 @@
         <activity
             android:name=".NewTaskActivity"
             android:screenOrientation="portrait" />
-         <activity
+        <activity
             android:name=".CustomerDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".NewActivitiesActivity"
             android:screenOrientation="portrait" />
-                <activity
+        <activity
+            android:name=".SelPersonRelActivity"
+            android:screenOrientation="portrait" />
+        
+            <activity
+            android:name=".SelectProducteServicesTask"
+            android:screenOrientation="portrait" />
+            
+        <activity
             android:name=".SelectProducteServicesActivity"
             android:screenOrientation="portrait" />
         <activity

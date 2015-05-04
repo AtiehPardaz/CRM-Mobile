@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -35,12 +36,17 @@ public class CustomerListActivity extends Activity {
 	public ListView list_costomer;
 	String[] array;
 	ArrayAdapter<String> dataAdapter;
-
+	String Enterstat;
 	public static String text;
 	public static String adress;
 	public static String haghighi;
 	public static String tel;
 	public static String title;
+	public static String RelCustomerID = "";
+	public static String RelCustomerName = "";
+	public static String RelID = "";
+	public static String RelName = "";
+	CheckBox chk;
 
 	List<String> customerlist = new ArrayList<String>();
 
@@ -59,6 +65,35 @@ public class CustomerListActivity extends Activity {
 		setContentView(R.layout.activity_customer_list);
 
 		initview();
+
+		if (getIntent() != null) {
+
+			if ((getIntent().getExtras().getString("RelCustomerID")) != null) {
+
+				RelCustomerID = getIntent().getExtras().getString(
+						"RelCustomerID");
+				RelCustomerName = getIntent().getExtras().getString(
+						"RelCustomerName");
+				RelID = getIntent().getExtras().getString("RelID");
+				RelName = getIntent().getExtras().getString("RelName");
+
+				Intent returnIntent = new Intent();
+				returnIntent.putExtra("result2", "mojtaba");
+				setResult(RESULT_OK, returnIntent);
+				finish();
+
+			}
+		}
+
+		Enterstat = getIntent().getExtras().getString(
+				HomeActivity.EnterCustomersListStat);
+		if (Enterstat != null) {
+			if (!Enterstat.equals("mostaghim")) {
+				add.setVisibility(View.GONE);
+				btnhome.setVisibility(View.GONE);
+				btnmonthview.setVisibility(View.GONE);
+			}
+		}
 
 		database db;
 		db = new database(this);
@@ -97,18 +132,6 @@ public class CustomerListActivity extends Activity {
 		}
 
 		db.close();
-		// custom list
-
-		// ==========liste sade
-		// while (c.moveToNext()) {
-		// testlist.add(c.getString(1));
-		// }
-		//
-		// final ArrayAdapter<String> adapter = new ArrayAdapter(this,
-		// android.R.layout.simple_list_item_1, testlist);
-		//
-		// list_costomer.setAdapter(adapter);
-		// ======liste sade
 
 		list_costomer.setOnItemClickListener(new OnItemClickListener() {
 
@@ -117,24 +140,26 @@ public class CustomerListActivity extends Activity {
 					int position, long id) {
 
 				TextView tv = (TextView) v.findViewById(R.id.tv_id_customer);
-				  text = tv.getText().toString();
-				
-				  TextView tvtitle = (TextView) v.findViewById(R.id.tv_customer);
-				  title = tvtitle.getText().toString();
+				text = tv.getText().toString();
+				tv.setVisibility(View.GONE);
+				TextView tvtitle = (TextView) v.findViewById(R.id.tv_customer);
+				title = tvtitle.getText().toString();
 
-				TextView tvadress = (TextView) v.findViewById(R.id.tv_customeradress);
-				  adress = tvadress.getText().toString();
+				TextView tvadress = (TextView) v
+						.findViewById(R.id.tv_customeradress);
+				adress = tvadress.getText().toString();
 
-				TextView tvhaghighi = (TextView) v.findViewById(R.id.tv_customerhaghighi);
-				  haghighi = tvhaghighi.getText().toString();
+				TextView tvhaghighi = (TextView) v
+						.findViewById(R.id.tv_customerhaghighi);
+				haghighi = tvhaghighi.getText().toString();
 
 				TextView tvtel = (TextView) v.findViewById(R.id.tv_customertel);
-				  tel = tvtel.getText().toString();
+				tel = tvtel.getText().toString();
 
-				
-//				Toast.makeText(getApplicationContext(),
-//						"selected Item id is === " + text+" "+adress+haghighi+tel, Toast.LENGTH_LONG)
-//						.show();
+				// Toast.makeText(getApplicationContext(),
+				// "selected Item id is === " + text+" "+adress+haghighi+tel,
+				// Toast.LENGTH_LONG)
+				// .show();
 				startActivity(new Intent(CustomerListActivity.this,
 						CustomerDetailsActivity.class));
 
@@ -196,14 +221,13 @@ public class CustomerListActivity extends Activity {
 			ll_loading.setVisibility(View.GONE);
 			list_costomer.setVisibility(View.VISIBLE);
 
-			dataAdapter = new customlistAadapter(
-					CustomerListActivity.this, array);
+			dataAdapter = new customlistAadapter(CustomerListActivity.this,
+					array, Enterstat);
 
 			list_costomer.setAdapter(dataAdapter);
 
 		}
 
 	}
-
 
 }

@@ -3,19 +3,11 @@ package com.Atieh.crm_mobile;
 import java.util.ArrayList;
 import java.util.List;
 
-import singleTones.TempActivityID;
-
-import com.Atieh.crm_mobile.ProductServisesActivity.asyncTask;
-import com.Atieh.crm_mobile.R.color;
-import com.Atieh.crm_mobile_calendar.ArabicShaping;
-
-import dataBase.database;
-
-import adapters.CmListFromAtcivityToProduct;
-import adapters.CmListFromAtcivityToServices;
+import singleTones.TempTaskID;
+import adapters.CmListFromTaskToProduct;
+import adapters.CmListFromTaskToServices;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -24,19 +16,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SelectProducteServicesActivity extends Activity {
+import com.Atieh.crm_mobile.R.color;
+
+import dataBase.database;
+
+public class SelectProducteServicesTask extends Activity {
 
 	LinearLayout ll_loading;
-	private Cursor list;
-	private database db;
 	public ListView list_producte;
 	public ListView list_services;
 	Button khadamat;
@@ -46,9 +38,8 @@ public class SelectProducteServicesActivity extends Activity {
 	String[] arraytitle;
 	String[] arrayid2;
 	String[] arraytitle2;
-	// ArrayAdapter<String> dataAdapter;
-	CmListFromAtcivityToProduct as;
-	CmListFromAtcivityToServices as2;
+	CmListFromTaskToProduct as;
+	CmListFromTaskToServices as2;
 	public static String ids;
 	public static String title;
 
@@ -77,8 +68,8 @@ public class SelectProducteServicesActivity extends Activity {
 		db.database();
 		db.open();
 
-		Toast.makeText(SelectProducteServicesActivity.this,
-				TempActivityID.getInstance().getTempActivityID(), 1).show();
+		Toast.makeText(SelectProducteServicesTask.this,
+				TempTaskID.getInstance().getTempTaskID(), 1).show();
 
 		final Cursor c = db.GetPrudocts();
 
@@ -181,18 +172,7 @@ public class SelectProducteServicesActivity extends Activity {
 		});
 
 		db.close();
-		// custom list
-
-		// ==========liste sade
-		// while (c.moveToNext()) {
-		// testlist.add(c.getString(1));
-		// }
-		//
-		// final ArrayAdapter<String> adapter = new ArrayAdapter(this,
-		// android.R.layout.simple_list_item_1, testlist);
-		//
-		// list_costomer.setAdapter(adapter);
-		// ======liste sade
+		
 
 		list_producte.setOnItemClickListener(new OnItemClickListener() {
 
@@ -244,11 +224,11 @@ public class SelectProducteServicesActivity extends Activity {
 
 			// dataAdapter = new CmListSelProducteServices(
 			// SelectProducteServicesActivity.this, arrayid,arraytitle);
-			as = new CmListFromAtcivityToProduct(SelectProducteServicesActivity.this,
+			as = new CmListFromTaskToProduct(SelectProducteServicesTask.this,
 					arrayid, arraytitle, getApplicationContext());
 			list_producte.setAdapter(as);
 
-			as2 = new CmListFromAtcivityToServices(SelectProducteServicesActivity.this,
+			as2 = new CmListFromTaskToServices(SelectProducteServicesTask.this,
 					arrayid2, arraytitle2, getApplicationContext());
 			list_services.setAdapter(as2);
 		}

@@ -3,7 +3,6 @@ package adapters;
 import java.util.List;
 
 import singleTones.TempActivityID;
-import singleTones.TempTaskID;
 
 import com.Atieh.crm_mobile.R;
 import com.Atieh.crm_mobile.R.id;
@@ -25,12 +24,12 @@ import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
-public class CmListFromTaskToServices extends BaseAdapter {
+public class SelPersonReladapter extends BaseAdapter {
 	Context context;
 	private Activity activity;
 	String[] ids;
 	String[] titles;
-	List<String> checked;
+	String[] semat;
 	database db;
 	TextView id;
 
@@ -39,8 +38,8 @@ public class CmListFromTaskToServices extends BaseAdapter {
 	private static LayoutInflater inflater = null;
 	TextView Hour;
 
-	public CmListFromTaskToServices(Activity a, String[] arrayid,
-			String[] arraytitle, Context c) {
+	public SelPersonReladapter(Activity a, String[] arrayid, String[] arraytitle,
+			String[] arrayRelation , Context c) {
 
 		activity = a;
 		context = c;
@@ -49,51 +48,23 @@ public class CmListFromTaskToServices extends BaseAdapter {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.ids = arrayid;
 		this.titles = arraytitle;
+		this.semat=arrayRelation;
 	}
 
 	public View getView(final int position, View convertView, ViewGroup parent) {
 
-		View vi = inflater.inflate(R.layout.rowselectproducteservices, null);
-		CheckBox chk = (CheckBox) vi.findViewById(R.id.chk_selproducteservices);
-		id = (TextView) vi.findViewById(R.id.tv_id_selproductservices); // id
+		View vi = inflater.inflate(R.layout.rowpersonrel, null);
+		id = (TextView) vi.findViewById(R.id.tv_id_selpersonrel); // id
 		TextView title = (TextView) vi
-				.findViewById(R.id.tv_title_selproductservices); // title
+				.findViewById(R.id.tv_title_selpersonrel); // title
+		TextView tvsemat = (TextView) vi
+				.findViewById(R.id.tv_semat_relpersonrel); // 
 
 		id.setText(ids[position]);
-		id.setVisibility(View.GONE);
+		//id.setVisibility(View.GONE);
 		title.setText(titles[position]);
+		tvsemat.setText(semat[position]);
 
-		chk.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-				// TODO Auto-generated method stub
-				db = new database(context);
-				db.database();
-				db.open();
-
-				if (arg1) {
-
-					ContentValues values = new ContentValues();
-					values.put("TaskGUID", TempTaskID.getInstance()
-							.getTempTaskID());
-					values.put("ServiceGUID", ids[position]);
-					values.put("IsDeleted", 0);
-					db.mydb.insert("TasksServices", null, values);
-
-				} else {
-
-					String strFilter = "TaskGUID =" + "'"
-							+ TempTaskID.getInstance().getTempTaskID()
-							+ "' and ServiceGUID =" + "'" + ids[position] + "'";
-
-					db.mydb.delete("TasksServices", strFilter, null);
-
-				}
-
-				db.close();
-			}
-		});
 
 		return vi;
 	}
@@ -118,10 +89,6 @@ public class CmListFromTaskToServices extends BaseAdapter {
 		return position;
 	}
 
-	public List<String> getselected() {
-
-		return checked;
-
-	}
+	
 
 }

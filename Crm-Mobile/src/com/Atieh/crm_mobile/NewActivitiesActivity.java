@@ -3,48 +3,48 @@ package com.Atieh.crm_mobile;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.NothingSelectedSpinnerAdapter;
 import singleTones.TempActivityID;
+import adapters.NothingSelectedSpinnerAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import dataBase.database;
 
 public class NewActivitiesActivity extends Activity {
 
 	EditText et_title;
 	EditText et_sharh;
-
-	TextView date;
+	TextView date,txtPSroductServises,txt_sel_customer,txt_rel_customer;
 	Button seldate;
-	Button selprodecservices;
 	ImageView save;
 	ImageView savenew;
 	ImageView close;
-
-	Spinner spnr_customer;
-	Spinner spnr_rabet;
 	Spinner spnr_azsaat;
 	Spinner spnr_tasaat;
 	Spinner spnr_vazife;
 	Spinner spnr_mahsolvakhadamat;
 	Spinner spnr_vaziat;
 	Spinner spnr_ghararbadi;
+	
 	database db;
 
+	String fromDate;
+	String toDate;
+	
 	List<String> customersList;
 	List<String> customersIDsList;
+	List<String> stats;
+	List<String> statsID;
 
 	List<String> relativePersonList;
 	List<String> relativePersonIDsList;
@@ -53,17 +53,19 @@ public class NewActivitiesActivity extends Activity {
 	List<String> srvicesList;
 	List<String> vazeeyatLst;
 	List<String> hasNextActivityList;
+	String activityID;
 
 	public void initview() {
 
 		et_title = (EditText) findViewById(R.id.et_newactivitytitle);
 		et_sharh = (EditText) findViewById(R.id.et_sharh_newactivity);
-		spnr_customer = (Spinner) findViewById(R.id.spnr_newactivity_customer);
-		spnr_rabet = (Spinner) findViewById(R.id.spnr_newactivity_shakhsrabet);
+		txt_sel_customer = (TextView) findViewById(R.id.txt_sel_customer);
+		txt_rel_customer = (TextView) findViewById(R.id.txt_rel_customer);
+
+
 		spnr_azsaat = (Spinner) findViewById(R.id.spnr_newactivity_azsaat);
 		spnr_tasaat = (Spinner) findViewById(R.id.spnr_newactivity_tasaat);
 		spnr_vazife = (Spinner) findViewById(R.id.spnr_newactivity_task);
-		spnr_mahsolvakhadamat = (Spinner) findViewById(R.id.spnr_newactivity_mahsolkhadamat);
 		spnr_vaziat = (Spinner) findViewById(R.id.spnr_newactivity_vaziat);
 		spnr_ghararbadi = (Spinner) findViewById(R.id.spnr_newactivity_ghararbadi);
 		save = (ImageView) findViewById(R.id.img_save_newtask);
@@ -71,8 +73,7 @@ public class NewActivitiesActivity extends Activity {
 		close = (ImageView) findViewById(R.id.img_close_newtask);
 		seldate = (Button) findViewById(R.id.btn__newactivity_seldate);
 		date = (TextView) findViewById(R.id.txt_newactivity_Date);
-		selprodecservices = (Button) findViewById(R.id.btn_newactivity_mahsolvakhadamat);
-
+		txtPSroductServises = (TextView) findViewById(R.id.txt_product_services);
 	}
 
 	@Override
@@ -82,85 +83,45 @@ public class NewActivitiesActivity extends Activity {
 		setContentView(R.layout.activity_activities_new);
 
 		initview();
-		spnr_rabet.setVisibility(View.GONE);
 		db = new database(this);
 		db.database();
 		db.open();
 
-		customersList = new ArrayList<String>();
-		customersIDsList = new ArrayList<String>();
+//		customersList = new ArrayList<String>();
+//		customersIDsList = new ArrayList<String>();
+//
+//		Cursor customersCursor = db.GetCustomers();
+//
+//		while (customersCursor.moveToNext()) {
+//
+//			customersList.add(customersCursor.getString(1));
+//			customersIDsList.add(customersCursor.getString(0));
+//		}
+//		
+		stats = new ArrayList<String>();
+		statsID = new ArrayList<String>();
 
-		Cursor customersCursor = db.GetCustomers();
+		Cursor statsCursor = db.mydb.rawQuery("select * from activityStatus", null);
+		while (statsCursor.moveToNext()) {
+			stats.add(statsCursor.getString(1));
+			statsID.add(statsCursor.getString(0));
 
-		while (customersCursor.moveToNext()) {
-
-			customersList.add(customersCursor.getString(1));
-			customersIDsList.add(customersCursor.getString(0));
+			
 		}
+		
+		ArrayAdapter<String> statsAdapter = new ArrayAdapter<String>(
+				this, android.R.layout.simple_spinner_item, stats);
 
-		ArrayAdapter<String> customersListAdapter = new ArrayAdapter<String>(
-				this, android.R.layout.simple_spinner_item, customersList);
-
-		customersListAdapter
+		statsAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-		spnr_customer
+		spnr_vaziat
 				.setAdapter(new NothingSelectedSpinnerAdapter(
-						customersListAdapter,
-						R.layout.customers_nothing_selected, this));
+						statsAdapter,
+						R.layout.activity_stats_nothing_selected, this));
+		
 
-		spnr_customer.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-
-				if (arg2 != 0) {
-					spnr_rabet.setVisibility(View.VISIBLE);
-
-					db = new database(NewActivitiesActivity.this);
-					db.database();
-					db.open();
-					String s = customersIDsList.get(arg2 - 1);
-					relativePersonList = new ArrayList<String>();
-					relativePersonIDsList = new ArrayList<String>();
-
-					Cursor relativePersonCursor = db
-							.GetPersonRelationsByCustomerId(s);
-					while (relativePersonCursor.moveToNext()) {
-
-						relativePersonList.add(relativePersonCursor
-								.getString(3));
-						relativePersonIDsList.add(relativePersonCursor
-								.getString(0));
-
-					}
-
-					ArrayAdapter<String> relativePersonAdapter = new ArrayAdapter<String>(
-							NewActivitiesActivity.this,
-							android.R.layout.simple_spinner_item,
-							relativePersonList);
-
-					relativePersonAdapter
-							.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-					spnr_rabet.setAdapter(new NothingSelectedSpinnerAdapter(
-							relativePersonAdapter,
-							R.layout.relative_customers_nothing_selected,
-							NewActivitiesActivity.this));
-
-					db.close();
-				}
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		String activityID = java.util.UUID.randomUUID().toString();
+		activityID = java.util.UUID.randomUUID().toString();
 
 		TempActivityID.getInstance().setTempActivityID(activityID);
 
@@ -172,16 +133,30 @@ public class NewActivitiesActivity extends Activity {
 
 			}
 		});
-
-		selprodecservices.setOnClickListener(new OnClickListener() {
-
+		
+		txt_sel_customer.setOnClickListener(new OnClickListener() {
+			
 			@Override
-			public void onClick(View arg0) {
-				startActivity(new Intent(NewActivitiesActivity.this,
-						SelectProducteServicesActivity.class));
-
+			public void onClick(View v) {
+				
+				Intent i = new Intent(NewActivitiesActivity.this,
+						CustomerListActivity.class);
+				i.putExtra(HomeActivity.EnterCustomersListStat, "faliyat");
+				startActivityForResult(i, 2);					
 			}
 		});
+
+		txtPSroductServises.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(NewActivitiesActivity.this,
+						SelectProducteServicesActivity.class);
+				
+				startActivityForResult(i, 1);				
+			}
+		});
+		
 
 		seldate.setOnClickListener(new OnClickListener() {
 
@@ -193,7 +168,18 @@ public class NewActivitiesActivity extends Activity {
 			}
 		});
 
-		db.close();
+		save.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				convertToDateTime();
+				InsertTask();
+				finish();
+				
+			}
+		});
+		
 
 	}
 
@@ -205,9 +191,88 @@ public class NewActivitiesActivity extends Activity {
 
 			date.setText(DatepickerActivity.myDay + "/"
 					+ DatepickerActivity.myMonth + "/"
-					+ DatepickerActivity.myYear);
+					+ DatepickerActivity.myYear);		
 
 		}
 	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		if (requestCode == 1) {
+	        if(resultCode == RESULT_OK){
+	        	String ps = "";
+	        	db = new database(this);
+	        	db.database();
+	        	db.open();
+	        	Cursor c = db.GetActivityProduct(activityID);
+	        	while (c.moveToNext()) {
+	        		ps = ps + c.getString(0) + " و ";
+				}
+	        	
+	        	Cursor c2 = db.GetActivityService(activityID);
+	        	while (c2.moveToNext()) {
+	        		ps = ps + c2.getString(0)+ " و ";
+				}
+	        	
+	        	if(ps.length() > 3){
+	        		txtPSroductServises.setText(ps.substring(0, ps.length()-2));
+	        	}
+	        	
+	        }
+	        if (resultCode == RESULT_CANCELED) {
+	            //Write your code if there's no result
+	        }
+	    }
+		
+		else if (requestCode == 2) {
+			
+			//if(resultCode == RESULT_OK){
+				String p = getIntent().getStringExtra("result2");
+				txt_sel_customer.setText( CustomerListActivity.RelCustomerName);
+				txt_rel_customer.setText( CustomerListActivity.RelName);
+
+		//	}
+		}
+		
+		
+	}
+	
+	
+	
+	public void convertToDateTime(){
+		
+		String datee = DatepickerActivity.myYear + ":"
+				+ DatepickerActivity.myMonth + ":"
+				+ DatepickerActivity.myDay+" ";
+		
+		fromDate = datee + spnr_azsaat.getSelectedItem().toString();
+		toDate = datee + spnr_tasaat.getSelectedItem().toString();
+		
+		Toast.makeText(getApplicationContext(), fromDate + toDate, 1).show();
+		
+		
+		
+	}
+	
+	public void InsertTask(){
+		
+			db.InsertActivities(activityID, et_title.getText().toString(),
+					statsID.get((int)spnr_vaziat.getSelectedItemId()),
+					CustomerListActivity.RelCustomerID,
+					et_sharh.getText().toString(),
+					fromDate,
+					"1",
+					"1", 
+					CustomerListActivity.RelID,
+					"1",
+					"1",
+					toDate);
+
+			db.close();
+	}
+
+	
+	
 
 }
