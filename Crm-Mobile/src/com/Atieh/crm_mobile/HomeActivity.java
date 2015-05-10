@@ -114,8 +114,8 @@ public class HomeActivity extends Activity {
 
 		db = new database(this);
 
-		asyncGetProductAndService gps = new asyncGetProductAndService();
-		gps.execute("4");
+		//asyncGetProductAndService gps = new asyncGetProductAndService();
+		//gps.execute("4");
 
 	}
 

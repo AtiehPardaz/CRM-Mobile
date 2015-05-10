@@ -4,7 +4,7 @@
     <solid android:color="@color/first_row_background_color" />
 
     <padding
-        android:bottom="7sp"
-        android:top="3sp" />
+        android:bottom="0sp"
+        android:top="0sp" />
 
 </shape>

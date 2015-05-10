@@ -98,12 +98,12 @@ public class MainActivity extends Activity {
 							.show();
 				} else {
 
-					asyncTask as = new asyncTask(); // checking network
-					// status
-					as.execute("P");
+//					asyncTask as = new asyncTask(); // checking network
+//					// status
+//					as.execute("P");
 					
-//					 startActivity(new Intent(MainActivity.this,
-//					 NewTaskActivity.class));
+					 startActivity(new Intent(MainActivity.this,
+					 HomeActivity.class));
 
 				}
 			}

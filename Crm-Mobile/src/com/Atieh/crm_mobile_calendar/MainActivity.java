@@ -83,9 +83,20 @@ public class MainActivity extends FragmentActivity {
 		prayTimeActivityHelper = new PrayTimeActivityHelper(this);
 		prayTimeActivityHelper.fillPrayTime();
 
+		
+		
+		
+		
 		// Load Holidays
 		utils.loadHolidays(getResources().openRawResource(R.raw.holidays));
-
+		utils.LoadTasksdays(this.getBaseContext());
+		utils.LoadActivitiesdays(this.getBaseContext());
+		
+		
+		
+		
+		
+		
 		// Reset button
 		resetButton = (Button) findViewById(R.id.reset_button);
 		resetButton.setText(utils.today);
