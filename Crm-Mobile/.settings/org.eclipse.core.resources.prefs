@@ -3,6 +3,7 @@
 >>>>>>>=30afd3a7df613eff7251fbb2b7f1d95fe6ee8248
 eclipse.preferences.version=1
 encoding//src/adapters/ActivityListAdapter.java=UTF-8
+encoding//src/adapters/CalendarTool.java=UTF-8
 encoding//src/adapters/TaskListAdapter.java=UTF-8
 encoding//src/com/Atieh/crm_mobile/ActivityDetailsActivity.java=UTF-8
 encoding//src/com/Atieh/crm_mobile/CustemerSendActivity.java=UTF-8

@@ -328,6 +328,18 @@ public class Utils {
 	
 	//********************************************************** task and activity days ***********
 
+	public String getHolidayTitle(PersianDate day) {
+		for (Holiday holiday : holidays) {
+			if (holiday.getDate().equals(day)) {
+				// trim XML whitespaces and newlines
+				return holiday.getTitle().replaceAll("\n", "").trim();
+			}
+		}
+		return null;
+	}
+
+	//********************************************************** task and activity days ***********
+	
 	public void LoadTasksdays(Context baseContext) {
 		
 		tasksdays = new ArrayList<Holiday>();
@@ -337,7 +349,7 @@ public class Utils {
 		Cursor c = db.mydb.rawQuery(
 				"select substr(t.[FromDateTime],0,5) as a ,substr(t.[FromDateTime],6,2) as b , substr(t.[FromDateTime],9,2) as c ,count(t.[FromDateTime]) as d , 't' as e from tasks t group by a,b,c  ",
 				null);
-
+	
 		while (c.moveToNext()) {
 			
 			int year = Integer.parseInt( c.getString(0));
@@ -345,7 +357,7 @@ public class Utils {
 			int month =Integer.parseInt( c.getString(1));
 			
 			int day = Integer.parseInt( c.getString(2));
-
+	
 			String holidayTitle = c.getString(3)+"mojtaba"+c.getString(4);
 			
 			tasksdays.add(new Holiday(new PersianDate(year, month, day),
@@ -354,7 +366,7 @@ public class Utils {
 		}
 		c.close();
 		db.close();
-
+	
 	}
 
 	public String getTasksdayTitle(PersianDate day) {
@@ -405,23 +417,6 @@ public class Utils {
 			if (holiday.getDate().equals(day)) {
 				// trim XML whitespaces and newlines
 				return holiday.getTitle();
-			}
-		}
-		return null;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	public String getHolidayTitle(PersianDate day) {
-		for (Holiday holiday : holidays) {
-			if (holiday.getDate().equals(day)) {
-				// trim XML whitespaces and newlines
-				return holiday.getTitle().replaceAll("\n", "").trim();
 			}
 		}
 		return null;

@@ -146,9 +146,12 @@ public class NewTaskActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 						
+				save.setOnClickListener(null);
 				convertToDateTime();
 				
 				InsertTask();
+				
+				finish();
 				
 			}
 		});

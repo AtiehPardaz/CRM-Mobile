@@ -1,13 +1,17 @@
 package com.Atieh.crm_mobile;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import adapters.ActivityListAdapter;
+import adapters.CalendarTool;
 import adapters.TaskListAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.Atieh.crm_mobile.R.color;
+import com.Atieh.crm_mobile_calendar.Utils;
 
 import dataBase.database;
 
@@ -30,7 +35,7 @@ public class TaskAndActivityActionActivity extends Activity {
 	ImageButton btnsearch;
 	ImageButton btnhome;
 	ImageButton btnmonthview;
-	ImageButton btnclearsearchtext;
+	ImageButton btnclearsearchtext, imgbtn_next_month,imgbtn_back_month;
 	Button btnaction;
 	Button btntask;
 	TextView titlemonthTextView;
@@ -95,18 +100,25 @@ public class TaskAndActivityActionActivity extends Activity {
 	List<String[]> t23 = new ArrayList<String[]>();
 
 	String date;
+	String[] seprated;
 
 	public void initview() {
 		btnsearch = (ImageButton) findViewById(R.id.btn_search_customelist);
 		btnhome = (ImageButton) findViewById(R.id.btn_home_customerlist);
 		btnmonthview = (ImageButton) findViewById(R.id.btn_monthview_taskaction);
-		//btnclearsearchtext = (ImageButton) findViewById(R.id.imgbtn_clearsearch_taskaction);
+		// btnclearsearchtext = (ImageButton)
+		// findViewById(R.id.imgbtn_clearsearch_taskaction);
 		btnaction = (Button) findViewById(R.id.btn_action_taskaction);
 		btntask = (Button) findViewById(R.id.btn_task_taskaction);
 		titlemonthTextView = (TextView) findViewById(R.id.tv_title_monthview_taskaction);
 		lv_taskaction = (ListView) findViewById(R.id.lv_tasks);
-		//et_search = (EditText) findViewById(R.id.et_search_taskaction);
-		//ll_hidesearch = (LinearLayout) findViewById(R.id.ll_search_taskaction);
+		// et_search = (EditText) findViewById(R.id.et_search_taskaction);
+		// ll_hidesearch = (LinearLayout)
+		// findViewById(R.id.ll_search_taskaction);
+		imgbtn_next_month = (ImageButton) findViewById(R.id.imgbtn_next_month);
+		imgbtn_back_month = (ImageButton) findViewById(R.id.imgbtn_back_month);
+		titlemonthTextView = (TextView) findViewById(R.id.tv_title_monthview_taskaction);
+
 	}
 
 	@Override
@@ -121,9 +133,10 @@ public class TaskAndActivityActionActivity extends Activity {
 
 		Intent intent = getIntent();
 		date = intent.getStringExtra("date");
-		//Toast.makeText(TaskAndActivityActionActivity.this, intent.getStringExtra("day"), 1).show();
+		// Toast.makeText(TaskAndActivityActionActivity.this,
+		// intent.getStringExtra("day"), 1).show();
 
-		String[] seprated = date.split(":");
+		seprated = date.split(":");
 
 		if (seprated[1].length() == 1)
 			seprated[1] = "0" + seprated[1];
@@ -132,28 +145,82 @@ public class TaskAndActivityActionActivity extends Activity {
 			seprated[2] = "0" + seprated[2];
 
 		date = seprated[0] + ":" + seprated[1] + ":" + seprated[2];
+		Typeface typeface = Typeface
+				.createFromAsset(getAssets(), "nazanin.ttf");
+		titlemonthTextView.setTypeface(typeface);
+		titlemonthTextView.setText(date);
 
 		updateTasksList();
 
-//		btnsearch.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View arg0) {
-//				ll_hidesearch.setVisibility(View.VISIBLE);
-//
-//			}
-//		});
+		// btnsearch.setOnClickListener(new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View arg0) {
+		// ll_hidesearch.setVisibility(View.VISIBLE);
+		//
+		// }
+		// });
 
-//		btnclearsearchtext.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View arg0) {
-//				ll_hidesearch.setVisibility(View.GONE);
-//				et_search.setText("");
-//
-//			}
-//		});
-		
+		// btnclearsearchtext.setOnClickListener(new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View arg0) {
+		// ll_hidesearch.setVisibility(View.GONE);
+		// et_search.setText("");
+		//
+		// }
+		// });
+
+		imgbtn_next_month.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				CalendarTool calendarTool = new CalendarTool();
+
+				// String[] q = date.split(":");
+				int year = Integer.valueOf(seprated[0]);
+				int mounth = Integer.valueOf(seprated[1]);
+				int day = Integer.valueOf(seprated[2]) + 1;
+
+				calendarTool.setIranianDate(year, mounth, day);
+
+				String newDate = calendarTool.getIranianYear() + ":"
+						+ calendarTool.getIranianMonth() + ":"
+						+ calendarTool.getIranianDay();
+
+				Intent intent = new Intent();
+				intent.setClass(TaskAndActivityActionActivity.this,
+						TaskAndActivityActionActivity.class);
+				intent.putExtra("date", newDate);
+				startActivity(intent);
+			}
+		});
+
+		imgbtn_back_month.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				CalendarTool calendarTool = new CalendarTool();
+
+				// String[] q = date.split(":");
+				int year = Integer.valueOf(seprated[0]);
+				int mounth = Integer.valueOf(seprated[1]);
+				int day = Integer.valueOf(seprated[2]) - 1;
+
+				calendarTool.setIranianDate(year, mounth, day);
+
+				String newDate = calendarTool.getIranianYear() + ":"
+						+ calendarTool.getIranianMonth() + ":"
+						+ calendarTool.getIranianDay();
+
+				Intent intent = new Intent();
+				intent.setClass(TaskAndActivityActionActivity.this,
+						TaskAndActivityActionActivity.class);
+				intent.putExtra("date", newDate);
+				startActivity(intent);
+			}
+		});
+
 		btnhome.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -281,7 +348,6 @@ public class TaskAndActivityActionActivity extends Activity {
 					TaskAndActivityActionActivity.this, tasksList, position,
 					titleSet));
 			listView.setSelection(6);
-
 
 		}
 	}

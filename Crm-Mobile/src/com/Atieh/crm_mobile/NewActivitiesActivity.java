@@ -172,14 +172,14 @@ public class NewActivitiesActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				
+				save.setOnClickListener(null);
+
 				convertToDateTime();
 				InsertTask();
 				finish();
 				
 			}
 		});
-		
 
 	}
 
