@@ -1,6 +1,5 @@
 package GetActivityStatusPack;
 
-import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Query;
 

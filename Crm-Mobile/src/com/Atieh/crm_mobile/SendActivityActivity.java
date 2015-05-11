@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.Atieh.crm_mobile_webService.PostMethod;
-
-import GetActivitiesPack.Inserted;
 import PostActivityPack.PostActivity;
 import android.app.Activity;
 import android.os.Bundle;

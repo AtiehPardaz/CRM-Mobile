@@ -1,11 +1,7 @@
 package com.Atieh.crm_mobile;
 
-import java.util.List;
-
 import dataBase.database;
-import adapters.CmListFromAtcivityToServices;
 import adapters.SelPersonReladapter;
-import android.R.array;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,10 +10,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class SelPersonRelActivity extends Activity {

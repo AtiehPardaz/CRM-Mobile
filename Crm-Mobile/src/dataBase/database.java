@@ -209,7 +209,7 @@ public class database extends SQLiteOpenHelper {
 
 	public void UpdateCustomer(String Id,String Title , String Description , int IsLegal,String Address,String Tel){
 
-		String strFilter = "Id =" +"'"+ Id+"'";
+		//String strFilter = "Id =" +"'"+ Id+"'";
 		ContentValues values = new ContentValues();
 		values.put("Title",Title );
 		values.put("Description", Description);
@@ -217,16 +217,16 @@ public class database extends SQLiteOpenHelper {
 		values.put("Address",Address );
 		values.put("Tel", Tel);
 		values.put("IsDeleted", 0);
-		long ID = mydb.update("custemers", values, strFilter,null);
+		//long ID = mydb.update("custemers", values, strFilter,null);
 
 	}
 
 	public void DeleteCustomer(String Id){
 
-		String strFilter = "Id =" +"'"+ Id+"'";
+		//String strFilter = "Id =" +"'"+ Id+"'";
 		ContentValues values = new ContentValues();
 		values.put("IsDeleted", 1);
-		long ID = mydb.update("custemers", values, strFilter,null);
+		//long ID = mydb.update("custemers", values, strFilter,null);
 
 	}
 
@@ -263,21 +263,21 @@ public class database extends SQLiteOpenHelper {
 
 	public void UpdatePersonRelations(String CustomerId,String Id,String RelationRoleId,String Title){
 
-		String strFilter = "CustomerId =" +"'"+ CustomerId+"' and Id ="+"'"+ Id+"'";
+		//String strFilter = "CustomerId =" +"'"+ CustomerId+"' and Id ="+"'"+ Id+"'";
 		ContentValues values = new ContentValues();
 		values.put("RelationRoleId", RelationRoleId);
 		values.put("Title", Title);
 		values.put("IsDeleted", 0);
-		long ID = mydb.update("personRelations", values, strFilter,null);
+		//long ID = mydb.update("personRelations", values, strFilter,null);
 
 	}
 
 	public void DeletePersonRelations(String CustomerId,String Id){
 
-		String strFilter = "CustomerId = '"+CustomerId+"' AND Id ='"+Id+"'";
+		//String strFilter = "CustomerId = '"+CustomerId+"' AND Id ='"+Id+"'";
 		ContentValues values = new ContentValues();
 		values.put("IsDeleted", 1);
-		long ID = mydb.update("personRelations", values, strFilter,null);
+		//long ID = mydb.update("personRelations", values, strFilter,null);
 
 	}
 
@@ -308,19 +308,19 @@ public class database extends SQLiteOpenHelper {
 
 	public void UpdateRelationRoles(String Id,String Title){
 
-		String strFilter = "Id = '"+Id+"'";
+		//String strFilter = "Id = '"+Id+"'";
 		ContentValues values = new ContentValues();
 		values.put("Title", Title);
 		values.put("IsDeleted", 0);
-		long ID = mydb.update("RelationRoles", values, strFilter,null);
+		//long ID = mydb.update("RelationRoles", values, strFilter,null);
 	}
 
 	public void DeleteRelationRoles(String Id){
 
-		String strFilter = "Id = '"+Id+"'";
+		//String strFilter = "Id = '"+Id+"'";
 		ContentValues values = new ContentValues();
 		values.put("IsDeleted", 1);
-		long ID = mydb.update("RelationRoles", values, strFilter,null);
+		//long ID = mydb.update("RelationRoles", values, strFilter,null);
 	}
 
 	public Cursor getRelationRoles(){
@@ -342,19 +342,19 @@ public class database extends SQLiteOpenHelper {
 
 	public void UpdateActivityStatus(String Id,String Title){
 
-		String strFilter = "Id = '"+Id+"'";
+		//String strFilter = "Id = '"+Id+"'";
 		ContentValues values = new ContentValues();
 		values.put("Title", Title);
 		values.put("IsDeleted", 0);
-		long ID = mydb.update("activityStatus", values, strFilter,null);
+		//long ID = mydb.update("activityStatus", values, strFilter,null);
 	}
 
 	public void DeleteActivityStatus(String Id){
 
-		String strFilter = "Id = '"+Id+"'";
+		//String strFilter = "Id = '"+Id+"'";
 		ContentValues values = new ContentValues();
 		values.put("IsDeleted", 1);
-		long ID = mydb.update("activityStatus", values, strFilter,null);
+		//long ID = mydb.update("activityStatus", values, strFilter,null);
 	}
 
 	public Cursor GetActivityStatusByID (String id){
@@ -412,7 +412,7 @@ public class database extends SQLiteOpenHelper {
 			String Title,
 			String ToDateTime){
 
-		String strFilter = "Id = '"+Id+"'";		
+		//String strFilter = "Id = '"+Id+"'";		
 		ContentValues values = new ContentValues();
 
 		values.put("CustomerId",CustomerId);
@@ -428,16 +428,16 @@ public class database extends SQLiteOpenHelper {
 		values.put("ToDateTime",ToDateTime);
 		values.put("IsDeleted",0);
 
-		long ID = mydb.update("tasks", values, strFilter,null);
+		//long ID = mydb.update("tasks", values, strFilter,null);
 	}
 
 	public void DeleteTasks(String Id){
 
-		String strFilter = "Id = '"+Id+"'";		
+		//String strFilter = "Id = '"+Id+"'";		
 		ContentValues values = new ContentValues();
 		values.put("IsDeleted",1);
 
-		long ID = mydb.update("tasks", values, strFilter,null);
+		//long ID = mydb.update("tasks", values, strFilter,null);
 	}
 
 	public void InsertTasksProducts(String TaskGUID,String ProductGUID){
@@ -469,10 +469,10 @@ public class database extends SQLiteOpenHelper {
 	
 	public void DeleteTasksProducts(String TaskGUID,String ProductGUID){
 
-		String strFilter = "TaskGUID =" +"'"+ TaskGUID+"' and ProductGUID ="+"'"+ ProductGUID+"'";
+		//String strFilter = "TaskGUID =" +"'"+ TaskGUID+"' and ProductGUID ="+"'"+ ProductGUID+"'";
 		ContentValues values = new ContentValues();
 		values.put("IsDeleted",1);
-		long ID = mydb.update("TasksProducts", values, strFilter,null);
+		//long ID = mydb.update("TasksProducts", values, strFilter,null);
 
 	}
 
@@ -486,10 +486,10 @@ public class database extends SQLiteOpenHelper {
 
 	public void DeleteTasksServices(String TaskGUID,String ServiceGUID){
 
-		String strFilter = "TaskGUID =" +"'"+ TaskGUID+"' and ServiceGUID ="+"'"+ ServiceGUID+"'";
+		//String strFilter = "TaskGUID =" +"'"+ TaskGUID+"' and ServiceGUID ="+"'"+ ServiceGUID+"'";
 		ContentValues values = new ContentValues();
 		values.put("IsDeleted",1);
-		long ID = mydb.update("TasksServices", values, strFilter,null);
+		//long ID = mydb.update("TasksServices", values, strFilter,null);
 
 	}
 
@@ -581,7 +581,7 @@ public class database extends SQLiteOpenHelper {
 			String ToDateTime
 			) {
 
-		String strFilter = "Id = '"+Id+"'";		
+		//String strFilter = "Id = '"+Id+"'";		
 		ContentValues values = new ContentValues();
 		
 		values.put("Title",Title);
@@ -598,18 +598,18 @@ public class database extends SQLiteOpenHelper {
 		values.put("IsDeleted",0);
 
 
-		long ID = mydb.update("activities", values, strFilter,null);
+		//long ID = mydb.update("activities", values, strFilter,null);
 
 	}
 
 	public void DeleteActivities(String Id) {
 
-		String strFilter = "Id = '"+Id+"'";		
+		//String strFilter = "Id = '"+Id+"'";		
 		ContentValues values = new ContentValues();
 
 		values.put("IsDeleted",1);
 
-		long ID = mydb.update("activities", values, strFilter,null);
+		//long ID = mydb.update("activities", values, strFilter,null);
 
 	}
 

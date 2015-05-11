@@ -1,7 +1,6 @@
 package com.Atieh.crm_mobile;
 
 import dataBase.database;
-import singleTones.TempActivityID;
 import singleTones.TempTaskID;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +8,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -216,7 +214,6 @@ public class NewTaskActivity extends Activity {
 		else if (requestCode == 2) {
 			
 			//if(resultCode == RESULT_OK){
-				String p = getIntent().getStringExtra("result2");
 				txt_customer.setText( CustomerListActivity.RelCustomerName);
 				txt_rabet.setText( CustomerListActivity.RelName);
 
@@ -234,7 +231,7 @@ public class NewTaskActivity extends Activity {
 		fromDate = datee + spnr_azsaat.getSelectedItem().toString();
 		toDate = datee + spnr_tasaat.getSelectedItem().toString();
 		
-		Toast.makeText(getApplicationContext(), fromDate + toDate, 1).show();
+		Toast.makeText(getApplicationContext(), fromDate + toDate, Toast.LENGTH_LONG).show();
 		
 		
 		

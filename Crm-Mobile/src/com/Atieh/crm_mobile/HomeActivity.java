@@ -1,14 +1,13 @@
 package com.Atieh.crm_mobile;
 
-import singleTones.authInfo;
 import GetActivitiesPack.GetActivities;
 import GetActivitiesPack.GetActivitiesInterface;
 import GetActivityStatusPack.GetActivityStatus;
 import GetActivityStatusPack.GetActivityStatusInterface;
 import GetCustomersPack.GetCustomers;
 import GetCustomersPack.GetCustomersInterface;
-import GetProductAndServicespack.GetProductAndServicesInterface;
-import GetProductAndServicespack.GetProductsAndServices;
+import getProductAndServicespack.GetProductAndServicesInterface;
+import getProductAndServicespack.GetProductsAndServices;
 import GetRelationRolesPack.GetRelationRoles;
 import GetRelationRolesPack.GetRelationRolesInterface;
 import GetTasksPack.GetTasks;
@@ -21,7 +20,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-import com.Atieh.crm_mobile.CustemerSendActivity;
 
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
 

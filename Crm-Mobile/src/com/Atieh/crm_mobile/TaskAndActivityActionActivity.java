@@ -1,8 +1,6 @@
 package com.Atieh.crm_mobile;
 
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import adapters.ActivityListAdapter;
@@ -21,10 +19,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.Atieh.crm_mobile.R.color;
-import com.Atieh.crm_mobile_calendar.Utils;
 
 import dataBase.database;
 
@@ -275,7 +270,6 @@ public class TaskAndActivityActionActivity extends Activity {
 
 			Cursor tasksCursor = db.GetTasks(date);
 			tasksList = new ArrayList<List<String[]>>();
-			int size = tasksCursor.getCount();
 
 			String[] ss = new String[14];
 
@@ -365,8 +359,6 @@ public class TaskAndActivityActionActivity extends Activity {
 
 			Cursor activitiesCursor = db.getActivity(date);
 			activitiesList = new ArrayList<List<String[]>>();
-
-			int size = activitiesCursor.getCount();
 
 			String[] ss = new String[4];
 

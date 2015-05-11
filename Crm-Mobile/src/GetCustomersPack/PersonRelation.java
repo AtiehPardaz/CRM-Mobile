@@ -1,10 +1,5 @@
 package GetCustomersPack;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
-
 public class PersonRelation {
 
 	private String CustomerId;

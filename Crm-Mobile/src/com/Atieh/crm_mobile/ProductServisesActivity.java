@@ -3,20 +3,12 @@ package com.Atieh.crm_mobile;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.Atieh.crm_mobile.MainActivity.asyncTask;
-import com.Atieh.crm_mobile.R.color;
-
 import dataBase.database;
-
-import android.R.bool;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.graphics.Color;
-import android.support.annotation.ColorRes;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -25,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class ProductServisesActivity extends Activity {
 	ImageButton btnsearch;
@@ -36,7 +27,6 @@ public class ProductServisesActivity extends Activity {
 	Button btnservisec;
 	LinearLayout ll_loading;
 	LinearLayout ll_hidesearch;
-	ListView lv_product;
 	EditText et_search;
 	ListView listservicesproduct;
 	int showproductorservicelist = 0; // 0 for product and 1 for services
@@ -51,7 +41,6 @@ public class ProductServisesActivity extends Activity {
 		btnclearsearchtext = (ImageButton) findViewById(R.id.imgbtn_clearsearch_productservises);
 		btnproduct = (Button) findViewById(R.id.btn_product_productservices);
 		btnservisec = (Button) findViewById(R.id.btn_servisec_productservices);
-		lv_product = (ListView) findViewById(R.id.lv_product_servisec);
 		et_search = (EditText) findViewById(R.id.et_search_productservices);
 		ll_hidesearch = (LinearLayout) findViewById(R.id.ll_search);
 		listservicesproduct = (ListView) findViewById(R.id.lv_product_servisec);
@@ -126,8 +115,8 @@ public class ProductServisesActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 
-				btnproduct.setBackgroundResource(color.bg_action_green);
-				btnservisec.setBackgroundResource(color.bg_action_gray);
+				btnproduct.setBackgroundResource(getResources().getColor(R.color.bg_action_green));
+				btnservisec.setBackgroundResource(getResources().getColor(R.color.bg_action_gray));
 				
 				showproductorservicelist = 0;
 				asyncTask as = new asyncTask();
@@ -139,8 +128,8 @@ public class ProductServisesActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				btnproduct.setBackgroundResource(color.bg_action_gray);
-				btnservisec.setBackgroundResource(color.bg_action_green);
+				btnproduct.setBackgroundResource(getResources().getColor(R.color.bg_action_gray));
+				btnservisec.setBackgroundResource(getResources().getColor(R.color.bg_action_green));
 				// btnservisec.setTextColor(color.first_row_background_color);
 				
 				showproductorservicelist = 1;

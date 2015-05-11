@@ -8,12 +8,10 @@ import com.Atieh.crm_mobile_calendar.Utils;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class DatepickerActivity extends Activity {
 	int i;
@@ -136,7 +134,6 @@ public class DatepickerActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				int myday2 = 1;
 				myDay = txt_name_day.getText().toString();
 				myMonth = txt_name_month.getText().toString();
 				myYear = txt_name_year.getText().toString();

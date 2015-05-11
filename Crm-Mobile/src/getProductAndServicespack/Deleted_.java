@@ -1,4 +1,4 @@
-package GetProductAndServicespack;
+package getProductAndServicespack;
 
 import java.util.HashMap;
 import java.util.Map;

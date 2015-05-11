@@ -2,9 +2,6 @@ package com.Atieh.crm_mobile;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.Atieh.crm_mobile.ProductServisesActivity.asyncTask;
-
 import dataBase.database;
 
 import adapters.customlistAadapter;
@@ -31,8 +28,6 @@ public class CustomerListActivity extends Activity {
 	ImageButton btnhome;
 	ImageButton btnmonthview;
 	LinearLayout ll_loading;
-	private Cursor list;
-	private database db;
 	public ListView list_costomer;
 	String[] array;
 	ArrayAdapter<String> dataAdapter;
@@ -127,7 +122,7 @@ public class CustomerListActivity extends Activity {
 			as.execute();
 
 		} catch (Exception e) {
-			Toast.makeText(getApplicationContext(), "مجددا تلاش نمایید", 1)
+			Toast.makeText(getApplicationContext(), "مجددا تلاش نمایید", Toast.LENGTH_LONG)
 					.show();
 		}
 

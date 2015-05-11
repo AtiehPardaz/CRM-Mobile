@@ -40,8 +40,8 @@ public class customlistAadapter extends ArrayAdapter<String> {
 		TextView adres = (TextView) rowView.findViewById(R.id.tv_customeradress); // title
 		TextView haghighi = (TextView) rowView.findViewById(R.id.tv_customerhaghighi); // title
 		TextView tel = (TextView) rowView.findViewById(R.id.tv_customertel); // title
-		TextView semat = (TextView) rowView.findViewById(R.id.tv_customersemat); // title
-		TextView mortabet = (TextView) rowView.findViewById(R.id.tv_customermortabet); // title
+//		TextView semat = (TextView) rowView.findViewById(R.id.tv_customersemat); // title
+//		TextView mortabet = (TextView) rowView.findViewById(R.id.tv_customermortabet); // title
 
 		database db = new database(b);
 		db.database();

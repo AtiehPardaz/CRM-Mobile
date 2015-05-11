@@ -4,18 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import singleTones.TempActivityID;
-
-import com.Atieh.crm_mobile.ProductServisesActivity.asyncTask;
 import com.Atieh.crm_mobile.R.color;
-import com.Atieh.crm_mobile_calendar.ArabicShaping;
-
 import dataBase.database;
-
 import adapters.CmListFromAtcivityToProduct;
 import adapters.CmListFromAtcivityToServices;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -24,9 +18,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,8 +27,6 @@ import android.widget.Toast;
 public class SelectProducteServicesActivity extends Activity {
 
 	LinearLayout ll_loading;
-	private Cursor list;
-	private database db;
 	public ListView list_producte;
 	public ListView list_services;
 	Button khadamat;
@@ -78,7 +68,7 @@ public class SelectProducteServicesActivity extends Activity {
 		db.open();
 
 		Toast.makeText(SelectProducteServicesActivity.this,
-				TempActivityID.getInstance().getTempActivityID(), 1).show();
+				TempActivityID.getInstance().getTempActivityID(), Toast.LENGTH_LONG).show();
 
 		final Cursor c = db.GetPrudocts();
 
@@ -134,7 +124,7 @@ public class SelectProducteServicesActivity extends Activity {
 			as.execute();
 
 		} catch (Exception e) {
-			Toast.makeText(getApplicationContext(), "مجددا تلاش نمایید", 1)
+			Toast.makeText(getApplicationContext(), "مجددا تلاش نمایید", Toast.LENGTH_LONG)
 					.show();
 		}
 

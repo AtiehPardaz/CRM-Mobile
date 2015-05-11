@@ -3,8 +3,6 @@ package GetActivitiesPack;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.security.auth.PrivateCredentialPermission;
-
 public class Inserted {
 
 	private String ActivityStatusId;
