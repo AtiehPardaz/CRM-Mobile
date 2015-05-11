@@ -49,8 +49,9 @@ public class DatepickerActivity extends Activity {
 		util = new Utilities();
 		date2 = new Date();
 		ut = new Utils();
+		
 		txt_name_year.setText(Integer.toString(util.getYear(date2)));
-		txt_name_month.setText(util.getMonthStr(date2));
+		txt_name_month.setText(Integer.toString(util.getMonth(date2)));
 
 		txt_name_day.setText(Integer.toString(util.getDay(date2)));
 		top_image_year.setOnClickListener(new View.OnClickListener() {

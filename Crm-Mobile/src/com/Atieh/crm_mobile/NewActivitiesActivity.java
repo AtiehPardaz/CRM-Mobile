@@ -1,9 +1,15 @@
 package com.Atieh.crm_mobile;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import com.Atieh.crm_mobile_calendar.Utils;
+
 import singleTones.TempActivityID;
+import adapters.CalendarTool;
 import adapters.NothingSelectedSpinnerAdapter;
 import android.app.Activity;
 import android.content.Intent;
@@ -35,7 +41,7 @@ public class NewActivitiesActivity extends Activity {
 	Spinner spnr_mahsolvakhadamat;
 	Spinner spnr_vaziat;
 	Spinner spnr_ghararbadi;
-	
+	CalendarTool calendarTool;
 	database db;
 
 	String fromDate;
@@ -83,6 +89,19 @@ public class NewActivitiesActivity extends Activity {
 		setContentView(R.layout.activity_activities_new);
 
 		initview();
+		
+		Calendar calendar = Calendar.getInstance();
+        
+        int yearNow = calendar.get(Calendar.YEAR);
+        int mounthNow = (calendar.get(Calendar.MONTH)) + 1;
+        int dayNow = calendar.get(Calendar.DAY_OF_MONTH);
+        
+        calendarTool = new CalendarTool();
+        calendarTool.setGregorianDate(yearNow, mounthNow, dayNow);
+        date.setText(calendarTool.getIranianDate());
+        
+		
+		//date.setText(text);
 		db = new database(this);
 		db.database();
 		db.open();
@@ -189,9 +208,9 @@ public class NewActivitiesActivity extends Activity {
 		super.onResume();
 		if (DatepickerActivity.myDay != null) {
 
-			date.setText(DatepickerActivity.myDay + "/"
+			date.setText(DatepickerActivity.myYear + "/"
 					+ DatepickerActivity.myMonth + "/"
-					+ DatepickerActivity.myYear);		
+					+ DatepickerActivity.myDay);		
 
 		}
 	}
@@ -240,10 +259,55 @@ public class NewActivitiesActivity extends Activity {
 	
 	
 	public void convertToDateTime(){
+		String datee = "";
+		String mounth_ = "";
+		String year_ ="";
+		String day_ = "";
+		if(DatepickerActivity.myMonth == null || DatepickerActivity.myYear  == null || DatepickerActivity.myDay == null){
+
+			Utilities util;
+
+			
+			util = new Utilities();
+			Date date2 = new Date();
+			
+			if(util.getMonth(date2)<10){
+				mounth_ = "0"+util.getMonth(date2);
+			}
+			else{
+				mounth_ =Integer.toString(util.getMonth(date2));
+			}
+			if(util.getDay(date2)<10){
+				day_ = "0" + util.getDay(date2);
+			}
+			else {
+				day_ = Integer.toString(util.getDay(date2));
+			}
+			
+			
+			datee = util.getYear(date2)+":"+ mounth_+":"+ day_+" ";
+			
+			
+		}
+		else {
+			if ( Integer.valueOf(DatepickerActivity.myMonth ) <10){
+				mounth_ = "0" + DatepickerActivity.myMonth;
+			}
+			else {
+				mounth_ =  DatepickerActivity.myMonth;
+			}
+			
+			if ( Integer.valueOf(DatepickerActivity.myDay ) <10){
+				day_ = "0" + DatepickerActivity.myDay;
+			}
+			else {
+				day_ = DatepickerActivity.myDay;
+			}
+			datee = DatepickerActivity.myYear + ":"
+				+ mounth_ + ":"
+				+ day_+" ";
+		}
 		
-		String datee = DatepickerActivity.myYear + ":"
-				+ DatepickerActivity.myMonth + ":"
-				+ DatepickerActivity.myDay+" ";
 		
 		fromDate = datee + spnr_azsaat.getSelectedItem().toString();
 		toDate = datee + spnr_tasaat.getSelectedItem().toString();
