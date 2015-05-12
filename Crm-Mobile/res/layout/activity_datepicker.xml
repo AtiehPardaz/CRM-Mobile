@@ -24,8 +24,8 @@
 
             <ImageView
                 android:id="@+id/top_image_year"
-                android:layout_width="20sp"
-                android:layout_height="20sp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/arow_top_calender" >
             </ImageView>

@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.Atieh.crm_mobile.R.color;
+import com.Atieh.crm_mobile_calendar.MainActivity;
 
 import dataBase.database;
 
@@ -346,6 +347,14 @@ public class TaskAndActivityActionActivity extends Activity {
 		}
 	}
 
+	@Override
+	public void onBackPressed() {
+
+		Intent intent = new Intent();
+		intent.setClass(TaskAndActivityActionActivity.this, MainActivity.class);
+		startActivity(intent);
+		
+	}
 	private void updateActivitiesList() {
 
 		boolean[][] titleSet = new boolean[24][30];

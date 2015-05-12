@@ -34,7 +34,8 @@ public class MainActivity extends FragmentActivity {
 	TextView title;
 	private TextView calendarInfo;
 	ImageButton selectdate;
-	public static TextView title_month;
+	public static TextView title_month,txt_mounth_title;
+	public static int flag = 1;
 
 	private Button resetButton;
 	private PrayTimeActivityHelper prayTimeActivityHelper;
@@ -78,7 +79,8 @@ public class MainActivity extends FragmentActivity {
 		title_month = (TextView) findViewById(R.id.tv_title_monthview);
 		next = (ImageButton) findViewById(R.id.imgbtn_next_month);
 		back = (ImageButton) findViewById(R.id.imgbtn_back_month);
-		selectdate = (ImageButton) findViewById(R.id.imgbtn_selectcal_calander);
+		selectdate = (ImageButton) findViewById(R.id.btn_monthview_calander);
+		txt_mounth_title = (TextView) findViewById(R.id.txt_mounth_title);
 		// Pray Time
 		prayTimeActivityHelper = new PrayTimeActivityHelper(this);
 		prayTimeActivityHelper.fillPrayTime();
@@ -137,27 +139,35 @@ public class MainActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View arg0) {
+			
+				flag = 2;
+
 				int i = viewPager.getCurrentItem();
 				i++;
 				viewPager.setCurrentItem(i);
-				
+				//txt_mounth_title.setText(MonthFragment.currentMonthTextView.getText().toString());
 
+	
 			}
 		});
 		back.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
+				flag =3;
+
 				int i = viewPager.getCurrentItem();
 				i--;
 				viewPager.setCurrentItem(i);
+				//txt_mounth_title.setText(MonthFragment.currentMonthTextView.getText().toString());
 
 			}
 		});
-		selectdate.setOnClickListener(new OnClickListener() {
-
+		selectdate.setOnClickListener(new View.OnClickListener() {
+			
 			@Override
-			public void onClick(View arg0) {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
 				startActivity(new Intent(MainActivity.this,
 						SelectdateActivity.class));
 			}
@@ -165,6 +175,8 @@ public class MainActivity extends FragmentActivity {
 
 		// Initializing the view
 		fillCalendarInfo(new CivilDate());
+		
+		txt_mounth_title.setText(MonthFragment.mounthTitle);
 
 	}// end onCreate
 
@@ -200,6 +212,7 @@ public class MainActivity extends FragmentActivity {
 
 			// if(month!=null){
 			viewPager.setCurrentItem(newdate);
+			//txt_mounth_title.setText(MonthFragment.currentMonthTextView.getText().toString());
 		}
 
 	}

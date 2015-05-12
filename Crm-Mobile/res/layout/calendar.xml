@@ -30,12 +30,6 @@
                 android:layout_height="1dp"
                 android:layout_weight="1" />
 
-            <ImageButton
-                android:id="@+id/imgbtn_selectcal_calander"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/taghvimsefid" />
-
             <TextView
                 android:id="@+id/tv_title_monthview"
                 android:layout_width="wrap_content"
@@ -47,6 +41,14 @@
                 android:textColor="#ffffff"
                 android:textSize="25sp"
                 android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_mounth_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
 
             <View
                 android:id="@+id/view1"
@@ -110,7 +112,7 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/calendar_pager"
             android:layout_width="fill_parent"
-            android:layout_height="468dp"
+            android:layout_height="555dp"
             android:layoutDirection="ltr" />
 
         <LinearLayout

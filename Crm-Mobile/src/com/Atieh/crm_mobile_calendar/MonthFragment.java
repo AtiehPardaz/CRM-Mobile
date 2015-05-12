@@ -3,10 +3,7 @@ package com.Atieh.crm_mobile_calendar;
 import android.R.color;
 import android.content.Context;
 import android.graphics.Point;
-import android.graphics.drawable.GradientDrawable.Orientation;
-import android.hardware.display.DisplayManager;
 import android.os.Bundle;
-import android.provider.ContactsContract.CommonDataKinds.Organization;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.TypedValue;
@@ -16,28 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.Atieh.crm_mobile.R;
-import com.Atieh.crm_mobile_calendar.Range;
-import com.Atieh.crm_mobile_calendar.ClickDayListener;
-import com.Atieh.crm_mobile_calendar.MainActivity;
-import com.Atieh.crm_mobile_calendar.Utils;
-
-import com.Atieh.crm_mobile_calendar.CivilDate;
-import com.Atieh.crm_mobile_calendar.DateConverter;
-import com.Atieh.crm_mobile_calendar.DayOutOfRangeException;
-import com.Atieh.crm_mobile_calendar.PersianDate;
 
 public class MonthFragment extends Fragment {
 
@@ -45,28 +28,27 @@ public class MonthFragment extends Fragment {
 	public static int yearjari;
 	private final Utils utils = Utils.getInstance();
 	public static TextView currentMonthTextView;
-	int width,height;
+
+	int width, height;
+	public static String mounthTitle;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Preparing Calendar Month View
 		Context context = getActivity();
 		LinearLayout root = new LinearLayout(context);
-		
-		root.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-				100));
+
+		root.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, 100));
 		root.setOrientation(LinearLayout.VERTICAL);
-		
-		
-		Display display = ( getActivity()).getWindowManager().getDefaultDisplay();
+
+		Display display = (getActivity()).getWindowManager()
+				.getDefaultDisplay();
 
 		Point size = new Point();
 		display.getSize(size);
 		width = size.x;
 		height = size.y;
-		
-		
-		
 
 		// ImageButton imgnextmounth=new ImageButton(context);
 		// imgnextmounth.setLayoutParams(new LayoutParams(
@@ -79,7 +61,7 @@ public class MonthFragment extends Fragment {
 		currentMonthTextView.setLayoutParams(new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		currentMonthTextView.setGravity(Gravity.CENTER);
-		//currentMonthTextView.setPadding(0, 0, 4, 2);
+		currentMonthTextView.setPadding(0, 0, 10, 2);
 		currentMonthTextView.setTextSize(22);
 		utils.prepareTextView(currentMonthTextView);
 
@@ -92,9 +74,7 @@ public class MonthFragment extends Fragment {
 				LayoutParams.WRAP_CONTENT));
 		table.setPadding(0, 0, 0, 0);
 
-		
-		
-		//**********************************************************************************
+		// **********************************************************************************
 		TextView[][] daysTextViews = new TextView[7][7];
 		for (int i : new Range(0, 7)) {
 			TableRow row = new TableRow(context);
@@ -102,42 +82,42 @@ public class MonthFragment extends Fragment {
 
 			if (i == 0) {
 				row.setBackgroundResource(R.drawable.calendar_firstrow);
-				//row.setPadding(0, 0, 0, 2);// satr aval
-//			
-//				TableRow.LayoutParams relativeParamsDayOfWeek = new TableRow.LayoutParams(width,40);
-//				row.setLayoutParams(relativeParamsDayOfWeek);
+				// row.setPadding(0, 0, 0, 2);// satr aval
+				//
+				// TableRow.LayoutParams relativeParamsDayOfWeek = new
+				// TableRow.LayoutParams(width,40);
+				// row.setLayoutParams(relativeParamsDayOfWeek);
 			}
 			for (int j : new Range(0, 7)) {
-				
+
 				RelativeLayout l1 = new RelativeLayout(context);
-				
-				//l1.setPadding(0, 0, 0, 0);
-				
+
+				// l1.setPadding(0, 0, 0, 0);
+
 				l1.setGravity(Gravity.CENTER);
 				RelativeLayout.LayoutParams relativeParams;
-				
-				if(i==0){
-					relativeParams = new RelativeLayout.LayoutParams(width/7,height/9-20);
-				}
-				else {
-					relativeParams = new RelativeLayout.LayoutParams(width/7,height/9);
+
+				if (i == 0) {
+					relativeParams = new RelativeLayout.LayoutParams(width / 7,
+							height / 9 - 20);
+				} else {
+					relativeParams = new RelativeLayout.LayoutParams(width / 7,
+							height / 9);
 
 				}
 				relativeParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
 				relativeParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 				l1.setBackgroundResource(R.drawable.table_back);
-				
-				
-				
+
 				TextView tv = new TextView(context);
-				//tv.setPadding(0, 5, 0, 5);
-				
+				// tv.setPadding(0, 5, 0, 5);
+
 				utils.prepareTextView(tv);
 				tv.setGravity(Gravity.CENTER_HORIZONTAL);
-				
-				
-				//tv.setLayoutParams(new RelativeLayout.LayoutParams(width/7-10,40));
-				
+
+				// tv.setLayoutParams(new
+				// RelativeLayout.LayoutParams(width/7-10,40));
+
 				tv.setTextSize(15);
 				if (i == 0) {
 					tv.setBackgroundResource(R.color.first_row_background_color);
@@ -145,12 +125,12 @@ public class MonthFragment extends Fragment {
 							R.color.first_row_text_color));
 					tv.setTextSize(12);
 					tv.setGravity(Gravity.CENTER);
-//					tv.setId(i*10+j );
+					// tv.setId(i*10+j );
 
 				}
-				
+
 				daysTextViews[i][j] = tv;
-				l1.addView(tv,relativeParams);
+				l1.addView(tv, relativeParams);
 				row.addView(l1);
 			}
 
@@ -165,6 +145,9 @@ public class MonthFragment extends Fragment {
 		// Calendar Logic
 		int offset = getArguments().getInt("offset");
 		PersianDate persianDate = DateConverter.civilToPersian(new CivilDate());
+		PersianDate persianDate1 = DateConverter
+				.civilToPersian(new CivilDate());
+
 		monthjari = persianDate.getMonth();
 		yearjari = persianDate.getYear();
 		int month = persianDate.getMonth() - offset;
@@ -183,6 +166,65 @@ public class MonthFragment extends Fragment {
 		persianDate.setDayOfMonth(1);
 		persianDate.setDari(utils.isDariVersion(context));
 
+		int flag = MainActivity.flag;
+		int mounth2 = month;
+		int year2 = year;
+
+		if (flag == 1 && month == 12) {
+
+			mounth2 = 1;
+
+		}
+
+		if (flag == 1 && month != 12) {
+
+			mounth2 = month + 1;
+
+		}
+		
+		if (flag == 3 && month != 1) {
+
+			mounth2 = month - 1;
+			
+
+		}
+		
+		if (flag == 3 && month == 1) {
+
+			mounth2 = 12;
+			year2 = year - 1;
+
+		}
+		
+		if (flag == 2 && month != 12) {
+
+			mounth2 = month + 1;
+			
+
+		}
+		
+		if (flag == 2 && month == 12) {
+
+			mounth2 = 1;
+			year2 = year + 1;
+
+		}
+		
+		
+
+//		else if (month == 12) {
+//
+//			mounth2 = month;
+//
+//		} else {
+//			mounth2 = month - 1;
+//		}
+
+		persianDate1.setMonth(mounth2);
+		persianDate1.setYear(year2);
+		persianDate1.setDayOfMonth(1);
+		persianDate1.setDari(utils.isDariVersion(context));
+
 		char[] digits = utils.preferredDigits(getActivity());
 
 		int weekOfMonth = 1;
@@ -191,6 +233,11 @@ public class MonthFragment extends Fragment {
 
 		currentMonthTextView.setText(utils.getMonthYearTitle(persianDate,
 				digits));
+		currentMonthTextView.setVisibility(View.GONE);
+
+		MainActivity.txt_mounth_title.setText(utils.getMonthYearTitle(
+				persianDate1, digits));
+
 		// Toast.makeText(getActivity(), currentMonthTextView.getText(),
 		// 1).show();
 		// MainActivity.title_month.setText(currentMonthTextView.getText());
@@ -198,10 +245,12 @@ public class MonthFragment extends Fragment {
 		for (int i : new Range(0, 7)) {
 			TextView textView = daysTextViews[0][6 - i];
 			textView.setText(utils.firstCharOfDaysOfWeekName[i]);
-//			RelativeLayout rowNamesOfWeek = (RelativeLayout) textView.getParent();
-//			RelativeLayout.LayoutParams relativeParamsDayOfWeek = new RelativeLayout.LayoutParams(width/7,40);
-//			rowNamesOfWeek.setLayoutParams(relativeParamsDayOfWeek);
-			
+			// RelativeLayout rowNamesOfWeek = (RelativeLayout)
+			// textView.getParent();
+			// RelativeLayout.LayoutParams relativeParamsDayOfWeek = new
+			// RelativeLayout.LayoutParams(width/7,40);
+			// rowNamesOfWeek.setLayoutParams(relativeParamsDayOfWeek);
+
 		}
 		try {
 			PersianDate today = DateConverter.civilToPersian(new CivilDate());
@@ -212,108 +261,99 @@ public class MonthFragment extends Fragment {
 				textView.setText(utils.formatNumber(i, digits));
 				textView.setBackgroundResource(R.drawable.days);
 
-			//****************************************************************************************************	
+				// ****************************************************************************************************
 				String holidayTitle = utils.getHolidayTitle(persianDate);
 				String tasksTitle = utils.getTasksdayTitle(persianDate);
-				String activitiesTitle = utils.getActivitiessdayTitle(persianDate);
-				
+				String activitiesTitle = utils
+						.getActivitiessdayTitle(persianDate);
+
 				int tasknumbers;
 				int activitynumbers;
 				String tasksString = "";
 				String activitiesString = "";
-				
-				
-				if (tasksTitle != null || activitiesTitle !=null) {
-					
-					if(tasksTitle != null ){
-					tasknumbers = Integer.parseInt(tasksTitle
-							.split("mojtaba")[0]);
-					}
-					else {
+
+				if (tasksTitle != null || activitiesTitle != null) {
+
+					if (tasksTitle != null) {
+						tasknumbers = Integer.parseInt(tasksTitle
+								.split("mojtaba")[0]);
+					} else {
 						tasknumbers = 0;
 					}
-					
-					if(activitiesTitle != null ){
+
+					if (activitiesTitle != null) {
 						activitynumbers = Integer.parseInt(activitiesTitle
 								.split("mojtaba")[0]);
-						}
-						else {
-							activitynumbers = 0;
-						}
-					
-					
-					for(int s = 0 ; s< activitynumbers ; s++){
-					activitiesString = activitiesString + "▪";
+					} else {
+						activitynumbers = 0;
 					}
-					
-					for(int s1 = 0 ; s1< tasknumbers ; s1++){
+
+					for (int s = 0; s < activitynumbers; s++) {
+						activitiesString = activitiesString + "▪";
+					}
+
+					for (int s1 = 0; s1 < tasknumbers; s1++) {
 						tasksString = tasksString + "▪";
-						}
-					
+					}
+
 					RelativeLayout row1 = (RelativeLayout) textView.getParent();
-					
-					RelativeLayout.LayoutParams relativeParamTop = new RelativeLayout.LayoutParams(width/7, 20);
+
+					RelativeLayout.LayoutParams relativeParamTop = new RelativeLayout.LayoutParams(
+							width / 7, 20);
 					relativeParamTop.addRule(RelativeLayout.CENTER_HORIZONTAL);
 					relativeParamTop.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-					relativeParamTop.setMargins(0,height/9/3, 0, 0);
-					
-					
-					RelativeLayout.LayoutParams relativeParamDown = new RelativeLayout.LayoutParams(width/7, 20);
+					relativeParamTop.setMargins(0, height / 9 / 3, 0, 0);
+
+					RelativeLayout.LayoutParams relativeParamDown = new RelativeLayout.LayoutParams(
+							width / 7, 20);
 					relativeParamDown.addRule(RelativeLayout.CENTER_HORIZONTAL);
 					relativeParamDown.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-					relativeParamDown.setMargins(0,height/9/2, 0, 0);
+					relativeParamDown.setMargins(0, height / 9 / 2, 0, 0);
 
-					
 					TextView txtTask = new TextView(context);
-					txtTask.setLayoutParams(new RelativeLayout.LayoutParams(width/7 -10, LayoutParams.WRAP_CONTENT));
-					
+					txtTask.setLayoutParams(new RelativeLayout.LayoutParams(
+							width / 7 - 10, LayoutParams.WRAP_CONTENT));
+
 					txtTask.setText(TextUtils.htmlEncode(tasksString));
-					
-					
+
 					txtTask.setGravity(Gravity.CENTER_HORIZONTAL);
 					txtTask.setTextSize(TypedValue.COMPLEX_UNIT_PX, 20);
-					//txtTask.setLineSpacing(-42f, 2f);
-					txtTask.setTextColor(getResources().getColor(color.holo_blue_bright));
+					// txtTask.setLineSpacing(-42f, 2f);
+					txtTask.setTextColor(getResources().getColor(
+							color.holo_blue_bright));
 					txtTask.setSingleLine(false);
 					txtTask.setImeOptions(EditorInfo.IME_FLAG_NO_ENTER_ACTION);
-					
-					
+
 					TextView txtTask1 = new TextView(context);
-					txtTask1.setLayoutParams(new RelativeLayout.LayoutParams(width/7 -10, LayoutParams.WRAP_CONTENT));
+					txtTask1.setLayoutParams(new RelativeLayout.LayoutParams(
+							width / 7 - 10, LayoutParams.WRAP_CONTENT));
 
 					txtTask1.setText(TextUtils.htmlEncode(activitiesString));
-					
+
 					txtTask1.setGravity(Gravity.CENTER_HORIZONTAL);
 					txtTask1.setTextSize(TypedValue.COMPLEX_UNIT_PX, 20);
-					//txtTask1.setLineSpacing(-42f, 2f);
-					txtTask1.setTextColor(getResources().getColor(color.holo_blue_dark));
+					// txtTask1.setLineSpacing(-42f, 2f);
+					txtTask1.setTextColor(getResources().getColor(
+							color.holo_blue_dark));
 					txtTask1.setSingleLine(false);
 					txtTask1.setImeOptions(EditorInfo.IME_FLAG_NO_ENTER_ACTION);
 
+					row1.addView(txtTask, relativeParamTop);
+					row1.addView(txtTask1, relativeParamDown);
 
-
-					row1.addView(txtTask,relativeParamTop);
-					row1.addView(txtTask1,relativeParamDown);
-
-					
 				}
 
-				
 				if (holidayTitle != null) {
 					textView.setBackgroundResource(R.drawable.holidays);
-					
+
 				}
 				if (holidayTitle != null || dayOfWeek == 6) {
 					textView.setTextColor(getResources().getColor(
 							R.color.holidays_text_color));
 				}
 
-				
-				
-				
-//*********************************************************************				
-				
-				
+				// *********************************************************************
+
 				ClickDayListener listener = new ClickDayListener(holidayTitle,
 						persianDate.clone(), (MainActivity) getActivity());
 				textView.setOnClickListener(listener);
@@ -334,4 +374,5 @@ public class MonthFragment extends Fragment {
 		}
 		return root;
 	}
+
 }

@@ -218,7 +218,6 @@ public final class R {
         public static final int imgbtn_nextmonth_picker=0x7f0c0099;
         public static final int imgbtn_nextyear_picker=0x7f0c0095;
         public static final int imgbtn_sabtdate=0x7f0c0060;
-        public static final int imgbtn_selectcal_calander=0x7f0c00c4;
         public static final int imgbtn_showdetails=0x7f0c00d5;
         public static final int imgbtn_tik=0x7f0c00d4;
         public static final int imgv=0x7f0c0073;
@@ -333,6 +332,7 @@ public final class R {
         public static final int txt__newtask_shakhsrabet=0x7f0c00b8;
         public static final int txt_customerslash=0x7f0c003c;
         public static final int txt_daghighefgabl=0x7f0c00c2;
+        public static final int txt_mounth_title=0x7f0c00c4;
         public static final int txt_name_day=0x7f0c005d;
         public static final int txt_name_month=0x7f0c0059;
         public static final int txt_name_year=0x7f0c0055;
