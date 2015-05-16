@@ -36,6 +36,18 @@ public class SelPersonRelActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sel_person_relation);
 
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
 		tv_title = (TextView) findViewById(R.id.tv_customername_selpersonrel);
 		lv_person = (ListView) findViewById(R.id.lv_relativeperson_selpersonrel);
 		alertDialog = new AlertDialog.Builder(this).create();

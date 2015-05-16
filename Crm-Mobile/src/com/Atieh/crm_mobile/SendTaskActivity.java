@@ -10,6 +10,7 @@ import GetTasksPack.ProductsId;
 import GetTasksPack.ServicesId;
 import PostTasksPack.PostTasks;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +23,19 @@ public class SendTaskActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_send_task);
 
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
+		
 		PostTasks pt = new PostTasks();
 		List<GetTasksPack.Inserted> tasksList = new ArrayList<GetTasksPack.Inserted>();
 		

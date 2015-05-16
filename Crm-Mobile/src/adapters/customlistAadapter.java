@@ -66,6 +66,10 @@ public class customlistAadapter extends ArrayAdapter<String> {
 			chk.setVisibility(View.INVISIBLE);
 			
 		}
+		if (Enterstat.equals("new")) {
+			chk.setVisibility(View.INVISIBLE);
+			
+		}
 		database db = new database(b);
 		db.database();
 		db.open();

@@ -62,6 +62,19 @@ public class SelectProducteServicesActivity extends Activity {
 
 		initview();
 
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
+		
 		database db;
 		db = new database(this);
 		db.database();

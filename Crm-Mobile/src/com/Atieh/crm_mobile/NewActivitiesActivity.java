@@ -90,6 +90,21 @@ public class NewActivitiesActivity extends Activity {
 
 		initview();
 		
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		    	
+		    	Intent intent = new Intent();
+		    	intent.setClass(getApplicationContext(), MainActivity.class);
+		    	startActivity(intent);
+		    	System.exit(0);		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
 		Calendar calendar = Calendar.getInstance();
         
         int yearNow = calendar.get(Calendar.YEAR);
@@ -195,7 +210,9 @@ public class NewActivitiesActivity extends Activity {
 
 				convertToDateTime();
 				InsertTask();
-				finish();
+				Intent intent = new Intent();
+				intent.setClass(NewActivitiesActivity.this, HomeActivity.class);
+				startActivity(intent);
 				
 			}
 		});

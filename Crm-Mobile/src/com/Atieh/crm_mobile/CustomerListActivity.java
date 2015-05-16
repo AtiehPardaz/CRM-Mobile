@@ -37,6 +37,7 @@ public class CustomerListActivity extends Activity {
 	public static String haghighi;
 	public static String tel;
 	public static String title;
+	
 	public static String RelCustomerID = "";
 	public static String RelCustomerName = "";
 	public static String RelID = "";
@@ -60,6 +61,19 @@ public class CustomerListActivity extends Activity {
 		setContentView(R.layout.activity_customer_list);
 
 		initview();
+		
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
 
 		if (getIntent() != null) {
 
@@ -82,14 +96,14 @@ public class CustomerListActivity extends Activity {
 
 		Enterstat = getIntent().getExtras().getString(
 				HomeActivity.EnterCustomersListStat);
-		if (Enterstat != null) {
+		if (Enterstat != null && !Enterstat.equals("new")) {
 			if (!Enterstat.equals("mostaghim")) {
 				add.setVisibility(View.GONE);
 				btnhome.setVisibility(View.GONE);
 				btnmonthview.setVisibility(View.GONE);
 			}
 		}
-
+ 
 		database db;
 		db = new database(this);
 		db.database();
@@ -155,6 +169,8 @@ public class CustomerListActivity extends Activity {
 				// "selected Item id is === " + text+" "+adress+haghighi+tel,
 				// Toast.LENGTH_LONG)
 				// .show();
+				
+				
 				startActivity(new Intent(CustomerListActivity.this,
 						CustomerDetailsActivity.class));
 

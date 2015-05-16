@@ -16,11 +16,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.Atieh.crm_mobile_calendar.CivilDate;
+import com.Atieh.crm_mobile_calendar.DateConverter;
+import com.Atieh.crm_mobile_calendar.PersianDate;
 import com.Atieh.crm_mobile_webService.ServiceGenerator;
 
 import dataBase.database;
@@ -31,12 +35,15 @@ public class HomeActivity extends Activity {
 	Button btnproductservises;
 	Button btnNewTask;
 	Button btnNewActivity;
+	
+	Button btnDayView;
 
 	public void initview() {
 		btnmounthview = (Button) findViewById(R.id.btn_monthview);
 		btnproductservises = (Button) findViewById(R.id.btn_productservises);
 		btnNewTask = (Button) findViewById(R.id.btn_newtask);
 		btnNewActivity = (Button) findViewById(R.id.btn_newactivity);
+		btnDayView = (Button) findViewById(R.id.btn_dayview);
 	}
 
 	database db;
@@ -52,7 +59,34 @@ public class HomeActivity extends Activity {
 		initview();
 		//Toast.makeText(this, authInfo.getInstance().getSalt(),
 				//Toast.LENGTH_LONG).show();
-
+		
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		    	
+		    	Intent intent = new Intent();
+		    	intent.setClass(HomeActivity.this, MainActivity.class);
+		    	startActivity(intent);
+		    	System.exit(0);		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
+		btnDayView.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				PersianDate persianDate = DateConverter.civilToPersian(new CivilDate());
+				Intent intent=new Intent();
+				intent.setClass(v.getContext(), TaskAndActivityActionActivity.class);
+				intent.putExtra("date", persianDate.getYear()+":" + persianDate.getMonth()+ ":" + +persianDate.getDayOfMonth());
+				startActivity(intent);
+			}
+		});
+		
 		btnmounthview.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -189,6 +223,7 @@ public class HomeActivity extends Activity {
 		activities = ActivitiesAdapter.getActivities(token);
 
 
+		
 		// insert products
 //		if (PandSs.getProducts().getInserted() != null) {
 //			for (int i = 0; i < PandSs.getProducts().getInserted().size(); i++) {
@@ -514,5 +549,7 @@ public class HomeActivity extends Activity {
 
 		return "succeed";
 	}
+	
+
 
 }

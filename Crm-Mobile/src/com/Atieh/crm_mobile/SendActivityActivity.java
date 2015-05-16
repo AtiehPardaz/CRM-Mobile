@@ -6,6 +6,7 @@ import java.util.List;
 import com.Atieh.crm_mobile_webService.PostMethod;
 import PostActivityPack.PostActivity;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,18 @@ public class SendActivityActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_send_activity);
+		
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
 		
 		PostActivity postActivity = new PostActivity();
 		List<GetActivitiesPack.Inserted> localActivities = new ArrayList<GetActivitiesPack.Inserted>();

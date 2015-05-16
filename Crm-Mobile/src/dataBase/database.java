@@ -323,13 +323,17 @@ public class database extends SQLiteOpenHelper {
 		//long ID = mydb.update("RelationRoles", values, strFilter,null);
 	}
 
+	public Cursor getRelationRolesByID(String Id){
+
+		Cursor cu= mydb.rawQuery("select Title from RelationRoles where Id = '"+Id+"'", null); 
+		return cu ;
+	}
+
 	public Cursor getRelationRoles(){
 
 		Cursor cu= mydb.rawQuery("select * from RelationRoles where IsDeleted = '0'", null); 
 		return cu ;
 	}
-
-
 
 
 	public void InsertActivityStatus(String Id,String Title){

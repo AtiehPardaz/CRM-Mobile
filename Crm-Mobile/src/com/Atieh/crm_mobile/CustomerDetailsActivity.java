@@ -1,6 +1,12 @@
 package com.Atieh.crm_mobile;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import dataBase.database;
 import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,10 +48,44 @@ public class CustomerDetailsActivity extends Activity {
 		setContentView(R.layout.activity_customer_details);
 
 		initview();
+		
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
 		title.setText(CustomerListActivity.title);
 		adres.setText(CustomerListActivity.adress);
 		// haghighi.setText(CustomerListActivity.title);
 		tel.setText(CustomerListActivity.tel);
+		database db = new database(this);
+		db.database();
+		db.open();
+		ArrayList<String> rel = new ArrayList<>();
+		ArrayList<String> semat2 = new ArrayList<>();
+		String sematString = "";
+		
+		Cursor c = db.GetPersonRelationsByCustomerId(CustomerListActivity.text);
+		while (c.moveToNext()) {
+			
+			rel.add(c.getString(3));
+			semat2.add(c.getString(2));
+		}
+		
+		Cursor c2 = db.getRelationRolesByID(semat2.get(0));
+		while (c2.moveToNext()) {
+			sematString = c2.getString(0);
+		}
+		
+		ashkhas.setText(rel.get(0));
+		semat.setText(sematString);
 
 		close.setOnClickListener(new OnClickListener() {
 

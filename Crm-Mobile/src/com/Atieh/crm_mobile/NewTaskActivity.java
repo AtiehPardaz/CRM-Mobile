@@ -78,6 +78,17 @@ public class NewTaskActivity extends Activity {
 		setContentView(R.layout.activity_task_new);
 
 		initview();
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
 		
 		Calendar calendar = Calendar.getInstance();
         
@@ -165,7 +176,10 @@ public class NewTaskActivity extends Activity {
 				
 				InsertTask();
 				
-				finish();
+				Intent intent = new Intent();
+				intent.setClass(NewTaskActivity.this, HomeActivity.class);
+				startActivity(intent);
+				
 				
 			}
 		});

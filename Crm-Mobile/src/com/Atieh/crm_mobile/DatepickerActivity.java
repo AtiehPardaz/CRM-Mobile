@@ -8,6 +8,7 @@ import com.Atieh.crm_mobile_calendar.Utils;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,6 +33,19 @@ public class DatepickerActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_datepicker);
 
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
+		
 		top_image_year = (ImageView) findViewById(R.id.top_image_year);
 		down_image_year = (ImageView) findViewById(R.id.down_image_year);
 		top_image_month = (ImageView) findViewById(R.id.top_image_month);

@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.Atieh.crm_mobile.HomeActivity;
+import com.Atieh.crm_mobile.HomeWatcher;
+import com.Atieh.crm_mobile.OnHomePressedListener;
 import com.Atieh.crm_mobile.R;
 import com.Atieh.crm_mobile_calendar.MonthFragment;
 import com.squareup.okhttp.internal.Util;
@@ -59,6 +61,20 @@ public class MainActivity extends FragmentActivity {
 		// Toast.makeText(getApplicationContext(), persiandatee.getMonth()+"",
 		// 1)
 		// .show();
+		
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
+		
 		boolean removeTitle = true;
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 			if (!hasPermanentMenuKey()) {
@@ -135,6 +151,21 @@ public class MainActivity extends FragmentActivity {
 				
 			}
 		});
+		
+		
+		
+		txt_mounth_title.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				startActivity(new Intent(MainActivity.this,
+						SelectdateActivity.class));
+				
+			}
+		});
+		
+		
 		next.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -168,8 +199,8 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(MainActivity.this,
-						SelectdateActivity.class));
+//				startActivity(new Intent(MainActivity.this,
+//						SelectdateActivity.class));
 			}
 		});
 

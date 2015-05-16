@@ -54,6 +54,18 @@ public class ProductServisesActivity extends Activity {
 		setContentView(R.layout.activity_product_services);
 
 		initview();
+		HomeWatcher mHomeWatcher = new HomeWatcher(this);
+		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+		    @Override
+		    public void onHomePressed() {
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		    }
+		    @Override
+		    public void onHomeLongPressed() {
+		    }
+		});
+		mHomeWatcher.startWatch();
+		
 		ll_hidesearch.setVisibility(View.GONE);
 		database db;
 		db = new database(this);

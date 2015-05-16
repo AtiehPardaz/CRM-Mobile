@@ -313,7 +313,15 @@ public class MainActivity extends Activity {
 						Toast.LENGTH_LONG).show();
 			}
 		}
+		
+		
+		
 
+	}
+	
+	@Override
+	public void onBackPressed() {
+	
 	}
 
 }
