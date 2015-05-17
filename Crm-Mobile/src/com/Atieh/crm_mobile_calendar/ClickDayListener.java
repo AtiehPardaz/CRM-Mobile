@@ -48,7 +48,7 @@ public class ClickDayListener implements View.OnClickListener,
 		Intent intent=new Intent();
 		intent.setClass(v.getContext(), TaskAndActivityActionActivity.class);
 		intent.putExtra("date", persianDate.getYear()+":" + persianDate.getMonth()+ ":" + +persianDate.getDayOfMonth());
-		//intent.putExtra("day", persianDate.getYear()+" " + persianDate.getMonthName() + persianDate.getDayOfMonth() + " " + persianDate.getDayOfWeek());
+		intent.putExtra("parent", "mounth");
 
 	
 		

@@ -9,8 +9,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
@@ -24,8 +22,6 @@ import com.Atieh.crm_mobile.HomeActivity;
 import com.Atieh.crm_mobile.HomeWatcher;
 import com.Atieh.crm_mobile.OnHomePressedListener;
 import com.Atieh.crm_mobile.R;
-import com.Atieh.crm_mobile_calendar.MonthFragment;
-import com.squareup.okhttp.internal.Util;
 
 public class MainActivity extends FragmentActivity {
 	// I know, it is ugly, but user will not notify this and this will not have
@@ -158,7 +154,7 @@ public class MainActivity extends FragmentActivity {
 			
 			@Override
 			public void onClick(View v) {
-				
+				SelectdateActivity.flag = true;
 				startActivity(new Intent(MainActivity.this,
 						SelectdateActivity.class));
 				

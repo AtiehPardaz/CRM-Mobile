@@ -83,6 +83,7 @@ public class HomeActivity extends Activity {
 				Intent intent=new Intent();
 				intent.setClass(v.getContext(), TaskAndActivityActionActivity.class);
 				intent.putExtra("date", persianDate.getYear()+":" + persianDate.getMonth()+ ":" + +persianDate.getDayOfMonth());
+				intent.putExtra("parent", "home");
 				startActivity(intent);
 			}
 		});

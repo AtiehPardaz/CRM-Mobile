@@ -1,9 +1,7 @@
 package com.Atieh.crm_mobile;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import dataBase.database;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import dataBase.database;
 
 public class CustomerDetailsActivity extends Activity {
 

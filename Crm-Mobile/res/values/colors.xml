@@ -10,8 +10,8 @@
     <color name="marker_color">#FFFFFF</color>
     <color name="text_color">#000000</color>
     <color name="bg_action_green">#3BB18E</color>
-    <color name="bg_action_gray"> #dddddd</color>
-    <color name="white_color"> #ffffff</color>
-    <color name="blue_titlecolor"> #293897</color>
+    <color name="bg_action_gray">#dddddd</color>
+    <color name="white_color">#ffffff</color>
+    <color name="blue_titlecolor">#293897</color>
 
 </resources>

@@ -20,6 +20,7 @@ public class SelectdateActivity extends Activity {
 	ImageButton nextmonth;
 	ImageButton backyear;
 	ImageButton backmonth;
+	public static boolean flag;
 	Button gotodate;
 	public static int gotomonth;
 	public static int gotoyear;
@@ -99,8 +100,14 @@ public class SelectdateActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				int i = Integer.parseInt(monthnum.getText().toString());
-
-				if (i == 1) {
+				
+				if(flag){
+					i = 12;
+					monthnum.setText(i + "");
+					month.setText(MonthName[i] + "");
+					flag = false;
+				}
+				else if (i == 1) {
 					i = 12;
 					monthnum.setText(i + "");
 					month.setText(MonthName[i] + "");

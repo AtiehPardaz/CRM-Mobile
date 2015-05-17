@@ -7,6 +7,7 @@ import dataBase.database;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -127,8 +128,8 @@ public class ProductServisesActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 
-				btnproduct.setBackgroundResource(getResources().getColor(R.color.bg_action_green));
-				btnservisec.setBackgroundResource(getResources().getColor(R.color.bg_action_gray));
+				btnproduct.setBackgroundColor(Color.parseColor("#3BB18E"));
+				btnservisec.setBackgroundColor(Color.parseColor("#dddddd"));
 				
 				showproductorservicelist = 0;
 				asyncTask as = new asyncTask();
@@ -140,8 +141,8 @@ public class ProductServisesActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				btnproduct.setBackgroundResource(getResources().getColor(R.color.bg_action_gray));
-				btnservisec.setBackgroundResource(getResources().getColor(R.color.bg_action_green));
+				btnproduct.setBackgroundColor(Color.parseColor("#dddddd"));
+				btnservisec.setBackgroundColor(Color.parseColor("#3BB18E"));
 				// btnservisec.setTextColor(color.first_row_background_color);
 				
 				showproductorservicelist = 1;

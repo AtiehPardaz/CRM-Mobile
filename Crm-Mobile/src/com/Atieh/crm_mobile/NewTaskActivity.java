@@ -1,5 +1,6 @@
 package com.Atieh.crm_mobile;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -9,9 +10,11 @@ import adapters.CalendarTool;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -19,6 +22,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class NewTaskActivity extends Activity {
 
@@ -121,7 +125,33 @@ public class NewTaskActivity extends Activity {
 			}
 		});
 			
+		SimpleDateFormat sdf = new SimpleDateFormat("HH");
+		int currentDateandTime = Integer.valueOf(sdf.format(new Date()));
 		
+		spnr_azsaat.setSelection(currentDateandTime);
+		spnr_tasaat.setSelection(currentDateandTime + 1);
+		
+		spnr_tasaat.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				if( ((int) id) <= (int) spnr_azsaat.getSelectedItemId()){
+					Toast.makeText(NewTaskActivity.this, "ساعت شروع نباید از ساعت پایان کمتر باشد.", Toast.LENGTH_LONG).show();
+					spnr_tasaat.setBackgroundColor(Color.RED);
+				}
+				else {
+					spnr_tasaat.setBackgroundResource(R.drawable.spinner_back);
+				}
+				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		txtPSroductServises.setOnClickListener(new OnClickListener() {
 			
@@ -176,9 +206,7 @@ public class NewTaskActivity extends Activity {
 				
 				InsertTask();
 				
-				Intent intent = new Intent();
-				intent.setClass(NewTaskActivity.this, HomeActivity.class);
-				startActivity(intent);
+				
 				
 				
 			}
@@ -316,7 +344,8 @@ public class NewTaskActivity extends Activity {
 	public void InsertTask(){
 		
 		
-		
+		if ((int)spnr_azsaat.getSelectedItemId() <= (int)spnr_tasaat.getSelectedItemId()) {
+
 			db.InsertTasks(TaskID,
 					CustomerListActivity.RelCustomerID,
 					et_sharh.getText().toString(), 
@@ -331,6 +360,15 @@ public class NewTaskActivity extends Activity {
 					toDate );
 
 			db.close();
+			Intent intent = new Intent();
+			intent.setClass(NewTaskActivity.this, HomeActivity.class);
+			startActivity(intent);
+		}
+		else {
+			Toast.makeText(NewTaskActivity.this, "ساعت شروع نباید از ساعت پایان کمتر انتخاب شود", Toast.LENGTH_LONG).show();
+			spnr_tasaat.setBackgroundColor(Color.RED);
+		}
+			
 	}
 
 	

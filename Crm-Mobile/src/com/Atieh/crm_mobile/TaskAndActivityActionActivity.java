@@ -31,7 +31,7 @@ public class TaskAndActivityActionActivity extends Activity {
 	ImageButton btnsearch;
 	ImageButton btnhome;
 	ImageButton btnmonthview;
-	ImageButton btnclearsearchtext, imgbtn_next_month,imgbtn_back_month;
+	ImageButton btnclearsearchtext, imgbtn_next_month, imgbtn_back_month;
 	Button btnaction;
 	Button btntask;
 	TextView titlemonthTextView;
@@ -97,6 +97,7 @@ public class TaskAndActivityActionActivity extends Activity {
 
 	String date;
 	String[] seprated;
+	String parent;
 
 	public void initview() {
 		btnsearch = (ImageButton) findViewById(R.id.btn_search_customelist);
@@ -126,20 +127,25 @@ public class TaskAndActivityActionActivity extends Activity {
 		listView = (ListView) findViewById(R.id.lv_tasks);
 
 		initview();
-		
+
 		HomeWatcher mHomeWatcher = new HomeWatcher(this);
 		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
-		    @Override
-		    public void onHomePressed() {
-		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
-		    }
-		    @Override
-		    public void onHomeLongPressed() {
-		    }
+			@Override
+			public void onHomePressed() {
+				Intent intent = new Intent();
+				intent.setClass(getApplicationContext(), MainActivity.class);
+				startActivity(intent);
+				System.exit(0);
+			}
+
+			@Override
+			public void onHomeLongPressed() {
+			}
 		});
 		mHomeWatcher.startWatch();
 
 		Intent intent = getIntent();
+		parent = intent.getStringExtra("parent");
 		date = intent.getStringExtra("date");
 		// Toast.makeText(TaskAndActivityActionActivity.this,
 		// intent.getStringExtra("day"), 1).show();
@@ -200,6 +206,8 @@ public class TaskAndActivityActionActivity extends Activity {
 				intent.setClass(TaskAndActivityActionActivity.this,
 						TaskAndActivityActionActivity.class);
 				intent.putExtra("date", newDate);
+				intent.putExtra("parent", parent);
+
 				startActivity(intent);
 			}
 		});
@@ -225,6 +233,9 @@ public class TaskAndActivityActionActivity extends Activity {
 				intent.setClass(TaskAndActivityActionActivity.this,
 						TaskAndActivityActionActivity.class);
 				intent.putExtra("date", newDate);
+				
+				intent.putExtra("parent", parent);
+
 				startActivity(intent);
 			}
 		});
@@ -363,10 +374,20 @@ public class TaskAndActivityActionActivity extends Activity {
 	public void onBackPressed() {
 
 		Intent intent = new Intent();
-		intent.setClass(TaskAndActivityActionActivity.this, MainActivity.class);
-		startActivity(intent);
+
+		if (parent.equals("mounth")) {
+			intent.setClass(TaskAndActivityActionActivity.this,
+					MainActivity.class);
+			
+		} else if (parent.equals("home")) {
+			intent.setClass(TaskAndActivityActionActivity.this,
+					HomeActivity.class);
+		}
 		
+		startActivity(intent);
+
 	}
+
 	private void updateActivitiesList() {
 
 		boolean[][] titleSet = new boolean[24][30];
