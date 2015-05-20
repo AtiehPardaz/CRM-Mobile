@@ -25,6 +25,8 @@ public class CmListFromTaskToProduct extends BaseAdapter {
 	private Activity activity;
 	String[] ids;
 	String[] titles;
+	String[] selected;
+
 	List<String> checked;
 	database db;
 	TextView id;
@@ -35,7 +37,7 @@ public class CmListFromTaskToProduct extends BaseAdapter {
 	TextView Hour;
 
 	public CmListFromTaskToProduct(Activity a, String[] arrayid,
-			String[] arraytitle, Context c) {
+			String[] arraytitle, String[] arrayselected, Context c) {
 
 		activity = a;
 		context = c;
@@ -44,6 +46,8 @@ public class CmListFromTaskToProduct extends BaseAdapter {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.ids = arrayid;
 		this.titles = arraytitle;
+		this.selected = arrayselected;
+
 	}
 
 	public View getView(final int position, View convertView, ViewGroup parent) {
@@ -58,6 +62,13 @@ public class CmListFromTaskToProduct extends BaseAdapter {
 		id.setVisibility(View.GONE);
 		title.setText(titles[position]);
 
+		if(selected[position].equals("1")){
+			chk.setChecked(true);
+		}
+		else {
+			chk.setChecked(false);
+		}
+		
 		chk.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override

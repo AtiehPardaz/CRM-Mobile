@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import dataBase.database;
 
@@ -22,6 +24,7 @@ public class TaskDetailsActivity extends Activity {
 	TextView txt_taskProductTitle ;
 	TextView txt_taskDetail ;
 	TextView txt_taskMustNotified ;
+	ImageView img_edit_task;
 
 
 	@Override
@@ -42,6 +45,17 @@ public class TaskDetailsActivity extends Activity {
 		});
 		mHomeWatcher.startWatch();
 		
+		img_edit_task.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(TaskDetailsActivity.this, EditTaskActivity.class);
+				intent.putExtra("TaskID", getIntent().getStringExtra("id"));
+				startActivity(intent);
+				
+			}
+		});
 		
 		db = new database(this);
 		db.database();
@@ -132,5 +146,6 @@ public class TaskDetailsActivity extends Activity {
 		txt_taskProductTitle = (TextView) findViewById(R.id.txt_taskProductTitle);
 		txt_taskDetail = (TextView) findViewById(R.id.txt_taskDetail);
 		txt_taskMustNotified = (TextView) findViewById(R.id.txt_taskMustNotified);
+		img_edit_task = (ImageView) findViewById(R.id.img_edit_task);
 	}
 }

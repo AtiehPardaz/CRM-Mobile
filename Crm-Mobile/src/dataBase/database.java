@@ -416,7 +416,7 @@ public class database extends SQLiteOpenHelper {
 			String Title,
 			String ToDateTime){
 
-		//String strFilter = "Id = '"+Id+"'";		
+		String strFilter = "Id = '"+Id+"'";		
 		ContentValues values = new ContentValues();
 
 		values.put("CustomerId",CustomerId);
@@ -432,16 +432,12 @@ public class database extends SQLiteOpenHelper {
 		values.put("ToDateTime",ToDateTime);
 		values.put("IsDeleted",0);
 
-		//long ID = mydb.update("tasks", values, strFilter,null);
+		long ID = mydb.update("tasks", values, strFilter,null);
 	}
 
 	public void DeleteTasks(String Id){
 
-		//String strFilter = "Id = '"+Id+"'";		
-		ContentValues values = new ContentValues();
-		values.put("IsDeleted",1);
-
-		//long ID = mydb.update("tasks", values, strFilter,null);
+		mydb.execSQL("delete from tasks where Id = '"+Id+"'");
 	}
 
 	public void InsertTasksProducts(String TaskGUID,String ProductGUID){
@@ -645,16 +641,16 @@ public class database extends SQLiteOpenHelper {
 	}	
 	
 	
-public Cursor GetTaskProduct(String TaskGUID){
+public Cursor GetTaskProductServices(String TaskGUID){
 		
-		Cursor cu= mydb.rawQuery("select p.productName from products p inner join TasksProducts ap on p.[productGUID] = ap.[ProductGUID] where ap.[TaskGUID] = '"+TaskGUID+"'", null); 
+		Cursor cu= mydb.rawQuery("select productName as a from products p inner join TasksProducts tp on p.[productGUID] = tp.[productGUID] where TaskGUID = '"+TaskGUID+"' union select serviceName as a from services s inner join TasksServices ts on s.[serviceGUID] = ts.[serviceGUID] where TaskGUID = '"+TaskGUID+"'", null); 
 		return cu ;
 			
 	}
 	
 	public Cursor GetTaskService(String TaskGUID){
 		
-		Cursor cu= mydb.rawQuery("select p.serviceName from services p inner join TasksServices ap on p.[serviceGUID] = ap.[serviceGUID] where ap.[TaskGUID] = '"+TaskGUID+"'", null); 
+		Cursor cu= mydb.rawQuery("select productName as a from products p inner join TasksProducts tp on p.[productGUID] = tp.[productGUID] union select serviceName as a from services p2 inner join TasksServices tp2 on p2.[serviceGUID] = tp2.[serviceGUID] where TaskGUID = '"+TaskGUID+"'", null); 
 		return cu ;
 			
 	}	

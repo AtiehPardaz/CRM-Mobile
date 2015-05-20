@@ -17,9 +17,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.Atieh.crm_mobile.HomeActivity;
 import com.Atieh.crm_mobile.HomeWatcher;
+import com.Atieh.crm_mobile.NewActivitiesActivity;
+import com.Atieh.crm_mobile.NewTaskActivity;
 import com.Atieh.crm_mobile.OnHomePressedListener;
 import com.Atieh.crm_mobile.R;
 
@@ -31,9 +32,10 @@ public class MainActivity extends FragmentActivity {
 	private ViewPager viewPager;
 	TextView title;
 	private TextView calendarInfo;
-	ImageButton selectdate;
+	ImageButton selectdate,btn_monthview_plus;
 	public static TextView title_month,txt_mounth_title;
 	public static int flag = 1;
+	Button btn_mounthview_new_task,btn_mounthview_new_activity;
 
 	private Button resetButton;
 	private PrayTimeActivityHelper prayTimeActivityHelper;
@@ -86,6 +88,7 @@ public class MainActivity extends FragmentActivity {
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
 		}
 		setContentView(R.layout.calendar);
+		
 		// title=(TextView) findViewById(R.id.tv_title_monthview);
 		calendarInfo = (TextView) findViewById(R.id.calendar_info);
 		title_month = (TextView) findViewById(R.id.tv_title_monthview);
@@ -93,11 +96,16 @@ public class MainActivity extends FragmentActivity {
 		back = (ImageButton) findViewById(R.id.imgbtn_back_month);
 		selectdate = (ImageButton) findViewById(R.id.btn_monthview_calander);
 		txt_mounth_title = (TextView) findViewById(R.id.txt_mounth_title);
+		btn_monthview_plus = (ImageButton) findViewById(R.id.btn_monthview_plus);
+		btn_mounthview_new_task = (Button) findViewById(R.id.btn_mounthview_new_task);
+		btn_mounthview_new_activity = (Button) findViewById(R.id.btn_mounthview_new_activity);
 		// Pray Time
 		prayTimeActivityHelper = new PrayTimeActivityHelper(this);
 		prayTimeActivityHelper.fillPrayTime();
 
 		
+		btn_mounthview_new_task.setVisibility(View.GONE);
+		btn_mounthview_new_activity.setVisibility(View.GONE);
 		
 		
 		
@@ -161,6 +169,36 @@ public class MainActivity extends FragmentActivity {
 			}
 		});
 		
+		btn_monthview_plus.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				btn_mounthview_new_task.setVisibility(View.VISIBLE);
+				btn_mounthview_new_activity.setVisibility(View.VISIBLE);
+			}
+		});
+		
+		btn_mounthview_new_task.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this,NewTaskActivity.class);
+				startActivity(intent);
+				
+			}
+		});
+		
+		btn_mounthview_new_activity.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this,NewActivitiesActivity.class);
+				startActivity(intent);
+				
+			}
+		});
 		
 		next.setOnClickListener(new OnClickListener() {
 
@@ -218,6 +256,9 @@ public class MainActivity extends FragmentActivity {
 	protected void onResume() {
 
 		super.onResume();
+		btn_mounthview_new_task.setVisibility(View.GONE);
+		btn_mounthview_new_activity.setVisibility(View.GONE);
+		
 		Intent intent = getIntent();
 		newmonth = intent.getStringExtra("month");
 
@@ -249,7 +290,7 @@ public class MainActivity extends FragmentActivity {
 			resetButton.setVisibility(View.GONE);
 			fillCalendarInfo(new CivilDate());
 		} else {
-			resetButton.setVisibility(View.VISIBLE);
+			resetButton.setVisibility(View.GONE);/////////////////////////////////////
 			clearInfo();
 		}
 	}

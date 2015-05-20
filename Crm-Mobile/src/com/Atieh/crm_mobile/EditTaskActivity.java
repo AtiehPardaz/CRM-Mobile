@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class NewTaskActivity extends Activity {
+public class EditTaskActivity extends Activity {
 
 	EditText et_title;
 	EditText et_sharh;
@@ -49,6 +49,7 @@ public class NewTaskActivity extends Activity {
 	database db;
 	String fromDate;
 	String toDate;
+	Cursor c;
 	
 	String TaskID ;
 
@@ -72,7 +73,6 @@ public class NewTaskActivity extends Activity {
 
 		rdbtn_ghabl = (RadioButton) findViewById(R.id.rdbtn_newtask_ghabl);
 		rdbtn_hamanlahze = (RadioButton) findViewById(R.id.rdbtn_remember_newtask);
-
 	}
 
 	@Override
@@ -93,24 +93,46 @@ public class NewTaskActivity extends Activity {
 		    }
 		});
 		mHomeWatcher.startWatch();
-		
-		Calendar calendar = Calendar.getInstance();
-        
-        int yearNow = calendar.get(Calendar.YEAR);
-        int mounthNow = (calendar.get(Calendar.MONTH)) + 1;
-        int dayNow = calendar.get(Calendar.DAY_OF_MONTH);
-        
-        CalendarTool calendarTool = new CalendarTool();
-        calendarTool.setGregorianDate(yearNow, mounthNow, dayNow);
-        date.setText(calendarTool.getIranianDate());
-        
+		        
         
 		db = new database(this);
 		db.database();
 		db.open();
-
-		TaskID = java.util.UUID.randomUUID().toString();
-
+		
+		TaskID = getIntent().getStringExtra("TaskID");
+		c = db.GetTaskByID(TaskID);
+		
+		while (c.moveToNext()) {
+			
+			et_title.setText(c.getString(10));
+			et_sharh.setText(c.getString(2));
+			txt_customer.setText(c.getString(1));
+			txt_rabet.setText(c.getString(1));
+			
+			
+			spnr_azsaat.setSelection(Integer.valueOf(c.getString(3).split(" ")[1].split(":")[0]));
+			spnr_tasaat.setSelection(Integer.valueOf(c.getString(11).split(" ")[1].split(":")[0]));
+			
+			date.setText(c.getString(3).split(" ")[0].replace(":", "/"));
+		}
+		Cursor c11 = db.GetPersonRelationsByCustomerId(txt_customer.getText().toString());
+		while(c11.moveToNext()){
+			txt_rabet.setText(c11.getString(3));
+		}
+		
+		Cursor c21 = db.GetCustomersByID(txt_customer.getText().toString());
+		while (c21.moveToNext()) {
+			txt_customer.setText(c21.getString(0));
+		}
+		
+		String ps = "";
+		Cursor c31 = db.mydb.rawQuery("select productName as a from products p inner join TasksProducts tp on p.[productGUID] = tp.[productGUID]  where tp.[TaskGUID] = '"+TaskID+"' union select serviceName as a from services p2 inner join TasksServices tp2 on p2.[serviceGUID] = tp2.[serviceGUID] where tp2.[TaskGUID] = '"+TaskID+"'",null);
+		while (c31.moveToNext()) {
+			ps = ps + " " + c31.getString(0);
+		}
+		
+		txtPSroductServises.setText(ps);
+		
 		TempTaskID.getInstance().setTempTaskID(TaskID);
 		
 		txt_customer.setOnClickListener(new OnClickListener() {
@@ -118,18 +140,14 @@ public class NewTaskActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				Intent i = new Intent(NewTaskActivity.this,
+				Intent i = new Intent(EditTaskActivity.this,
 						CustomerListActivity.class);
 				i.putExtra(HomeActivity.EnterCustomersListStat, "vazifeh");
 				startActivityForResult(i, 2);					
 			}
 		});
 			
-		SimpleDateFormat sdf = new SimpleDateFormat("HH");
-		int currentDateandTime = Integer.valueOf(sdf.format(new Date()));
-		
-		spnr_azsaat.setSelection(currentDateandTime);
-		spnr_tasaat.setSelection(currentDateandTime + 1);
+
 		
 		spnr_tasaat.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -137,7 +155,7 @@ public class NewTaskActivity extends Activity {
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				if( ((int) id) <= (int) spnr_azsaat.getSelectedItemId()){
-					Toast.makeText(NewTaskActivity.this, "ساعت شروع نباید از ساعت پایان کمتر باشد.", Toast.LENGTH_LONG).show();
+					Toast.makeText(EditTaskActivity.this, "ساعت شروع نباید از ساعت پایان کمتر باشد.", Toast.LENGTH_LONG).show();
 					spnr_tasaat.setBackgroundColor(Color.RED);
 				}
 				else {
@@ -158,7 +176,7 @@ public class NewTaskActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				Intent i2 = new Intent(NewTaskActivity.this,
+				Intent i2 = new Intent(EditTaskActivity.this,
 						SelectProducteServicesTask.class);
 				startActivityForResult(i2, 1);
 
@@ -170,7 +188,7 @@ public class NewTaskActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				startActivity(new Intent(NewTaskActivity.this,
+				startActivity(new Intent(EditTaskActivity.this,
 						DatepickerActivity.class));
 
 			}
@@ -245,13 +263,14 @@ public class NewTaskActivity extends Activity {
 
 		if (requestCode == 1) {
 	        if(resultCode == RESULT_OK){
+	        	txtPSroductServises.setText("");
 	        	String ps = "";
 	        	db = new database(this);
 	        	db.database();
 	        	db.open();
-	        	Cursor c = db.GetTaskProductServices(TaskID);
-	        	while (c.moveToNext()) {
-	        		ps = ps + c.getString(0) + " و ";
+	        	Cursor c34 = db.GetTaskProductServices(TaskID);
+	        	while (c34.moveToNext()) {
+	        		ps = ps + c34.getString(0) + " و ";
 				}
 	        	
 //	        	Cursor c2 = db.GetTaskService(TaskID);
@@ -346,6 +365,7 @@ public class NewTaskActivity extends Activity {
 		
 		if ((int)spnr_azsaat.getSelectedItemId() <= (int)spnr_tasaat.getSelectedItemId()) {
 
+			db.DeleteTasks(TaskID);
 			db.InsertTasks(TaskID,
 					CustomerListActivity.RelCustomerID,
 					et_sharh.getText().toString(), 
@@ -361,11 +381,11 @@ public class NewTaskActivity extends Activity {
 
 			db.close();
 			Intent intent = new Intent();
-			intent.setClass(NewTaskActivity.this, HomeActivity.class);
+			intent.setClass(EditTaskActivity.this, HomeActivity.class);
 			startActivity(intent);
 		}
 		else {
-			Toast.makeText(NewTaskActivity.this, "ساعت شروع نباید از ساعت پایان کمتر انتخاب شود", Toast.LENGTH_LONG).show();
+			Toast.makeText(EditTaskActivity.this, "ساعت شروع نباید از ساعت پایان کمتر انتخاب شود", Toast.LENGTH_LONG).show();
 			spnr_tasaat.setBackgroundColor(Color.RED);
 		}
 			

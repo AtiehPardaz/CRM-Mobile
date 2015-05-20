@@ -1,165 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.Atieh.crm_mobile_calendar.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:textDirection="rtl"
     tools:context=".MainActivity" >
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/blue_titlecolor"
-            android:gravity="center"
-            android:orientation="horizontal" >
-
-            <ImageButton
-                android:id="@+id/imgbtn_back_month"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/ic_action_back_item" />
-
-            <View
-                android:id="@+id/View01"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/tv_title_monthview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:text="دی 1393"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffffff"
-                android:textSize="25sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/txt_mounth_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="#ffffff"
-                android:textSize="25sp" />
-
-            <View
-                android:id="@+id/view1"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <ImageButton
-                android:id="@+id/imgbtn_next_month"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/ic_action_next_item" />
-
-        </LinearLayout>
-<LinearLayout
+        android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|center"
-        android:gravity="right"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/blue_titlecolor"
+        android:gravity="center"
         android:orientation="horizontal" >
 
-       
-
-        
+        <ImageButton
+            android:id="@+id/imgbtn_back_month"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_action_back_item" />
 
         <View
-            android:id="@+id/View05"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/View01"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_title_monthview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="دی 1393"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_mounth_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
             android:layout_weight="1" />
 
         <ImageButton
-            android:id="@+id/btn_monthview_calander"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:background="@drawable/taghvim" />
-
-<ImageButton
-    android:id="@+id/btn_monthview_plus"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
-    android:layout_gravity="center"
-    android:background="@drawable/ic_action_add_to_queue" />
-
-        <ImageButton
-            android:id="@+id/btn_search_calander"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:background="@drawable/search" />
-
-        <ImageButton
-            android:id="@+id/btn_home_calander"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/home" />
+            android:id="@+id/imgbtn_next_month"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_action_next_item" />
     </LinearLayout>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/calendar_pager"
-            android:layout_width="fill_parent"
-            android:layout_height="555dp"
-            android:layoutDirection="ltr" />
+    <View
+        android:id="@+id/View05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/btn_monthview_calander"
+        android:layout_weight="1" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:layoutDirection="ltr"
-            android:orientation="horizontal"
-            android:visibility="gone" >
+    <ImageButton
+        android:id="@+id/btn_monthview_calander"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/LinearLayout1"
+        android:layout_gravity="center"
+        android:layout_toLeftOf="@+id/btn_monthview_plus"
+        android:background="@drawable/taghvim" />
 
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right" >
+    <ImageButton
+        android:id="@+id/btn_monthview_plus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/btn_monthview_calander"
+        android:layout_alignTop="@+id/btn_monthview_calander"
+        android:layout_gravity="center"
+        android:layout_toLeftOf="@+id/btn_search_calander"
+        android:background="@drawable/ic_action_add_to_queue" />
 
-                <TextView
-                    android:id="@+id/today_praytimes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:paddingRight="10sp" />
-            </LinearLayout>
+    <ImageButton
+        android:id="@+id/btn_search_calander"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/btn_monthview_calander"
+        android:layout_alignTop="@+id/btn_monthview_calander"
+        android:layout_gravity="center"
+        android:layout_toLeftOf="@+id/btn_home_calander"
+        android:background="@drawable/search" />
 
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:orientation="vertical" >
+    <ImageButton
+        android:id="@+id/btn_home_calander"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/btn_monthview_calander"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/home" />
 
-                <TextView
-                    android:id="@+id/calendar_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:paddingRight="10sp"
-                    android:text="امروز"
-                    android:textDirection="rtl" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/calendar_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="555dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_monthview_calander"
+        android:layoutDirection="ltr" />
 
-                <Button
-                    android:id="@+id/reset_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="visible" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/today_praytimes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="right"
+        android:paddingRight="10sp"
+        android:visibility="invisible" />
 
-</com.Atieh.crm_mobile_calendar.CustomScrollView>
+    <TextView
+        android:id="@+id/calendar_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="right"
+        android:paddingRight="10sp"
+        android:text="امروز"
+        android:textDirection="rtl"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_mounthview_new_task"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btn_search_calander"
+        android:layout_below="@+id/btn_monthview_calander"
+        android:layout_marginRight="19dp"
+        android:background="@drawable/today_background"
+        android:minHeight="30dp"
+        android:minWidth="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="13dp"
+        android:text="ایجاد وظیفه"
+        android:textColor="@color/white_color"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_mounthview_new_activity"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_mounthview_new_task"
+        android:layout_below="@+id/btn_mounthview_new_task"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/today_background"
+        android:minHeight="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="ایجاد فعالیت"
+        android:textColor="@color/white_color"
+        android:textSize="12sp" />
+
+</RelativeLayout>

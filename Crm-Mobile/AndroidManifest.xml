@@ -46,6 +46,9 @@
         <activity
             android:name=".CustomerListActivity"
             android:screenOrientation="portrait" />
+          <activity
+            android:name=".EditTaskActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DatepickerActivity"
             android:screenOrientation="portrait"
