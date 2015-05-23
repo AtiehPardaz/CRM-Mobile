@@ -65,6 +65,11 @@
         <activity
             android:name=".NewActivitiesActivity"
             android:screenOrientation="portrait" />
+         <activity
+            android:name=".EditActivitiesActivity"
+            android:screenOrientation="portrait" />
+        
+        
         <activity
             android:name=".SelPersonRelActivity"
             android:screenOrientation="portrait" />

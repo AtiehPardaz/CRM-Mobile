@@ -127,7 +127,9 @@ public class NewTaskActivity extends Activity {
 			
 		SimpleDateFormat sdf = new SimpleDateFormat("HH");
 		int currentDateandTime = Integer.valueOf(sdf.format(new Date()));
-		
+		if (currentDateandTime == 23){
+			currentDateandTime --;
+		}
 		spnr_azsaat.setSelection(currentDateandTime);
 		spnr_tasaat.setSelection(currentDateandTime + 1);
 		
@@ -253,7 +255,7 @@ public class NewTaskActivity extends Activity {
 	        	while (c.moveToNext()) {
 	        		ps = ps + c.getString(0) + " و ";
 				}
-	        	
+//	        	
 //	        	Cursor c2 = db.GetTaskService(TaskID);
 //	        	while (c2.moveToNext()) {
 //	        		ps = ps + c2.getString(0)+ " و ";
@@ -358,7 +360,8 @@ public class NewTaskActivity extends Activity {
 					"1",
 					et_title.getText().toString(), 
 					toDate );
-
+			CustomerListActivity.RelCustomerID = "";
+			CustomerListActivity.RelID = "";
 			db.close();
 			Intent intent = new Intent();
 			intent.setClass(NewTaskActivity.this, HomeActivity.class);

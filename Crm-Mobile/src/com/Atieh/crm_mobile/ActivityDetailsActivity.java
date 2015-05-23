@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ActivityDetailsActivity extends Activity {
@@ -23,8 +24,10 @@ public class ActivityDetailsActivity extends Activity {
 	TextView txt_ActivityDetail;
 	TextView txt_ActivityStatus;
 	TextView txt_ActivityNextAppointment;
+	ImageView img_edit_task;
 	database db;
 	String[] ActivityDetail = new String[12];
+	String ID ;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,7 @@ public class ActivityDetailsActivity extends Activity {
 		db.database();
 		db.open();
 
-		String ID = getIntent().getStringExtra("id");
+		ID = getIntent().getStringExtra("id");
 
 		Cursor activityCursor = db.GetActivityByID(ID);
 
@@ -89,6 +92,17 @@ public class ActivityDetailsActivity extends Activity {
 		}
 		
 
+		img_edit_task.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(ActivityDetailsActivity.this, EditActivitiesActivity.class);
+				intent.putExtra("ActivityID", ID);
+				startActivity(intent);
+			}
+		});
+		
 		txt_ActivityTaskTitle.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -152,6 +166,6 @@ public class ActivityDetailsActivity extends Activity {
 		txt_ActivityDetail = (TextView) findViewById(R.id.txt_ActivityDetail);
 		txt_ActivityStatus = (TextView) findViewById(R.id.txt_ActivityStatus);
 		txt_ActivityNextAppointment = (TextView) findViewById(R.id.txt_ActivityNextAppointment);
-
+		img_edit_task = (ImageView) findViewById(R.id.img_edit_task);
 	}
 }

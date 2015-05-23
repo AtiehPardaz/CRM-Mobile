@@ -604,14 +604,8 @@ public class database extends SQLiteOpenHelper {
 
 	public void DeleteActivities(String Id) {
 
-		//String strFilter = "Id = '"+Id+"'";		
-		ContentValues values = new ContentValues();
-
-		values.put("IsDeleted",1);
-
-		//long ID = mydb.update("activities", values, strFilter,null);
-
-	}
+		mydb.execSQL("delete from activities where Id = '"+Id+"'");	
+		}
 
 	public Cursor getActivity (String date){
 

@@ -34,8 +34,12 @@ public class SelectProducteServicesActivity extends Activity {
 	Button mahsolat;
 	String[] arrayid;
 	String[] arraytitle;
+	String[] arrayselected;
+
 	String[] arrayid2;
 	String[] arraytitle2;
+	String[] arrayselected2;
+
 	// ArrayAdapter<String> dataAdapter;
 	CmListFromAtcivityToProduct as;
 	CmListFromAtcivityToServices as2;
@@ -83,11 +87,13 @@ public class SelectProducteServicesActivity extends Activity {
 		Toast.makeText(SelectProducteServicesActivity.this,
 				TempActivityID.getInstance().getTempActivityID(), Toast.LENGTH_LONG).show();
 
-		final Cursor c = db.GetPrudocts();
+		final Cursor c = db.mydb.rawQuery("SELECT     products.[productGUID], products.[productName] ,(case when ActivitiesProducts.[ActivityGUID] is not null then 1 else 0 end ) checked from products LEFT OUTER JOIN ActivitiesProducts ON products.[productGUID] = ActivitiesProducts.[ProductGUID]  and ActivitiesProducts.[ActivityGUID] = '"+TempActivityID.getInstance().getTempActivityID()+"' ORDER BY checked    desc, products.[productName]", null);
 
 		// custom list
 		arrayid = new String[c.getCount()];
 		arraytitle = new String[c.getCount()];
+		arrayselected = new String[c.getCount()];
+		
 		int i = 0;
 		if (c.moveToFirst()) {
 
@@ -95,8 +101,9 @@ public class SelectProducteServicesActivity extends Activity {
 
 				try {
 
-					arrayid[i] = c.getString(1); // 1 id
-					arraytitle[i] = c.getString(2); // 2 title
+					arrayid[i] = c.getString(0); // 1 id
+					arraytitle[i] = c.getString(1); // 2 title
+					arrayselected[i] = c.getString(2);
 					i++;
 
 				} catch (Exception e) {
@@ -108,11 +115,12 @@ public class SelectProducteServicesActivity extends Activity {
 		}
 
 		// ==================
-		final Cursor c2 = db.GetServices();
+		final Cursor c2 = db.mydb.rawQuery("SELECT services.[serviceGUID], services.[serviceName] ,(case when ActivitiesServices.[ActivityGUID] is not null then 1 else 0 end ) checked from services LEFT OUTER JOIN ActivitiesServices ON services.[serviceGUID] = ActivitiesServices.[ServiceGUID]  and ActivitiesServices.[ActivityGUID] = '"+TempActivityID.getInstance().getTempActivityID()+"' ORDER BY checked    desc, services.[serviceName]", null);
 
 		// custom list
 		arrayid2 = new String[c2.getCount()];
 		arraytitle2 = new String[c2.getCount()];
+		arrayselected2 = new String[c2.getCount()];
 		int i2 = 0;
 		if (c2.moveToFirst()) {
 
@@ -120,8 +128,9 @@ public class SelectProducteServicesActivity extends Activity {
 
 				try {
 
-					arrayid2[i2] = c2.getString(1); // 1 id
-					arraytitle2[i2] = c2.getString(2); // 2 title
+					arrayid2[i2] = c2.getString(0); // 1 id
+					arraytitle2[i2] = c2.getString(1); // 2 title
+					arrayselected2[i2] = c2.getString(2);
 					i2++;
 
 				} catch (Exception e) {
@@ -248,11 +257,11 @@ public class SelectProducteServicesActivity extends Activity {
 			// dataAdapter = new CmListSelProducteServices(
 			// SelectProducteServicesActivity.this, arrayid,arraytitle);
 			as = new CmListFromAtcivityToProduct(SelectProducteServicesActivity.this,
-					arrayid, arraytitle, getApplicationContext());
+					arrayid, arraytitle,arrayselected ,getApplicationContext());
 			list_producte.setAdapter(as);
 
 			as2 = new CmListFromAtcivityToServices(SelectProducteServicesActivity.this,
-					arrayid2, arraytitle2, getApplicationContext());
+					arrayid2, arraytitle2,arrayselected2, getApplicationContext());
 			list_services.setAdapter(as2);
 		}
 

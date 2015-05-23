@@ -29,7 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import dataBase.database;
 
-public class NewActivitiesActivity extends Activity {
+public class EditActivitiesActivity extends Activity {
 
 	EditText et_title;
 	EditText et_sharh;
@@ -47,6 +47,8 @@ public class NewActivitiesActivity extends Activity {
 	CalendarTool calendarTool;
 	database db;
 
+	String statt;
+	
 	String fromDate;
 	String toDate;
 
@@ -62,7 +64,10 @@ public class NewActivitiesActivity extends Activity {
 	List<String> srvicesList;
 	List<String> vazeeyatLst;
 	List<String> hasNextActivityList;
+	
 	String activityID;
+	String CustomerID;
+	String RelativePersonID;
 
 	public void initview() {
 
@@ -109,32 +114,55 @@ public class NewActivitiesActivity extends Activity {
 		});
 		mHomeWatcher.startWatch();
 
-		Calendar calendar = Calendar.getInstance();
 
-		int yearNow = calendar.get(Calendar.YEAR);
-		int mounthNow = (calendar.get(Calendar.MONTH)) + 1;
-		int dayNow = calendar.get(Calendar.DAY_OF_MONTH);
-
-		calendarTool = new CalendarTool();
-		calendarTool.setGregorianDate(yearNow, mounthNow, dayNow);
-		date.setText(calendarTool.getIranianDate());
 
 		// date.setText(text);
 		db = new database(this);
 		db.database();
 		db.open();
 
-		// customersList = new ArrayList<String>();
-		// customersIDsList = new ArrayList<String>();
-		//
-		// Cursor customersCursor = db.GetCustomers();
-		//
-		// while (customersCursor.moveToNext()) {
-		//
-		// customersList.add(customersCursor.getString(1));
-		// customersIDsList.add(customersCursor.getString(0));
-		// }
-		//
+		activityID = getIntent().getExtras().getString("ActivityID");
+		TempActivityID.getInstance().setTempActivityID(activityID);
+
+		
+		Cursor cc = db.GetActivityByID(activityID);
+		while (cc.moveToNext()) {
+			et_title.setText(cc.getString(1));
+			et_sharh.setText(cc.getString(4));
+			CustomerID = cc.getString(3);
+			RelativePersonID = cc.getString(8);
+			spnr_azsaat.setSelection(Integer.valueOf(cc.getString(5).split(" ")[1].split(":")[0]));
+			spnr_tasaat.setSelection(Integer.valueOf(cc.getString(11).split(" ")[1].split(":")[0]));
+			
+			date.setText(cc.getString(5).split(" ")[0].replace(":", "/"));
+			statt = cc.getString(2);
+		}
+
+		Cursor c11 = db.GetPersonRelationsByCustomerIdAndID(CustomerID,RelativePersonID);
+		while(c11.moveToNext()){
+			txt_rel_customer.setText(c11.getString(0));
+		}
+		
+		Cursor c21 = db.GetCustomersByID(CustomerID);
+		while (c21.moveToNext()) {
+			txt_sel_customer.setText(c21.getString(0));
+		}
+		
+		String ps = "";
+		Cursor c31 = db.mydb.rawQuery("select productName as a from products p inner join ActivitiesProducts tp on p.[productGUID] = tp.[productGUID]  where tp.[ActivityGUID] = '"+activityID+"' union select serviceName as a from services p2 inner join ActivitiesServices tp2 on p2.[serviceGUID] = tp2.[serviceGUID] where tp2.[ActivityGUID] = '"+activityID+"'",null);
+		while (c31.moveToNext()) {
+			ps = ps + " " + c31.getString(0);
+		}
+		
+		
+		
+		txtPSroductServises.setText(ps);
+		
+		
+		
+
+		
+		
 		stats = new ArrayList<String>();
 		statsID = new ArrayList<String>();
 
@@ -145,6 +173,8 @@ public class NewActivitiesActivity extends Activity {
 			statsID.add(statsCursor.getString(0));
 
 		}
+		
+	
 
 		ArrayAdapter<String> statsAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, stats);
@@ -155,10 +185,14 @@ public class NewActivitiesActivity extends Activity {
 		spnr_vaziat.setAdapter(new NothingSelectedSpinnerAdapter(statsAdapter,
 				R.layout.activity_stats_nothing_selected, this));
 
-		activityID = java.util.UUID.randomUUID().toString();
-
-		TempActivityID.getInstance().setTempActivityID(activityID);
-
+		
+		for(int i =0 ; i<statsID.size();i++){
+			if(statsID.get(i).equals(statt)){
+				spnr_vaziat.setSelection(i);
+				break;
+			}
+		}
+		
 		close.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -168,13 +202,6 @@ public class NewActivitiesActivity extends Activity {
 			}
 		});
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("HH");
-		int currentDateandTime = Integer.valueOf(sdf.format(new Date()));
-		if (currentDateandTime == 23){
-			currentDateandTime --;
-		}
-		spnr_azsaat.setSelection(currentDateandTime);
-		spnr_tasaat.setSelection(currentDateandTime + 1);
 
 		spnr_tasaat.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -182,7 +209,7 @@ public class NewActivitiesActivity extends Activity {
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				if ( id <= spnr_azsaat.getSelectedItemId()) {
-					Toast.makeText(NewActivitiesActivity.this,
+					Toast.makeText(EditActivitiesActivity.this,
 							"ساعت شروع نباید از ساعت پایان کمتر باشد.",
 							Toast.LENGTH_LONG).show();
 					spnr_tasaat.setBackgroundColor(Color.RED);
@@ -204,7 +231,7 @@ public class NewActivitiesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				Intent i = new Intent(NewActivitiesActivity.this,
+				Intent i = new Intent(EditActivitiesActivity.this,
 						CustomerListActivity.class);
 				i.putExtra(HomeActivity.EnterCustomersListStat, "faliyat");
 				startActivityForResult(i, 2);
@@ -215,7 +242,7 @@ public class NewActivitiesActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(NewActivitiesActivity.this,
+				Intent i = new Intent(EditActivitiesActivity.this,
 						SelectProducteServicesActivity.class);
 
 				startActivityForResult(i, 1);
@@ -226,7 +253,7 @@ public class NewActivitiesActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				startActivity(new Intent(NewActivitiesActivity.this,
+				startActivity(new Intent(EditActivitiesActivity.this,
 						DatepickerActivity.class));
 
 			}
@@ -265,17 +292,18 @@ public class NewActivitiesActivity extends Activity {
 		if (requestCode == 1) {
 			if (resultCode == RESULT_OK) {
 				String ps = "";
+				txtPSroductServises.setText("");
 				db = new database(this);
 				db.database();
 				db.open();
 				Cursor c = db.GetActivityProduct(activityID);
 				while (c.moveToNext()) {
-					ps = ps + c.getString(0) + " و ";
+					ps = ps + c.getString(0) + " ";
 				}
 
 				Cursor c2 = db.GetActivityService(activityID);
 				while (c2.moveToNext()) {
-					ps = ps + c2.getString(0) + " و ";
+					ps = ps + c2.getString(0) + " ";
 				}
 
 				if (ps.length() > 3) {
@@ -357,11 +385,15 @@ public class NewActivitiesActivity extends Activity {
 
 		if (spnr_azsaat.getSelectedItemId() <= spnr_tasaat.getSelectedItemId()) {
 
+			db.DeleteActivities(activityID);
 			db.InsertActivities(activityID, et_title.getText().toString(),
 					statsID.get((int) spnr_vaziat.getSelectedItemId()),
-					CustomerListActivity.RelCustomerID, et_sharh.getText()
+					CustomerListActivity.RelCustomerID.equals("")? CustomerID:CustomerListActivity.RelCustomerID ,
+					
+					et_sharh.getText()  ////////////////////////////////////////////////////////
 							.toString(), fromDate, "1", "1",
-					CustomerListActivity.RelID, "1", "1", toDate);
+					CustomerListActivity.RelID.equals("")? RelativePersonID : CustomerListActivity.RelID ,
+					"1", "1", toDate);
 
 			CustomerListActivity.RelCustomerID = "";
 			CustomerListActivity.RelID = "";
@@ -369,10 +401,10 @@ public class NewActivitiesActivity extends Activity {
 			db.close();
 
 			Intent intent = new Intent();
-			intent.setClass(NewActivitiesActivity.this, HomeActivity.class);
+			intent.setClass(EditActivitiesActivity.this, HomeActivity.class);
 			startActivity(intent);
 		} else {
-			Toast.makeText(NewActivitiesActivity.this,
+			Toast.makeText(EditActivitiesActivity.this,
 					"ساعت شروع نباید از ساعت پایان کمتر انتخاب شود",
 					Toast.LENGTH_LONG).show();
 			spnr_tasaat.setBackgroundColor(Color.RED);

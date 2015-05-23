@@ -52,6 +52,8 @@ public class EditTaskActivity extends Activity {
 	Cursor c;
 	
 	String TaskID ;
+	String CustomerID;
+	String RelativePersonID;
 
 	public void initview() {
 		et_title = (EditText) findViewById(R.id.et_newtasktitle);
@@ -106,8 +108,9 @@ public class EditTaskActivity extends Activity {
 			
 			et_title.setText(c.getString(10));
 			et_sharh.setText(c.getString(2));
-			txt_customer.setText(c.getString(1));
-			txt_rabet.setText(c.getString(1));
+			CustomerID=c.getString(1);
+			RelativePersonID = c.getString(7);
+
 			
 			
 			spnr_azsaat.setSelection(Integer.valueOf(c.getString(3).split(" ")[1].split(":")[0]));
@@ -115,12 +118,12 @@ public class EditTaskActivity extends Activity {
 			
 			date.setText(c.getString(3).split(" ")[0].replace(":", "/"));
 		}
-		Cursor c11 = db.GetPersonRelationsByCustomerId(txt_customer.getText().toString());
+		Cursor c11 = db.GetPersonRelationsByCustomerIdAndID(CustomerID,RelativePersonID);
 		while(c11.moveToNext()){
-			txt_rabet.setText(c11.getString(3));
+			txt_rabet.setText(c11.getString(0));
 		}
 		
-		Cursor c21 = db.GetCustomersByID(txt_customer.getText().toString());
+		Cursor c21 = db.GetCustomersByID(CustomerID);
 		while (c21.moveToNext()) {
 			txt_customer.setText(c21.getString(0));
 		}
@@ -367,18 +370,20 @@ public class EditTaskActivity extends Activity {
 
 			db.DeleteTasks(TaskID);
 			db.InsertTasks(TaskID,
-					CustomerListActivity.RelCustomerID,
+					CustomerListActivity.RelCustomerID.equals("")? CustomerID:CustomerListActivity.RelCustomerID ,
 					et_sharh.getText().toString(), 
 					fromDate,
 					"0",
 					"1",
 					"1",
-					CustomerListActivity.RelID,
+					CustomerListActivity.RelID.equals("")? RelativePersonID : CustomerListActivity.RelID ,
 					"1",
 					"1",
 					et_title.getText().toString(), 
 					toDate );
 
+			CustomerListActivity.RelCustomerID = "";
+			CustomerListActivity.RelID = "";
 			db.close();
 			Intent intent = new Intent();
 			intent.setClass(EditTaskActivity.this, HomeActivity.class);

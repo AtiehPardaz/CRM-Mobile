@@ -314,8 +314,8 @@ public final class R {
         public static final int tv_title_monthview_taskaction=0x7f0c0044;
         public static final int tv_title_selpersonrel=0x7f0c00de;
         public static final int tv_title_selproductservices=0x7f0c00e1;
+        public static final int tv_title_task=0x7f0c0001;
         public static final int tv_title_taskDetails=0x7f0c00a7;
-        public static final int tv_title_tasknew=0x7f0c0001;
         public static final int tv_year=0x7f0c0096;
         public static final int tv_yeartitle=0x7f0c0097;
         public static final int txtPSroductServises=0x7f0c00bd;

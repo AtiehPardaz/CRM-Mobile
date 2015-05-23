@@ -29,6 +29,8 @@ public class CmListFromAtcivityToServices extends BaseAdapter {
 	private Activity activity;
 	String[] ids;
 	String[] titles;
+	String[] selected;
+
 	List<String> checked;
 	database db;
 	TextView id;
@@ -38,7 +40,7 @@ public class CmListFromAtcivityToServices extends BaseAdapter {
 	private static LayoutInflater inflater = null;
 	TextView Hour;
 
-	public CmListFromAtcivityToServices(Activity a, String[] arrayid, String[] arraytitle,
+	public CmListFromAtcivityToServices(Activity a, String[] arrayid, String[] arraytitle,String[] arrayselected,
 			Context c) {
 
 		activity = a;
@@ -48,6 +50,8 @@ public class CmListFromAtcivityToServices extends BaseAdapter {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.ids = arrayid;
 		this.titles = arraytitle;
+		this.selected = arrayselected;
+
 	}
 
 	public View getView(final int position, View convertView, ViewGroup parent) {
@@ -61,6 +65,13 @@ public class CmListFromAtcivityToServices extends BaseAdapter {
 		id.setText(ids[position]);
 		id.setVisibility(View.GONE);
 		title.setText(titles[position]);
+		
+		if(selected[position].equals("1")){
+			chk.setChecked(true);
+		}
+		else {
+			chk.setChecked(false);
+		}
 
 		chk.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
