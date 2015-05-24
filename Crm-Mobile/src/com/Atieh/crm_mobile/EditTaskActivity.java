@@ -1,12 +1,9 @@
 package com.Atieh.crm_mobile;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import dataBase.database;
 import singleTones.TempTaskID;
-import adapters.CalendarTool;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;

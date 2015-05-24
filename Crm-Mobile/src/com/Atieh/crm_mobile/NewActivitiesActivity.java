@@ -6,8 +6,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import com.Atieh.crm_mobile_calendar.Utils;
-
 import singleTones.TempActivityID;
 import adapters.CalendarTool;
 import adapters.NothingSelectedSpinnerAdapter;
