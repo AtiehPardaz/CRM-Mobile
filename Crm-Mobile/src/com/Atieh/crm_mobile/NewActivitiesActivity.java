@@ -183,7 +183,7 @@ public class NewActivitiesActivity extends Activity {
 					int position, long id) {
 				if ( id <= spnr_azsaat.getSelectedItemId()) {
 					Toast.makeText(NewActivitiesActivity.this,
-							"ساعت شروع نباید از ساعت پایان کمتر باشد.",
+							"ساعت پایان نباید کمتر از ساعت شروع باشد.",
 							Toast.LENGTH_LONG).show();
 					spnr_tasaat.setBackgroundColor(Color.RED);
 				} else {
@@ -373,7 +373,7 @@ public class NewActivitiesActivity extends Activity {
 			startActivity(intent);
 		} else {
 			Toast.makeText(NewActivitiesActivity.this,
-					"ساعت شروع نباید از ساعت پایان کمتر انتخاب شود",
+					"ساعت پایان نباید کمتر از ساعت شروع باشد",
 					Toast.LENGTH_LONG).show();
 			spnr_tasaat.setBackgroundColor(Color.RED);
 		}

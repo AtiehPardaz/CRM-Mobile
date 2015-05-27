@@ -368,7 +368,7 @@ public class NewTaskActivity extends Activity {
 			startActivity(intent);
 		}
 		else {
-			Toast.makeText(NewTaskActivity.this, "ساعت شروع نباید از ساعت پایان کمتر انتخاب شود", Toast.LENGTH_LONG).show();
+			Toast.makeText(NewTaskActivity.this, "ساعت پایان نباید کمتر از ساعت شروع باشد", Toast.LENGTH_LONG).show();
 			spnr_tasaat.setBackgroundColor(Color.RED);
 		}
 			

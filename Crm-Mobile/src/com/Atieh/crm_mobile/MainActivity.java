@@ -321,6 +321,9 @@ public class MainActivity extends Activity {
 	
 	@Override
 	public void onBackPressed() {
+//		Intent intent = getIntent();
+//		startActivity(intent);
+		finish();
 		System.exit(0);
 	}
 

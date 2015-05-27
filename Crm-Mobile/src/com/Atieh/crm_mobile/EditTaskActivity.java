@@ -158,7 +158,7 @@ public class EditTaskActivity extends Activity {
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				if( ((int) id) <= (int) spnr_azsaat.getSelectedItemId()){
-					Toast.makeText(EditTaskActivity.this, "ساعت شروع نباید از ساعت پایان کمتر باشد.", Toast.LENGTH_LONG).show();
+					Toast.makeText(EditTaskActivity.this, "ساعت پایان نباید کمتر از ساعت شروع باشد", Toast.LENGTH_LONG).show();
 					spnr_tasaat.setBackgroundColor(Color.RED);
 				}
 				else {
@@ -390,7 +390,7 @@ public class EditTaskActivity extends Activity {
 			startActivity(intent);
 		}
 		else {
-			Toast.makeText(EditTaskActivity.this, "ساعت شروع نباید از ساعت پایان کمتر انتخاب شود", Toast.LENGTH_LONG).show();
+			Toast.makeText(EditTaskActivity.this, "ساعت پایان نباید کمتر از ساعت شروع باشد", Toast.LENGTH_LONG).show();
 			spnr_tasaat.setBackgroundColor(Color.RED);
 		}
 			
