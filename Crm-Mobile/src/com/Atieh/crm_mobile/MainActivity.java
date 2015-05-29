@@ -16,6 +16,7 @@ import singleTones.authInfo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 
 import android.graphics.Typeface;
 
@@ -30,6 +31,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
 import android.widget.LinearLayout;
@@ -48,7 +51,7 @@ public class MainActivity extends Activity {
 	EditText et_pass;
 	Button btn_login;
 	CheckBox chk_remember;
-
+	SharedPreferences prefs;
 	LinearLayout linear1;
 
 	ProgressBar progbar_progress;
@@ -70,7 +73,27 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		prefs = new adapters.ObscuredSharedPreferences(this,
+				this.getSharedPreferences("pref", Context.MODE_PRIVATE));
+//		prefs.edit().putString("ua", "mojtaba")
+//		.commit();
+		
+		String us = prefs.getString("ua", null);
+		String pa = prefs.getString("pa", null);
+
+		
+		
+		if (!isNetworkAvailable()) {
+			if (us != null && pa != null) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, HomeActivity.class);
+				startActivity(intent);
+			}
+		}
+
 		initview();
+
 		Typeface font_nazanin = Typeface.createFromAsset(getAssets(),
 				"nazanin.ttf");
 
@@ -98,17 +121,34 @@ public class MainActivity extends Activity {
 							.show();
 				} else {
 
-//					asyncTask as = new asyncTask(); // checking network
-//					// status
-//					as.execute("P");
-					
-					 startActivity(new Intent(MainActivity.this,
-					 HomeActivity.class));
+					// asyncTask as = new asyncTask(); // checking network
+					// // status
+					// as.execute("P");
+
+					startActivity(new Intent(MainActivity.this,
+							HomeActivity.class));
 
 				}
 			}
 		});
 
+	
+
+		// chk_remember.setOnCheckedChangeListener(new OnCheckedChangeListener()
+		// {
+		//
+		// @Override
+		// public void onCheckedChanged(CompoundButton buttonView, boolean
+		// isChecked) {
+		// if (isChecked) {
+		//
+		// prefs.edit().putString("us","123q").commit();
+		// String rt = prefs.getString("ua", null);
+		// rt = ""
+		// }
+		//
+		// }
+		// });
 		et_pass.setGravity(Gravity.RIGHT);
 		et_pass.addTextChangedListener(new TextWatcher() {
 
@@ -261,7 +301,7 @@ public class MainActivity extends Activity {
 							"http://webservice.atiehpardaz.com/CrmService/CrmService.svc");
 
 			if (auth == null) {
-				
+
 				Toast.makeText(MainActivity.this,
 						"در حال حاضر سرور پاسخگو نمی باشد.", Toast.LENGTH_SHORT)
 						.show();
@@ -302,6 +342,15 @@ public class MainActivity extends Activity {
 				// Toast.makeText(MainActivity.this,
 				// " عملیات با موفقیت انجام شد",
 				// Toast.LENGTH_SHORT).show();
+
+				if (chk_remember.isChecked()) {
+					prefs.edit().putString("us", et_user.getText().toString())
+							.commit();
+					prefs.edit().putString("pa", et_pass.getText().toString())
+							.commit();
+
+				}
+
 				Intent login = new Intent();
 				login.setClass(getApplicationContext(), HomeActivity.class);
 				startActivity(login);
@@ -313,16 +362,13 @@ public class MainActivity extends Activity {
 						Toast.LENGTH_LONG).show();
 			}
 		}
-		
-		
-		
 
 	}
-	
+
 	@Override
 	public void onBackPressed() {
-//		Intent intent = getIntent();
-//		startActivity(intent);
+		// Intent intent = getIntent();
+		// startActivity(intent);
 		finish();
 		System.exit(0);
 	}
