@@ -27,7 +27,7 @@ public class SendTaskActivity extends Activity {
 		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
 		    @Override
 		    public void onHomePressed() {
-		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class);startActivity(intent);System.exit(0);
+		       Intent intent = new Intent();intent.setClass(getApplicationContext(), MainActivity.class); intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);startActivity(intent);System.exit(0);
 		    }
 		    @Override
 		    public void onHomeLongPressed() {
