@@ -229,6 +229,12 @@ public class MainActivity extends Activity {
 		case 404:
 			message = "وب سایت پذیرنده در دسترس نمی باشد. لطفا در زمانی دیگر تلاش نمایید.";
 			break;
+			
+		case 407:
+			message = "کاربر با پروکسی اجازه دسترسی ندارد.";
+			break;
+			
+
 
 		case 1000: // our code for no network connected or connecting
 			message = "لطفا از روشن بودن دیتای موبایل و یا وایرلس خود و اتصال به اینترنت اطمینان حاصل نمایید.";
