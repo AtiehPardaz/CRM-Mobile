@@ -99,7 +99,7 @@
                     android:id="@+id/img_datenewtask"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/ic_action_month" />
+                    android:background="@drawable/daycalendar" />
 
                 <View
                     android:id="@+id/View05"
