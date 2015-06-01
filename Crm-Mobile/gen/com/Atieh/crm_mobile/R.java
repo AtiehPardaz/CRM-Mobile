@@ -116,12 +116,13 @@ public final class R {
         public static final int save=0x7f020044;
         public static final int savenew=0x7f020045;
         public static final int search=0x7f020046;
-        public static final int seprator=0x7f020047;
-        public static final int spinner_back=0x7f020048;
-        public static final int table_back=0x7f020049;
-        public static final int taghvim=0x7f02004a;
-        public static final int taghvimsefid=0x7f02004b;
-        public static final int today_background=0x7f02004c;
+        public static final int select=0x7f020047;
+        public static final int seprator=0x7f020048;
+        public static final int spinner_back=0x7f020049;
+        public static final int table_back=0x7f02004a;
+        public static final int taghvim=0x7f02004b;
+        public static final int taghvimsefid=0x7f02004c;
+        public static final int today_background=0x7f02004d;
     }
     public static final class id {
         public static final int ActivityFooter=0x7f0c002e;

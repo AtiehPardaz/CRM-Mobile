@@ -39,10 +39,10 @@
         <Button
             android:id="@+id/btn_close_selmahsolvakhadamat"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/marker_color"
-            android:text="x"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/select"
             android:textSize="30sp" />
 
         <View
