@@ -72,6 +72,11 @@ public class Utils {
 			'٦', '٧', '٨', '٩' };
 	public final String[] firstCharOfDaysOfWeekName = { " شنبه ", "یکشنبه",
 			"دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", " جمعه " };
+	
+	public final String[] firstCharOfDaysOfWeekNameBrif = { "ش", "ی",
+			"د", "س", "چ", "پ", "ج" };
+	
+	
 	private final char[] arabicDigits = { '0', '1', '2', '3', '4', '5', '6',
 			'7', '8', '9' };
 	private final char[] persianDigits = { '۰', '۱', '۲', '۳', '۴', '۵', '۶',

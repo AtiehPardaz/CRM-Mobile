@@ -33,7 +33,7 @@ public class HomeActivity extends Activity {
 	Button btnmounthview;
 	Button btnproductservises;
 	Button btnNewTask;
-	Button btnNewActivity;
+	Button btnNewActivity,btn_yearview;
 	
 	Button btnDayView;
 
@@ -43,6 +43,7 @@ public class HomeActivity extends Activity {
 		btnNewTask = (Button) findViewById(R.id.btn_newtask);
 		btnNewActivity = (Button) findViewById(R.id.btn_newactivity);
 		btnDayView = (Button) findViewById(R.id.btn_dayview);
+		btn_yearview = (Button) findViewById(R.id.btn_yearview);
 	}
 
 	database db;
@@ -75,6 +76,19 @@ public class HomeActivity extends Activity {
 		    }
 		});
 		mHomeWatcher.startWatch();
+		
+		
+		btn_yearview.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				Intent intent = new Intent();
+				intent.setClass(HomeActivity.this, FragMainActivity.class);
+				startActivity(intent);
+			}
+		});
+		
 		
 		btnDayView.setOnClickListener(new View.OnClickListener() {
 			

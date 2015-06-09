@@ -134,6 +134,12 @@
             android:name=".NewCustomerActivity"
             android:label="@string/title_activity_new_customer" >
         </activity>
+        
+        <activity
+            android:name=".FragMainActivity"
+            android:label="" 
+            android:largeHeap="true">
+        </activity>
     </application>
 
 </manifest>
