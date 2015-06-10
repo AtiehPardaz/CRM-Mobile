@@ -1,851 +1,841 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_width="110dp"
+    android:layout_height="130dp" >
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="110dp"
+        android:layout_height="130dp"
         android:orientation="vertical" >
 
         <TextView
             android:id="@+id/currentMonthTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            
+            android:layout_width="wrap_content"
+            android:layout_height="14dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:text="" />
+            android:text=""
+             android:textSize="9sp"  />
 
         <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
+            android:layout_width="110dp"
+            android:layout_height="105dp" >
+            
             <TableRow
                 android:id="@+id/tableRow1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-               >
+                android:layout_width="110dp"
+            	android:layout_height="15dp" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t01"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-  android:background="#DDDDDD"
-                        android:textSize="11sp"   />
-
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:background="#DDDDDD"
+                        android:textSize="9sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t02"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                          android:background="#DDDDDD"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:background="#DDDDDD"
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t03"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                          android:background="#DDDDDD"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:background="#DDDDDD"
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t04"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                          android:background="#DDDDDD"
-                        android:layout_weight="1"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:background="#DDDDDD"
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t05"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                          android:background="#DDDDDD"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:background="#DDDDDD"
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t06"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                          android:background="#DDDDDD"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:background="#DDDDDD"
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t07"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         android:background="#DDDDDD"
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp" />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+               android:layout_width="110dp"
+            	android:layout_height="15dp" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t11"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t12"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t13"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t14"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t15"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t16"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t17"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_width="110dp"
+            	android:layout_height="15dp" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t21"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t22"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t23"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t24"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t25"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t26"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t27"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_width="110dp"
+            	android:layout_height="15dp" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t31"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t32"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t33"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t34"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t35"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t36"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t37"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:id="@+id/TableRow5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+               android:layout_width="110dp"
+            	android:layout_height="15dp" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t41"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t42"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t43"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t44"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t45"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t46"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t47"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:id="@+id/TableRow6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_width="110dp"
+            	android:layout_height="15dp" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t51"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                                                android:layout_weight="1"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                                                
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t52"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t53"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t54"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t55"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t56"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t57"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:id="@+id/TableRow7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_width="110dp"
+            	android:layout_height="15dp" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t61"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t62"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t63"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t64"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t65"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t66"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    
                     android:background="@drawable/table_back"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/t67"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         
                         android:text=""
-                        android:textSize="11sp"   />
+                        android:textSize="9sp"   />
                 </LinearLayout>
             </TableRow>
         </TableLayout>
