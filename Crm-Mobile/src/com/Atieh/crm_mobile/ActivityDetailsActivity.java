@@ -24,7 +24,7 @@ public class ActivityDetailsActivity extends Activity {
 	TextView txt_ActivityDetail;
 	TextView txt_ActivityStatus;
 	TextView txt_ActivityNextAppointment;
-	ImageView img_edit_task;
+	ImageView img_edit_task,img_save_new_customer;
 	database db;
 	String[] ActivityDetail = new String[12];
 	String ID ;
@@ -54,6 +54,18 @@ public class ActivityDetailsActivity extends Activity {
 		db.open();
 
 		ID = getIntent().getStringExtra("id");
+		
+		img_save_new_customer.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				Intent intent = new Intent();
+				intent.setClass(ActivityDetailsActivity.this, NewActivitiesFromActivityActivity.class);
+				intent.putExtra("ParentActivityID", ID);
+				startActivity(intent);
+			}
+		});
 
 		Cursor activityCursor = db.GetActivityByID(ID);
 
@@ -167,5 +179,6 @@ public class ActivityDetailsActivity extends Activity {
 		txt_ActivityStatus = (TextView) findViewById(R.id.txt_ActivityStatus);
 		txt_ActivityNextAppointment = (TextView) findViewById(R.id.txt_ActivityNextAppointment);
 		img_edit_task = (ImageView) findViewById(R.id.img_edit_task);
+		img_save_new_customer = (ImageView) findViewById(R.id.img_save_new_customer);
 	}
 }

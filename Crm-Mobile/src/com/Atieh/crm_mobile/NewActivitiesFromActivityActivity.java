@@ -27,9 +27,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import dataBase.database;
 
-public class NewActivitiesActivity extends Activity {
+public class NewActivitiesFromActivityActivity extends Activity {
 
 	EditText et_title;
+	String ParentActivityID;
 	EditText et_sharh;
 	TextView date, txtPSroductServises, txt_sel_customer, txt_rel_customer;
 	Button seldate;
@@ -89,8 +90,27 @@ public class NewActivitiesActivity extends Activity {
 		setContentView(R.layout.activity_activities_new);
 
 		initview();
+		
 		activityID = java.util.UUID.randomUUID().toString();
-
+		ParentActivityID = getIntent().getExtras().getString("ParentActivityID");
+		
+		savenew.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				convertToDateTime();
+				InsertTask();
+				
+				Intent intent = new Intent();
+				intent.setClass(NewActivitiesFromActivityActivity.this, NewActivitiesFromActivityActivity.class);
+				intent.putExtra("ParentActivityID", activityID);
+				startActivity(intent);
+				
+			}
+		});
+		
+		
 		HomeWatcher mHomeWatcher = new HomeWatcher(this);
 		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
 			@Override
@@ -142,17 +162,10 @@ public class NewActivitiesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				convertToDateTime();
-				InsertTask();
-				
-				Intent intent = new Intent();
-				intent.setClass(NewActivitiesActivity.this, NewActivitiesFromActivityActivity.class);
-				intent.putExtra("ParentActivityID", activityID);
-				startActivity(intent);
 				
 			}
 		});
-		
+
 		Cursor statsCursor = db.mydb.rawQuery("select * from activityStatus",
 				null);
 		while (statsCursor.moveToNext()) {
@@ -195,7 +208,7 @@ public class NewActivitiesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(NewActivitiesActivity.this, NewTaskFromActivityActivity.class);
+				intent.setClass(NewActivitiesFromActivityActivity.this, NewTaskFromActivityActivity.class);
 				intent.putExtra("ParentActivityID", activityID);
 				startActivity(intent);
 			}
@@ -210,7 +223,7 @@ public class NewActivitiesActivity extends Activity {
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				if ( id <= spnr_azsaat.getSelectedItemId()) {
-					Toast.makeText(NewActivitiesActivity.this,
+					Toast.makeText(NewActivitiesFromActivityActivity.this,
 							"ساعت پایان نباید کمتر از ساعت شروع باشد.",
 							Toast.LENGTH_LONG).show();
 					spnr_tasaat.setBackgroundColor(Color.RED);
@@ -232,7 +245,7 @@ public class NewActivitiesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				Intent i = new Intent(NewActivitiesActivity.this,
+				Intent i = new Intent(NewActivitiesFromActivityActivity.this,
 						CustomerListActivity.class);
 				i.putExtra(HomeActivity.EnterCustomersListStat, "faliyat");
 				startActivityForResult(i, 2);
@@ -243,7 +256,7 @@ public class NewActivitiesActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(NewActivitiesActivity.this,
+				Intent i = new Intent(NewActivitiesFromActivityActivity.this,
 						SelectProducteServicesActivity.class);
 
 				startActivityForResult(i, 1);
@@ -254,7 +267,7 @@ public class NewActivitiesActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				startActivity(new Intent(NewActivitiesActivity.this,
+				startActivity(new Intent(NewActivitiesFromActivityActivity.this,
 						DatepickerActivity.class));
 
 			}
@@ -388,7 +401,7 @@ public class NewActivitiesActivity extends Activity {
 			db.InsertActivities(activityID, et_title.getText().toString(),
 					statsID.get((int) spnr_vaziat.getSelectedItemId()),
 					CustomerListActivity.RelCustomerID, et_sharh.getText()
-							.toString(), fromDate, "1", "1",
+							.toString(), fromDate, "1", ParentActivityID,
 					CustomerListActivity.RelID, "1", "1", toDate);
 
 			CustomerListActivity.RelCustomerID = "";
@@ -397,10 +410,10 @@ public class NewActivitiesActivity extends Activity {
 			db.close();
 
 			Intent intent = new Intent();
-			intent.setClass(NewActivitiesActivity.this, HomeActivity.class);
+			intent.setClass(NewActivitiesFromActivityActivity.this, HomeActivity.class);
 			startActivity(intent);
 		} else {
-			Toast.makeText(NewActivitiesActivity.this,
+			Toast.makeText(NewActivitiesFromActivityActivity.this,
 					"ساعت پایان نباید کمتر از ساعت شروع باشد",
 					Toast.LENGTH_LONG).show();
 			spnr_tasaat.setBackgroundColor(Color.RED);

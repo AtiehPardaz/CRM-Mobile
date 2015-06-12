@@ -270,13 +270,13 @@
                 android:paddingBottom="3dp"
                 android:paddingTop="3dp" >
 
-                <Spinner
-                    android:id="@+id/spnr_newactivity_ghararbadi"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <Button
+                    android:id="@+id/btnnewactivity_ghararbadi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/spinner_back"
-                    android:visibility="invisible" />
+                    android:text="قرار بعدی" />
 
             </LinearLayout>
         </LinearLayout>

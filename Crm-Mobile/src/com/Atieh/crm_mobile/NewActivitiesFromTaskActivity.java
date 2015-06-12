@@ -27,8 +27,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import dataBase.database;
 
-public class NewActivitiesActivity extends Activity {
+public class NewActivitiesFromTaskActivity extends Activity {
 
+	String ParentTaskID;
 	EditText et_title;
 	EditText et_sharh;
 	TextView date, txtPSroductServises, txt_sel_customer, txt_rel_customer;
@@ -107,6 +108,8 @@ public class NewActivitiesActivity extends Activity {
 			}
 		});
 		mHomeWatcher.startWatch();
+		
+		ParentTaskID = getIntent().getExtras().getString("ParentTaskID");
 
 		Calendar calendar = Calendar.getInstance();
 
@@ -141,12 +144,8 @@ public class NewActivitiesActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				
-				convertToDateTime();
-				InsertTask();
-				
 				Intent intent = new Intent();
-				intent.setClass(NewActivitiesActivity.this, NewActivitiesFromActivityActivity.class);
+				intent.setClass(NewActivitiesFromTaskActivity.this, NewActivitiesFromActivityActivity.class);
 				intent.putExtra("ParentActivityID", activityID);
 				startActivity(intent);
 				
@@ -195,7 +194,7 @@ public class NewActivitiesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(NewActivitiesActivity.this, NewTaskFromActivityActivity.class);
+				intent.setClass(NewActivitiesFromTaskActivity.this, NewTaskFromActivityActivity.class);
 				intent.putExtra("ParentActivityID", activityID);
 				startActivity(intent);
 			}
@@ -210,7 +209,7 @@ public class NewActivitiesActivity extends Activity {
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				if ( id <= spnr_azsaat.getSelectedItemId()) {
-					Toast.makeText(NewActivitiesActivity.this,
+					Toast.makeText(NewActivitiesFromTaskActivity.this,
 							"ساعت پایان نباید کمتر از ساعت شروع باشد.",
 							Toast.LENGTH_LONG).show();
 					spnr_tasaat.setBackgroundColor(Color.RED);
@@ -232,7 +231,7 @@ public class NewActivitiesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				Intent i = new Intent(NewActivitiesActivity.this,
+				Intent i = new Intent(NewActivitiesFromTaskActivity.this,
 						CustomerListActivity.class);
 				i.putExtra(HomeActivity.EnterCustomersListStat, "faliyat");
 				startActivityForResult(i, 2);
@@ -243,7 +242,7 @@ public class NewActivitiesActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(NewActivitiesActivity.this,
+				Intent i = new Intent(NewActivitiesFromTaskActivity.this,
 						SelectProducteServicesActivity.class);
 
 				startActivityForResult(i, 1);
@@ -254,7 +253,7 @@ public class NewActivitiesActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				startActivity(new Intent(NewActivitiesActivity.this,
+				startActivity(new Intent(NewActivitiesFromTaskActivity.this,
 						DatepickerActivity.class));
 
 			}
@@ -389,7 +388,7 @@ public class NewActivitiesActivity extends Activity {
 					statsID.get((int) spnr_vaziat.getSelectedItemId()),
 					CustomerListActivity.RelCustomerID, et_sharh.getText()
 							.toString(), fromDate, "1", "1",
-					CustomerListActivity.RelID, "1", "1", toDate);
+					CustomerListActivity.RelID, ParentTaskID , "1", toDate);
 
 			CustomerListActivity.RelCustomerID = "";
 			CustomerListActivity.RelID = "";
@@ -397,10 +396,10 @@ public class NewActivitiesActivity extends Activity {
 			db.close();
 
 			Intent intent = new Intent();
-			intent.setClass(NewActivitiesActivity.this, HomeActivity.class);
+			intent.setClass(NewActivitiesFromTaskActivity.this, HomeActivity.class);
 			startActivity(intent);
 		} else {
-			Toast.makeText(NewActivitiesActivity.this,
+			Toast.makeText(NewActivitiesFromTaskActivity.this,
 					"ساعت پایان نباید کمتر از ساعت شروع باشد",
 					Toast.LENGTH_LONG).show();
 			spnr_tasaat.setBackgroundColor(Color.RED);

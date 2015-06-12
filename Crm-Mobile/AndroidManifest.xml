@@ -46,7 +46,7 @@
         <activity
             android:name=".CustomerListActivity"
             android:screenOrientation="portrait" />
-          <activity
+        <activity
             android:name=".EditTaskActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -65,19 +65,15 @@
         <activity
             android:name=".NewActivitiesActivity"
             android:screenOrientation="portrait" />
-         <activity
+        <activity
             android:name=".EditActivitiesActivity"
             android:screenOrientation="portrait" />
-        
-        
         <activity
             android:name=".SelPersonRelActivity"
             android:screenOrientation="portrait" />
-        
-            <activity
+        <activity
             android:name=".SelectProducteServicesTask"
             android:screenOrientation="portrait" />
-            
         <activity
             android:name=".SelectProducteServicesActivity"
             android:screenOrientation="portrait" />
@@ -134,11 +130,23 @@
             android:name=".NewCustomerActivity"
             android:label="@string/title_activity_new_customer" >
         </activity>
+        <activity
+            android:name=".NewTaskFromActivityActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".NewActivitiesFromActivityActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".NewActivitiesFromTaskActivity"
+            android:label="" >
+        </activity>
         
         <activity
             android:name=".FragMainActivity"
-            android:label="" 
-            android:largeHeap="true">
+            android:label=""
+            android:largeHeap="true" >
         </activity>
     </application>
 

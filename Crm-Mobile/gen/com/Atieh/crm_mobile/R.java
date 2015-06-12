@@ -175,6 +175,7 @@ public final class R {
         public static final int btn_task_taskaction=0x7f0c00b6;
         public static final int btn_upload=0x7f0c0077;
         public static final int btn_yearview=0x7f0c0073;
+        public static final int btnnewactivity_ghararbadi=0x7f0c0014;
         public static final int button3=0x7f0c007d;
         public static final int button4=0x7f0c0080;
         public static final int button5=0x7f0c0081;
@@ -298,7 +299,6 @@ public final class R {
         public static final int sp_customer_role=0x7f0c0093;
         public static final int sp_customer_type=0x7f0c0090;
         public static final int spnr_newactivity_azsaat=0x7f0c000e;
-        public static final int spnr_newactivity_ghararbadi=0x7f0c0014;
         public static final int spnr_newactivity_tasaat=0x7f0c000c;
         public static final int spnr_newactivity_task=0x7f0c0010;
         public static final int spnr_newactivity_vaziat=0x7f0c0013;

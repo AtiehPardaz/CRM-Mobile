@@ -39,12 +39,12 @@ public class EditActivitiesActivity extends Activity {
 	Spinner spnr_vazife;
 	Spinner spnr_mahsolvakhadamat;
 	Spinner spnr_vaziat;
-	Spinner spnr_ghararbadi;
+	Button btn_ghararbadi;
 	CalendarTool calendarTool;
 	database db;
 
 	String statt;
-	
+
 	String fromDate;
 	String toDate;
 
@@ -60,7 +60,7 @@ public class EditActivitiesActivity extends Activity {
 	List<String> srvicesList;
 	List<String> vazeeyatLst;
 	List<String> hasNextActivityList;
-	
+
 	String activityID;
 	String CustomerID;
 	String RelativePersonID;
@@ -76,7 +76,7 @@ public class EditActivitiesActivity extends Activity {
 		spnr_tasaat = (Spinner) findViewById(R.id.spnr_newactivity_tasaat);
 		spnr_vazife = (Spinner) findViewById(R.id.spnr_newactivity_task);
 		spnr_vaziat = (Spinner) findViewById(R.id.spnr_newactivity_vaziat);
-		spnr_ghararbadi = (Spinner) findViewById(R.id.spnr_newactivity_ghararbadi);
+		btn_ghararbadi = (Button) findViewById(R.id.btnnewactivity_ghararbadi);
 		save = (ImageView) findViewById(R.id.img_save_newtask);
 		savenew = (ImageView) findViewById(R.id.img_savenew_newtask);
 		close = (ImageView) findViewById(R.id.img_close_newtask);
@@ -110,8 +110,6 @@ public class EditActivitiesActivity extends Activity {
 		});
 		mHomeWatcher.startWatch();
 
-
-
 		// date.setText(text);
 		db = new database(this);
 		db.database();
@@ -120,6 +118,21 @@ public class EditActivitiesActivity extends Activity {
 		activityID = getIntent().getExtras().getString("ActivityID");
 		TempActivityID.getInstance().setTempActivityID(activityID);
 
+		savenew.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				convertToDateTime();
+				InsertTask();
+				Intent intent = new Intent();
+				intent.setClass(EditActivitiesActivity.this, NewActivitiesFromActivityActivity.class);
+				intent.putExtra("ParentActivityID", activityID);
+				startActivity(intent);
+				
+			}
+		});
+		
 		
 		Cursor cc = db.GetActivityByID(activityID);
 		while (cc.moveToNext()) {
@@ -127,38 +140,50 @@ public class EditActivitiesActivity extends Activity {
 			et_sharh.setText(cc.getString(4));
 			CustomerID = cc.getString(3);
 			RelativePersonID = cc.getString(8);
-			spnr_azsaat.setSelection(Integer.valueOf(cc.getString(5).split(" ")[1].split(":")[0]));
-			spnr_tasaat.setSelection(Integer.valueOf(cc.getString(11).split(" ")[1].split(":")[0]));
-			
+			spnr_azsaat.setSelection(Integer
+					.valueOf(cc.getString(5).split(" ")[1].split(":")[0]));
+			spnr_tasaat.setSelection(Integer.valueOf(cc.getString(11)
+					.split(" ")[1].split(":")[0]));
+
 			date.setText(cc.getString(5).split(" ")[0].replace(":", "/"));
 			statt = cc.getString(2);
 		}
 
-		Cursor c11 = db.GetPersonRelationsByCustomerIdAndID(CustomerID,RelativePersonID);
-		while(c11.moveToNext()){
+		Cursor c11 = db.GetPersonRelationsByCustomerIdAndID(CustomerID,
+				RelativePersonID);
+		while (c11.moveToNext()) {
 			txt_rel_customer.setText(c11.getString(0));
 		}
-		
+
 		Cursor c21 = db.GetCustomersByID(CustomerID);
 		while (c21.moveToNext()) {
 			txt_sel_customer.setText(c21.getString(0));
 		}
-		
+
 		String ps = "";
-		Cursor c31 = db.mydb.rawQuery("select productName as a from products p inner join ActivitiesProducts tp on p.[productGUID] = tp.[productGUID]  where tp.[ActivityGUID] = '"+activityID+"' union select serviceName as a from services p2 inner join ActivitiesServices tp2 on p2.[serviceGUID] = tp2.[serviceGUID] where tp2.[ActivityGUID] = '"+activityID+"'",null);
+		Cursor c31 = db.mydb
+				.rawQuery(
+						"select productName as a from products p inner join ActivitiesProducts tp on p.[productGUID] = tp.[productGUID]  where tp.[ActivityGUID] = '"
+								+ activityID
+								+ "' union select serviceName as a from services p2 inner join ActivitiesServices tp2 on p2.[serviceGUID] = tp2.[serviceGUID] where tp2.[ActivityGUID] = '"
+								+ activityID + "'", null);
 		while (c31.moveToNext()) {
 			ps = ps + " " + c31.getString(0);
 		}
-		
-		
-		
-		txtPSroductServises.setText(ps);
-		
-		
-		
 
-		
-		
+		txtPSroductServises.setText(ps);
+
+		btn_ghararbadi.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(EditActivitiesActivity.this, NewTaskFromActivityActivity.class);
+				intent.putExtra("ParentActivityID", activityID);
+				startActivity(intent);
+			}
+		});
+
 		stats = new ArrayList<String>();
 		statsID = new ArrayList<String>();
 
@@ -169,8 +194,6 @@ public class EditActivitiesActivity extends Activity {
 			statsID.add(statsCursor.getString(0));
 
 		}
-		
-	
 
 		ArrayAdapter<String> statsAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, stats);
@@ -181,14 +204,13 @@ public class EditActivitiesActivity extends Activity {
 		spnr_vaziat.setAdapter(new NothingSelectedSpinnerAdapter(statsAdapter,
 				R.layout.activity_stats_nothing_selected, this));
 
-		
-		for(int i =0 ; i<statsID.size();i++){
-			if(statsID.get(i).equals(statt)){
+		for (int i = 0; i < statsID.size(); i++) {
+			if (statsID.get(i).equals(statt)) {
 				spnr_vaziat.setSelection(i);
 				break;
 			}
 		}
-		
+
 		close.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -197,14 +219,13 @@ public class EditActivitiesActivity extends Activity {
 
 			}
 		});
-		
 
 		spnr_tasaat.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
-				if ( id <= spnr_azsaat.getSelectedItemId()) {
+				if (id <= spnr_azsaat.getSelectedItemId()) {
 					Toast.makeText(EditActivitiesActivity.this,
 							"ساعت پایان نباید کمتر از ساعت شروع باشد",
 							Toast.LENGTH_LONG).show();
@@ -384,16 +405,17 @@ public class EditActivitiesActivity extends Activity {
 			db.DeleteActivities(activityID);
 			db.InsertActivities(activityID, et_title.getText().toString(),
 					statsID.get((int) spnr_vaziat.getSelectedItemId()),
-					CustomerListActivity.RelCustomerID.equals("")? CustomerID:CustomerListActivity.RelCustomerID ,
-					
-					et_sharh.getText()  ////////////////////////////////////////////////////////
+					CustomerListActivity.RelCustomerID.equals("") ? CustomerID
+							: CustomerListActivity.RelCustomerID,
+
+					et_sharh.getText() // //////////////////////////////////////////////////////
 							.toString(), fromDate, "1", "1",
-					CustomerListActivity.RelID.equals("")? RelativePersonID : CustomerListActivity.RelID ,
-					"1", "1", toDate);
+					CustomerListActivity.RelID.equals("") ? RelativePersonID
+							: CustomerListActivity.RelID, "1", "1", toDate);
 
 			CustomerListActivity.RelCustomerID = "";
 			CustomerListActivity.RelID = "";
-			
+
 			db.close();
 
 			Intent intent = new Intent();

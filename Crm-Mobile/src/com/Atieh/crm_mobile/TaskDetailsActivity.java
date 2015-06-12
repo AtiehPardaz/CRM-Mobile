@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import dataBase.database;
@@ -25,6 +26,8 @@ public class TaskDetailsActivity extends Activity {
 	TextView txt_taskDetail ;
 	TextView txt_taskMustNotified ;
 	ImageView img_edit_task;
+	ImageView img_save_new_customer;
+	String ID;
 
 
 	@Override
@@ -45,6 +48,19 @@ public class TaskDetailsActivity extends Activity {
 		});
 		mHomeWatcher.startWatch();
 		
+		ID = getIntent().getStringExtra("id");
+		
+		img_save_new_customer.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				Intent intent = new Intent();
+				intent.setClass(TaskDetailsActivity.this, NewActivitiesFromTaskActivity.class);
+				intent.putExtra("ParentTaskID",ID );
+				startActivity(intent);		
+				}
+		});
 		img_edit_task.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -147,5 +163,6 @@ public class TaskDetailsActivity extends Activity {
 		txt_taskDetail = (TextView) findViewById(R.id.txt_taskDetail);
 		txt_taskMustNotified = (TextView) findViewById(R.id.txt_taskMustNotified);
 		img_edit_task = (ImageView) findViewById(R.id.img_edit_task);
+		img_save_new_customer =(ImageView) findViewById(R.id.img_save_new_customer);
 	}
 }
