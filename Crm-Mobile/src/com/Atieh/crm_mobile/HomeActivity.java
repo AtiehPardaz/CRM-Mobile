@@ -33,7 +33,8 @@ public class HomeActivity extends Activity {
 	Button btnmounthview;
 	Button btnproductservises;
 	Button btnNewTask;
-	Button btnNewActivity,btn_yearview;
+	Button btnNewActivity,btn_yearview,download;
+	
 	
 	Button btnDayView;
 
@@ -44,6 +45,7 @@ public class HomeActivity extends Activity {
 		btnNewActivity = (Button) findViewById(R.id.btn_newactivity);
 		btnDayView = (Button) findViewById(R.id.btn_dayview);
 		btn_yearview = (Button) findViewById(R.id.btn_yearview);
+		download = (Button) findViewById(R.id.btn_download);
 	}
 
 	database db;
@@ -77,6 +79,17 @@ public class HomeActivity extends Activity {
 		});
 		mHomeWatcher.startWatch();
 		
+		download.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+//				db = new database(HomeActivity.this);
+//				asyncGetProductAndService gps = new asyncGetProductAndService();
+//				gps.execute("4");
+				
+			}
+		});
 		
 		btn_yearview.setOnClickListener(new View.OnClickListener() {
 			
@@ -160,10 +173,7 @@ public class HomeActivity extends Activity {
 			}
 		});
 
-		db = new database(this);
-
-		//asyncGetProductAndService gps = new asyncGetProductAndService();
-		//gps.execute("4");
+		
 
 	}
 
