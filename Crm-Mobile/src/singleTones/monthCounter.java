@@ -4,26 +4,24 @@ import com.Atieh.crm_mobile_calendar.CivilDate;
 import com.Atieh.crm_mobile_calendar.DateConverter;
 import com.Atieh.crm_mobile_calendar.PersianDate;
 
-public class mountCounter {
-	private static mountCounter mInstance = null;
+public class monthCounter {
+	private static monthCounter mInstance = null;
 
 	private int Mounth;
 	private int Year;
 	
-	PersianDate persianDate = DateConverter.civilToPersian(new CivilDate());
-	PersianDate persianDate1 = DateConverter
-			.civilToPersian(new CivilDate());
+
 	
 
-	private mountCounter(){
+	private monthCounter(){
 		Mounth = 1;
-		Year = persianDate.getYear();
+		Year = 1;
 	}
 
-	public static mountCounter getInstance(){
+	public static monthCounter getInstance(){
 		if(mInstance == null)
 		{
-			mInstance = new mountCounter();
+			mInstance = new monthCounter();
 		}
 		return mInstance;
 	}
@@ -40,8 +38,8 @@ public class mountCounter {
 		return Year;
 	}
 
-	public void setYear(int mounth) {
-		Year = mounth;
+	public void setYear(int year) {
+		Year = year;
 	}
 	
 

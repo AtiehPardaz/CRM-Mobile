@@ -144,7 +144,7 @@
         </activity>
         
         <activity
-            android:name=".FragMainActivity"
+            android:name=".YearViewActivity"
             android:label=""
             android:largeHeap="true" >
         </activity>

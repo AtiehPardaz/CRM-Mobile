@@ -1,29 +1,21 @@
 package com.Atieh.crm_mobile;
 
-import java.util.zip.Inflater;
-
-import singleTones.mountCounter;
-import android.R.color;
+import singleTones.monthCounter;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.text.TextUtils;
-import android.util.TypedValue;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import singleTones.mountCounter;
 
 import com.Atieh.crm_mobile_calendar.CivilDate;
 import com.Atieh.crm_mobile_calendar.DateConverter;
@@ -33,84 +25,207 @@ import com.Atieh.crm_mobile_calendar.PersianDate;
 import com.Atieh.crm_mobile_calendar.Range;
 import com.Atieh.crm_mobile_calendar.Utils;
 
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.os.Bundle;
-import android.view.Display;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
-
-public class FragMainActivity extends Activity {
+public class YearViewActivity extends Activity {
 
 	private final Utils utils = Utils.getInstance();
 
 	Context context;
+	TextView txt_title;
 
-	int width, height;
+	LinearLayout mainRoot1;
+	LinearLayout mainRoot2;
+	LinearLayout mainRoot3;
+	LinearLayout mainRoot4;
+	LinearLayout mainRoot5;
+	LinearLayout mainRoot6;
+	LinearLayout mainRoot7;
+	LinearLayout mainRoot8;
+	LinearLayout mainRoot9;
+	LinearLayout mainRoot10;
+	LinearLayout mainRoot11;
+	LinearLayout mainRoot12;
+	Button btn_mounthview_new_task,btn_mounthview_new_activity;
+	ProgressBar progressBar1;
+
+	ScrollView scrollView1_year;
+
 	public static String mounthTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_frag_main);
+		setContentView(R.layout.activity_year_view);
 
 		context = this;
 
+		scrollView1_year = (ScrollView) findViewById(R.id.scrollView1_year);
 		utils.loadHolidays(getResources().openRawResource(R.raw.holidays));
 		utils.LoadTasksdays(this.getBaseContext());
 		utils.LoadActivitiesdays(this.getBaseContext());
 
-		LinearLayout mainRoot1 = (LinearLayout) findViewById(R.id.l1);
+		PersianDate persianDate = DateConverter.civilToPersian(new CivilDate());
+		monthCounter.getInstance().setYear(persianDate.getYear());
 
-		mounthCalculator(mainRoot1);
+		txt_title = (TextView) findViewById(R.id.txt_year_title);
+		txt_title.setText(monthCounter.getInstance().getYear() + "");
+		ImageButton next_year = (ImageButton) findViewById(R.id.imgbtn_next_year);
+		ImageButton previous_year = (ImageButton) findViewById(R.id.imgbtn_back_year);
+		ImageButton btn_home_calander_year = (ImageButton) findViewById(R.id.btn_home_calander_year);
+		ImageButton btn_plus_year = (ImageButton) findViewById(R.id.btn_plus_year);
+		btn_mounthview_new_task = (Button) findViewById(R.id.btn_mounthview_new_task);
+		btn_mounthview_new_activity = (Button) findViewById(R.id.btn_mounthview_new_activity);
+		btn_mounthview_new_task.setVisibility(View.GONE);
+		btn_mounthview_new_activity.setVisibility(View.GONE);
+		progressBar1 = (ProgressBar) findViewById(R.id.progressBar1);
+		
+		progressBar1.setVisibility(View.GONE);
+		
+		btn_plus_year.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				btn_mounthview_new_task.setVisibility(View.VISIBLE);
+				btn_mounthview_new_activity.setVisibility(View.VISIBLE);
+			}
+		});
+		
+		btn_mounthview_new_task.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(YearViewActivity.this,NewTaskActivity.class);
+				startActivity(intent);
+				
+			}
+		});
+		
+		btn_mounthview_new_activity.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(YearViewActivity.this,NewActivitiesActivity.class);
+				startActivity(intent);
+				
+			}
+		});
+		
+		
+		btn_home_calander_year.setOnClickListener(new View.OnClickListener() {
 
-		LinearLayout mainRoot2 = (LinearLayout) findViewById(R.id.l2);
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(YearViewActivity.this, HomeActivity.class);
+				startActivity(intent);
+			}
+		});
 
-		mounthCalculator(mainRoot2);
+		next_year.setOnClickListener(new View.OnClickListener() {
 
-		LinearLayout mainRoot3 = (LinearLayout) findViewById(R.id.l3);
-		mounthCalculator(mainRoot3);
+			@Override
+			public void onClick(View v) {
+				
+				progressBar1.setVisibility(View.VISIBLE);
 
-		LinearLayout mainRoot4 = (LinearLayout) findViewById(R.id.l4);
-		mounthCalculator(mainRoot4);
+				monthCounter.getInstance().setYear(
+						monthCounter.getInstance().getYear() + 1);
+				mainRoot1.removeAllViews();
+				mainRoot2.removeAllViews();
+				mainRoot3.removeAllViews();
+				mainRoot4.removeAllViews();
+				mainRoot5.removeAllViews();
+				mainRoot6.removeAllViews();
+				mainRoot7.removeAllViews();
+				mainRoot8.removeAllViews();
+				mainRoot9.removeAllViews();
+				mainRoot10.removeAllViews();
+				mainRoot11.removeAllViews();
+				mainRoot12.removeAllViews();
+				txt_title.setText(Integer.valueOf(txt_title.getText()
+						.toString()) + 1 + "");
+				inflateMonthes();
+				
+				progressBar1.setVisibility(View.GONE);
 
-		LinearLayout mainRoot5 = (LinearLayout) findViewById(R.id.l5);
-		mounthCalculator(mainRoot5);
+			}
+		});
 
-		LinearLayout mainRoot6 = (LinearLayout) findViewById(R.id.l6);
-		mounthCalculator(mainRoot6);
+		previous_year.setOnClickListener(new View.OnClickListener() {
 
-		LinearLayout mainRoot7 = (LinearLayout) findViewById(R.id.l7);
-		mounthCalculator(mainRoot7);
+			@Override
+			public void onClick(View v) {
+				
+				progressBar1.setVisibility(View.VISIBLE);
 
-		LinearLayout mainRoot8 = (LinearLayout) findViewById(R.id.l8);
-		mounthCalculator(mainRoot8);
+				monthCounter.getInstance().setYear(
+						monthCounter.getInstance().getYear() - 1);
+				mainRoot1.removeAllViews();
+				mainRoot2.removeAllViews();
+				mainRoot3.removeAllViews();
+				mainRoot4.removeAllViews();
+				mainRoot5.removeAllViews();
+				mainRoot6.removeAllViews();
+				mainRoot7.removeAllViews();
+				mainRoot8.removeAllViews();
+				mainRoot9.removeAllViews();
+				mainRoot10.removeAllViews();
+				mainRoot11.removeAllViews();
+				mainRoot12.removeAllViews();
+				txt_title.setText(Integer.valueOf(txt_title.getText()
+						.toString()) - 1 + "");
 
-		LinearLayout mainRoot9 = (LinearLayout) findViewById(R.id.l9);
-		mounthCalculator(mainRoot9);
+				inflateMonthes();
+				progressBar1.setVisibility(View.GONE);
 
-		LinearLayout mainRoot10 = (LinearLayout) findViewById(R.id.l10);
-		mounthCalculator(mainRoot10);
+			}
+		});
 
-		LinearLayout mainRoot11 = (LinearLayout) findViewById(R.id.l11);
-		mounthCalculator(mainRoot11);
+		mainRoot1 = (LinearLayout) findViewById(R.id.l1);
 
-		LinearLayout mainRoot12 = (LinearLayout) findViewById(R.id.l12);
-		mounthCalculator(mainRoot12);
+		mainRoot2 = (LinearLayout) findViewById(R.id.l2);
 
+		mainRoot3 = (LinearLayout) findViewById(R.id.l3);
+
+		mainRoot4 = (LinearLayout) findViewById(R.id.l4);
+
+		mainRoot5 = (LinearLayout) findViewById(R.id.l5);
+
+		mainRoot6 = (LinearLayout) findViewById(R.id.l6);
+
+		mainRoot7 = (LinearLayout) findViewById(R.id.l7);
+
+		mainRoot8 = (LinearLayout) findViewById(R.id.l8);
+
+		mainRoot9 = (LinearLayout) findViewById(R.id.l9);
+
+		mainRoot10 = (LinearLayout) findViewById(R.id.l10);
+
+		mainRoot11 = (LinearLayout) findViewById(R.id.l11);
+
+		mainRoot12 = (LinearLayout) findViewById(R.id.l12);
+
+		inflateMonthes();
+		HomeActivity.progressBar1.setVisibility(View.GONE);
 	}
 
-	
-	public void mounthCalculator(LinearLayout mainRoot) {
+	private void inflateMonthes() {
+		mounthCalculator(mainRoot3);
+		mounthCalculator(mainRoot2);
+		mounthCalculator(mainRoot1);
+		mounthCalculator(mainRoot6);
+		mounthCalculator(mainRoot5);
+		mounthCalculator(mainRoot4);
+		mounthCalculator(mainRoot9);
+		mounthCalculator(mainRoot8);
+		mounthCalculator(mainRoot7);
+		mounthCalculator(mainRoot12);
+		mounthCalculator(mainRoot11);
+		mounthCalculator(mainRoot10);
+	}
+
+	private void mounthCalculator(LinearLayout mainRoot) {
 
 		// TextView[][] daysTextViews = new TextView[7][7];
 		// LinearLayout root = new LinearLayout(context);
@@ -119,15 +234,15 @@ public class FragMainActivity extends Activity {
 
 		PersianDate persianDate = DateConverter.civilToPersian(new CivilDate());
 
-		int month = mountCounter.getInstance().getMounth();
-		mountCounter.getInstance().setMounth(month + 1);
+		int month = monthCounter.getInstance().getMounth();
+		monthCounter.getInstance().setMounth(month + 1);
 
 		if (month == 12) {
-			mountCounter.getInstance().setMounth(1);
+			monthCounter.getInstance().setMounth(1);
 		}
 
 		month -= 1;
-		int year = persianDate.getYear();
+		int year = monthCounter.getInstance().getYear();
 
 		year = year + (month / 12);
 		month = month % 12;
@@ -150,15 +265,16 @@ public class FragMainActivity extends Activity {
 
 		TextView currentMonthTextView = (TextView) v
 				.findViewById(R.id.currentMonthTextView);
-		currentMonthTextView.setText(utils.getMonthYearTitle(persianDate,
-				digits));
+
+		currentMonthTextView
+				.setText(utils.getMonthYearTitleEdited(persianDate));
 
 		for (int i : new Range(0, 7)) {
 			// TextView textView = ;
 			gettextView(v, 0, 6 - i).setText(
 					utils.firstCharOfDaysOfWeekNameBrif[i]);
-//			gettextView(v, 0, 6 - i).setBackgroundColor(
-//					Color.parseColor("#DDDDDD"));
+			// gettextView(v, 0, 6 - i).setBackgroundColor(
+			// Color.parseColor("#DDDDDD"));
 			gettextView(v, 0, 6 - i).setGravity(Gravity.CENTER_HORIZONTAL);
 
 		}
@@ -169,9 +285,9 @@ public class FragMainActivity extends Activity {
 
 				gettextView(v, weekOfMonth, 6 - dayOfWeek).setText(
 						utils.formatNumber(i, digits));
-//				gettextView(v, weekOfMonth, 6 - dayOfWeek)
-//						.setBackgroundResource(R.drawable.days);
-				
+				// gettextView(v, weekOfMonth, 6 - dayOfWeek)
+				// .setBackgroundResource(R.drawable.days);
+
 				gettextView(v, weekOfMonth, 6 - dayOfWeek).setGravity(
 						Gravity.CENTER_HORIZONTAL);
 
@@ -195,6 +311,7 @@ public class FragMainActivity extends Activity {
 		} catch (DayOutOfRangeException e) {
 			// okay, it was expected
 		}
+
 		mainRoot.addView(v);
 	}
 
@@ -358,6 +475,18 @@ public class FragMainActivity extends Activity {
 			break;
 		}
 		return null;
+
+	}
+	
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		
+		btn_mounthview_new_task.setVisibility(View.GONE);
+		btn_mounthview_new_activity.setVisibility(View.GONE);
+		progressBar1.setVisibility(View.GONE);
 
 	}
 }

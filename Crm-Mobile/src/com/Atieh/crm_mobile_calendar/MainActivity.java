@@ -92,7 +92,7 @@ public class MainActivity extends FragmentActivity {
 		// title=(TextView) findViewById(R.id.tv_title_monthview);
 		calendarInfo = (TextView) findViewById(R.id.calendar_info);
 		title_month = (TextView) findViewById(R.id.tv_title_monthview);
-		next = (ImageButton) findViewById(R.id.imgbtn_next_month);
+		next = (ImageButton) findViewById(R.id.imgbtn_next_month_year);
 		back = (ImageButton) findViewById(R.id.imgbtn_back_month);
 		selectdate = (ImageButton) findViewById(R.id.btn_monthview_calander);
 		txt_mounth_title = (TextView) findViewById(R.id.txt_mounth_title);

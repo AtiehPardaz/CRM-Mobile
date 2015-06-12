@@ -1,0 +1,272 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragtestLay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.Atieh.crm_mobile.YearViewActivity" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout111"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/blue_titlecolor"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/imgbtn_back_year"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/arrowleft" />
+
+        <View
+            android:id="@+id/View01"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_year_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_next_year"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/arrowright" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnr_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayout111"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/btn_plus_year"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/add" />
+
+        <ImageButton
+            android:id="@+id/btn_search_calander_year"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/searchn" />
+
+        <ImageButton
+            android:id="@+id/btn_home_calander_year"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/homen" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1_year"
+        android:layout_width="306dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/lnr_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="306dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TableLayout
+                android:id="@+id/TableLayout1"
+                android:layout_width="306dp"
+                android:layout_height="544dp"
+                android:layout_below="@+id/LinearLayout1" >
+
+                <TableRow
+                    android:id="@+id/TableRow04"
+                    android:layout_width="306dp"
+                    android:layout_height="136dp" >
+
+                    <LinearLayout
+                        android:id="@+id/l1"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l2"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l3"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow6"
+                    android:layout_width="306dp"
+                    android:layout_height="136dp" >
+
+                    <LinearLayout
+                        android:id="@+id/l4"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l5"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l6"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow5"
+                    android:layout_width="306dp"
+                    android:layout_height="136dp" >
+
+                    <LinearLayout
+                        android:id="@+id/l7"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l8"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l9"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow7"
+                    android:layout_width="306dp"
+                    android:layout_height="136dp" >
+
+                    <LinearLayout
+                        android:id="@+id/l10"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l11"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l12"
+                        android:layout_width="102dp"
+                        android:layout_height="136dp"
+                        android:orientation="vertical"
+                        android:padding="2dp" >
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_mounthview_new_activity"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_mounthview_new_task"
+        android:layout_below="@+id/btn_mounthview_new_task"
+        android:background="@drawable/today_background"
+        android:minHeight="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="ایجاد فعالیت"
+        android:textColor="@color/white_color"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_mounthview_new_task"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/lnr_bar"
+        android:layout_below="@+id/lnr_bar"
+        android:layout_marginRight="37dp"
+        android:background="@drawable/today_background"
+        android:minHeight="30dp"
+        android:minWidth="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="13dp"
+        android:text="ایجاد وظیفه"
+        android:textColor="@color/white_color"
+        android:textSize="12sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_mounthview_new_activity"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -23,7 +23,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/scrollView1"
+        android:id="@+id/scrollView1_year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/taskFooter"

@@ -283,6 +283,10 @@ public class Utils {
 				+ formatNumber(persianDate.getYear(), digits));
 	}
 
+	public String getMonthYearTitleEdited(PersianDate persianDate) {
+		return textShaper(persianDate.getMonthName());
+	}
+	
 	public void quickToast(String message, Context context) {
 		Toast.makeText(context, textShaper(message), Toast.LENGTH_SHORT).show();
 	}

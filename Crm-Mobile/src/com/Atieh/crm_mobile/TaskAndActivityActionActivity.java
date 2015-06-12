@@ -112,7 +112,7 @@ public class TaskAndActivityActionActivity extends Activity {
 		// et_search = (EditText) findViewById(R.id.et_search_taskaction);
 		// ll_hidesearch = (LinearLayout)
 		// findViewById(R.id.ll_search_taskaction);
-		imgbtn_next_month = (ImageButton) findViewById(R.id.imgbtn_next_month);
+		imgbtn_next_month = (ImageButton) findViewById(R.id.imgbtn_next_month_year);
 		imgbtn_back_month = (ImageButton) findViewById(R.id.imgbtn_back_month);
 		titlemonthTextView = (TextView) findViewById(R.id.tv_title_monthview_taskaction);
 

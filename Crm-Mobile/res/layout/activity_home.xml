@@ -7,7 +7,8 @@
     android:gravity="center"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -17,16 +18,30 @@
             android:id="@+id/btn_yearview"
             android:layout_width="80dp"
             android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:layout_margin="5dp"
             android:background="#ffffff"
             android:text="نمای سال"
             android:textColor="#08784F" />
 
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="@id/progressBar1_taskaction"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dp" />
+
         <Button
             android:id="@+id/btn_monthview"
             android:layout_width="80dp"
             android:layout_height="70dp"
+            android:layout_alignBaseline="@+id/btn_yearview"
+            android:layout_alignParentTop="true"
             android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/btn_yearview"
             android:background="#ffffff"
             android:text="نمای ماه"
             android:textColor="#08784F" />
@@ -35,12 +50,14 @@
             android:id="@+id/btn_dayview"
             android:layout_width="80dp"
             android:layout_height="70dp"
+            android:layout_alignBaseline="@+id/btn_yearview"
+            android:layout_alignParentTop="true"
             android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/btn_monthview"
             android:background="#ffffff"
             android:text="نمای روز"
             android:textColor="#08784F" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -54,7 +71,7 @@
             android:layout_margin="5dp"
             android:background="#ffffff"
             android:text="دریافت"
-              android:textColor="#08784F" />
+            android:textColor="#08784F" />
 
         <Button
             android:id="@+id/btn_upload"
@@ -63,8 +80,7 @@
             android:layout_margin="5dp"
             android:background="#ffffff"
             android:text="بارگذاری"
-              android:textColor="#08784F" />
-
+            android:textColor="#08784F" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,7 +95,7 @@
             android:layout_margin="5dp"
             android:background="#ffffff"
             android:text="فعالیت جدید"
-             android:textColor="#08784F" />
+            android:textColor="#08784F" />
 
         <Button
             android:id="@+id/btn_newtask"
@@ -89,7 +105,6 @@
             android:background="#ffffff"
             android:text="وظیفه جدید"
             android:textColor="#08784F" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -103,7 +118,7 @@
             android:layout_margin="5dp"
             android:background="#ffffff"
             android:text="مشتریان"
-              android:textColor="#08784F" />
+            android:textColor="#08784F" />
 
         <Button
             android:id="@+id/btn_productservises"
@@ -114,7 +129,6 @@
             android:background="#ffffff"
             android:text="محصولات و خدمات"
             android:textColor="#08784F" />
-
     </LinearLayout>
 
 </LinearLayout>

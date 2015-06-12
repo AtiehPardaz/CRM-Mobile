@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.Atieh.crm_mobile_calendar.CivilDate;
@@ -34,6 +35,7 @@ public class HomeActivity extends Activity {
 	Button btnproductservises;
 	Button btnNewTask;
 	Button btnNewActivity,btn_yearview,download;
+	public static ProgressBar progressBar1;
 	
 	
 	Button btnDayView;
@@ -46,6 +48,7 @@ public class HomeActivity extends Activity {
 		btnDayView = (Button) findViewById(R.id.btn_dayview);
 		btn_yearview = (Button) findViewById(R.id.btn_yearview);
 		download = (Button) findViewById(R.id.btn_download);
+		progressBar1 = (ProgressBar) findViewById(R.id.progressBar1);
 	}
 
 	database db;
@@ -59,8 +62,8 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		initview();
-		//Toast.makeText(this, authInfo.getInstance().getSalt(),
-				//Toast.LENGTH_LONG).show();
+	
+		progressBar1.setVisibility(View.GONE);
 		
 		HomeWatcher mHomeWatcher = new HomeWatcher(this);
 		mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
@@ -95,9 +98,10 @@ public class HomeActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-
+				
+				progressBar1.setVisibility(View.VISIBLE);
 				Intent intent = new Intent();
-				intent.setClass(HomeActivity.this, FragMainActivity.class);
+				intent.setClass(HomeActivity.this, YearViewActivity.class);
 				startActivity(intent);
 			}
 		});
